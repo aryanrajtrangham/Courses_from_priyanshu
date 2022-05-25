@@ -1,2 +1,2 @@
 # Courses
-- View the content in every directory..
+- View the content in every course..
