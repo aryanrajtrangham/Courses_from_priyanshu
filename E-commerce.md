@@ -126,8 +126,8 @@
 
 ## How do digital signatures work?
 - Digital signatures are based on public key cryptography, also known as asymmetric cryptography. Using a public key algorithm, such as RSA (Rivest-Shamir-Adleman), two keys are generated, creating a mathematically linked pair of keys, one private and one public.
-- Digital signatures work through public key cryptography's two mutually authenticating cryptographic keys. The individual who creates the digital signature uses a private key to encrypt signature-related data, while the only way to decrypt that data is with the signer's public key.
-ment or the signature. This is how digital signatures are authenticated.
+- Digital signatures work through public key cryptography's two mutually authenticating cryptographic keys. The individual who creates the digital signature uses a private key to encrypt signature-related data, while the only way to decrypt that data is with the signer's public key i.e,
+Acknowledgement or the signature. This is how digital signatures are authenticated.
 - Digital signature technology requires all parties trust that the individual creating the signature has kept the private key secret. If someone else has access to the private signing key, that party could create fraudulent digital signatures in the name of the private key holder.
 
 ## Digital Currency
@@ -146,7 +146,7 @@ ment or the signature. This is how digital signatures are authenticated.
 - Digital currencies also enable instant transactions that can be seamlessly executed across borders. For instance, it is possible for a person located in the United States to make payments in digital currency to a counterparty residing in Singapore, provided they are both connected to the same network.
 
 ## Characteristics of Digital Currencies
-- Digital currencies only exist in digital form. They do not have a physical equivalent.
+- Digital currencies only exist in digital form. They may not have a physical equivalent.
 - Digital currencies can be centralized or decentralized. Fiat currency, which exists in physical form, is a centralized system of production and distribution by a central bank and government agencies. Prominent cryptocurrencies, such as Bitcoin and Ethereum, are examples of decentralized digital currency systems.
 - Digital currencies can transfer value. Use of digital currencies requires a mental shift in the existing framework for currencies, where they are associated with sale and purchase transactions for goods and services. Digital currencies, however, extend the concept. For example, a gaming network token can extend the life of a player or provide them with extra superpowers. This is not a purchase or sale transaction but, instead, represents a transfer of value.
 
@@ -168,7 +168,7 @@ ment or the signature. This is how digital signatures are authenticated.
 - They have fast transfer and transaction times
     Because digital currencies generally exist within the same network and accomplish transfers without intermediaries, the amount of time required for transfers involving digital currencies is extremely fast. As payments in digital currencies are made directly between the transacting parties without the need for any intermediaries, the transactions are usually instantaneous and low-cost. This fares better compared to traditional payment methods that involve banks or clearinghouses. Digital-currency-based electronic transactions also bring in the necessary record keeping and transparency in dealings.
 - They do not require physical manufacturing and cannot be soiled
-    Many requirements for physical currencies, such as the establishment of physical manufacturing facilities, are absent for digital currencies. Such currencies are also immune to physical defects or soiling that are present in physical currency.
+    Many requirements for physical currencies, such as the establishment of physical manufacturing facilities, are absent for digital currencies.
 - They can ease implementation of monetary and fiscal policy
     Under the current currency regime, the Fed works through a series of intermediaries—banks and financial institutions—to circulate money into an economy. CBDCs can help circumvent this mechanism and enable a government agency to enable disburse payments directly to citizens. They also simplify the production and distribution methods by obviating the need for physical manufacturing and transportation of currency notes from one location to another.
 - They can make transaction costs cheaper
@@ -298,7 +298,7 @@ ment or the signature. This is how digital signatures are authenticated.
     - SET also needs to provide interoperability and make use of the best security mechanisms.
 
 ## SET functionalities:
-- Provide Authentication
+- **Provide Authentication**
     - **Merchant Authentication** – To prevent theft, SET allows customers to check previous relationships between merchants and financial institutions. Standard X.509V3 certificates are used for this verification.
     - **Customer / Cardholder Authentication** – SET checks if the use of a credit card is done by an authorized user or not using X.509V3 certificates.
 - **Provide Message Confidentiality** Confidentiality refers to preventing unintended people from reading the message being transferred. SET implements confidentiality by using encryption techniques. Traditionally DES is used for encryption purposes.
@@ -317,3 +317,167 @@ There are various legal issues associated with E-Commerce businesses. If these i
     If we do not abide by the rules, we can get into serious law violation problems. If the business fails to provide clear and complete description of the product, cost and purchase details, information about delivery i.e. when the customer will receive products and other information related to exchange and refunds,  Consumer Law can impose penalties on the business.
 - **Privacy Issues**
     When it comes to online businesses, privacy is the major issue that can create problems both for the business and customers. Consumers share information with businesses online and they expect the sellers to keep their information confidential. By just one minor mistake and leakage of valuable information of a customer, we will not only lose our potential customer but the image and reputation will become a question mark.
+
+## Discuss the E-commerce Arcshitecture in detail with the help of a diagram
+The E-commerce Architecture:
+- It helps search engine (SE) to index the website and rank it higher
+- It allow for scalability
+- It enable third party integration
+- It enhances the user experience
+- The 3 architectures are
+- **Tow - Tier Architecture**
+    - Two sides of the architecture ( client and database ) that corresponding to client domain and business database domain. Their exist in constant interaction.
+    Example Retreiving and storing account billing details in db.
+    <pre font-family="Cascadia Code">
+        User        +--------+       +--------+       +--------+
+        Interface   | Client |       | Client |       | Client |
+        (UI)        +--------+       +--------+       +--------+
+                        |           /     |          /    |
+                        |          /      |         /     |
+                        |         /       |        /      |
+                        |        /        |       /       |
+                   /```````````\/   /```````````\/  /```````````\
+                   \___________/    \___________/   \___________/
+        Database   |___________|    |___________|   |___________|
+        Management |___________|    |___________|   |___________|
+                        DB1             DB2             DB3
+    </pre>
+    - Used for homogenous environment as it contain static business rules
+    - A preferred model for startups however also contain some limitations
+    - **Pros**
+        - Simple, fast & cheap to develop & deploy
+        - Allows for accurate & fast prototyping
+        - DB server & business logic are done, which enhances performance
+    - **Cons**
+        - Not suitable for heterogenous environment
+        - Allows for limited no of users & isn't scalable
+        - Low control & re-distribution level
+        - Complicated to change DB structure due to mutual depandenct component and monolithic code.
+- **Three - Tier Architecture**
+    - An additional middle layer is added which can be considered server side
+    - 3 layers
+        - Presentaion layer (client)
+        - Application layer (business logic)
+        - Database layer (database)
+    <pre font-family="Cascadia Code">
+        User        +--------+       +--------+       +--------+
+        Interface   | Client |       | Client |       | Client |
+        (UI)        +--------+       +--------+       +--------+
+                        |           /     |          /    |
+                        |          /      |         /     |
+                        |         /       |        /      |
+                        |        /        |       /       |
+                    /```````````/    /```````````/  /```````````/
+        Process    /___________/    /___________/  /___________/
+        Mnagement  |___________|    |___________|  |___________|
+                    Web server       Web server     Web server
+                        |           /     |          /    |
+                        |          /      |         /     |
+                        |         /       |        /      |
+                        |        /        |       /       |
+                   /```````````\/   /```````````\/  /```````````\
+                   \___________/    \___________/   \___________/
+        Database   |___________|    |___________|   |___________|
+        Management |___________|    |___________|   |___________|
+                        DB1             DB2             DB3
+    </pre> 
+    - Each layer function independently, runs on different services & is treated as a separate module when it comes to
+    its development, modification or maintaince
+    - **Pros**
+        - Improved Security due to better sync between the modules
+        - Security level is enhanced
+        - Possible partial update without affecting whole system
+        - Availablitity even if server is down due to cache data
+    - **Cons**
+        - Complex communication between layers (difficult implementation)
+        - Requires manual management
+- **E-Commerce Microserver Architecture**
+    - It means the creation of the application/website by arranging multiple services that have less comploy
+    depending between each other
+    <pre font-family="Cascadia Code">
+                                +----------------+
+                                | User Interface |
+                                +----------------+
+                                /    /     |    \
+                              /     /      |     \
+                            /      /       |      \
+                          /       |        |       +--------------+
+                        /        /         |       | Microservice |
+                      /          |         |       +--------------+
+                    /           /          |          /    \
+                  /             |          |         /      \
+                /               |          |        /        \
+        +-----------+    +-----------+   +-----------+    +-----------+
+        | u service |    | u service |   | u service |    | u service |
+        +-----------+    +-----------+   +-----------+    +-----------+
+            |   |           |   |           |   |            |  |
+        /```````````\    /```````````\   /```````````\   /```````````\
+        \___________/    \___________/   \___________/   \___________/
+        |___________|    |___________|   |___________|   |___________|
+        |___________|    |___________|   |___________|   |___________|
+            DB1              DB2              DB3             DB4
+    </pre> 
+    - This architecture seems to be a perfect choice for enterterprises, not best option due to maintainance complexity.
+    - **Pros**
+        - Fault isolation
+        - Flexible to adapt new technology
+        - Fast deployment due to smaller scope & codebases
+        - Easy scalability
+        - Option to deploy locally
+    - **Cons**
+        - Complex server comunication
+        - More resource needed
+        - Recduced automated testing
+        - More loss for debugging
+
+## Explain the concept of mercantile process model from consumer and merchant's perspective
+Mercantile process define interaction model between consumers and merchants for E commerce
+**Mercantile process model from consumers perspective**
+- The online consumer expects quality, convenience, value, low price and control. To understand The behavior of online shoppers, there is a need for business model. This business model for consumers perspective consists of seven activities that can be grouped into three phases
+    - Pre purchase phase
+        - Product service and discovery in information space
+        - Camparision shoping and product selection based on various attributes
+        - Negotiation of terms e.g, Price, Delivery times
+    - Purchase consumation face
+        - Placement of order
+        - Authorization of Payment
+        - Receipt of payment
+    - Post purchase interaction phase.
+        - Customer service and support
+- **Pre purchase phase** Search and discovery for set of product in layers. Important space capable of meeting consumer requirements and selection from small sets of product based on attribute comparison.
+    - Types of buyers
+        - Impulsive buyers
+        - Patient buyers
+        - Analytical buyers
+    - Types of purchases
+        - Specially planned purchases
+        - Generally planned purchases
+        - Reminder purchases
+        - Entirely unplanned purchases
+    - Types of collecting information
+        - The Consumer information search process
+        - The organization information search process
+        - Consumer search experience
+        - Information brokers and brokerage
+- **Purchase consumation** Include mercantile protocol that specifies flow of information and documents associated with purchasing and negotiating with merchants for suitable terms.
+    - Mode of payments
+        - Mercantile Process using digital cash
+        - Mercantile Process using credit card
+- **Post purchase interaction** Includes and support to address customer complaint, product return and product defects.Product return and product defects.
+
+**Mercantile process model from merchants perspective**
+- To order to deliver cycle from merchant perspective has been managed with the eye towards standardization and cost.
+- This is based on assumtion that the organization must create a set of operating standards for service and production.They perform to those standards while minimizing the cost.
+- To fully realize and maintain a competitive advantage in the online environment, it is necessary to examine the order management cycle(OMC) that also includes the traditional order to delivery cycle.
+- Steps of OMC
+    - Presale Interaction
+        - Order planning and order generation
+        - Cost estimation and pricing
+    - Service production and delivery
+        - Order recept an entry
+        - Order selection and prioritization
+        - Order scheduling
+        - Order fulfillment and delivery
+    - Post sale Interaction
+        - Order billing and account payment/management
+        - Post sales service
