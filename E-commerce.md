@@ -431,8 +431,8 @@ The E-commerce Architecture:
         - More loss for debugging
 
 ## Explain the concept of mercantile process model from consumer and merchant's perspective
-Mercantile process define interaction model between consumers and merchants for E commerce
 **Mercantile process model from consumers perspective**
+- Mercantile process define interaction model between consumers and merchants for E commerce
 - The online consumer expects quality, convenience, value, low price and control. To understand The behavior of online shoppers, there is a need for business model. This business model for consumers perspective consists of seven activities that can be grouped into three phases
     - Pre purchase phase
         - Product service and discovery in information space
@@ -481,3 +481,8 @@ Mercantile process define interaction model between consumers and merchants for 
     - Post sale Interaction
         - Order billing and account payment/management
         - Post sales service
+
+## Three primary element of supply chain management
+- Manufacturing and production- Mainly deals with the creation of goods and services.
+- Distribution- Makes goods and available to retailers and consumers.
+- Returns/income management- Controls all procurement processes and manages transactions
