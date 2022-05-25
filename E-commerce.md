@@ -56,10 +56,73 @@
     It is more relevant in B2C, Business to customer context | This is more appropriate to B2B or Business to Business context
     Also cover external or outward business processes | Covers internal as well as external business activities or processes
 
+## Difference between Traditional Commerce and E-Commerce
+-   Traditional Commerce            |	E-Commerce
+    --------------------------------|--------------------------------
+    Heavy dependency on information exchange from person to person.	| Information sharing is made easy via electronic communication channels making little dependency on person to person information exchange.
+    Communication/ transaction are done in synchronous way. Manual intervention is required for each communication or transaction. | Communication or transaction can be done in asynchronous way. Electronics system automatically handles when to pass communication to required person or do the transactions.
+    It is difficult to establish and maintain standard practices in traditional commerce. |	A uniform strategy can be easily established and maintain in e-commerce.
+    Communications of business depends upon individual skills. | In e-Commerce or Electronic Market, there is no human intervention.
+    Unavailability of a uniform platform as traditional commerce depends heavily on personal communication. | E-Commerce website provides user a platform where al l information is available at one place.
+    No uniform platform for information sharing as it depends heavily on personal communication. |	E-Commerce provides a universal platform to support commercial / business activities across the globe.
+
+##  Explain the Commercial Transaction Process in E-Commerce.
+- Commercial transactions are exchanges that involve some sort of payment for a good or service. These types of transactions are usually governed by commercial law and must follow specific guidelines. There are many forms of business transactions, including those that occur between two separate businesses, consumers and businesses, between internal divisions of a company and between two individual consumers.
+- Exchanges of money for a product or professional service are usually classified as commercial transactions. Some of the more obvious exchanges of this nature include a consumer purchasing goods in a retail store and a manufacturer selling its products to wholesale companies. Commercial transactions can occur in a physical store location, online, or through direct interaction with a sales representative or direct seller. The exchange of money may happen at the time the goods or services are delivered, beforehand or after the fact.
+- Commercial trade can happen on a large or small scale. Much of the global economy is dependent upon the level of commercial transactions or activities. Suppliers sell raw materials and goods to other companies that may re-sell them or use the supplies in their manufacturing processes. Goods are marketed and sold to consumers who may use them for personal or business use. At some point these goods may be re-sold in private auctions or to second hand retailers.
+- Transactions may be visible or occur behind the scenes. While store transactions are able to be observed by any casual consumer and business personnel, commercial transactions that happen between two private individuals or through direct channels may not be so noticeable. Manufacturers' sales representatives may draw up purchasing contracts, make presentations, deliver and merchandise products that are eventually purchased by end consumers. In addition, there are many direct and multi-level marketing companies that sell to consumers directly without the use of a retailer or wholesaler.
+- Extra
+    - Commercial activity can also include activities such as corporate advertising and internal relationships between corporations and service providers, such as human resources and accounting vendors. Regardless of the type of commercial transaction, there are usually laws that govern what can and cannot occur. This legislation is often referred to as commercial law. For example, consumers usually have three days after a purchase commitment is made on certain goods to change their minds without any financial implications.
+
+## What is EDI envelope for message?
+- EDI stands for Electronic Data Interchange.An EDI data structure resembles layers of envelopes. The envelopes separate different types of data and carry the sender and receiver address information. A receiver uses these envelopes to determine if all of the data has been received.
+- A envelope consists of a header segment, a trailer segment, and EDI data. EDI envelopes are like paper envelopes that enclose paper documents.
+- A header segment is the first EDI data segment in an envelope. The header segment contains a control number data element that identifies the envelope.
+- A trailer segment is the last EDI data segment in an envelope. The trailer segment contains a unique control number and the number of segments in the envelope. The control number in the header segment must match the control number in the trailer segment.
+- The following figure shows the EDI envelope structure:
+- 
+    <pre font-family="Cascadia Code">
+
+                Envelope
+            ____________________________
+        +-->| Envelope header segment  |
+        |   ----------------------------
+        |   ____________________________
+        |   |                          |
+        |   |   Envelop contents       |
+        |   |__________________________|
+        |   ____________________________
+        +-->| Envelope trailer segment |
+            ----------------------------
+
+    </pre>
+
+
+## E-commerce business models can generally be categorized into the following categories.
+
+- Business - to - Business (B2B)
+- Business - to - Consumer (B2C)
+- Consumer - to - Consumer (C2C)
+- Consumer - to - Business (C2B)
+- Business - to - Government (B2G)
+- Government - to - Business (G2B)
+- Government - to - Citizen (G2C)
+
+## Debit Card
+- Debit card, like credit card, is a small plastic card with a unique number mapped with the bank account number. It is required to have a bank account before getting a debit card from the bank. The major difference between a debit card and a credit card is that in case of payment through debit card, the amount gets deducted from the card's bank account immediately and there should be sufficient balance in the bank account for the transaction to get completed; whereas in case of a credit card transaction, there is no such compulsion.
+- Debit cards free the customer to carry cash and cheques. Even merchants accept a debit card readily. Having a restriction on the amount that can be withdrawn in a day using a debit card helps the customer to keep a check on his/her spending.
+
+## Smart Card
+- Smart card is similar to a credit card or a debit card in appearance, but it has a small microprocessor chip embedded in it. It has the capacity to store a customer’s work-related and/or personal information. Smart cards are also used to store money and the amount gets deducted after every transaction.
+- Smart cards can only be accessed using a PIN that every customer is assigned with. Smart cards are secure, as they store information in encrypted format and are less expensive/provides faster processing. Mondex and Visa Cash cards are examples of smart cards.
+
+## E-Money
+- E-Money transactions refer to situation where payment is done over the network and the amount gets transferred from one financial body to another financial body without any involvement of a middleman. E-money transactions are faster, convenient, and saves a lot of time.
+- Online payments done via credit cards, debit cards, or smart cards are examples of emoney transactions. Another popular example is e-cash. In case of e-cash, both customer and merchant have to sign up with the bank or company issuing e-cash.
+
 ## Digital Signature
 - A digital signature is a mathematical technique used to validate the authenticity and integrity of a message, software or digital document. It's the digital equivalent of a handwritten signature or stamped seal, but it offers far more inherent security. A digital signature is intended to solve the problem of tampering and impersonation in digital communications.
 - Digital signatures can provide evidence of origin, identity and status of electronic documents, transactions or digital messages. Signers can also use them to acknowledge informed consent
-
 
 ## How do digital signatures work?
 - Digital signatures are based on public key cryptography, also known as asymmetric cryptography. Using a public key algorithm, such as RSA (Rivest-Shamir-Adleman), two keys are generated, creating a mathematically linked pair of keys, one private and one public.
@@ -161,6 +224,22 @@ ment or the signature. This is how digital signatures are authenticated.
         - Utility function U: State --> Reals indicating a measure of success or happiness when at a given state
         - Allows decisions comparing choice between conflicting goals, and choice between likelihood of success and importance of goal (if achievement is uncertain)
 
+## How can the risk involved in online payment may be reduced by internet governance?
+- The risk associated with online payment may be mitigated by internet governance through the adoption of occasional review of the set security procedure. In addition to this, the security guidelines must reveal the roles and duties including the peril management function of the concerned personnel
+
+## Define Cybercash.
+- Cybercash refers to a business payment option that necessitates a user to buy digital cash credits for use in enabling electronic commercial dealings through the Internet.
+
+## Discuss Cybercash in detail
+- A commercial payment system whereby a user digitally purchases cash credits and then spends them when making electronic purchases over the Internet. Most merchants accepting digital cash use it as an alternative to other forms of payment, such as credit cards.
+- CyberCash will provide two classes of payment services, customer to merchant and peer to peer. Customer to merchant payments include credit card and debit card. For customer to merchant payments, there are three parties connected to the Internet, the customer, the merchant and the CyberCash server. A customer will engage in a dialog with the merchant's web server, eventually arriving at a decision to buy some goods or services. All of the dialog related to the sale is under control of the merchant until it's time to make the payment. At that point, the merchant presents the user with the amount to be paid and a transaction identifier, and then turns control over to the CyberCash payment system.
+
+## What is virtual Internet payment system?
+-  A Virtual Internet payment system refers to a digital-based form of a credit card payment gadget that makes it possible for business people to accept business transactions via Web, phone or mail.
+
+## Give the uses of smart cards.
+- Some of the uses of smart cards include data storage, individual authentication and processing application such mobile phone based simcards.
+
 ## SSL Security Definition
 - Secure Sockets Layer (SSL) is a standard security technology for establishing an encrypted link between a server and a client — typically a web server (website) and a browser, or a mail server and a mail client (e.g., Outlook). SSL security safeguards sensitive data such as credit card numbers and financial information, from capture or modification as two systems send and receive it, to prevent unauthorized users from accessing, reading, or modifying any personal information.
 - The two systems transferring the information might both be servers, as when an application accesses sensitive information. The systems might also be a client and a server, as when a user buys things on an e-commerce website through their web browser.
@@ -197,3 +276,30 @@ ment or the signature. This is how digital signatures are authenticated.
 - The certificate issuer gives the SSL certificate. Both the SSL certificate and an intermediate certificate installed establishes its credibility on the server. Depending on the server and the other facts the install and test the SSL certificate will vary.
 - When browser connects to the SSL certificate on server, the SSL (or TLS) protocol begins to encrypt any transferred information.
 
+## Define Secure Electronic Transaction (SET).
+- Secure Electronic Transaction or SET is a system that ensures the security and integrity of electronic transactions done using credit cards in a scenario. SET is not some system that enables payment but it is a security protocol applied to those payments. It uses different encryption and hashing techniques to secure payments over the internet done through credit cards. The SET protocol was supported in development by major organizations like Visa, Mastercard, Microsoft which provided its Secure Transaction Technology (STT), and Netscape which provided the technology of Secure Socket Layer (SSL). 
+- SET protocol restricts the revealing of credit card details to merchants thus keeping hackers and thieves at bay. The SET protocol includes Certification Authorities for making use of standard Digital Certificates like X.509 Certificate.
+- 
+    <pre font-family="Cascadia Code">
+    _________________    ___________________    _________________
+    | Customer      |<-->| Payment gateway |<-->| Merchant      |
+    | Financial     |    -------------------    | Financial     |
+    | Institution   |<------------------------->| Institution   |
+    -----------------                           -----------------
+
+   </pre>
+
+
+## Requirements in SET
+- The SET protocol has some requirements to meet, some of the important requirements are
+    - It has to provide mutual authentication i.e., customer (or cardholder) authentication by confirming if the customer is an intended user or not, and merchant authentication.
+    - It has to keep the PI (Payment Information) and OI (Order Information) confidential by appropriate encryptions.
+    - It has to be resistive against message modifications i.e., no changes should be allowed in the content being transmitted.
+    - SET also needs to provide interoperability and make use of the best security mechanisms.
+
+## SET functionalities:
+- Provide Authentication
+    - **Merchant Authentication** – To prevent theft, SET allows customers to check previous relationships between merchants and financial institutions. Standard X.509V3 certificates are used for this verification.
+    - **Customer / Cardholder Authentication** – SET checks if the use of a credit card is done by an authorized user or not using X.509V3 certificates.
+- **Provide Message Confidentiality** Confidentiality refers to preventing unintended people from reading the message being transferred. SET implements confidentiality by using encryption techniques. Traditionally DES is used for encryption purposes.
+- **Provide Message Integrity** SET doesn’t allow message modification with the help of signatures. Messages are protected against unauthorized modification using RSA digital signatures with SHA-1 and some using HMAC with SHA-1.
