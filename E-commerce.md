@@ -303,3 +303,17 @@ ment or the signature. This is how digital signatures are authenticated.
     - **Customer / Cardholder Authentication** – SET checks if the use of a credit card is done by an authorized user or not using X.509V3 certificates.
 - **Provide Message Confidentiality** Confidentiality refers to preventing unintended people from reading the message being transferred. SET implements confidentiality by using encryption techniques. Traditionally DES is used for encryption purposes.
 - **Provide Message Integrity** SET doesn’t allow message modification with the help of signatures. Messages are protected against unauthorized modification using RSA digital signatures with SHA-1 and some using HMAC with SHA-1.
+
+## Explain the Legal issues of Internet Commerce.
+There are various legal issues associated with E-Commerce businesses. If these issues are not taken care of in time, they can lead to serious problems for a business
+- **Incorporation Problem**
+    If the company has operated merely via a website, not being incorporated is a crucial problem. Any purchase and selling activity related to the products will be considered illegal and you can’t claim your right in case of any fraud and corruption. Without incorporation, the business has no shelter.
+- **Trademark Security Problem**
+    Not getting trademark protected is one of the main legal issues in the field of E-Commerce. Since trademark is the company’s logo and symbol, the representation of  business all over the web, it must be protected. If it is not secure , it won’t take long before you realize your trademark is being infringed upon. This is very common legal issue and can become a deadly threat to  e-business.
+    With the hackers on loose and cybercrime so common, trademark infringement of the business or by your business can be a serious legal matter and may hinder the business’s progress
+- **Copyright Protection Issue**
+    While publishing content for  E-Commerce website, using content of any other company can be a severe legal problem. This might mark an end to your e-business. There are many sites online which are royalty free and allow you to access their content and images. You may use those sites for creating web content for your business site. Even if you unintentionally used copyrighted content, the other party can easily sue your business.
+- **Transaction Issues**
+    If we do not abide by the rules, we can get into serious law violation problems. If the business fails to provide clear and complete description of the product, cost and purchase details, information about delivery i.e. when the customer will receive products and other information related to exchange and refunds,  Consumer Law can impose penalties on the business.
+- **Privacy Issues**
+    When it comes to online businesses, privacy is the major issue that can create problems both for the business and customers. Consumers share information with businesses online and they expect the sellers to keep their information confidential. By just one minor mistake and leakage of valuable information of a customer, we will not only lose our potential customer but the image and reputation will become a question mark.
