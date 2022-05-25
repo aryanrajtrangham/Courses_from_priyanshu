@@ -1,0 +1,199 @@
+## What is E-Commerce?
+- E-Commerce is about conducting commercial transactions via the web or getting involved in selling and buying items over the internet. It also covers monetary transactions. Some other online e-commerce activities include:
+    - Ticketing over internet
+    - Paying different taxes
+    - Online payments
+    - Products purchased or sold online
+    - Online Accounting Software
+    - Online Customer Support
+    - Examples of E-Commerce sites. They include Flipkart, Paytm Mall, Amazon, Myntra and more.
+
+## Advantages of E-Commerce
+- ### Faster buying process
+    Customers can spend less time shopping for what they want. They can easily browse through many items at a time and buy what they like. When online, customers can find items that are available in physical stores far away from them or not found in their locality.
+- ### Store and product listing creation
+    A product listing is what the customer sees when they search for an item. This is one advantage in ecommerce meant for the seller. This online business plus point is that you can personalise your product listing after creating them.
+    Customising listings makes them attractive and appealing. Here the seller has full control over customisation, he can mention offers available, discounts etc. Other advantages of e-business product listing are that it is free to upload and fast.
+- ### Cost reduction
+    One of the biggest advantages of ecommerce to business that keep sellers interested in online selling is cost reduction. Many sellers have to pay lots to maintain their physical store. They may need to pay extra up front costs like rent, repairs, store design, inventory etc. In many cases, even after investing in services, stock, maintenance and workforce, sellers don’t receive desired profits.
+- ### Affordable advertising and marketing
+    Sellers don’t have to spend a lot of money to promote their items. The world of ecommerce has several affordable, quick ways to market online. Ecommerce marketplaces are visual channels – and sellers can really show off their product. For example, Amazon sellers can use Advertising tools to add videos, infographics, good quality resolution images.
+- ### Flexibility for customers
+    An important advantage of ecommerce to business is that sellers can provide flexibility to customers. One highlight is that the product and services are ready 24x7. The result is that seller can offer his item any place, any time.
+- ### Product and price comparison
+    In ecommerce, sellers can compare the products using tools or on their own. This gives them a good idea of product alternatives available, the standard rates, if a product need is unfulfilled.
+    Comparison is faster online and covers many products - It helps to save time when making this comparison, as all details are available on the shopping site. In a physical store, sellers may not be able get access to so many details –they only have better knowledge about their own inventory.
+- ### No reach limitations
+    A seller with a physical store may only be able to reach a certain number of buyers. They can deliver to the customers’ homes but there can be distance limitations. Several e-commerce marketplaces have their own logistics and delivery system.
+    Reaching out to more customers - Sellers that need to expand their reach to find new customers can benefit from this. This applies to online-only sellers and those with a physical store.
+- ### Faster response to buyer/market demands
+    Every interaction is faster when begin selling online. Ecommerce marketplaces offer a streamlined logistics or delivery system. What this means is that the buyers order gets delivered efficiently. Product returns management is can be handled quickly – you either refund the payments or give a replacement.
+    Speedily actions can even be applied when responding to market demands. As in case of this ecommerce example - when a buyer sees that an item is out of stock, he can click on the ‘Notify Me’ option. This informs him when that item is available for sale again. It also informs sellers that they need to restock that item so they can get more buyers.
+- ### Several payment modes
+    Buyers like personalisation – the same goes for paying for their orders. Ecommerce marketplaces permit multiple payment modes that include UPI, cash on delivery, card on delivery, net banking, EMIs on credit or debit card and pay-later credit facility.
+
+## What is E-Business?
+- E-Business encompasses executing all types of business transactions and services via the web. This includes procuring raw materials, online education, commercial transactions, monetary transactions on the internet and more. This indicates an online presence of all types of businesses and services.
+- Examples are E-Commerce companies and their additional internal business activities such as classifieds, auction sites, software or hardware developer sites, etc. The E-Business online activities, in the meantime, include:
+    - Setting up an online store
+    - Supply chain management
+    - Online commercial transactions (buying and selling products)
+    - Customer Education
+    - Monetary Business Transactions
+    - E-Mail Marketing
+
+## Difference between E-Commerce and E-Business
+- While E-Commerce may refer to conducting online transactions, E-Business encompasses all the business activities and services conducted using the web
+
+-   E- Commerce                     |   E-Bussiness
+    --------------------------------|--------------------------------
+    Carrying out commercial transactions online | Conducts all kinds of business activities and services over the internet
+    Buying/ selling, monetary transactions online | Online presence of the business
+    A sub-set of E-Business, it is also a narrow concept | A super-set of E-Commerce. Business transactions are supported in E-Business
+    Limited transactions | Transactions are not limited
+    Involves use of only one website | Multiple websites and CRMs, ERPs that connect different business processes are used
+    Mandatory use of internet | Internet, Intranet or Extranet are used
+    It is more relevant in B2C, Business to customer context | This is more appropriate to B2B or Business to Business context
+    Also cover external or outward business processes | Covers internal as well as external business activities or processes
+
+## Digital Signature
+- A digital signature is a mathematical technique used to validate the authenticity and integrity of a message, software or digital document. It's the digital equivalent of a handwritten signature or stamped seal, but it offers far more inherent security. A digital signature is intended to solve the problem of tampering and impersonation in digital communications.
+- Digital signatures can provide evidence of origin, identity and status of electronic documents, transactions or digital messages. Signers can also use them to acknowledge informed consent
+
+
+## How do digital signatures work?
+- Digital signatures are based on public key cryptography, also known as asymmetric cryptography. Using a public key algorithm, such as RSA (Rivest-Shamir-Adleman), two keys are generated, creating a mathematically linked pair of keys, one private and one public.
+- Digital signatures work through public key cryptography's two mutually authenticating cryptographic keys. The individual who creates the digital signature uses a private key to encrypt signature-related data, while the only way to decrypt that data is with the signer's public key.
+ment or the signature. This is how digital signatures are authenticated.
+- Digital signature technology requires all parties trust that the individual creating the signature has kept the private key secret. If someone else has access to the private signing key, that party could create fraudulent digital signatures in the name of the private key holder.
+
+## Digital Currency
+- Digital currency is a form of currency that is available only in digital or electronic form. It is also called digital money, electronic money, electronic currency, or cybercash.
+    - Digital currencies are currencies that are only accessible with computers or mobile phones because they only exist in electronic form.
+    - Typical digital currencies do not require intermediaries and are often the cheapest method for trading currencies.
+    - All cryptocurrencies are digital currencies, but not all digital currencies are cryptocurrencies.
+    - Some of the advantages of digital currencies are that they enable seamless transfer of value and can make transaction costs cheaper.
+    - Some of the disadvantages of digital currencies are that they can volatile to trade and are susceptible to hacks.
+
+## More on digital currencies
+- Digital currencies do not have physical attributes and are available only in digital form. Transactions involving digital currencies are made using computers or electronic wallets connected to the internet or designated networks. In contrast, physical currencies, such as banknotes and minted coins, are tangible, meaning they have definite physical attributes and characteristics. Transactions involving such currencies are made possible only when their holders have physical possession of these currencies.
+
+- Digital currencies have utility similar to that of physical currencies. They can be used to purchase goods and pay for services. They can also find restricted use among certain online communities, such as gaming sites, gambling portals, or social networks.
+
+- Digital currencies also enable instant transactions that can be seamlessly executed across borders. For instance, it is possible for a person located in the United States to make payments in digital currency to a counterparty residing in Singapore, provided they are both connected to the same network.
+
+## Characteristics of Digital Currencies
+- Digital currencies only exist in digital form. They do not have a physical equivalent.
+- Digital currencies can be centralized or decentralized. Fiat currency, which exists in physical form, is a centralized system of production and distribution by a central bank and government agencies. Prominent cryptocurrencies, such as Bitcoin and Ethereum, are examples of decentralized digital currency systems.
+- Digital currencies can transfer value. Use of digital currencies requires a mental shift in the existing framework for currencies, where they are associated with sale and purchase transactions for goods and services. Digital currencies, however, extend the concept. For example, a gaming network token can extend the life of a player or provide them with extra superpowers. This is not a purchase or sale transaction but, instead, represents a transfer of value.
+
+## Types of Digital Currencies
+- Digital currency is an overarching term that can be used to describe different types of currencies that exist in the electronic realm. Broadly, there are three different types of currencies:
+
+- ### Cryptocurrencies
+    Cryptocurrencies are digital currencies that use cryptography to secure and verify transactions in a network. Cryptography is also used to manage and control the creation of such currencies. Bitcoin and Ethereum are examples of cryptocurrencies. Depending on the jurisdiction, cryptocurrencies may or may not be regulated.
+    Cryptocurrencies are considered virtual currencies because they are unregulated and exist only in digital form.
+- ### Virtual Currencies
+    Virtual currencies are unregulated digital currencies controlled by developers or a founding organization consisting of various stakeholders involved in the process. Virtual currencies can also be algorithmically controlled by a defined network protocol. An example of a virtual currency is a gaming network token whose economics is defined and controlled by developers.
+- ### Central Bank Digital Currencies
+    Central bank digital currencies (CBDCs) are regulated digital currencies issued by the central bank of a country. A CBDC can be a supplement or a replacement to traditional fiat currency. Unlike fiat currency, which exists in both physical and digital form, a CBDC exists purely in digital form. England, Sweden, and Uruguay are a few of the nations that are considering plans to launch a digital version of their native fiat currencies.
+- Digital Currencies | Virtual Currencies | Cryptocurrencies
+    -----------------|--------------------|-------------------
+    Regulated or unregulated currency that is available only in digital or electronic form. | An unregulated digital currency that is controlled by its developer(s), its founding organization, or its defined network protocol. | A virtual currency that uses cryptography to secure and verify transactions as well as to manage and control the creation of new currency units.
+
+## Advantages of Digital Currencies
+- They have fast transfer and transaction times
+    Because digital currencies generally exist within the same network and accomplish transfers without intermediaries, the amount of time required for transfers involving digital currencies is extremely fast. As payments in digital currencies are made directly between the transacting parties without the need for any intermediaries, the transactions are usually instantaneous and low-cost. This fares better compared to traditional payment methods that involve banks or clearinghouses. Digital-currency-based electronic transactions also bring in the necessary record keeping and transparency in dealings.
+- They do not require physical manufacturing and cannot be soiled
+    Many requirements for physical currencies, such as the establishment of physical manufacturing facilities, are absent for digital currencies. Such currencies are also immune to physical defects or soiling that are present in physical currency.
+- They can ease implementation of monetary and fiscal policy
+    Under the current currency regime, the Fed works through a series of intermediaries—banks and financial institutions—to circulate money into an economy. CBDCs can help circumvent this mechanism and enable a government agency to enable disburse payments directly to citizens. They also simplify the production and distribution methods by obviating the need for physical manufacturing and transportation of currency notes from one location to another.
+- They can make transaction costs cheaper
+    Digital currencies enable direct interactions within a network. For example, a customer can pay a shopkeeper directly as long as they are situated in the same network. Even costs involving digital currency transactions between different networks are relatively cheaper as compared to those with physical or fiat currencies. By cutting out middlemen that seek economic rent from processing the transaction, digital currencies can make the overall cost of a transaction cheaper.
+
+## Disadvantages of Digital Currencies
+- They do not solve all storage and infrastructure problems
+    While they do not require physical wallets, digital currencies have their own set of requirements for storage and processing. For example, an Internet connection is necessary as are smartphones and services related to their provisioning. Online wallets with robust security are also necessary to store digital currencies.
+
+- They are susceptible to hacking
+    Their digital provenance makes digital currencies susceptible to hacking. Hackers can steal digital currencies from online wallets or change the protocol for digital currencies, making them unusable. As the numerous cases of hacks in cryptocurrencies have proved, securing digital systems and currencies is a work-in-progress.
+
+- They can be volatile in value
+    Digital currencies used for trading can have wild price swings. For example, the decentralized nature of cryptocurrencies has resulted in a profusion of thinly capitalized digital currencies whose prices are prone to sudden changes based on investor whims. Other digital currencies have followed a similar price trajectory during their initial days. For example, Linden dollars used in the online game Second Life had a similarly volatile price trajectory in its early days.
+
+## What is an Intelligent Agent?
+- An (intelligent) agent perceives it environment via sensors and acts rationally upon that environment with its effectors. Hence, an agent gets percepts one at a time, and maps this percept sequence to actions.
+
+## Agent Characteristics
+- Situatedness
+    The agent receives some form of sensory input from its environment, and it performs some action that changes its environment in some way. Examples of environments: the physical world and the Internet.
+- Autonomy
+    The agent can act without direct intervention by humans or other agents and that it has control over its own actions and internal state.
+- Adaptivity
+    The agent is capable of
+    - reacting flexibly to changes in its environment;
+    - taking goal-directed initiative (i.e., is pro-active), when appropriate;
+    - learning from its own experience, its environment, and interactions with others.
+- Sociability
+    The agent is capable of interacting in a peer-to-peer manner with other agents or humans.
+
+## Approaches to Agent Design
+- Simple Reflex Agent
+    - A lookup table is made for percept-action pairs defining all possible condition - action rules necessary to interact in an environment
+    - Problems
+        - Too big to generate and to store (Chess has about 10120 states, for example)
+        - No knowledge of non-perceptual parts of the current state
+        - Not adaptive to changes in the environment; requires entire table to be updated if changes occur
+        - Looping: Can't make actions conditional
+    - Reflex Agent with Internal State
+        - Encode "internal state" of the world to remember the past as contained in earlier percepts
+        - Needed because sensors do not usually give the entire state of the world at each input, so perception of the environment is captured over time. "State" used to encode different "world states" that generate the same immediate percept.
+        - Requires ability to represent change in the world; one possibility is to represent just the latest state, but then can't reason about hypothetical courses of action
+        - Example: Rodney Brooks's Subsumption Architecture Main idea: build complex, intelligent robots by decomposing behaviors into a hierarchy of skills, each completely defining a complete percept-action cycle for one very specific task. For example, avoiding contact, wandering, exploring, recognizing doorways, etc. Each behavior is modeled by a finite-state machine with a few states (though each state may correspond to a complex function or module). Behaviors are loosely-coupled, asynchronous interactions.
+    - Goal-Based Agent
+        - Choose actions so as to achieve a (given or computed) goal : a description of a desirable situation
+        - Keeping track of the current state is often not enough, so we need to add goals to decide which situations are good
+        - Deliberative instead of reactive
+        - May have to consider long sequences of possible actions before deciding if goal is achieved, as it involves consideration of the future, "what would happen if I do this..."
+    - Utility-Based Agent
+        - When there are multiple possible alternatives, how to decide which one is best?
+        - A goal specifies a crude distinction between a happy and unhappy state, but often need a more general performance measure that describes "degree of happiness"
+        - Utility function U: State --> Reals indicating a measure of success or happiness when at a given state
+        - Allows decisions comparing choice between conflicting goals, and choice between likelihood of success and importance of goal (if achievement is uncertain)
+
+## SSL Security Definition
+- Secure Sockets Layer (SSL) is a standard security technology for establishing an encrypted link between a server and a client — typically a web server (website) and a browser, or a mail server and a mail client (e.g., Outlook). SSL security safeguards sensitive data such as credit card numbers and financial information, from capture or modification as two systems send and receive it, to prevent unauthorized users from accessing, reading, or modifying any personal information.
+- The two systems transferring the information might both be servers, as when an application accesses sensitive information. The systems might also be a client and a server, as when a user buys things on an e-commerce website through their web browser.
+- To protect the sensitive data in transmission, SSL security encrypts the information using algorithms, rendering it unreadable during the transfer between sites, systems, and/or users. Various versions of SSL security protocols are widespread use in applications such as email, chatting and instant messaging, voice over IP (VoIP), and web browsing.
+- 
+    <pre font-family="Cascadia Code">
+
+                            Public Key Exchange
+            ##^^(0) <---------------------------------> ##^^(0) ##^^(1)
+        _____________                                   _____________
+        |___________|                                   | _____  0  |
+        |           |       ."""".      ."""".          |_|___|_____|
+        |           | <=====|====|======|====|=======>  | _____  0  |
+        |    app    |       |____|      |____|          |_|___|_____|
+        |           |       ##^^(0)     ##^^(1)         | _____  0  |
+        |___________|       Encrypt     Decrypt         |_|___|_____|
+        Application / End Users                         Web servers
+
+    </pre>
+
+## What is SSL Security?
+- SSL is a security protocol that determines how to encrypt data using specific algorithms. The secure socket layer SSL protocol assesses both the data to transmit and the link, and determines encryption variables for both.
+- SSL security technology establishes encrypted links between clients and servers. For example, it scrambles sensitive information transferred between a client, often a website, and a user, often a browser or mail server.
+- The default mode of communication between web servers and browsers allows data to be sent in plain text. This leaves users vulnerable to hackers who can “see” information they intercept. SSL encrypts sensitive details such as login credentials, social security numbers, and bank information so that unauthorized users cannot interpret and use the data, even if they see it.
+- The lock icon users see on SSL-secured websites and the “https” address indicate that a secure connection is present. Sites with a green address bar have an Extended Validation SSL-secured website. These visual signals are sometimes called **EV indicators**.
+- Although any web browser is able to use the SSL protocol to interact with secured web servers, both the server and the browser must have an SSL certificate to establish a secure connection.
+
+## What is an SSL Security Certificate?
+- A SSL security certificate identifies the certificate/website owner in its subject. SSL security certificates also contain a pair of public and private cryptographic keys they use to establish an encrypted connection.
+- There are several steps to get a SSL or TLS certificate:
+    - Create a Certificate Signing Request (CSR) on your server to generate a public key and a private key.
+    - Send the CSR data file called a Certificate Authority or CA to the SSL certificate issuer.
+    - The CA contains the public key which the CA uses along with the rest of the CSR data file to match your private key with a data structure. The CA never sees the private key, nor is it compromised.
+- The certificate issuer gives the SSL certificate. Both the SSL certificate and an intermediate certificate installed establishes its credibility on the server. Depending on the server and the other facts the install and test the SSL certificate will vary.
+- When browser connects to the SSL certificate on server, the SSL (or TLS) protocol begins to encrypt any transferred information.
+
