@@ -20,7 +20,21 @@
     - Target machine code (M)
 - We can see a parameter in the parenthesis at each stage which denotes the degree of parallelism. In the ideal situation, the parameters are expected in the order A ≥ L ≥ O ≥ M .
 
-## Write about basic pipelining hazards and various pipelining hazards.
+## What are the various vector fields ?
+- Vector InstructionA vector instruction has the following fields:
+    <pre font-family="Cascadia Code">
+    +----------------------------------------------------------------+
+    | operation | base     | base     | address   | address | vector |
+    | code      | address  | address  | increment | offset  | length |
+    |           | source 1 | source 2 |           |         |        |
+    +----------------------------------------------------------------+  </pre>
+    1. **Operation Code**: Operation code indicates the operation that has to be performed in the  given instruction. It decides the functional unit for the specified operation or reconfigures the multifunction unit.
+    2. **Base Address**: Base address field refers to the memory location from where the operands are to be fetched or to where the result has to be stored. The base address is found in the memory reference instructions. In the vector instruction, the operand and the result both are stored  in the vector registers. Here, the base address refers to the designated vector register.
+    3. **Address Increment**: A vector operand has several data elements and address increment  specifies the address of the next element in the operand. Some computer stores the data element consecutively in main memory for which the increment is always 1. But, some computers that do not store the data elements consecutively requires the variable address increment.
+    4. **Address Offset**: Address Offset is always specified related to the base address. The effective memory address is calculated using the address offset.
+    5. **Vector Length**: Vector length specifies the number of elements in a vector operand. It  identifies the termination of a vector instruction.
+
+## Write about basic pipelining hazards and various pipelining hazards ?
 - Pipelining increases the CPU instruction throughput but, it does not reduce the execution time of an individual instruction.
 - Pipelining increases the execution time of each instruction due to overhead in the control of the pipeline.
 - Pipeline overhead arises from the combination of register delays and clock skew. Imbalance among the pipe stages reduces the performance since the clock can run no faster than the time needed for the slowest pipeline stage.
@@ -144,3 +158,91 @@
     1. Force a trap instruction in to the pipeline on the next IF
     2. Until the trap is taken, turn off all writes for the faulting instruction and for all instructions that follow in pipeline. This prevents any state changes for instructions that will not be completed before the exception is handled.
     3. After the exception – handling routine receives control, it immediately saves the PC of the faulting instruction. This value will be used to return from the exception later.
+
+## Explain PRAM model, methods and its features.
+- Parallel Random Access Machines (PRAM)'s a model, which is considered for most of the parallel algorithms. Here,  multiple processors are attached to a single block of memory.
+- A PRAM model contains:
+    - A set of similar type of processors.
+    - All the processors share a common memory unit. Processors can communicate among themselves through the shared memory only.
+    - A memory access unit (MAU) connects the processors with the single shared memory.<br>
+- Here, **n** number of processors can perform independent operations on **n** number of data in a particular unit of time. This may result in  simultaneous  access  of  same memory location by different processors.
+    To solve this problem, the following constraints have been enforced on PRAM model :
+    - **Exclusive  Read  Exclusive  Write  (EREW)** :  Here  no  two  processors  are allowed to read from or write to the same memory location at the same time.
+    - **Exclusive  Read  Concurrent  Write  (ERCW)** :  Here  no  two  processors  are allowed  to  read  from  the  same  memory  location  at  the  same  time,  but  are allowed to write to the same memory location at the same time.
+    - **Concurrent  Read  Exclusive  Write  (CREW)** :  Here  all  the  processors  are allowed to read from the same memory location at the same time, but are not allowed to write to the same memory location at the same time.
+    - **Concurrent  Read  Concurrent  Write  (CRCW)** :  All  the  processors  are allowed to read from or write to the same memory location at the same time.
+
+- There  are  many  methods  to  implement  the  PRAM  model,  but  the  most  prominent ones are :
+    - Shared memory model
+    - Message passing model
+    - Data parallel model
+
+## Explain Shared Memory Model
+- Shared memory emphasizes on control parallelism than on data parallelism. In the shared memory model, multiple processes execute on different processors independently, but they share a common memory space. Due to any processor activity, if there is any change in any memory location, it is visible to the rest of the processors.
+- As multiple processors access the same memory location, it may happen that at any particular point of time, more than one processor is accessing the same memory location. Suppose one is reading that location and the other is writing on that location. It may create confusion. To avoid this, some control mechanism, like lock / semaphore, is implemented to ensure mutual exclusion.
+- <pre font-family="Cascadia Code">
+    +-------------+                 +-----------+
+    | Processor 1 |<--------------->|           |
+    +-------------+                 |           |
+    +-------------+                 |   Shared  |
+    | Processor 1 |<--------------->|   Memory  |
+    +-------------+                 |           |
+          |                         |           |
+          |                         |           |
+    +-------------+                 |           |
+    | Processor n |<--------------->|           |
+    +-------------+                 +-----------+    </pre>
+- Shared memory programming has been implemented in the following −
+    - **Distributed Shared Memory (DSM) Systems** − DSM systems create an abstraction of shared memory on loosely coupled architecture in order to implement shared memory programming without hardware support. They implement standard libraries and use the advanced user-level memory management features present in modern operating systems. Examples include Tread Marks System, Munin, IVY, Shasta, Brazos, and Cashmere.
+    - **Program Annotation Packages** − This is implemented on the architectures having uniform memory access characteristics. The most notable example of program annotation packages is OpenMP. OpenMP implements functional parallelism. It mainly focuses on parallelization of loops.
+    - **Thread libraries** − The thread library allows multiple threads of control that run concurrently in the same memory location. Thread library provides an interface that supports multithreading through a library of subroutine. It contains subroutines for
+        - Creating and destroying threads
+        - Scheduling execution of thread
+        - passing data and message between threads
+        - saving and restoring thread contexts
+        - Examples of thread libraries include − SolarisTM threads for Solaris, POSIX threads as implemented in Linux, Win32 threads available in Windows NT and Windows 2000, and JavaTM threads as part of the standard JavaTM Development Kit (JDK).
+- The concept of shared memory provides a low-level control of shared memory system, but it tends to be tedious and erroneous. It is more applicable for system programming than application programming.
+- **Merits of Shared Memory Programming**
+    - Global address space gives a user-friendly programming approach to memory.
+    - Due to the closeness of memory to CPU, data sharing among processes is fast and uniform.
+    - There is no need to specify distinctly the communication of data among processes.
+    - Process-communication overhead is negligible.
+    - It is very easy to learn.
+- **Demerits of Shared Memory Programming**
+    - It is not portable.
+    - Managing data locality is very difficult.
+
+## Explain Message Passing Model
+- Message passing is the most commonly used parallel programming approach in distributed memory systems. Here, the programmer has to determine the parallelism. In this model, all the processors have their own local memory unit and they exchange data through a communication network.
+- <pre font-family="Cascadia Code">
+    Memory Unit 1       Memory Unit 2       Memory Unit 3
+        |                   |                   |
+    Processor 1         Processor 2         Processor 3
+        |                   |                   |
+    +-----------------------------------------------------+
+    |           Communication Network                     |
+    +-----------------------------------------------------+ </pre>
+- Processors use message-passing libraries for communication among themselves. Along with the data being sent, the message contains the following components −
+    - The address of the processor from which the message is being sent;
+    - Starting address of the memory location of the data in the sending processor;
+    - Data type of the sending data;
+    - Data size of the sending data;
+    - The address of the processor to which the message is being sent;
+    - Starting address of the memory location for the data in the receiving processor.
+- Processors can communicate with each other by any of the following methods −
+    - Point-to-Point Communication
+    - Collective Communication
+    - Message Passing Interface
+- Merits of Message Passing
+    - Provides low-level control of parallelism;
+    - It is portable;
+    - Less error prone;
+    - Less overhead in parallel synchronization and data distribution.
+- Demerits of Message Passing
+    - As compared to parallel shared-memory code, message-passing code 
+generally needs more software overhead
+
+## Explain Data Parallel Programing model
+- The major focus of data parallel programming model is on performing operations on a data set simultaneously. The data set is organized into some structure like an array, hypercube, etc. Processors perform operations collectively on the same data structure. Each task is performed on a different partition of the same data structure.
+- It is restrictive, as not all the algorithms can be specified in terms of data parallelism. This is the reason why data parallelism is not universal.
+- Data parallel languages help to specify the data decomposition and mapping to the processors. It also includes data distribution statements that allow the programmer to have control on data – for example, which data will go on which processor – to reduce the amount of communication within the processors.
