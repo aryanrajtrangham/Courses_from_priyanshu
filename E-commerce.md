@@ -318,7 +318,7 @@ There are various legal issues associated with E-Commerce businesses. If these i
 - **Privacy Issues**
     When it comes to online businesses, privacy is the major issue that can create problems both for the business and customers. Consumers share information with businesses online and they expect the sellers to keep their information confidential. By just one minor mistake and leakage of valuable information of a customer, we will not only lose our potential customer but the image and reputation will become a question mark.
 
-## Discuss the E-commerce Arcshitecture in detail with the help of a diagram
+## Discuss the E-commerce Architecture in detail with the help of a diagram
 The E-commerce Architecture:
 - It helps search engine (SE) to index the website and rank it higher
 - It allow for scalability
