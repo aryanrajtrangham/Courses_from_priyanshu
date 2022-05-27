@@ -340,12 +340,39 @@ generally needs more software overhead
     Can determine the next step of execution. | Cannot determine the next step of execution due to more than one path the model can take.
 
 ## A 400 MHz processor was used to execute a benchmark program with following instruction mix and clock cycle counts
- Instruction type       | Instruction       | countCycles/Instruction
- -----------------------|-------------------|-----------------------------
- Integer arithmetic     |   450000          |   1
- Data transfer          |   320000          |   2
- Floating point         |   150000          |   2
- Control transfer       |   80000           |   2
+Instruction type       | Instruction       | countCycles/Instruction
+-----------------------|-------------------|-----------------------------
+Integer arithmetic     |   450000          |   1
+Data transfer          |   320000          |   2
+Floating point         |   150000          |   2
+Control transfer       |   80000           |   2
 ## Determine the effective CPI, MIPS rate and execution time (T) for this program
 
-- 258.06
+- Effective CPI = (Total clock cycles needed to execute all instructions in the program) / (Instruction count of the entire program)
+    - Here, Total clock cycles needed = (450000 x 1) + (320000 x 2) + (150000 x 2) + (80000 x 2) = 1550000 cycles
+    - Total Instruction count = 450000 + 320000 + 150000 + 80000 = 1000000
+    - Hence, Effective CPI = 1550000/ 1000000 = 1.55
+    - Execution time, T = Total instruction count x CPI x clock cycle duration
+        = Total instruction count x CPI x (1/clock frequency)
+        -  {since 1/clock frequency = clock duration)
+        = 1000000 x 1.55 x (1/400 x 10^6) = 0.0038 s
+    - MIPS = (clock frequency)/ (CPI x 10 ^ 6) = (400 x 10^6)/ (1.55 x 10^6) = 258.06
+
+## Consider the execution of an object code with 2 x 10^6 instructions on a 400 MHz processor. The program consists of four major types of instructions. The instruction mix and the number of cycles (CPI) needed for each instruction type are given below based on the result of a program trace experiment:
+Instruction Type	        |   CPI     |	Instruction Mix
+----------------------------|-----------|---------------------
+Arithmetic and logic        |	1	    |   60%
+Load/ store with cache hit  |	2	    |   18%
+Branch                      |	4	    |   12%
+Memory reference with cache miss    |	8   |	10%
+## a. Calculate the average CPI when the program is executed on a processor with the above trace results.
+## b. Calculate the corresponding MIPS rate based on CPI obtained in part (a).
+## c. Calculate the execution time of the program.
+
+- No of arithmetic and logic instructions = 60% of 2 x 10^6 = 120 x 10^4
+- No of load/store with cache hit = 18% of 2 x 10^6 = 36 x 10^4
+- No of branch instructions = 12% of 2 x 10^6 = 24 x 10^4
+- No of memory reference with cache miss = 20 x 10^4
+- CPI = ((120 x 10^4 x 1) + (36 x 10^4 x 2) + (24 x 10^4 x 4) + (20 x 10^4 x 8))/ (2 x 10^6) = 2.24
+- MIPS = (clock frequency)/ (CPI x 10^6) = (400 x 10^6)/ (2.24 x 10^6) = 178.57
+- T = 2 x 10^6 x 2.24 x (1/400 x 10^6) = 0.0112 s 
