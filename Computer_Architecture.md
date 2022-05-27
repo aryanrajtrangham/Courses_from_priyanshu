@@ -376,3 +376,34 @@ Memory reference with cache miss    |	8   |	10%
 - CPI = ((120 x 10^4 x 1) + (36 x 10^4 x 2) + (24 x 10^4 x 4) + (20 x 10^4 x 8))/ (2 x 10^6) = 2.24
 - MIPS = (clock frequency)/ (CPI x 10^6) = (400 x 10^6)/ (2.24 x 10^6) = 178.57
 - T = 2 x 10^6 x 2.24 x (1/400 x 10^6) = 0.0112 s 
+
+
+## Discuss shared memory MIMD architecturein brief.
+- Shared Memory MIMD Architectures is known as Multiprocessor. It can consider a set of processors and a set of memory modules. Any processor can directly access any memory module through an interconnection network as displayed in the figure. The set of memory modules represent a global address space that is shared by all processors. This type of parallel machine is called Shared Memory MIMD Architectures.
+- <pre font-family="Cascadia Code">
+    +----+  +----+             +----+
+    | M0 |  | M1 | --- --- --- | Mk |
+    +----+  +----+             +----+
+        \       \                /
+        +-------------------------+
+        | Interconnection network |
+        +-------------------------+ 
+        /                 \      \
+    +----+              +----+  +----+
+    | Pn | --- --- ---  | P1 |  | P0 |
+    +----+              +----+  +----+
+    Fig: Structure os Shared Memory MIMD Architectures </pre>
+- Advantages of Shared Memory MIMD Architectures
+    - There are the following advantages of shared memory MIMD architectures are as follows −
+    - There is no requirement to partition either the code or the data, thus uniprocessor programming methods can simply be adapted in the multiprocessor environment.
+    - There is no requirement to physically transfer data when two or more processes communicate. The user process can access the information from the place where the manufacture stored it
+    - Communication between processors is very efficient.
+    - Programming shared computers is easier than a distributed computer.
+- Disadvantages of Shared Memory MIMD Architectures.
+    There are the following disadvantages of shared memory MIMD architectures are as follows −
+    - The main disadvantage of a shared memory system is the lack of scalability because of the contention problem. When multiple processors need to access a similar memory module they must compete for the right to do so. The winner can access the memory, while the losers should wait. The higher the number of processors, the greater the probability of memory contention.
+    - Although programming shared memory subsystems is usually simpler than programming multicomputers, synchronized access to shared data structures needed certain synchronizing constructs such as semaphores, conditional critical regions, monitors, and so on. The use of these constructs results in non-deterministic program behavior which can lead to programming errors that are difficult to discover.
+    - The use of high throughput, low-latency interconnection network among the processors and memory modules can significantly improve scalability.
+    - It can reduce the memory contention problem, shared memory systems are extended with small, small-size local memories called cache memories. Whenever a memory reference is given by a processor, the attached cache memory is first checked to see if the required data is stored in the cache.
+    - The memory reference can be performed without using the interconnection network and as a result memory contention is reduced. If the required information is not in the cache memory, the page containing the data is transferred into it. The main assumption is that shared memory programs generally provide a good locality of reference. For example, during the execution of a procedure, in many cases, it is enough to access just local data which is contained in the processor cache.
+    - The logical shared memory can be physically implemented as a collection of local memories. This new architecture type is called virtual shared memory or distributed shared memory architecture.
