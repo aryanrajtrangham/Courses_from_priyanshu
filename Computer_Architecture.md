@@ -246,3 +246,106 @@ generally needs more software overhead
 - The major focus of data parallel programming model is on performing operations on a data set simultaneously. The data set is organized into some structure like an array, hypercube, etc. Processors perform operations collectively on the same data structure. Each task is performed on a different partition of the same data structure.
 - It is restrictive, as not all the algorithms can be specified in terms of data parallelism. This is the reason why data parallelism is not universal.
 - Data parallel languages help to specify the data decomposition and mapping to the processors. It also includes data distribution statements that allow the programmer to have control on data – for example, which data will go on which processor – to reduce the amount of communication within the processors.
+
+## Write about message passing interface
+- **Message Passing Interface (MPI):** It is a universal standard to provide communication among all the concurrent processes in a distributed memory system. Most of the commonly used parallel computing platforms provide at least one implementation of message passing interface. It has been implemented as the collection of predefined functions called library and can be called from languages such as C, C++, Fortran, etc. MPIs are both fast and portable as compared to the other message passing libraries.
+- Merits of Message Passing Interface
+    - Runs only on shared memory architectures or distributed memory architectures;
+    - Each processors has its own local variables;
+    - As compared to large shared memory computers, distributed memory computers are less expensive.
+- Demerits of Message Passing Interface
+    - More programming changes are required for parallel algorithm;
+    - Sometimes difficult to debug; and
+    - Does not perform well in the communication network between the nodes.
+
+## Write on PVM.
+- PVM stands for (parallel virtual machine) is a portable message passing system, designed to connect separate heterogeneous host machines to form a single virtual machine. It is a single manageable parallel computing resource. Large computational problems like superconductivity studies, molecular dynamics simulations, and matrix algorithms can be solved more cost effectively by using the memory and the aggregate power of many computers. It manages all message routing, data conversion, task scheduling in the network of incompatible computer architectures.
+- Features of PVM
+    - Very easy to install and configure;
+    - Multiple users can use PVM at the same time;
+    - One user can execute multiple applications;
+    - It’s a small package;
+    - Supports C, C++, Fortran;
+    - For a given run of a PVM program, users can select the group of machines;
+    - It is a message-passing model,
+    - Process-based computation;
+    - Supports heterogeneous architecture.
+
+## Write on MPI
+- MPI stand for Message Passing Interface. It is a universal standard to provide communication among all the concurrent processes in a distributed memory system. Most of the commonly used parallel computing platforms provide at least one implementation of message passing interface. It has been implemented as the collection of predefined functions called library and can be called from languages such as C, C++, Fortran, etc. MPIs are both fast and portable as compared to the other message passing libraries.
+- Merits of Message Passing Interface
+    - Runs only on shared memory architectures or distributed memory architectures;
+    - Each processors has its own local variables;
+    - As compared to large shared memory computers, distributed memory computers are less expensive.
+- Demerits of Message Passing Interface
+    - More programming changes are required for parallel algorithm;
+    - Sometimes difficult to debug; and
+    - Does not perform well in the communication network between the nodes.
+
+## Explain six basic cache optimization techniques.
+- We know avarage memory access time = hit time + (Miss rate x Miss penalty).
+- To optimize cache we need to reduce avarage memory access time, so we need to :
+    - reduce miss rate
+    - reduce hit time
+    - reduce miss penalty
+- The six techniques are
+    - Larger block size to reduce miss rate
+        - Advantage:
+            - Utlize spatial locality
+            - Reduces compulsary miss
+        - Disadvantages:
+            - Increases miss penalty
+            - More time to fetch a block to the cache [bus width issue]
+            - Increases conflict misses
+            - More number of block will be mapped to the same location
+            - May bring data and evict usesul data [pollution]
+    - Larger cache to reduce miss rate
+        - Advantage:
+            - Reduces capacity misses
+            - Can accommodate larger memory footprint
+        - Disadvantages:
+            - Longer hit time
+            - Higher cost, area and power
+    - Higher associaticity to reduce miss rate
+        - Fully associative are the best, but high hit time
+        - So increase the associativity to an optimal possible level
+        - Advantage:
+            - Reduce conflict miss
+            - Reduce miss rate and eviction rate
+        - Disadvantage:
+            - Increase in the hit time
+            - Complex design than direct mapped
+            - More time to earch in the set (tag comparison time)
+    - Multilevel caches to reduce miss penalty
+        - Performance gap between processor and memory
+        - First level of chache (L1) can be small enough to match the clock cycle of the fast processor [Low hit time]
+        - Second level cache (L2) can be large enough to capture many accessses that would go to main memory, thereby lessening the effective miss penalty [Low miss rate]
+    - Prioritize read misses to reduce miss penalty
+        - If a read miss has to evict a dirty memory block, the normal sequence is to write dirty block to memory and read the missed block.
+        - In write through cache, write buffer may hold the updated value of a block that encountered a read miss.
+        - Either wait till write buffer is empty or search before going to memory
+    - Avoid address translation in cache indexing to raduce hit time.
+        - Software uses virtual address (VA), but memory accessed using physical address (PA)
+        - VA to PA has to be done before cache look up [MMU, TLB]
+        - If indexing & tag comparison in virtual address, better hit time
+        - Solution: Start indexing with VA
+        - If the meantime do address translation and get PA and tag.
+
+## Compare deterministic and nondeterministic models for static scheduling.
+- The difference between deterministic and nondeterministic models for static scheduling are: 
+- Deterministic  Models             | Non-Deterministic Models
+    --------------------------------|---------------------------------
+    For a particular input the computer will give always same output. | For a particular input the computer will give different output on different execution.
+    Can solve the problem in polynomial time. | Can’t solve the problem in polynomial time
+    Can determine the next step of execution. | Cannot determine the next step of execution due to more than one path the model can take.
+
+## A 400 MHz processor was used to execute a benchmark program with following instruction mix and clock cycle counts
+ Instruction type       | Instruction       | countCycles/Instruction
+ -----------------------|-------------------|-----------------------------
+ Integer arithmetic     |   450000          |   1
+ Data transfer          |   320000          |   2
+ Floating point         |   150000          |   2
+ Control transfer       |   80000           |   2
+## Determine the effective CPI, MIPS rate and execution time (T) for this program
+
+- 258.06
