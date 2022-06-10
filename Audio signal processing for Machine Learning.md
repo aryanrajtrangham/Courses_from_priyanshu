@@ -108,8 +108,7 @@
     - Depends on age
     - Measured in phons
 - ### Equal loudness contours
-<p align="center">
-    <img height="auto" width="auto" background="white" src="https://canadianaudiologist.ca/wp-content/uploads/2016/03/Figure-1-3.png" /></p>
+    <img style="background-color: white" height="400px" width="auto" src="https://canadianaudiologist.ca/wp-content/uploads/2016/03/Figure-1-3.png" />
 
 - ### Timbre
     - Colour of sound
@@ -156,4 +155,3 @@
     - Amplitude envelop
     - Distribution of energy across partials
     - Signal modulation (frequency/amplitude)
- 
