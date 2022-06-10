@@ -108,8 +108,8 @@
     - Depends on age
     - Measured in phons
 - ### Equal loudness contours
-<div style="background-color: white">
-    <img height="400px" width="auto" src="https://canadianaudiologist.ca/wp-content/uploads/2016/03/Figure-1-3.png" /></div>
+    <pre>
+        <img style="background-color: white" height="400px" width="auto" src="https://canadianaudiologist.ca/wp-content/uploads/2016/03/Figure-1-3.png" /></pre>
 
 - ### Timbre
     - Colour of sound
