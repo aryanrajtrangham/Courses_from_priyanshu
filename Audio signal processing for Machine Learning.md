@@ -1,4 +1,4 @@
-# Audio Signal Processing for Machine Learning  <h2 style="text-align: right" >by **Valerio Velardo** written by **singhpriansh**</h2>
+# Audio Signal Processing for Machine Learning  
 
 ## Applications
 - Audio classification
@@ -89,14 +89,71 @@
     - Measured in decibels (dB)
     - Ratio between two intensity values
     - Use an intensity of reference (IOR)
+    - *dB(I)* = 10•*log<sub>10</sub>(I/I<sub>TOH</sub>)*
     - *dB(I<sub>TOH</sub>)* = 10•*log<sub>10</sub>(I<sub>TOH</sub>/I<sub>TOH</sub>)* = 0
-    - Source                    | Intensity        | Intensity level | xTOH
-      --------------------------|------------------|-----------------|-------
-      Threshold of hearing(TOH) | 10<sup>-12</sup> | 0dB      |  1
-      Whisper                   | 10<sup>-10</sup> | 20dB     | 10<sup>2</sup>
-      Pianissimo                | 10<sup>-8</sup>  | 40dB     | 10<sup>4</sup>
-      Normal conversation       | 10<sup>-6</sup>  | 60dB     | 10<sup>6</sup>
-      Fortissimo                | 10<sup>-2</sup>  | 100dB    | 10<sup>10</sup>
-      Threshold of pain         | 10<sup></sup>    | 130bB    | 10<sup>13</sup>
-      Jet take-off              | 10<sup>2</sup>   | 140dB    | 10<sup>14</sup>
-      Instant perforation of eardrum | 10<sup>4</sup> | 160dB | 10<sup>16</sup>
+    - Every ~3dBs, intensity doubles.
+    - Source                    | Intensity           | Intensity level | xTOH
+      --------------------------|---------------------|-----------------|-------
+      Threshold of hearing(TOH) | 10<sup>-12</sup>    | 0dB    |  1
+      Whisper                   | 10<sup>-10</sup>    | 20dB   | 10<sup>2</sup>
+      Pianissimo                | 10<sup>-8</sup>     | 40dB   | 10<sup>4</sup>
+      Normal conversation       | 10<sup>-6</sup>     | 60dB   | 10<sup>6</sup>
+      Fortissimo                | 10<sup>-2</sup>     | 100dB  | 10<sup>10</sup>
+      Threshold of pain         | 10<sup></sup>       | 130bB  | 10<sup>13</sup>
+      Jet take-off              | 10<sup>2</sup>      | 140dB  | 10<sup>14</sup>
+      Instant perforation of eardrum | 10<sup>4</sup> | 160dB  | 10<sup>16</sup>
+- ### Loudness
+    - Subjective perception of sound intensity
+    - Depends on duration / frequency of a sound
+    - Depends on age
+    - Measured in phons
+- ### Equal loudness contours
+<p align="center">
+    <img height="auto" width="auto" background="white" src="https://canadianaudiologist.ca/wp-content/uploads/2016/03/Figure-1-3.png" /></p>
+
+- ### Timbre
+    - Colour of sound
+    - Diff between two sounds with same intensity, frequency, duration
+    - Described with words like: bright, dark, dull, harsh, warm
+    - Features of Timbre
+        - Timbre is multidimensional
+        - Sound envelope
+            - Attack - Decay - Sustain - Release Model
+            <br><pre font-family="Cascadia Code">
+                 A
+                A|   A          D         S         R
+                m|<------->.<------->.<------->.<-------->.
+                p|        _:.        :         :          :
+                l|      .  : .       :         :          :
+                i|    ;    :   .     :         :          :
+                t|   ;     :      ' ":""""""""":.         :
+                u|  ;      :         :         : .        :
+                d| ;       :         :         :   .      :
+                e|.        :         :         :     ' . .:  Time
+                 +----------------------------------------------> 
+            </pre>
+        - Harmonic content
+        - Amplitude / frequency modulation
+- ### Complex Sound
+    - Superposition of sinusoids
+    - A partial is a sinusoid used to describe a sound
+    - The lowest partial is called the fundamental frequency
+    - A harmonic partial is a frequency that's a multiple of the fundamental frequency
+        <br> *f<sub>1</sub>* = 440,
+        *f<sub>2</sub>* = 2•440 = 8880,
+        *f<sub>3</sub>* = 3•440 = 1320,...
+    - In harmonicity indicates a deviation from a harmonic partial
+- ### Frequency modulation
+    - AKA vibrato
+    - Periodic variation in frequency
+    - In music, used for expressive purposes
+- ### Amplitude modulation
+    - AKA tremolo
+    - Periodic variation in amplitude
+    - In music, used for expressive purposes
+- ### Timbre summary
+    - Multifactorial sound dimension
+    - Amplitude envelop
+    - Distribution of energy across partials
+    - Signal modulation (frequency/amplitude)
+ 
