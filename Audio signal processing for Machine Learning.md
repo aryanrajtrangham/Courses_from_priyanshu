@@ -109,7 +109,7 @@
     - Measured in phons
 - ### Equal loudness contours
     <pre>
-        <img style="background-color: white" height="400px" width="auto" src="https://canadianaudiologist.ca/wp-content/uploads/2016/03/Figure-1-3.png" /></pre>
+        <img style="background-color: black" height="400px" width="auto" src="https://canadianaudiologist.ca/wp-content/uploads/2016/03/Figure-1-3.png" /></pre>
 
 - ### Timbre
     - Colour of sound
