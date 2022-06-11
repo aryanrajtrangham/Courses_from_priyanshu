@@ -155,3 +155,170 @@
     - Amplitude envelop
     - Distribution of energy across partials
     - Signal modulation (frequency/amplitude)
+
+## Audio signal
+- Representation of sound
+- Encodes all info we need to reproduce sound
+- ### Analog Signal
+    - Continous values for time
+    - Continuous values for amplitude
+- ### Digital Signal
+    - Sequence of discrete values
+    - Data points can only take on a finite number of values
+- ### Analog to digital conversion
+    - Sampling
+        - Locating samples
+            - *t<sub>n</sub>* = *n*•T
+        - Sampling Rate
+            - *s<sub>r</sub>* = 1/T
+            - sampling rate for CD = 44100hz
+        - Nyquist frequency
+            - *f<sub>N</sub>* = *s<sub>r</sub>*/2
+            - Nyquist frequency for CD = 22050hz
+    - Quantisation
+        - Resolution = num. of bits
+        - Bit depth
+        - CD resolution = 16bits
+        - 2<sup>16</sup> = 65536
+    - Memory for 1 minute of sound
+        - Sampling rate = 44100 Hz
+        - Bit depth = 16 bits
+        (((16 • 44,100)/10,048,576)/8)•60 = 5.49MB
+    - Dynamic range
+        - Difference between largest/smallest signal a system can record
+        - Resolution ∝ dynamic range
+    - Signal-to-quantisation-noise ratio
+        - Relationship between max signal strength and quantization error
+        - Correlates with dynamic range
+        - *SQNR ≈ 6.02•Q*
+        - *SQNR(16) ≈ 96dB*
+    - Record Sound
+        - Mechanical Wave (sound) -> ADC -> Digital signals
+    - Produce Sound
+        - Digital signals -> DAC -> Sound waves
+
+## Types of Audio Features for ML
+- ### Audio features
+    - Description of sound
+    - Different features capture different aspects of sound
+    - Build intelligent audio systems
+- ### Audio features categorisation
+    - Level of abstraction
+        - High-level
+            - Examples: instrumentation, key, chords, melody, rhythm, tempo, lyrics, genre, mood
+        - Mid-level
+            - Examples: pitch and beat related desciptors, such as note onsets, fluctuation patterns, MFCCs
+        - Low-level
+            - Examples: amplitude envelope, energy, spectral centroid, spectral flux, zero-crossing rate
+    - Temporal scope
+        - Instantaneous (~50ms)
+        - Segment-level (seconds)
+        - Global
+    - Music aspect
+        - Beat
+        - Timbre
+        - Pitch
+        - Harmony
+    - Signal domain
+        - Time domain
+            - Amplitude envelop
+            - Root-mean square energy
+            - Zero crossing rate
+        - Frequency domain
+            - Band energy ratio
+            - Spectral centoid
+            - Spectral flux
+        - Time-frequency representation
+            - Spectrogram
+            - Mel-spectrogram
+            - Constant-Q tranform
+    - ML approach
+        - Traditional machine learning
+            - *Amplitude envelope*
+            - Root-mean square energy
+            - *Zero crossing rate*
+            - Band energy ratio
+            - Spectral centroid
+            - *Spectral flux*
+            - Spectral spread
+            - Spectral roll-off
+            - <pre font-family="Cascadia Code">
+                Amplidtude envelope       +------------------------+
+                Zero Crossing rate  ====> | Tradition ML algorithm | ===> "car engine"
+                Spectral flux             +------------------------+ </pre>
+        - Deep learning
+            - Spectrogram => deep nural network => "car engine"
+    - ### Types of intelligent audio systems
+        - DSP --------------------> rule-based systems
+        - Traditional ML ---------> feature engineering
+        - Deep learning ----------> automatic feature extraction
+
+## Extraction pipeline
+- ### Time-domain feature pipeline
+    - Wave are converted to frames
+    - <pre font-family="Cascadia Code">
+                         . .                       111
+                       .     .                     110           frame 1 : sample 1  ....128
+               ADC    .       .                    101 framing   frame 2 : sample 64 ....192
+        Sound =====> .         .           .       100 ========> frame 3 : sample 128....256 ===> Feature computation
+        wave                    .         .        011           frame 4 : sample 192....320           ⇓
+                                 .       .         010             .....                             aggregation
+                                  .     .          001                                           (mean, median, GMM)
+                      wave          . .            000                                                  ⇓
+                                                                                           feature value / vector / matrix
+        GMM ----> Gausian mixture models    </pre>
+
+- ### Frames
+    - Perceivable audio chunk
+        - 1 sample @44.1kHz = 0.0227ms
+        - duration of 1 sample << Ear's time resolution (10ms)
+    - Power of 2 num. samples
+    - Typical values: 256 - 8192
+        - *d<sub>f</sub>* = 1/*s<sub>r</sub>* •K
+        - where 
+            - *d<sub>f</sub>* --> digital frequency
+            - *s<sub>r</sub>* --> sampling rate
+            - K --> frame size
+        if *s<sub>r</sub>* = 44100Hz and K = 512
+        then *d<sub>f</sub>* = 11.6ms
+
+- ### Frequency-donmain feature pipeline
+    - <pre font-family="Cascadia Code">
+                         . .                       111
+                       .     .                     110           frame 1 : sample 1  ....128
+               ADC    .       .                    101 framing   frame 2 : sample 64 ....192
+        Sound =====> .         .           .       100 ========> frame 3 : sample 128....256 ===>  Windowing
+        wave                    .         .        011           frame 4 : sample 192....320           ⇓
+                                 .       .         010             .....                          Frequency graph
+                                  .     .          001                                                 ⇓
+                      wave          . .            000                aggregation       <===    Feature computation         
+                                                                    (mean, median, GMM)
+                                                                           ⇓
+                                                                feature value / vector / matrix
+        GMM ----> Gausian mixture models    </pre>
+- ### Spectral leakage
+    - Processed signal isn't an integer number of periods
+    - Endpoints are discontinuous
+    - Discontinuities appear as high-frequency components not present in the original signal.
+- ### Wndowing
+    - Apply windowing function to each frame
+    - Eliminates samples at both ends of a frame
+    - Generates a periodic signal
+    - Hann window: *w(k)* = 0.5•(1 - *cos(2πk/(K-1)))* , *k* ∈ Integer
+        - <pre font-family="Cascadia Code">
+           1.0 _______________________________
+        A      |     |     | . . |     |     |
+        m  0.8 |_          .     .          _|
+        p      |         .         .         |
+        l  0.6 |_       .           .       _|
+        i      |       .             .       |
+        t  0.4 |_     .               .     _|
+        u      |     .                 .     |
+        d  0.2 |_   .                   .   _|
+        e      |  .                       .  |
+           0.0 |_____|_____|_____|_____|_____|
+               0    10    20    30    40    50
+                        Sample</pre>
+        - *s<sub>w</sub>(k)* = *s(k)•w(k)*, *k* ∈ Integer
+
+## Time-domain audio features
