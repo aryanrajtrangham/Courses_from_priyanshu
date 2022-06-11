@@ -320,3 +320,29 @@
                    0    10    20    30    40    50
                             Sample</pre>
         - *s<sub>w</sub>(k)* = *s(k)•w(k)*, *k* ∈ Integer
+
+## Time-domain audio features
+- Amplitude envelop (AE)
+    - Max amplitude value of all samples in a frame
+    - *AE<sub>t</sub> = max {k=t•k,(t+1)•K-1} s(k)*
+    - Gives rough idea of loudness
+    - Sensitive to outliers
+    - Onset detection, music genre classification
+- Root-mean-square energy (RMS)
+    - RMS of all samples in a frame
+    - *RMS<sub>t</sub>* = sqrt( (1/K)• summation {k=t•k, (t+1)•K-1} •s(k)<sup>2</sup>* )
+    - Indicator of loudness
+    - Less sensitive to outliers than AE
+    - Audio segmentation, music genre classification
+- Zero-crossing rate (ZCR)
+    - Number of times a signal crosses the horizontal axis
+    - Used in speech recognition, music info retrival
+    - *ZCR<sub>t</sub>* = 0.5 • summation {k=t•k, (t+1)•K-1} | *sgn(s(k)) - sgn(s(k+1))*|
+        - sign function :
+            - s(k) > 0 --> +1
+            - s(k) < 0 --> -1
+            - s(k) = 0 --> 0
+    - Applications
+        - Recognition of percussive vs pitched sounds
+        - Monophonic pitch estimation algorithm
+        - Voice/unvoiced decision for speech signals
