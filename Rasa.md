@@ -213,3 +213,51 @@
             - **Rank 4**: Mapping Policy
             - **Rank 5**: Embedding Policy, Keras Policy & Sklearn Policy
             * Can be changed but recommended to use Dafault
+## Slots
+- Slots are basically bots memory.
+- Using them we can keep important things the bot has to remember for a later part of the conversation
+- Defining slots
+    - Through Entities:
+        - Can remember important values providedby users through Entities
+    - Custom Actions
+        - Info from the outside for examples results extracted from the external database
+
+- ### **Types of slots**
+    - **Text**
+        - Basically a string
+        - What matters here is if the slot is set or not.. The value of the slot doesn't matter.
+        - Useful in modeling situations when the dialog should take a different turn based on whether or not users provided specific details.
+        - For example. We just want to know if an entity is given or not. If yes the bot can move forward.
+    - **Bool**
+        - Value matters, Check if its True or False
+            - Slots: is_authenticated -> type:bool
+        - Dialogue Management looks at value and presence while making a prediction for next step.
+    - **Categorical**
+        - Slots which can take one of **N** values.
+            - Slots: Color -> type: categorical
+            - Value:
+                - Low
+                - Medium
+                - High
+        - Dialogue Management looks at value and presence while making prediction for next step.
+    - **Float**
+        - Presence & value matters.
+            - Slot: Price -> type: float
+                - Min_value : 0.0
+                - Max_value : 1000,000
+    - **List**
+        - If you want to store multiplt values in a given slot, (coz by default one slot can store one value at a time..) we can use lists.
+        - A list/array for multiple values.
+        - Length doesn't matter but if the value is set or not matters.
+        - To only store some info. For your assistant to use in specific actions or in later stages.
+        - Presence & value of the slot will have no influence on how a dialog management model makes the predictions.
+- ### **Slot Types & their influnce on Dialogue Predictions**
+    - Slot Type     | Value Presence    | Actual Value
+        ------------|-------------------|---------------
+        Text        | Yes (Tick)        | No (X)
+        Bool        | Yes (Tick)        | Yes (Tick)
+        Categorical slot | Yes (Tick)   | Yes (Tick)
+        Float       | Yes (Tick)        | Yes (Tick)
+        List        | Yes (Tick)        | No (X)
+        Unfeaturized | No (X)           | No (X)
+    
