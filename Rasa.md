@@ -261,3 +261,88 @@
         List        | Yes (Tick)        | No (X)
         Unfeaturized | No (X)           | No (X)
     
+- Slots can be used in utterance templates
+    - { phone_name }
+- Can be used in Custom Actions
+    - tracker.get_slot('phone_name')
+- Can se set using Custom Actions
+    - return [SlotSet('phone_name','iphone X')]
+- Slots which are set using custom actions have to be reflected in training stories.
+    - action_set_phone
+    - slot["phone_naem":"iphone X"]
+- In this case we do have to include the - slot{} part in the stories. Rasa Core will learn to use this information to decide on the correct action to take.
+- All slot have to be listed in the domain.
+- Slot values are kept in memory untill they are reset.
+
+## Rasa - Forms
+- One of the most common conversation pattern is to collect a few pieces of information from a user in order to do something. This is also called **slot filling**.
+- If you need to collect multiple pieces of information in a row, we should use a Form Action.
+- This is a single action which contains the logic to loop over required slots and ask the user for this information.
+
+- Forms in v2 are defined in domain.
+- Define slot mapping for each slot which your form should fill.
+- Can specify one or more slot mapping for each to be filled.
+- For validation and custom slot mappings we can define a Form Action Class in actions.
+- Rasa tries to decouple smple forms and advanced functionality or the need to use Python.
+
+- ### **Form Action in Stories**
+    - With form{"name": "product_search_form"} the form is activated.
+    - With form{"name": "null"} the form is deactivated again.
+    - \# # form_1
+        <br>\* buy_phone_laptop
+        - product_search_form
+        - form{"name": "product_search_form"}
+        - form{"name": "null"}
+
+- ### **Featurized vs Unfeaturised Slots & Stories**
+    - Note that for story to work, your slots should be <u>unfeaturized</u>.
+    - If any of these slot are featurized, your story needs to include slot{} events to show these slot being set.
+    - In that case, the easiest way to create valid stories is to use <u>Interactive Learning</u>.
+
+- ### **Form Policy**
+    - Once the form action gets called for the first time, the form gets activated and the Form Policy jumps in.
+    - The Form Policy is extremely simple and just always predicts the form action.
+
+- ### **Submit**
+    - We can define a rule which can run an action. Once all the slots are filled.
+    - Once all the slots are filled, the submit() method is called.
+    - Here we can use the information collected to do something for the user.
+    - For example querying the database and making the product search.
+
+- ### **Custom slot Mappings**
+    - By default slots will be only filled by entities with the same name as the slot that are picked from the user input.
+    - The **slot_mappings** method defines how to extract slot values from user responses.
+    - The predifined functions work as follows:
+        - **from_entity :** 
+            - self.from_entity(entity=entity_name, intent=None) // Rasa 2.0
+            - \- type: from_entity //Rasa 3.0
+                - will look for an entity called entity_name to fill a slot slot_name regarless of user intent.
+            - slef.from_entity(entity=rntity_name, intent=intent_name) //Rasa 2.0
+            - \- type: from_entity<br>
+                entity: entity_name //Rasa 3.0
+                - will look for an entity called entity_name to fill a slot slot_name only if the users intent is intent_name.
+        - **from_intent :**
+            - self.from_intent(intent=intent_name, value=value) //Rasa 2.0
+            - \- type: from_intent<br>
+                value: my_value
+                intent: intent_name // Rasa 3.0
+                - will fill slot slot_name with value if user intent in intent_name.
+        - **from_text :**
+            - self.from_text(intent=None) // Rasa 2.0
+            - \- type: from_text<br>
+                intent: None // Rasa 3.0
+                - will use the next user utterance to fill the text slot slot_name regardless of user intent.
+            - slef.from_text(intent=intent_name) // Rasa 2.0
+            - \- type: from_text<br>
+                intent: intent_name // Rasa 3.0
+                - will use the next utterance to fill the text slot slot_name only if user intent is intent_name.
+        - If we want to allow a combination of these, provide them as a list.
+
+- ### **Handling conditional slots logic**
+    - Many forms required more logic just requesting a list of fields.
+    - For example, if someone requests laptop as their category, we may want to ask questions on slighly different features than phones, we may be asking for Camera specification.
+    - We can achieve this by writing some logic into the required_slots() method. // in the action.py file
+
+- ### **Validation**
+    - By default, validation only checks if the requested slot was successfully extracted from the slot mappings
+    - If we want to add custom validation, for examlpe to check against a database, we can do this by writing a helper validaiton function with name validate_{slot_name}.
