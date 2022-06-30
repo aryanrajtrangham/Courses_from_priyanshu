@@ -346,3 +346,54 @@
 - ### **Validation**
     - By default, validation only checks if the requested slot was successfully extracted from the slot mappings
     - If we want to add custom validation, for examlpe to check against a database, we can do this by writing a helper validaiton function with name validate_{slot_name}.
+
+## Small Talk
+- Small talk includes the back-and-forth that makes conversations natural but doesn't directly relate to the user's goal.
+- This includes greetings, acknowledgements, reactions and off-topic chithcat.
+- ### **Chitchat**
+    - Assistant will often receive unexpected or unprompted input.
+    - For example: Users might ask
+        - *"Whats your occupation?"*
+        - *"Where do you stay?"*
+    - While it's not possible to coherently respond to everything a user might say, we can make sure we answer some of the frequently asked off-topic questions.
+    - For this, we should collect training data and define intents and responses for some of the more common topics.
+    - Since we don't care about the context while answering these questions, we can map this intention using mapping policy.
+    - **intents:**
+        - **ask_occupation:**
+            - **trigger :** action_occupation
+    - We wouldn't want these questions to affect our normal conversation and would want the bot to continue with the flow once questions like these are answered.
+    - For example, if a user asks "Where do you live?" off topic in the middle of the flow, we probably want to answer without that interaction affecting the next action prediction.
+    - For this, apart from using Mapping Policy.
+        1. We need to return UserUtteranceReverted() and ActionReverted() events from our mapped action.<br>
+        This will delete the user's latest message, along with any events that happened after it, from the dialog history.
+        2. Do not include the intent-action interaction in your stories.
+        3. Just define it in the domain file intent and its trigger, always use actions. Even if it's simple message.
+
+## Channel Specific Responses
+- Every platform has some specific format/templlate set for specific messages.
+- For example:
+    - Facebook has quick replies for buttons similarly, Slack has different formats for buttons.<br>
+    Or
+    - For displaying products Facebook Messanger user Geric templates.<br>
+    Or
+    - A custom product display option on your website chatbot widget.
+- We can create Channel specific responses using creating custom output payloads that will only work in certain channels.
+
+- ### **Custom Output Payloads using Utterance Templates**
+    - Can send any arbitrary output to the output channel using the **custom: key** in the utterance.
+    - If you have certain response templates that would like to send only to specific channels, you can specify with the **channel: key**
+    - Apart from this, Rasa in-built provides some custom outputs.
+    - For example: Rasa has inbuilt quick replies for Facebook or Custom Buttons for Telegram.
+
+- ### **Custom Output Payloads using Action**
+    - If we want to send custom output payloads using actions:
+        - Use the tracker method:
+            - **tracker.get_latest_input_channel()**
+    - Change the output payload based on the channel.
+
+## External Events
+- Suppose we want to send a remainder/alert whenever the prices drop.<br>
+Or
+- Send an alert to our employees whenever they forgot to log their attendance.
+- Using the trigger_intent_endpoint API.
+- We need to create a program external to Rasa & make it send messages to the **trigger_intent_endpoint** of our convertation whatever we want to send the alert.
