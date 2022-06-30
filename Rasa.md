@@ -1,4 +1,4 @@
-## RASA NLU (Natural language Processing)
+## RASA NLU (Natural Language Understanding) and NLP (Natural language Processing)
 - Understand user's input which is usually unsructered text.
 - **Output :** Structure Data for furtther processing
     - Intent
