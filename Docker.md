@@ -73,26 +73,37 @@
 - docker container exec -it myname bash
 - docker container exec -it myname netstat -ntlp
 - docker container create busybox
+
   **create** command creates a fresh new container from a docker image. However, it doesn’t run it immediately.
 - docker container start myname
+  
   **start** command will start any stopped container. If you used docker create command to create a container, you can start it with this command.
 - docker container run -dt busybox
+  
   **run** command is a combination of create and start as it creates a new container and starts it immediately. In fact, the docker run command can even pull an image from Docker Hub if it doesn’t find the mentioned image on your system.
 - docker container run -d nginx sleep 20
+  
   **Overriding default** container command but show's original on (docker ps)
 - docker rm myname
+  
   Remove the container from disk
 - docker system df
+  
   Gives space of each images, containers, local volume & cache
 - docker system df -v
+  
   Gives per component level size
 - docker container run -dt --name testcontainer busybox ping -c10 google.com
 - docker container run -dt -rm --name testcontainer busybox ping -c10 google.com
+  
   Adding **rm** option on starting to remove the container on being executed
 - docker build -t name. {specify the directory}
+  
   The image created will be stored in docker
-- 
- 
+- docker run -dt --name tmp --health-cmd "curl -f http://localhost" busybox
+- docker run -dt --name tmp --health-cmd "curl -f http://localhost" --health-interval=5s busybox
+- docker run -dt --name tmp2 --health-cmd "curl -f http://localhost" --health-interval=5s --health-retries=1 busybox
+
 ## Docker restart policies
 
 - By default, Docker container will not start when they exit or when docker daemon is restarted. Docker provides restart policies whether your container start automatically when they exit, or when Docker reastarts.
@@ -126,16 +137,30 @@ Abbreviation | Complete string |
   RUN apt-get install nginx -y
   CMD ["nginx", "-g", "daemon off"]</pre>
 
-- Commands
+- ### Commands
+
   - FROM : Build the docker image with specific command
   - RUN : run the specific instruction
-  - CMD : start the container with specified command.
-  - Copy and Add are both dockerfile instruction that serve similar purposes of copying files from a specific location into a Docker image
+  - CMD : start the container with specified command but commands can be overridden.
   - COPY : takes in a src and destination.  It only copy in a local file or directory from your host.
   - ADD : lets you do two additional operations
     - use a URL instead of a local file / directory.
     - extract a tar file from the source directory into the destination.
-  - Using ADD to fetch package from remote URLs is strongly discouraged, instead use **curl** or **wget**.
+
+    Using ADD to fetch package from remote URLs is strongly discouraged, instead use **curl** or **wget**.
   - EXPOSE : informs Docker that the container listens on the specified network ports at runtime without actually publishing the port.
-  - It *functions as a type of documentation* between the person who build the image and
-  the person who runs the continer, about which ports are intended to be published.
+  
+    It *functions as a type of documentation* between the person who build the image and the person who runs the continer, about which ports are intended to be published.
+  - HEALTHCHECK : allows us to tell the platform on how to test that our application is healthy.
+
+    That's basic check and does not tell the detail about the application.
+    - --interval = DURATION(default:30s)
+    - --timeout = DURATION(default:30s)
+    - --start-period = DURATION(default:0s)
+    - --retries = N(default:3)
+
+    Exit Status
+    - 0: Success = the containeris healthy and ready for use
+    - 1: Failure = the container is not working correctly
+    - 2: Reserved = do not use this exit code
+  - ENTRYPOINT : best used to set the image's main command and doesn't allow to override the command.
