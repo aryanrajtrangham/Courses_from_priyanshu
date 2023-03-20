@@ -97,24 +97,13 @@
 - docker container run -dt -rm --name testcontainer busybox ping -c10 google.com
   
   Adding **rm** option on starting to remove the container on being executed
-- docker build -t name. {specify the directory}
+- docker build -t --name myname . {specify the directory}
   
   The image created will be stored in docker
 - docker run -dt --name tmp --health-cmd "curl -f http://localhost" busybox
 - docker run -dt --name tmp --health-cmd "curl -f http://localhost" --health-interval=5s busybox
 - docker run -dt --name tmp2 --health-cmd "curl -f http://localhost" --health-interval=5s --health-retries=1 busybox
-
-## Docker restart policies
-
-- By default, Docker container will not start when they exit or when docker daemon is restarted. Docker provides restart policies whether your container start automatically when they exit, or when Docker reastarts.
-- We can specify the restart policy by using the --restart flag with docker run command.
-
-Flag          |     Desciption        |
---------------|-----------------------|
-no            |Do not automatically restart the container (the defalut) |
-on-failure    |Restart the container if it exits due to an error, which manifests as a non-zero exit code |
-unless-stopped|Restart the container unless explicitly stopped or Docker itslef is stopped or restarted |
-always        | Always restart the container if it stops
+- docker container run -dt --name base01 base01 -c10 google.com
 
 ### Command strings
 
@@ -125,7 +114,20 @@ Abbreviation | Complete string |
  -d  | --detached
  -a  | --attached
  -i  | --interactive
- -t  | --tty
+ -t  | --tty / --tag
+ -e  | --env
+
+## Docker restart policies
+
+- By default, Docker container will not start when they exit or when docker daemon is restarted. Docker provides restart policies whether your container start automatically when they exit, or when Docker reastarts.
+- We can specify the restart policy by using the --restart flag with docker run command.
+
+Flag           |     Desciption        |
+---------------|-----------------------|
+no             | Do not automatically restart the container (the defalut) |
+on-failure     | Restart the container if it exits due to an error, which manifests as a non-zero exit code |
+unless-stopped | Restart the container unless explicitly stopped or Docker itslef is stopped or restarted |
+always         | Always restart the container if it stops |
 
 ## Docker Images
 
@@ -136,6 +138,8 @@ Abbreviation | Complete string |
   RUN apt-get update
   RUN apt-get install nginx -y
   CMD ["nginx", "-g", "daemon off"]</pre>
+
+- To tag a docker image : docker tag IMAGE ID {tag}
 
 - ### Commands
 
@@ -164,3 +168,5 @@ Abbreviation | Complete string |
     - 1: Failure = the container is not working correctly
     - 2: Reserved = do not use this exit code
   - ENTRYPOINT : best used to set the image's main command and doesn't allow to override the command.
+  - WORKDIR : instruction sets the working directory for any RUN, CMD, ENTRYPOINT,COPY and ADD instruction that follow it in the Dockerfile
+  - ENV : instruction sets the environment variable {key} to the value {value}.
