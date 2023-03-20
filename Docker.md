@@ -1,7 +1,7 @@
 ## Installation of software
 
 <pre font-family="Cascadia Code">
-    | +-----------------------------------+
+      +-----------------------------------+
     | |     Download the installer        |
     | |-----------------------------------|
     | |        Run the installer          |
@@ -89,7 +89,10 @@
 - docker container run -dt --name testcontainer busybox ping -c10 google.com
 - docker container run -dt -rm --name testcontainer busybox ping -c10 google.com
   Adding **rm** option on starting to remove the container on being executed
-
+- docker build -t name. {specify the directory}
+  The image created will be stored in docker
+- 
+ 
 ## Docker restart policies
 
 - By default, Docker container will not start when they exit or when docker daemon is restarted. Docker provides restart policies whether your container start automatically when they exit, or when Docker reastarts.
@@ -104,9 +107,35 @@ always        | Always restart the container if it stops
 
 ### Command strings
 
-- a --all
-- p --port
-- d --detached
-- a --attached
-- i --interactive
-- t --tty
+Abbreviation | Complete string |
+-------------|-----------------|
+ -a  | --all
+ -p  | --port
+ -d  | --detached
+ -a  | --attached
+ -i  | --interactive
+ -t  | --tty
+
+## Docker Images
+
+- A **Dockerfile** is a text document that contain all the commands a user could call on the command line to assemble an image.
+- Sample content of docker file
+  <pre font-family="Cascadia Code">
+  FROM ubuntu
+  RUN apt-get update
+  RUN apt-get install nginx -y
+  CMD ["nginx", "-g", "daemon off"]</pre>
+
+- Commands
+  - FROM : Build the docker image with specific command
+  - RUN : run the specific instruction
+  - CMD : start the container with specified command.
+  - Copy and Add are both dockerfile instruction that serve similar purposes of copying files from a specific location into a Docker image
+  - COPY : takes in a src and destination.  It only copy in a local file or directory from your host.
+  - ADD : lets you do two additional operations
+    - use a URL instead of a local file / directory.
+    - extract a tar file from the source directory into the destination.
+  - Using ADD to fetch package from remote URLs is strongly discouraged, instead use **curl** or **wget**.
+  - EXPOSE : informs Docker that the container listens on the specified network ports at runtime without actually publishing the port.
+  - It *functions as a type of documentation* between the person who build the image and
+  the person who runs the continer, about which ports are intended to be published.
