@@ -252,13 +252,13 @@ always         | Always restart the container if it stops |
   - ENV : instruction sets the environment variable {key} to the value {value}.
 
 - When changes are made inside the container, it can be useful to commit a container's file changes into a new image.
-  - By default the container beingcommites and its processes will be paused while the image is commited.
+  - By default the container being commited and its processes will be paused while the image is commited.
 
 ## Docker Layers
 
 - A docker image is built up from a series of layers.
 - Each layer reperesent an instruction in the image's Dockerfile.
-- The major difference between a container and an imge is the top writable layer.
+- The major difference between a container and an image is the top writable layer.
 - All writes to the container that add new or modify existing data are stored in this writable layer.
 
 ## Docker Images
