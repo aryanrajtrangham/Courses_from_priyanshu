@@ -160,14 +160,14 @@
   <br>Exporting and importing the image file flattens the file and sometimes reduces space.
 
 - docker run -d -p 5000:5000 --name registry registry:2
-  download and run registry
+  <br>Download and run registry
   <br>docker tag ubuntu:latest localhost:5000/myubuntu
   <br>docker push localhost:5000/myubuntu
   <br>docker pull localhost:5000/myubuntu
   <br>This is how docker registry is used.
 
 - docker tag busybox singhpriansh/dock_hub:v1
-  <br>tag busybox image so as it remains uneffected on operations on the image
+  <br>Tag busybox image so as it remains uneffected on operations on the image
   <br>docker push singhpriansh/dock_hub:v1
   <br>Push image to dockers repository
   <br>docker pull singhpriansh/dock_hub:v
