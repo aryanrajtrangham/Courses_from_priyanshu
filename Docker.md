@@ -276,7 +276,7 @@ always         | Always restart the container if it stops |
 - Modify Image to Single Layer : In a generic scenerio, the more the layers an images has, the more the size of the image.*Flattening* an image to single layer can help reduce the overall size of the image.
 - Docker Registry : A Registry is stateless, highly scalable server side application that stores and lets us distribute Docker images.
 <br>There are various types of registry available, which includes
-  - Docker Resitry
+  - Docker Registry
   - Docker Truster Registry
   - Private Repository (AWS ECR)
   - Docker Hub
