@@ -197,6 +197,10 @@ Abbreviation | Complete string |
  -t  | --tty / --tag
  -e  | --env
 
+### Docker cli
+
+- Docker cli can be used to manage vaious aspects related to Docker Images which includes building, removing, saving, tagging and others.
+
 ## Docker restart policies
 
 - By default, Docker container will not start when they exit or when docker daemon is restarted. Docker provides restart policies whether your container start automatically when they exit, or when Docker reastarts.
@@ -257,10 +261,6 @@ always         | Always restart the container if it stops |
 - The major difference between a container and an imge is the top writable layer.
 - All writes to the container that add new or modify existing data are stored in this writable layer.
 
-## Docker cli
-
-- Docker cli can be used to manage vaious aspects related to Docker Images which includes building, removing, saving, tagging and others.
-
 ## Docker Images
 
 - A docker image contains lots of imformation, some of these include:
@@ -271,12 +271,11 @@ always         | Always restart the container if it stops |
   - OS
   - Size
 - **docker image inspect** command allows us to see all the information associated with a docker image.
-- **docker image prune** command allows us to clean up unused images. By defaul, command will only lean up dangling images.
-- *Dangling Images* = Images without Tags and not referenced by ny container.
-- Modify Image to Single Layer : In a generic scenerio, the more the layers an images has, the more the size of the image.*Flattening* an image to single layer  can help reduce the overall size of the image.
+- **docker image prune** command allows us to clean up unused images. By default, command will only clean up dangling images.
+- *Dangling Images* = Images without Tags and not referenced by any container.
+- Modify Image to Single Layer : In a generic scenerio, the more the layers an images has, the more the size of the image.*Flattening* an image to single layer can help reduce the overall size of the image.
 - Docker Registry : A Registry is stateless, highly scalable server side application that stores and lets us distribute Docker images.
-
-  There are various types of registry available, which includes
+<br>There are various types of registry available, which includes
   - Docker Resitry
   - Docker Truster Registry
   - Private Repository (AWS ECR)
