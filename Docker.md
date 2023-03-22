@@ -184,7 +184,7 @@
   </br>Tag busybox image so as it remains uneffected on operations on the image
   </br>docker push singhpriansh/dock_hub:v1
   </br>Push image to dockers repository
-  </br>docker pull singhpriansh/dock_hub:v
+  </br>docker pull singhpriansh/dock_hub:v1
   </br>Pull image from docker repository
   </br>This is how docker hub is used.
 
@@ -204,12 +204,29 @@
   </br>docker build -t with-cache .
   </br>Build docker with cache this fastens the process of image making from Dockerfile
 
+- docker networking ls
+  </br>Shows available network drivers available
+
+- docker network inspect {network}
+  </br>Shows information regarding particular network driver
+
+- docker container run -dt --name myhost --network host ubuntu
+  </br>To launch a container in the given network
+
+- docker network create --driver bridge mybridge
+ </br>Creates a new bridge network
+
+- docker container run -dt --name container1 busybox sh
+  </br>docker container run -dt --link container1:container --name container2 busybox sh
+  </br>This is legacy approach in which the container1 is resolved in the environment of container2 which can be detected by ping operation.
+
 ### Command strings
 
-Ab/breviation | Complete string |
+Abbreviation | Complete string |
 -------------|-----------------|
  -a  | --all
- -p  | --port
+ -p  | --port (publish list)
+ -P  |  (publish all)
  -d  | --detached
  -a  | --attached
  -i  | --interactive
@@ -310,3 +327,67 @@ always         | Always restart the container if it stops |
 - Docker creates container images using layers. Each command that is found in a Dockerfile creates a new layer.
 </br>Docker uses a layer cache to optimize the process of building Docker images and make it faster. If the cache can't be used for a particular layer, all subsequent layers won't be loaded from the cache.
 </br>docker build -t with-cache . is used to make image with cache
+
+## Docker Networking
+
+- Docker networking subsystem is pluggable, using drivers.
+- There are several drivers available by default, and provides core networking functionality.
+  - bridge
+  - host
+  - overlay
+  - macvlan
+  - none
+
+```[]
+  +-----------------+                 +-----------------+
+  | 172.17.0.0/16   |                 | 192.168.0.0/16  |
+  | +-------------+ |                 | +-------------+ |
+  | | Container 1 |<|----172.17.0.2   | | Container 1 | |
+  | +-------------+ |                 | +-------------+ |
+  | +-------------+ |                 | +-------------+ |
+  | | Container 2 |<|----172.17.0.3   | | Container 2 | |
+  | +-------------+ |                 | +-------------+ |
+  +-----------------+                 +-----------------+
+    Bridge Network                      Custom Network
+```
+
+### Bridge Network
+  
+- A bridge network uses a software bridge while allows containers connected to the same bridge network to communicate, while providing isolation from container which are not connected to that bridge network.
+
+  ```[]
+  +-----------------------------------------------------+
+  |  |      C1     |  |      C2     |  |     C3      |  |
+  |  | 172.17.0.18 |  | 172.17.0.19 |  | 172.17.0.20 |  |
+  |  +-------------+  +-------------+  +-------------+  |
+  |          eth0             eth0             eth0     |
+  |      +---------------------------------------+      |
+  |      |              172.17.0.1               |      |
+  |      |           Docker0 bridge              |      |
+  |      +------------------|--------------------+      |
+  |              +----------|----------+                |
+  |              |    iptables / NAT   |                |
+  +--------------+----------|----------+----------------+
+              192.168.50.16 | eth0
+  ```
+
+  Bridge is the default driver for Docker.If we don't specify a driver, this is the type of network you are creating. A newly-started container connect to it unless otherwise specified.</br>
+  User-Defined Bridge Network are superior to the default bridge network.
+
+#### User-Defined bridge Network
+
+- User-defined bridge provide better isolation and interoperability between containerized applications.
+- User-defined bridge provide automatic DNS resolution between containers.
+- Containers can be attached and detached from user-defined networks on the fly.
+- Each user-defined network creates a configurable bridge.
+- Linked containeron the default bridge network share environment variables.
+
+### Host Network
+
+- This driver removes the network isolation between host and the docker containers to use host's network directly.
+- For instance, if we run a container which binds to port 80 and we use host networking, the container's application will be available on port 80 on the host's IP address.
+
+### None Network
+
+- If we want to completely disable the network stack on a container. we can use the none network.
+- This mode will not configure any IP for the container and doesnot have any access to the external network as well as for other containers.
