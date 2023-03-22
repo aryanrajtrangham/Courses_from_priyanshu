@@ -3,7 +3,6 @@
 ## Installation of software
 
 ```[]
-
       +-----------------------------------+
     | |     Download the installer        |
     | |-----------------------------------|
@@ -22,39 +21,47 @@
 ## Images and Containers
 
 - **Docker Image** is a file which contains all the necessary dependency and configurations which are required to run an applicaion.
+
 - **Docker Containers** is basically a running instance of an image
 
-- <pre font-family="Cascadia Code">
+- ```[]
                              +------------+
                     ,--------| Container  |
   +-----------+    /         +------------+
   |   Image   |---<          +------------+
   +-----------+    `---------| Container  |
-                             +------------+</pre>
+                             +------------+
+  ```
 
 ## Port binding
 
 - By default Docker container can make connections to the outside world, but the outside world cannot connect to containers.
+
 - If we want containers to accept incoming connection from the world, you will have to bind it to a host port.
-- <pre font-family="Cascadia Code">
+
+- ```[]
         _______________________________
       [ ]           ._______.         |
       [ ]---------->| nginx | Port 80 |
       [ ] Post 8080 '-------'         |
         |_____________________________|
-            Docker Host</pre>
+            Docker Host
+  ```
 
 ## Overview of docker container exec
 
 - The docker container exec command runs a new command is a running container.
+
 - The command started using docker exec only while the container's primary process (PID 1) is running, and it is not restarted if the container is restarted.
-- <pre font-family="Cascadia Code">
+
+- ```[]
         .------------------------------.
        [ ]     ._______.     bash      |
   -----[-]---->| nginx |               |
   Pid 1[ ]     '-------'     ping      |
         '------------------------------'
-          Nginx  Docker Container </pre>
+          Nginx  Docker Container
+  ```
 
 ## Docker commands
 
@@ -228,12 +235,15 @@ always         | Always restart the container if it stops |
 ## Dockerfiles
 
 - A **Dockerfile** is a text document that contain all the commands a user could call on the command line to assemble an image.
+
 - Sample content of docker file
-  <pre font-family="Cascadia Code">
+  
+  ```[]
   FROM ubuntu
   RUN apt-get update
   RUN apt-get install nginx -y
-  CMD ["nginx", "-g", "daemon off"]</pre>
+  CMD ["nginx", "-g", "daemon off"]
+  ```
 
 - ### Commands
 
@@ -300,6 +310,3 @@ always         | Always restart the container if it stops |
 - Docker creates container images using layers. Each command that is found in a Dockerfile creates a new layer.
 </br>Docker uses a layer cache to optimize the process of building Docker images and make it faster. If the cache can't be used for a particular layer, all subsequent layers won't be loaded from the cache.
 </br>docker build -t with-cache . is used to make image with cache
-
-## Networking
-
