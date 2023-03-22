@@ -84,7 +84,7 @@
   - Measured in watt
 - **Sound Intensity**
   - Sound power per unit area
-  - Measured in W/m ^2^
+  - Measured in W/m<sup>2</sup>
 
 - **Thresholds**
   - Human can perceive sound with very small intensities.
@@ -111,6 +111,7 @@
       Instant perforation of eardrum | 10<sup>4</sup> | 160dB  | 10<sup>16</sup>
 
 - ### Loudness
+
   - Subjective perception of sound intensity
   - Depends on duration / frequency of a sound
   - Depends on age
@@ -121,6 +122,7 @@
     <img width="500px" height="400px"  src="https://i.pinimg.com/564x/a5/24/46/a524464ddccc0c1333c1d85d6745c979.jpg"/>
 
 - ### Timbre
+
   - Colour of sound
   - Diff between two sounds with same intensity, frequency, duration
   - Described with words like: bright, dark, dull, harsh, warm
@@ -128,23 +130,26 @@
     - Timbre is multidimensional
     - Sound envelope
       - Attack - Decay - Sustain - Release Model
-            <br><pre font-family="Cascadia Code">
-                 A
-                A|   A          D         S         R
-                m|<------->.<------->.<------->.<-------->.
-                p|        _:.        :         :          :
-                l|      .  : .       :         :          :
-                i|    ;    :   .     :         :          :
-                t|   ;     :      ' ":""""""""":.         :
-                u|  ;      :         :         : .        :
-                d| ;       :         :         :   .      :
-                e|.        :         :         :     ' . .:  Time
-                 +---------------------------------------------->
-            </pre>
+
+        ```[]
+            A
+          A|   A          D         S         R
+          m|<------->.<------->.<------->.<-------->.
+          p|        _:.        :         :          :
+          l|      .  : .       :         :          :
+          i|    ;    :   .     :         :          :
+          t|   ;     :      ' ":""""""""":.         :
+          u|  ;      :         :         : .        :
+          d| ;       :         :         :   .      :
+          e|.        :         :         :     ' . .:  Time
+            +---------------------------------------------->
+        ```
+
     - Harmonic content
     - Amplitude / frequency modulation
 
 - ### Complex Sound
+
   - Superposition of sinusoids
   - A partial is a sinusoid used to describe a sound
   - The lowest partial is called the fundamental frequency
@@ -155,16 +160,19 @@
   - In harmonicity indicates a deviation from a harmonic partial
 
 - ### Frequency modulation
+
   - AKA vibrato
   - Periodic variation in frequency
   - In music, used for expressive purposes
 
 - ### Amplitude modulation
+
   - AKA tremolo
   - Periodic variation in amplitude
   - In music, used for expressive purposes
 
 - ### Timbre summary
+
   - Multifactorial sound dimension
   - Amplitude envelop
   - Distribution of energy across partials
@@ -176,14 +184,17 @@
 - Encodes all info we need to reproduce sound
 
 - ### Analog Signal
+
   - Continous values for time
   - Continuous values for amplitude
 
 - ### Digital Signal
+
   - Sequence of discrete values
   - Data points can only take on a finite number of values
 
 - ### Analog to digital conversion
+
   - Sampling
     - Locating samples
       - *t<sub>n</sub>* = *n*•T
@@ -218,11 +229,13 @@
 ## Types of Audio Features for ML
 
 - ### Audio features
+
   - Description of sound
   - Different features capture different aspects of sound
   - Build intelligent audio systems
 
 - ### Audio features categorisation
+
   - Level of abstraction
     - High-level
       - Examples: instrumentation, key, chords, melody, rhythm, tempo, lyrics, genre, mood
@@ -262,22 +275,29 @@
       - *Spectral flux*
       - Spectral spread
       - Spectral roll-off
-      - <pre font-family="Cascadia Code">
-                Amplidtude envelope       +------------------------+
-                Zero Crossing rate  ====> | Tradition ML algorithm | ===> "car engine"
-                Spectral flux             +------------------------+ </pre>
+
+      - ```[]
+        Amplidtude envelope       +------------------------+
+        Zero Crossing rate  ====> | Tradition ML algorithm | ===> "car engine"
+        Spectral flux             +------------------------+
+        ```
+
     - Deep learning
       - Spectrogram => deep nural network => "car engine"
-  - ### Types of intelligent audio systems
-    - DSP --------------------> rule-based systems
-    - Traditional ML ---------> feature engineering
-    - Deep learning ----------> automatic feature extraction
+
+- ### Types of intelligent audio systems
+
+  - DSP --------------------> rule-based systems
+  - Traditional ML ---------> feature engineering
+  - Deep learning ----------> automatic feature extraction
 
 ## Extraction pipeline
 
 - ### Time-domain feature pipeline
+
   - Wave are converted to frames
-  - <pre font-family="Cascadia Code">
+
+  - ```[]
                          . .                       111
                        .     .                     110           frame 1 : sample 1  ....128
                ADC    .       .                    101 framing   frame 2 : sample 64 ....192
@@ -287,9 +307,11 @@
                                   .     .          001                                           (mean, median, GMM)
                       wave          . .            000                                                  ⇓
                                                                                            feature value / vector / matrix
-        GMM ----> Gausian mixture models    </pre>
+        GMM ----> Gausian mixture models
+    ```
 
 - ### Frames
+
   - Perceivable audio chunk
     - 1 sample @44.1kHz = 0.0227ms
     - duration of 1 sample << Ear's time resolution (10ms)
@@ -304,7 +326,8 @@
         then *d<sub>f</sub>* = 11.6ms
 
 - ### Frequency-donmain feature pipeline
-  - <pre font-family="Cascadia Code">
+
+  - ```[]
                          . .                       111
                        .     .                     110           frame 1 : sample 1  ....128
                ADC    .       .                    101 framing   frame 2 : sample 64 ....192
@@ -316,19 +339,23 @@
                                                                     (mean, median, GMM)
                                                                            ⇓
                                                                 feature value / vector / matrix
-        GMM ----> Gausian mixture models    </pre>
+        GMM ----> Gausian mixture models
+    ```
 
 - ### Spectral leakage
+
   - Processed signal isn't an integer number of periods
   - Endpoints are discontinuous
   - Discontinuities appear as high-frequency components not present in the original signal.
 
 - ### Wndowing
+
   - Apply windowing function to each frame
   - Eliminates samples at both ends of a frame
   - Generates a periodic signal
   - Hann window: *w(k)* = 0.5•(1 - *cos(2πk/(K-1)))* , *k* ∈ Integer
-    - <pre font-family="Cascadia Code">
+
+    - ```[]
                1.0 _______________________________
             A      |     |     | . . |     |     |
             m  0.8 |_          .     .          _|
@@ -341,7 +368,9 @@
             e      |  .                       .  |
                0.0 |_____|_____|_____|_____|_____|
                    0    10    20    30    40    50
-                            Sample</pre>
+                            Sample
+        ```
+
     - *s<sub>w</sub>(k)* = *s(k)•w(k)*, *k* ∈ Integer
 
 ## Time-domain audio features
