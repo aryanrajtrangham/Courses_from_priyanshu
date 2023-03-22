@@ -1,3 +1,4 @@
+# BlockChain
 
 ## What exactly is Blockchain?
 
@@ -9,7 +10,7 @@ The blockchain is general terms is defined in following manner:
 
 Blockchain was first introduced in the white paper for Bitcoin in 2009 by unknown person named as Satoshi Nakamoto. Currently, blockchain is used my multiple organizations to tackle their problems and provideabetter solution.
 
-## Problems with current system
+### Problems with current system
 
 - Account Hacking
 - Internet Frauds
@@ -17,14 +18,14 @@ Blockchain was first introduced in the white paper for Bitcoin in 2009 by unknow
 - High Transaction Time due to intermediaries
 - Dependency on Banks
 
-## How Blockchain solves the current problem?
+### How Blockchain solves the current problem?
 
 - Security through Cryptography
 - Availability through multiple machines
 - Low transaction costs
 - Remove of central parties and intermediaries.
 
-## Summarizing Blockchain
+### Summarizing Blockchain
 
 - It'sadigitized store for information in the form of transactions.
 - It is distributed. Thus, nobody controls it.
@@ -33,11 +34,11 @@ Blockchain was first introduced in the white paper for Bitcoin in 2009 by unknow
 - Data gets recorded in chronological order.
 - Everyone present over the network can view the transactions
 
-## BlockChain Definition
+### BlockChain Definition
 
 A blockchain isadigitized, distributed, consensus-based secure storage of information protected from revision and tampering over the peer-to-peer network.
 
-## Difference between Blockchain and Database
+### Difference between Blockchain and Database
 
 Characteristic | Blockchain          | Database
 ---------------|---------------------|----------------------------
@@ -48,7 +49,7 @@ Integrity      | Nobody can change   | Alterations are allowed
 Transparency   | Built In            | Not Transparent
 Trust          | Algorithms          | Owner of the Database
 
-## Function of Intermediaries
+### Function of Intermediaries
 
 - Information Gathering
 - Promotion
@@ -58,16 +59,16 @@ Trust          | Algorithms          | Owner of the Database
 - Financing
 - Risk Analysis
 
-## Introduction to Cryptography
+### Introduction to Cryptography
 
 Cryptography is an important aspect when we deal with network security. 'Crypto' means secret or hidden.
 
-## Types of Cryptography
+### Types of Cryptography
 
 - Symmetric aka Private Key Cryptography
 - Asymmetric aka Public Key Cryptography
 
-## Summarising
+### Summarising
 
 - This spreadsheet created in the example is calledablock.
 - The whole chain of blocks is collectively called as Blockchain. Every node holdsacopy of the Blockchain. Once a block reaches a certain number of approved transactions, then a new block is formed.
@@ -118,14 +119,14 @@ transactions of bitcoin -
          +-------+-----+         +-------+-----+         +-------+-----+
   ```
 
-## Blocks
+### Blocks
 
 - A Block isacontainer data structure which containsaset of confirmed transactions.
 - A block could contain different information, andachain of these blocks evolves into a blockchain as long as it links one and the other.
 - The blocks are stored on the hard drives of many miners spread across the globe on a peer to peer network.
 - In the Bitcoin algorithm,a block is created every 10 minutes. All the transactions happening over the network within 10 minutes interval are crunched into that block and added to the chain.
 
-## Structure of Blocks
+### Structure of Blocks
 
 All blocks in the Blockchain are composed ofaheader, identifiers andalong list of transactions. The structure ofablock is as follows:
 
@@ -166,14 +167,14 @@ Example of Bitcoin Block
  Transaction Counter | positive integer VI = Varlnt | 1-9 bytes
  Transactions        | The (non empty) list of transactions | Transaction counter-many transactions
 
-## Block
+### Block
 
 - Mainnet
 - Block Header - Block Height, Previous Block Hash, Size of the Block
 - Transaction Counter - 2
 - Merkle Root - 3irny3oryn@9yr3yr093r
 
-## Transactions
+### Transactions
 
 - Alice sends 1 coin to Bob
 - Bob sends 1 coin to Eve
@@ -216,9 +217,9 @@ in detail -->
                           Tx1   Tx2    Tx3   Tx4
   ```
 
-# Consensus Mechanism
+## Consensus Mechanism
 
-## What is Consensus?
+### What is Consensus?
 
 - Blockchains are decentralized systems which consist of different participants who act depending on incentives they receive and the information that is available to them.
 - When a new transaction gets broadcasted on the network, nodes connected to the network have the option to either include that transaction to their copy of ledger or to ignore it. When the majority of the nodes which comprise the network decide onasingle state, the consensus is achieved.
@@ -232,7 +233,7 @@ Let's consider 2 Generals Problem and understand the consensus better.
   Not Sure  \______________________________________
   ```
 
-## Byzantine Generals Problem
+### Byzantine Generals Problem
 
 - A more generalized version of the Two Generals Problem describesagroup of generals agreeing on the time of the attack. Apart from that, one or more generals can be the traitors, meaning that they can lie about their attack choice (e.g., they say that they agree to attack at9am, but instead they do not attack).
 - To reachaconsensus here, all the generals must agree on the same decision.
@@ -263,7 +264,7 @@ Commander is the Traitor
      \________________________z________________________/ 
   ```
 
-### **Solution**
+### Solution
 
 - Take an example; every Lieutenant take 10 mins to convey orders. In other words, 10 minutes are required for communicatingamessage for an attack. Moreover, the passing of messages is inaway where each message is appended to the last message before sending it to the next Lieutenant.
 - Example:
@@ -283,9 +284,9 @@ Commander is the Traitor
 - Consensus is achieved once of the actors agree on a block.
 - Verification of the Blocks is done by the miners.
 
-------------------------------
+---
 
-## Proof of Work
+### Proof of Work
 
 - Proof of Work is the consensus algorithm where miners compete to solve a difficult mathematical problem based onacryptographic hash algorithm.
 - Some of the problems included with Proof of Work are:
@@ -297,7 +298,7 @@ Commander is the Traitor
 - For example in Bitcoin miners receive 12.5 bitcoins for solving the puzzle.
 - Miners can also receive transaction fees in addition to rewards.
 
-## Proof of Stake
+### Proof of Stake
 
 - Proof-of-Work algorithm rewards miners who solve complex mathematical problems with the end goal of validating transactions and creating new blocks. On the other hand, in the Proof-of-Stake algorithm, the creator of a new block is chosen in a deterministic way, depending on its wealth/stake in the blockchain.
 - No block reward.
@@ -306,7 +307,7 @@ Commander is the Traitor
 - Miners/Validators only collect the transaction fees as per the stake.
 - There is no complex computation involved that's why they are more efficient then proof of work systems
 
-## How a Blockchain Transaction Works?
+### How a Blockchain Transaction Works?
 
 - **Step 1** A user creates a transaction from their wallet, attempting to send currency or data to someone else.
 - **Step 2** The transaction is put across a 'pool of unconfirmed transactions'. This pool is a collection of unconfirmed transactions that are waiting to be processed by the miners.
@@ -315,7 +316,7 @@ Commander is the Traitor
 - **Step 5** The miner that finds a target signature for its block first, broadcasts this block and the signature to all the other miners.
 - **Step 6** Other miners verify the signature If it is valid, the other miners will confirm its validity and agree that the block can be added to the block chain. This process is also termed as consensus.
 
-## Blockchain Projects
+### Blockchain Projects
 
 The Blockchain ecosystem is currently running with some major projects and more are under pipeline. Some of the major projects on Blockchain are:
 
@@ -324,7 +325,7 @@ The Blockchain ecosystem is currently running with some major projects and more 
 - Neo - This project positioned itself as the "Chinese Ethereum" but it bought the Python as the main language for the creation of Applications.
 - Hyperledger Fabric - This is an enterprise graded project which can be easily programmed as per the enterprise needs. This is a modular project which supports multiple consensus algorithms.
 
-## Blockchain Users
+### Blockchain Users
 
 - Blockchain users are normal people like you and me, who make use of the blockchain or cryptocurrency to achieve some results. They can also be investors who buy cryptocurrencies to sell at a later date.
 - For creating a Blockchain user base the technology or cryptocurrency should have some utility related to the problem being tackled.
@@ -332,20 +333,20 @@ The Blockchain ecosystem is currently running with some major projects and more 
 - For Example:
   - Bitcoin serves the major utility of payment for goods and services. Currently there are over 50,000 merchants registered with Bitcoin including-Microsoft, PayPal and Subway. Bitcoin was the first mover in Blockchain and it's high utility as payment system made sure that a large part of its ecosystem is based upon users.
 
-## Blockchain Exchanges
+### Blockchain Exchanges
 
 - Every Blockchain project has a robust ecosystem working under it, and it always include a decentralized exchange. These are developed by the Blockchain team or the community of other developers.
 - A typical exchange is designed to find the cheapest rates of exchange between any two cryptocurrencies, making it more affordable to trade tokens/cryptocurrencies.
 - Exchanges used for trading also might integrate with hardware wallets, or users can create their own wallet on the exchange website.
 
-## Blockchain Verfiers/Miners
+### Blockchain Verfiers/Miners
 
 - To functionablockchain and maintain its integrity, it needsalarge network of independent nodes around the world to maintain it continuously. In private blockchains,a central organisation has the authority over every node on the network. In the case of public blockchains, on the other hand, anyone can set up their computer to act as a node. The owners of these computers are called miners.
 - Since the integrity of the blockchain is directly related to the number of independent nodes on the network, there also needs to be some incentive to mining. Different blockchains utilize different mining systems however most of them contain some form of:
   - An incentive system
   - A consensus algorithm
 
-## Blockchain Developers
+### Blockchain Developers
 
 - Blockchain technology is built by the potential of developers working behind it.Astrong team of developers can lead toasuccessful Blockchain project. Currently there are two types of developers in the blockchain ecosystem:
   1. Blockchain developers
@@ -354,7 +355,7 @@ The Blockchain ecosystem is currently running with some major projects and more 
 - dApp developers work with decentralized applications that can run on blockchains thus providing a similar functionality like Google Play Store over the Blockchain Technology.
 - The development of Smart Contracts over the Blockchain has open possibility for the developers to create extensive applications and use cases for the industries.
 
-## Blockchain Applications
+### Blockchain Applications
 
 Apart from exchanges, platforms and users, another important aspect of the Blockchain
 ecosystem is the applications that industries, developers and communities build to serve a specific purpose.
@@ -365,9 +366,9 @@ There are various examples of Applications being build upon Blockchain, some of 
 - Augur - A peer to peer oracle and prediction market place.
 - Filament - Building the loT applications over the Blockchain.
 
-## Why Industries Need Blockchain ?
+### Why Industries Need Blockchain ?
 
-### **Current Blockchain Implementations**
+### Current Blockchain Implementations
 
 - Pharmaceuticals - DHL worked with Accenture to establishablockchain-based track-and-trace system in six areas worldwide. Currently, the system has 7 billion unique pharmaceutical serial numbers and handling more than 1,500 transactions per second.
 - Fashion - CGS has developedasystem for tracking garments and compliances on raw materials for many apparels and fashion clients.
@@ -376,7 +377,7 @@ There are various examples of Applications being build upon Blockchain, some of 
 - United Nations - United Nations is currently using Blockchain for 16 agencies including Human Trafficking and World Food Program.
 - Jewelry - Brilliant Earth has partnered up with Everledger to use blockchain in tracking and tracing the provenance of diamonds and other gemstones. This will also ensure that they are conflict-free.
 
-## Blockchain Revolution
+### Blockchain Revolution
 
 ```[] font-family="Cascadia Code"
   +--------------------+   +------------------+   +----------------------------+
@@ -388,7 +389,7 @@ There are various examples of Applications being build upon Blockchain, some of 
   +--------------------+   +------------------+   +----------------------------+
   ```
 
-## Exciting Disruptions Coming Soon
+### Exciting Disruptions Coming Soon
 
 - Entertainment Industry - Movie Braid was the first movie to be produced by doing an ICO.
 - Property Rental - Rentberry aims to address the common pitfalls and headaches of the traditional rental model. Politics-Sierra Leone carried out their elections on Blockchain.
@@ -396,7 +397,7 @@ There are various examples of Applications being build upon Blockchain, some of 
 - Digital Advertising - Basic Attention Token is takingacrack to solve the problems with Digital Advertisements.
 - Internet of Things - Walton chain, an award - winning Chinese project that seeks to integrate loT and blockchain technology on an unprecedented scale.
 
-## Industry Challenges for Blockchain Adoption
+### Industry Challenges for Blockchain Adoption
 
 Energy Consumption
 
@@ -427,9 +428,9 @@ Standards and Regulations
 - To tackle this problem, certain countries are trying to launch their regulations over the technology.
 - Mass adoption might also standardize the Blockchain.
 
-# Blockchain Examples
+## Blockchain Examples
 
-## Walmart Food Tracking
+### Walmart Food Tracking
 
 **Challenge**: It can take upto days weeks to track the source for an outbreak of a food-borne disease.
 
@@ -437,7 +438,7 @@ Standards and Regulations
 
 **Approach**: Walmart createdafood traceability system based on Hyperledger Fabric. Walmart, together with IBM, ran two POCS to test the system. First one for tracing mangos sold in Walmart US stores and the other one to trace pork sold in its China stores. The tracing improved from 7 days to 2.2 seconds.
 
-## Honeywell Marketplace
+### Honeywell Marketplace
 
 **Challenge**: To cut purchasing time for aerospace products from days or weeks down to seconds. Also, to connect each physical part to its digital equivalent.
 
@@ -446,7 +447,7 @@ Standards and Regulations
 **Approach**: Honeywell created an online marketplace system based on Hyperledger Fabric.
 Tracking of new and old parts for aircrafts is done with the same. Also, it createdatrust system due to cryptography as most purchases happened using bonds. Any seller can launch his/her own selling system for aircraft parts using Honeywell solution known as Go Direct.
 
-- - -
+---
 
 1. Which best describes an asset that can be stored on a blockchain?
 </br>-> Anything of value to a participant in a business network
