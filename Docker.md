@@ -75,7 +75,8 @@
 - docker run --name {name} -p 8080:80 -dt {base-image}
   </br>Running an image by the name myname on port 80 of container diverted to 8080 of running machine (computer/server).
 
-- docker ps -a
+- docker container ps -a
+  </br>docker ps -a
   </br>Displays all the container that are run
 
 - docker image ls
@@ -220,10 +221,36 @@
   </br>docker container run -dt --link container1:container --name container2 busybox sh
   </br>This is legacy approach in which the container1 is resolved in the environment of container2 which can be detected by ping operation.
 
+- docker service ls
+  </br>Lists all the services
+
+- docker service ps {service name}
+  </br>Information related to the service and the node in which the service is running
+
+- docker service rm {service name}
+  </br>We directly rm the service when not needed
+
+- docker service scale webserver={N}
+  </br>We can specify multiple services in the same command.
+  </br>docker service update --replicas N webserver
+  </br>Tasks will be scaled to N
+
+- docker service create --name webserver --replicas 1 nginx
+  </br>To create a service of websrever with one replica
+
+- docker service create --name antivirus --mode global -dt ubuntu
+  </br>A service of anitvirus is created and run on every node
+
+- docker node update --availability drain swarm2
+  </br>This drains the swarm2 node. All the container are moved from this node making it free for maintenance
+
+- docker node update --availability active swarm2
+  </br>This brings back the node to active state and maintenance
+
 ### Command strings
 
-Abbreviation | Complete string |
--------------|-----------------|
+Abbreviation | Complete string  |
+-------------|------------------|
  -a  | --all
  -p  | --port (publish list)
  -P  |  (publish all)
@@ -391,3 +418,89 @@ always         | Always restart the container if it stops |
 
 - If we want to completely disable the network stack on a container. we can use the none network.
 - This mode will not configure any IP for the container and doesnot have any access to the external network as well as for other containers.
+
+## Container Orchestration
+
+- Container Orchestration is all about managing the life cycles of container, especially large, dynamic environments.
+
+  ```[]
+  +------------+  +------------+ +------------+
+  | Web Server |  | Web Server | |            |
+  |            |  |            | |            |
+  | App Server |  | App Server | |            |
+  +------------+  +------------+ +------------+
+       VM 1            VM 2          VM 3
+  ```
+
+- Importance of Container Orchestration
+  </br>Container Orchestration can be used to perform lots of tasks, some of them includes:
+  
+  - Provisioning and deployment of containers
+  - Scaling up or removing container to spread load evenly
+  - Movement of containers from one host to another if there is a shortage of resources
+  - Load balancing of service discovery between container
+  - Health monitoring of containers and hosts
+
+- There are many container orchestration solutions available, some of the popular once iclude :
+
+  - Docker Swarm
+  - Kubernetes
+  - Apache Mesos
+  - Elastic Container Service (AWS ECS)
+  </br>There are also various container orchestration platforms available like EKS.
+
+### Docker Swarm
+
+- Docker Swarm is a container orchestration tool which is natively supported by Docker.
+- Lab setup:
+  
+  ```[]
+                [ +---------+  +---------+ +---------+  ]
+  Swarm Cluster { | Node 01 |  | Node 02 | | Node 03 |  }
+                [ +---------+  +---------+ +---------+  ]
+  ```
+
+- Initializing Docker Swarm
+
+  - A *node* is an instance of the Docker engine participating in the swarm.
+  - To deploy your application to a swarm, you submit a service definition to a *manager node*.
+  - The manager node dispatches units of work called tasks to *worker nodes*.
+  1. Manager Node Command:
+  </br>docker swarm init -advertise-addr \<MANAGER-IP>
+  2. Worker Nodes Command:
+  </br>docker swarm join-token worker
+
+```[]
+                              task      container
+                            +---|-----------|-----------+
+         service            | nginx 1 ( nginx: latest ) |
+  . . . . .|. . . . .     / +---------------------------+
+  . +------|------+ .   /         available node
+  . |      |      | . /     +---------------------------+
+  . |   3 nginx   | . ----> | nginx 2 ( nginx: latest ) |
+  . |  replicas   | . \     +---------------------------+
+  . +-------------+ .   \          available node
+  .  swarm manager  .     \ +---------------------------+
+  . . . . . . . . . .       | nginx 3 ( nginx: latest ) |
+                            +---------------------------+
+                                  available node
+```
+
+#### Service
+
+- A service is the definition of the tasks to execute on the manager or worker nodes.
+</br>Create service command
+</br>docker service create --name webserver --replicas 1 nginx
+
+- Once we have deployed a service to a swarm, we are ready to use the Docker CLI to scale the number of container in the service.
+- Container running in a service are called "tasks"
+- There are two ways in which we can scale serivce in swarm:
+
+  - docker serivce scale webserver=5
+  - docker service update --replicas 5 webserver
+
+- There are two types of services deployments, replicated and global
+
+  - **Replicated Services :** For a replicated service, we specify the number of identical tasks we want to run. Example : we decide to deploy a NGINX service with two replicas, each serving the same content.
+  - **Global Service :** A global service that runs one task on every node.
+  Each time you add a node to the swarm, the orchestrator creates a task and the scheduler assigns the task to the new node.
