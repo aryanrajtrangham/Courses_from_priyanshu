@@ -294,6 +294,15 @@
 - docker swarm unlock-key --rotate
   </br>Used to rotate the key
 
+- docker service create --name myservice  --mount type=colume,source=myvolume,target=/mypath nginx
+  </br>Creates volumes in one of the swarm server
+
+- docker service create --name myconstraint --constraint node.labels.region==blr replicas 3 nginx
+  </br>It will create service based constraints which in name labels region of 'Bangalore' and replicas of 3.
+
+- docker node update --label-add region=mumbai {name}/{id}
+  </br>To add label to a specific node
+
 ### Command strings
 
 Abbreviation | Complete string  |
@@ -466,6 +475,11 @@ always         | Always restart the container if it stops |
 - If we want to completely disable the network stack on a container. we can use the none network.
 - This mode will not configure any IP for the container and doesnot have any access to the external network as well as for other containers.
 
+### Overlay Network
+
+- The overlay network driver creates a distributed network among multiple Docker daemon hosts.
+- Allows container connected toit to communicate securely.
+
 ## Container Orchestration
 
 - Container Orchestration is all about managing the life cycles of container, especially large, dynamic environments.
@@ -571,15 +585,14 @@ always         | Always restart the container if it stops |
     - docker-compose.yml
 
   ```[]
-  - docker-compose.yml
-    services:
-      webserver:
-        image: nginx
-        ports:
-          - "8080:80"
-      database:
-        image: redis
-    version: '3.0'
+  services:
+    webserver:
+      image: nginx
+      ports:
+        - "8080:80"
+    database:
+      image: redis
+  version: '3.0'
   ```
 
 #### Multi-Service Apps
@@ -603,3 +616,21 @@ always         | Always restart the container if it stops |
   </br>/var/lib/docker/swarm/certificates
 - Getting swarm-key
   </br>cat swarm-node.key
+
+#### Service deployment
+
+- A service may be configured in such a way that no node currently in the swarm can run its tasks.
+- In this case, the service remains in state pending
+- There are multiple reason why a service might go into pending state.
+- Examples :
+  - If all nodes are drained, and we create a service, it's pending until a node becomes available.
+  - We can reserve a certain amount of memory for a service. If no node in the swarm has the required amount of memmory, the service remains in a panding state until a node is available which can run its tasks.
+  - We have imposed a certain kind of placement constraints.
+
+#### Control service Placement
+
+- Swarm services provide a few different ways for us to control scale and placement of services on different nodes.
+  - Replicated and Global Service
+  - Resource Constraints [requirement of CPU and Memory]
+  - Placement Constraints [only run on nodes with label pci_compliance=true]
+  - Placment Preferences
