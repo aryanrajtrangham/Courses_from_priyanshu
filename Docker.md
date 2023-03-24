@@ -205,7 +205,7 @@
   </br>docker build -t with-cache .
   </br>Build docker with cache this fastens the process of image making from Dockerfile
 
-- docker networking ls
+- docker network ls
   </br>Shows available network drivers available
 
 - docker network inspect {network}
@@ -216,6 +216,9 @@
 
 - docker network create --driver bridge mybridge
  </br>Creates a new bridge network
+
+- docker network create --opt encrypted --driver overlay {my-secure-network}
+  </br>To secure an overlay network we use --opt encrypted flag
 
 - docker container run -dt --name container1 busybox sh
   </br>docker container run -dt --link container1:container --name container2 busybox sh
@@ -302,6 +305,12 @@
 
 - docker node update --label-add region=mumbai {name}/{id}
   </br>To add label to a specific node
+
+- docker service create --name myoverlay --network --replicas 3 nginx
+  </br>When we define network with service it gets propageted to other nodes as well.
+
+- docker service create-name demoservice --hostname="{{.Node.Hostname}}-{{.Service.Name}}" nginx
+  </br>We use placeholder template by two curly braces.
 
 ### Command strings
 
@@ -479,6 +488,9 @@ always         | Always restart the container if it stops |
 
 - The overlay network driver creates a distributed network among multiple Docker daemon hosts.
 - Allows container connected toit to communicate securely.
+- For overlay networks, the container can be spreaded across multiple servers
+- If the container are communicating with each other, it is recommanded to secure communication.
+- To enable encryption, when we create an overlay netkork, we pass the --opt encrypted flag
 
 ## Container Orchestration
 
@@ -634,3 +646,32 @@ always         | Always restart the container if it stops |
   - Resource Constraints [requirement of CPU and Memory]
   - Placement Constraints [only run on nodes with label pci_compliance=true]
   - Placment Preferences
+
+#### Custom overlay network for swarm
+
+- We secure the networks using --opt encrypted flag in the create command used to create service.
+- When we enable overlay encryption, Docker creates IPSEC tunnels between all the nodes where tasks are scheduled for services attached to the overlay network.
+- These tunnels also use the AES algorithm in GCM mode and manager nodes automatically rotate the keys every 12 hours.
+Overlay network encrytion is not supported on Windows. If a windows node attempts to connect to an encrypted overlay network, no error is detected but the node will not be able to communicate.
+
+#### Creating Services using Template
+
+- We can make use of templates while running the service create command in swarm
+- Example: docker service create-name demoservice --hostname="{{.Node.Hostname}}-{{.Service.Name}}" nginx
+- There are three supported flags for the placeholder templates:
+  - --hostname
+  - --mount
+  - --env
+
+- Valid Placeholders
+  Placeholder      | Description
+  -----------------|--------------
+  .Service.ID      | Service ID
+  .Service.Name    | Service name
+  .Service.Labels  | Service labels
+  .Node.ID         | Node ID
+  .Node.Hostname   | Node Hostname
+  .Task.ID         | Task ID
+  .Task.Name       | Task name
+  .Task.Slot       | Task slot
+
