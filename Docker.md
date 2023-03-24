@@ -241,18 +241,65 @@
 - docker service create --name antivirus --mode global -dt ubuntu
   </br>A service of anitvirus is created and run on every node
 
+- docker service inspect {servie name}/{id}
+ </br>Procides detail about the service
+ </br>docker service inspect {service name}/{id} --pretty
+ </br>Provides readable output for the services
+
+- docker service create --name mywebserver --replicas 2 --publish 8080:80 nginx
+  </br>Service is created with name mywebserver replicas of 2 and published on port 8080 of host from 80 of container on the image of nginx.
+
+- docker node ls
+  </br>Shows all the nodes
+
 - docker node update --availability drain swarm2
   </br>This drains the swarm2 node. All the container are moved from this node making it free for maintenance
 
 - docker node update --availability active swarm2
   </br>This brings back the node to active state and maintenance
 
+- docker node inspect {name}/{id}
+  </br>Provide detail about the node
+  </br>docker node inspect {name}/{id} --pretty
+  </br>Provides readable output for the node
+
+- docker compose up -d
+  </br>We can start all the services with single command in detached mode
+  </br>docker-compose down
+  </br>We can stop all the services with single cammand
+
+- docker compose config
+  </br>Shows if the format of the docker-compose yml file is correct
+
+- docker stack deploy --compose-file docker-compose.yml mydemo
+  </br>To deploy the services which are a part of docker services in yml file across swarm cluster
+
+- docker stack ps {name of the container}
+  </br>Provides information regarding services in swarm.
+
+- docker stack rm mydemo
+  </br>Container which are part of stack will be removed.
+
+- docker swarm update --autolock=true
+  </br>To turn on lock on swarm
+  </br>A new password will be generated which will be required to unlock the swarm
+
+- systemctl restart docker
+  </br>We need to restart docker for lock to take effect.
+  </br>This command varies from system to system
+
+- docker swarm unlock
+  </br>Requires key generated in last step
+
+- docker swarm unlock-key --rotate
+  </br>Used to rotate the key
+
 ### Command strings
 
 Abbreviation | Complete string  |
 -------------|------------------|
  -a  | --all
- -p  | --port (publish list)
+ -p  | --port / --publish
  -P  |  (publish all)
  -d  | --detached
  -a  | --attached
@@ -434,7 +481,6 @@ always         | Always restart the container if it stops |
 
 - Importance of Container Orchestration
   </br>Container Orchestration can be used to perform lots of tasks, some of them includes:
-  
   - Provisioning and deployment of containers
   - Scaling up or removing container to spread load evenly
   - Movement of containers from one host to another if there is a shortage of resources
@@ -442,7 +488,6 @@ always         | Always restart the container if it stops |
   - Health monitoring of containers and hosts
 
 - There are many container orchestration solutions available, some of the popular once iclude :
-
   - Docker Swarm
   - Kubernetes
   - Apache Mesos
@@ -461,7 +506,6 @@ always         | Always restart the container if it stops |
   ```
 
 - Initializing Docker Swarm
-
   - A *node* is an instance of the Docker engine participating in the swarm.
   - To deploy your application to a swarm, you submit a service definition to a *manager node*.
   - The manager node dispatches units of work called tasks to *worker nodes*.
@@ -495,7 +539,6 @@ always         | Always restart the container if it stops |
 - Once we have deployed a service to a swarm, we are ready to use the Docker CLI to scale the number of container in the service.
 - Container running in a service are called "tasks"
 - There are two ways in which we can scale serivce in swarm:
-
   - docker serivce scale webserver=5
   - docker service update --replicas 5 webserver
 
@@ -504,3 +547,59 @@ always         | Always restart the container if it stops |
   - **Replicated Services :** For a replicated service, we specify the number of identical tasks we want to run. Example : we decide to deploy a NGINX service with two replicas, each serving the same content.
   - **Global Service :** A global service that runs one task on every node.
   Each time you add a node to the swarm, the orchestrator creates a task and the scheduler assigns the task to the new node.
+
+#### Docker Inspect
+
+- Docker Inspect provides detailed information of the Docker Objects.
+  </br>Some of these Docker Object includes:
+  - Docker Container
+  - Docker Network
+  - Docker Volumes
+  - Docker Swarm Services
+  - Docker Swarm Nodes
+
+#### Docker Compose
+
+- Compose is a tool for defining and running multi-container Docker applications.
+- With compose, we can use a YAML file to configure application services.
+- We can start all the sevices with single command.
+  - docker-compose up
+- We can stop all the services with single cammand.
+  - docker-compose down
+- Sample content of Docker compose directory
+  - Directory
+    - docker-compose.yml
+
+  ```[]
+  - docker-compose.yml
+    services:
+      webserver:
+        image: nginx
+        ports:
+          - "8080:80"
+      database:
+        image: redis
+    version: '3.0'
+  ```
+
+#### Multi-Service Apps
+
+- A specific web-application might have multiple containers that are require as part of the build process.
+- Whenever we make use of docker service, it is typically for a single container image.
+- The docker stack can be used to manage a muilti-service application.
+- **Docker Stack**
+  - A stack is a group of interrelated services that share dependencies, and can be orchestrated and scaled together.
+  - A stack can compose **YAML** file like one we define in Docker Compose.
+  - We can define everything within the YAML file that we might define while creating a Docker Service.
+
+#### Locking Swarm Cluster
+
+- Swarm Cluster contains lot of sensitive information, which includes :
+  - TLS key used to encrypt communication among swarm node.
+  - Krys used to encrypt and decrypt the Raft logs on disk
+- If our Swarm is compromised and if data is stored in plain-text, an attack can get all the sensitive information
+- Docker Lock allows us to have control over the keys.
+- Location of swarm certificate
+  </br>/var/lib/docker/swarm/certificates
+- Getting swarm-key
+  </br>cat swarm-node.key
