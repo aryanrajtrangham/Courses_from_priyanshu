@@ -122,6 +122,12 @@
 - docker container run -d {container-name} {command}
   </br>Used to *Overide* default container command
 
+- docker system events
+  </br>To get event from the docker container.
+  </br>docker system events --since {date}
+  </br>To get events from this particular date
+  </br>docker system events --since 2022-02-03
+
 - docker system df
   </br>Gives space of each images, containers, local volume & cache
 
@@ -290,6 +296,15 @@
 - systemctl restart docker
   </br>We need to restart docker for lock to take effect.
   </br>This command varies from system to system
+
+- docker swarm init
+  </br>To initialise swarm with the node acting as manager.
+
+- docker swarm init --advertise-addr {ip}
+ </br>To add other nodes to the client given.
+
+- docker swarm join-token manager
+  </br>To add a manger node to this swarm node we get the command using this command.
 
 - docker swarm unlock
   </br>Requires key generated in last step
@@ -675,3 +690,30 @@ Overlay network encrytion is not supported on Windows. If a windows node attempt
   .Task.Name       | Task name
   .Task.Slot       | Task slot
 
+#### Split Brain
+
+- Split-brain is the idea that a cluster can have communication failures, which can cause it to split into subclusters. Fencing is the way of ensuring that one can safely proceed in these cases, and quorum is the idea of determining which subcluster can fence the others and proceed to recover the cluster services.
+
+#### Importance of Quorum
+
+- We should maintain an odd number of nodes within the cluster.
+  Cluster Size | Majority | Fault Tolerance
+    1          |  0       |   0
+    2          |  2       |   0
+    3          |  2       |   1
+    4          |  3       |   1
+    5          |  3       |   2
+    6          |  4       |   2
+    7          |  4       |   3
+
+#### High availability of swarm manager nodes
+
+- Manager Nodes are responsible for handling tasks such as :
+  - maintaining cluster state
+  - Scheduling services
+  - Serving swarm node HTTP API endpoints
+
+- Using a Raft implementation, the managers maintain a consistent internal state of the entire swarm and all the services running on it.
+- Swarm comes with it's own fault tolerance features.
+- Docker recommends implement an odd number of nodes according to organisation's high-availability requirements.
+- An N manager cluster tolerates the loss of at most (N-1)/2 managers.
