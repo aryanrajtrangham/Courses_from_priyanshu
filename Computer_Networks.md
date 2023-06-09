@@ -87,5 +87,3 @@
     - Message size
     - Message delivery options
   - These are also known as elements of protocol
-  
-  
