@@ -87,3 +87,75 @@
     - Message size
     - Message delivery options
   - These are also known as elements of protocol
+  - Message encoding
+
+    ```[]
+      Message ==> Encoder  ==> Transmitter ==> Transmitter ==> Receiver ==> Decoder  ==> Message
+      Source      (Signal)                      Medium                      (Signal)    Destination
+    ```
+
+  - Message formatting and encapsultion
+    - Agreed format
+      - Encapsulation the information to identify the sender and the receiver rightly.
+  - Message size
+    - Humans break long messages into smaller parts or sentences.
+    - Long messages must also be broken into smaller pieces to travel across a network.
+  - Message Timing
+    - Flow control
+    - Response Timeout
+  - Message delivery options
+    - Unicast
+    - Multicast
+    - Broadcast
+
+- Types of computer network
+  - Peer-to-peer Network
+    - No Centralized administration
+    - All peers are equal
+    - Simple sharing appications
+    - Not scalable
+  - Client Server Network (request-response model)
+    - Centralized administration
+    - Request-Response model
+    - Scalable
+    - Server may be overloaded
+
+- Components of a computer network
+  - Nodes
+    - End nodes (End devices)
+      - Computer
+      - Network Printers
+      - VoIP Phones
+      - Telepresence endpoint
+      - Security cemeras
+      - Mobile handheld devices (Smart phones, tablets, PDAs, Wireless debit/credit card reader, barcode scanner)
+    - Intermediary nodes (intermediary devices)
+      - Switches
+      - Wireless acess Point
+      - Routers
+      - Security Devices (Firewall)
+      - Bridges
+      - Hubs
+      - Repeaters
+      - Cell Tower
+  - Media
+    - Wired medium (Guided medium)
+      - Ethernet straight-through cable (connects two devices of different kind)
+      - Ethernet crossover cable (connects two devices of same kind)
+      - Fiber optic cable
+      - Coaxial cable
+      - USB cable (Universal serial bus)
+    - Wireless medium (unguided medium)
+      - Infrared (Ex: short range communication - TV remote control)
+      - Radio (Ex: Bluetooth, Wi-Fi)
+      - Microwaves (Ex: Callular System)
+      - Satellite (Ex: long long communication - GPS)
+  - Services
+    - e-mail
+    - storage services
+    - file sharing
+    - instant messaging
+    - online game
+    - VOIP (voice over IP)
+    - video telephone
+    - www (world wide web)
