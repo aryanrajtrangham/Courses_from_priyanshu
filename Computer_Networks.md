@@ -299,3 +299,44 @@ Example : 10.10.23.56 | Example : 70-20-84-00-FD-FC
     - Attach source MAC address and destination MAC address.
     - Attach source port number and destination port number.
 
+### Switching Techniques
+
+- Swithching in computer network helps i deciding the best route for data transmission if there are multiple path in a larger network
+- One-to-One connection.
+- Switching Techniques
+  - Circuit Switching
+    - A dedicated path is established between the sender and receiver.
+    - Before data transfer, connection will be established
+    - Example: Telephone network
+    - 3 phase in circuit switching
+      - Connection establishment
+      - Data transfer
+      - Connection disconnection
+
+  - Message Switching
+    - Store and forward mechanism
+    - Message is transferred as a complete unit and forwarded using store and forward mechanism at the intermediary node.
+    - Not suited for streaming media and real-time applications.
+
+  - Packet Switching
+    - The internet is a packet switchd network.
+    - Message is broken into individual chunks called as *packets*
+    - Each packet is sent individually.
+    - Each packet will have *source and destination IP address* with sequence number.
+    - Sequence numbers help the receiver to -
+      - Reorder the packets
+      - Detect missing packets and
+      - Send acknowledgments
+    - Two approaches to packet switching
+      - Datagram Approach
+        - Datagram Packet Switching is also known as *connectionless switching*.
+        - Each independent entity is called as datagram
+        - Datagrams contain destination information and the intermediary device uses this information to forward datagrams to right destination.
+        - In datagram Packet Switching aproach, the path is not fixed.
+        - Intermediate nodes take the routing decisions to forward the packets
+      - Virtual Circuit Approach
+        - Virtual Circuit Switching is also known as *connection-oriented switching*.
+        - In the case of Virtual circuit switching, a preplanned route is established before the messages are sent.
+        - Call request and call accept packets are used to establish the connection between sender and receiver.
+        - In this approach, the path is fixed for duration of a logical connection.
+  
