@@ -252,3 +252,29 @@
   - Assigned by manually or dynamically.
   - Represented in decimal and it has 4 octets (x.x.x.x).
   - 0.0.0.0 to 255.255.255.255 (32 bits).
+
+### Basics of MAC addressing
+
+- MAC stands for Media Access Control.
+- MAC address = Physical address
+- Every node in the LAN is identified with the help of MAC address.
+- IP Address = Location of a person
+- MAC Address = Name of the person
+
+- MAC Address
+  - Every node in the LAN is identified with the help of MAC address
+  - Physical address or Hardware Address
+  - Unique, cannot be cahnged
+  - Assigned by the manufacturer
+  - Represented in haxadecimal
+  - Example: 70-20-84-00-ED-FC (48 bits)
+  - Seperator: hyphen(-), period(.) and colon(:)
+
+IP address | MAC Address |
+-----------|-------------
+Needed for communication. | Needed for communication.
+32 bits | 48 bits
+Represented in decimal. | Represented in hexadecimal.
+Router needs IP Address to forward data | Switch needs MAC address to forward data.
+Example : 10.10.23.56 | Example : 70-20-84-00-FD-FC
+
