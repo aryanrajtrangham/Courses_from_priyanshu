@@ -188,4 +188,67 @@
   - It is the on-demand availability of computer system resources, especially data storage and computing power, without direct active management by the user.
   - Google drive
   - Azure storage service
-  
+
+### Network Topology
+
+- Arrangement of nodes of a computer network.
+- Topology = Layout
+  - Physical Topology - Placement of various nodes.
+  - Logical Topology - Deals with the data flow in the network
+
+- Bus topology
+  - All data transmitted between nodes in the network is transmitted over this *common transmission medium* and is able to be received by all nodes in the network simultaneously.
+  - A signal containing the address of the intended receiving machine travels from a source machine in *both direction* to all machines connected to the bus until it finds the intended recipient.
+  - Advantages |  Disadvantages
+    -----------|-----------------
+    Only one wire - less expensive | Not fault tolerant (No redundancy)
+    Suited for temporary network   | Limited cable length
+    Node failure does not affect other | No security
+
+- Ring topology (Token ring topology)
+  - A ring topology is a bus topology in a closed loop.
+  - Peer-to-peer LAN topology
+  - Two connections: one to each of its nearest neighbors
+  - Unidirectional
+  - Sending and receiving data takes place with the help of a *TOKEN*.
+  - Advantages |  Disadvantages
+    -----------|-----------------
+    Performance better than Bus topology | Unidirectional. Single point of failure will affect the whole network
+     _ | More load decreases the performance
+     _ | Can cause bottleneck due to weak links
+    All nodes with equal access | No security
+
+- Star topology
+  - Every node is connected to a central node callled a hub or switch
+  - Centralized Management
+  - All traffic must pass through the hub or switch
+  - Advantages | Disadvantages
+    -----------|----------------
+    Easy to design and implement. | Single point of failure affects the whole network.
+    Centralized administration. | Bottleneck due to overloaded switch/Hub.
+    Scalable. | Increased cost due to switch/hub.
+  - Two star topologies can be connected by a repeater.
+
+- Mesh topology
+  - Each node is directly connected to every other nodes in the network
+  - Fault tolerant and reliable.
+  - Advantages | Disadvantages
+    -----------|----------------
+    Fault tolerant. | Issues with braodcasting messages
+    Reliable | Expensive and impractical for large networks
+
+- Hybrid topology
+  - It contains one or more topologies
+
+### Basic of IP addressing
+
+- IP Adressing
+  - IP stands for Internet Protocol.
+  - Every node in the computer network is identified with the help of IP address.
+
+- IP Address (IPV4)
+  - Every node in the computer network is identified with the help of IP address.
+  - Logical address: We can change based on the location of the device.
+  - Assigned by manually or dynamically.
+  - Represented in decimal and it has 4 octets (x.x.x.x).
+  - 0.0.0.0 to 255.255.255.255 (32 bits).
