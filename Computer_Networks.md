@@ -128,7 +128,7 @@
       - VoIP Phones
       - Telepresence endpoint
       - Security cemeras
-      - Mobile handheld devices (Smart phones, tablets, PDAs, Wireless debit/credit card reader, barcode scanner)
+      - Mobile handheld devices (Smart phones, tablets, Personal Digital Assistances, Wireless debit/credit card reader, barcode scanner)
     - Intermediary nodes (intermediary devices)
       - Switches
       - Wireless acess Point
@@ -149,7 +149,7 @@
       - Infrared (Ex: short range communication - TV remote control)
       - Radio (Ex: Bluetooth, Wi-Fi)
       - Microwaves (Ex: Callular System)
-      - Satellite (Ex: long long communication - GPS)
+      - Satellite (Ex: long range communication - GPS)
   - Services
     - e-mail
     - storage services
@@ -159,3 +159,33 @@
     - VOIP (voice over IP)
     - video telephone
     - www (world wide web)
+
+### Classification of Computer Network
+
+- Local Area Network (LAN)
+  - A local Area network (LAN) is a computer network that interconnects computer within a limited area such as a residence, school, laboratory, university campus or office building.
+  - LAN devices :
+    - Wired LAN (Ex: Ethernet- Hub, Switch)
+    - Wireless LAN (Ex: Wi-Fi)
+
+- Metropolitan Area network (MAN)
+  - A metropolitan area network is a computer network that interconnects users with computer resources in a geographic region of the size of a metropolitan area (City).
+  - MAN devices :
+    - Swithces/Hub
+    - Router/Bridges
+
+- Wide Area Network (WAN)
+  - A wide area network (WAN) is a telecomunications network that extends over a large geographical area for the primary purpose of computer networking.
+  - WAN devices :
+    - End devices and intermediary devices
+
+- New Trends
+  - Bring your own device (BYOD)
+  - Online collaboration
+  - Cloud computing
+
+- Storage Area network (SAN)
+  - It is the on-demand availability of computer system resources, especially data storage and computing power, without direct active management by the user.
+  - Google drive
+  - Azure storage service
+  
