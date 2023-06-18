@@ -278,3 +278,24 @@ Represented in decimal. | Represented in hexadecimal.
 Router needs IP Address to forward data | Switch needs MAC address to forward data.
 Example : 10.10.23.56 | Example : 70-20-84-00-FD-FC
 
+### Basics of Port addressing
+
+- Derivations from analogy
+  - Reaching our city = Reaching our network (IP address)
+  - Reaching our Apartment = Reaching the host (MAC address)
+  - Reaching the right person = Reaching the right process (Port address)
+
+- Port Address or Port Numbers
+  - In a node, many processes will be running
+  - Data which are sent/received must reach the right process
+  - Every process in a node is uniquely identified using port numbers
+  - Port = Communication endpoint
+  - Fixed port numbers and dynamic port numbers (0 - 65535)
+  - Example :
+    - Fixed port numbers: 25, 80 etc.
+    - OS assigned dynamic port numbers: 62414.
+  - Three key points : Before sending the data , any node must
+    - Attach source IP address and destination IP address.
+    - Attach source MAC address and destination MAC address.
+    - Attach source port number and destination port number.
+
