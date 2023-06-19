@@ -8,6 +8,8 @@
 
 - [Computer Architecture](https://github.com/singhpriansh/Courses/blob/main/Computer_Architecture.md)
 
+- [Computer Networks](https://github.com/singhpriansh/Courses/blob/main/Computer_Networks.md)
+
 - [Docker](https://github.com/singhpriansh/Courses/blob/main/Docker.md)
 
 - [E-Commerce](https://github.com/singhpriansh/Courses/blob/main/E-commerce.md)

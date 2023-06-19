@@ -339,4 +339,31 @@ Example : 10.10.23.56 | Example : 70-20-84-00-FD-FC
         - In the case of Virtual circuit switching, a preplanned route is established before the messages are sent.
         - Call request and call accept packets are used to establish the connection between sender and receiver.
         - In this approach, the path is fixed for duration of a logical connection.
-  
+
+### Layering in Computer Networks
+
+- Layering
+  - Layering means decomposing the problem into more manageable components (layers).
+  - Advantages :
+    - It provides more modular design.
+    - Easy to troubleshoot.
+
+- Protocols
+  - It is a set of rules that govern data communication.
+  - The *protocols* in each layer governs the activities of the data communication.
+
+- Layered Architectures
+  - The OSI reference model
+    - OSI = Open System Interconnection
+    - It is a model for understanding and designing a network architecture that is flexible, robust and interoperable
+    - Developed by the International Standards Organization (ISO)
+    - The OSI model is not a *protocol*.
+    - It is only a guideline and hence it is refererred as OSI reference model.
+    - The purpose of OSI model is to show how to facilitate communication between different systems without requiring changes to the logic of underlying hardware and software.
+    - The OSI model was never fully implemented. (It's just a guidline)
+
+  - The TCP/IP model
+    - TCP/IP = Transmission Control Protocol/Internet Protocol.
+    - The TCP/IP protocol suite was developed prior to the OSI model.
+    - Therefore, the layers in the TCP/IP protocol suite do not exactly match those in the OSI model.
+    - *TCP/IP is a hierarchical protocol* made up of interactive modules, each of which provides a specific functionality.
