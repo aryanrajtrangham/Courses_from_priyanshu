@@ -367,3 +367,26 @@ Example : 10.10.23.56 | Example : 70-20-84-00-FD-FC
     - The TCP/IP protocol suite was developed prior to the OSI model.
     - Therefore, the layers in the TCP/IP protocol suite do not exactly match those in the OSI model.
     - *TCP/IP is a hierarchical protocol* made up of interactive modules, each of which provides a specific functionality.
+
+### The OSI Reference Model
+
+- Layers
+
+  - ```[]
+     Shortcut            Layers
+    +------------+ +---------------------+
+    | Away       | | Application Layer   |
+    +------------+ +---------------------+
+    | Pizza      | | Presentation Layer  |
+    +------------+ +---------------------+
+    | Sausage    | | Session Layer       |
+    +------------+ +---------------------+
+    | Throw      | | Transport Layer     |
+    +------------+ +---------------------+
+    | Not        | | Network Layer       |
+    +------------+ +---------------------+
+    | Do         | | Data Link Layer     |
+    +------------+ +---------------------+
+    | Please     | | Physical Layer      |
+    +------------+ +---------------------+
+    ```
