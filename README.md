@@ -16,4 +16,4 @@
 
 - [Rasa](https://github.com/singhpriansh/Courses/blob/main/Rasa.md)
 
-- by Priyanshu (singhpriansh)
+by Priyanshu Kumar (singhpriansh)

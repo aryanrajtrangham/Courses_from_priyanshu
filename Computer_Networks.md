@@ -390,3 +390,29 @@ Example : 10.10.23.56 | Example : 70-20-84-00-FD-FC
     | Please     | | Physical Layer      |
     +------------+ +---------------------+
   ```
+
+- Physical comunication
+
+  ```[]
+        Device A             intermediate node    intermediate node         Device B
+          [ ]                    (x)                  (x)                     [ ]
+          ===                     |                    |                      ===
+           +----------------------+--------------------+------------------------+
+    +-----------------+      Peer to peer protocol (7th layer)          +-----------------+
+    7  Application    |<----------------------------------------------->|  Application    7
+    +--7-6 interface--+      Peer to peer protocol (6th layer)          +--7-6 interface--+
+    6  Presentation   |<----------------------------------------------->|  Presentation   6
+    +--6-5 interface--+      Peer to peer protocol (5th layer)          +--6-5 interface--+
+    5  Session        |<----------------------------------------------->|  Session        5
+    +--5-4 interface--+      Peer to peer protocol (4th layer)          +--5-4 interface--+
+    4  Transport      |<----------------------------------------------->|  Transport      4
+    +--4-3 interface--+  3rd  +------------+  3rd  +------------+  3rd  +--4-3 interface--+
+    3  Network        |<----->|  Network   |<----->|  Network   |<----->|  Network        3
+    +--3-2 interface--+  2nd  +------------+  2nd  +------------+  2nd  +--3-2 interface--+
+    2  Data Link      |<----->|  Data Link |<----->|  Data Link |<----->|  Data Link      2
+    +--2-1 interface--+  1st  +------------+  1st  +------------+  1st  +--2-1 interface--+
+    1  Physical       |<----->|  Physical  |<----->|  Physical  |<----->|  Physical       1
+    +--------+--------+       +-----+------+       +-----+------+       +---------+-------+
+             +----------------------+--------------------+------------------------+
+
+  ```
