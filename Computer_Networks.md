@@ -434,5 +434,41 @@ Example : 10.10.23.56 | Example : 70-20-84-00-FD-FC
 - Session Layer
   - It establishes, maintains and synchronizes the interaction among communication devices
   - Services provided by Session Layer
-    - Dialog control (determine simplex or duplex)
+    - Dialog control (determine one-way or multi-way)
     - Synchronization (fault tolerant)
+
+- Transport Layer
+  - It is responsible for process to process delivery of the entire message.
+  - Services provided by Transport Layer
+    - Port addressing
+    - Segmentation and Reassembly
+    - Connection Control (Connection-orient or conectionless-service)
+    - End-to-End Flow Control
+    - Error Control
+
+- Network Layer
+  - It is responsible for delivery of data from the original source to the destination network.
+  - Services provided by Network Layer
+    - Logical addressing (IP addresssing)
+    - Routing
+
+- Data Link Layer
+  - It is responsible for moving data (frames) from one node to another node.
+  - Services provided by Data Link Layer
+    - Framing
+    - Physical Addressing
+    - Flow Control
+    - Error Control
+    - Access Control
+
+- Physical Layer
+  - It is responsible for transmitting bits over a medium.
+  - It also provides electrical and mechanical specifications.
+  - Services provided by Physical Layer
+    - Physical characteristics of the media
+    - Representation of bits
+    - Data rate
+    - Synchronization of bits
+    - Line configuration
+    - Physical topology
+    - Transmition mode (determine simplex or duplex)
