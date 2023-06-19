@@ -472,3 +472,12 @@ Example : 10.10.23.56 | Example : 70-20-84-00-FD-FC
     - Line configuration
     - Physical topology
     - Transmition mode (determine simplex or duplex)
+
+- Service offered ny each layer
+  - Application Layer = FTAM, Mail Services & Directory Service
+  - Presentation Layer = Translation, Encryption & Compression
+  - Session Layer = Dialog Control & Synchronization
+  - Transport Layer = Port addressing ,Segmentation & Reassembly, Connection Control, Flow control & Error Control.
+  - Network Layer = Logical Addressing and Routing
+  - Data Link Layer = Framiong, Physical Addressing, Flow Control, Error Control & Access Control
+  - Physical Layer = Physical characteristic of the media, Representation of bits, Data rate, Synchronization of bits, Line configuration, Physical topology & Transmission mode.
