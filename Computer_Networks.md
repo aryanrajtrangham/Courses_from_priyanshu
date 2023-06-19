@@ -416,3 +416,23 @@ Example : 10.10.23.56 | Example : 70-20-84-00-FD-FC
              +----------------------+--------------------+------------------------+
 
   ```
+
+- Application Layer
+  - It enables the user to access the network resources.
+  - Services provided by Application Layer
+    - File Transfer and Access Management (FTAM).
+    - Mail Services
+    - Directory services
+
+- Presentation Layer
+  - It is concerned with the syntax and semantics of the information exchanged between two systems.
+  - Services provided by Presentation Layer
+    - Translation (Converting data into common format)
+    - Encryption
+    - Compression
+
+- Session Layer
+  - It establishes, maintains and synchronizes the interaction among communication devices
+  - Services provided by Session Layer
+    - Dialog control (determine simplex or duplex)
+    - Synchronization (fault tolerant)
