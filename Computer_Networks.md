@@ -481,3 +481,42 @@ Example : 10.10.23.56 | Example : 70-20-84-00-FD-FC
   - Network Layer = Logical Addressing and Routing
   - Data Link Layer = Framiong, Physical Addressing, Flow Control, Error Control & Access Control
   - Physical Layer = Physical characteristic of the media, Representation of bits, Data rate, Synchronization of bits, Line configuration, Physical topology & Transmission mode.
+
+### Addressing in Networking
+
+- IP Addressing and MAC Addressing :
+  - Nodes put routers ip address and forward the packets
+  - Router search with the help of mac address and then forward the packets
+    - to destination node
+    - by changing ip address to different routers
+
+### The TCP/IP Protocol Suite
+
+- Layers
+
+  ```[]
+      OSI Reference model      vs         TCP/IP model
+    +---------------------+             +---------------------+
+    | Application Layer   |  HTTP, DNS  |                     |
+    +---------------------+  DHCP, FTP  |  Application Layer  |
+    | Presentation Layer  |             |                     |
+    +---------------------+             |                     |
+    | Session Layer       |             |                     |
+    +---------------------+             +---------------------+
+    | Transport Layer     |  TCP, UDP   |  Transport Layer    |
+    +---------------------+             +---------------------+
+    | Network Layer       | IP, ICMPv6  |  Internet           |
+    +---------------------+             +---------------------+
+    | Data Link Layer     |  PPP,       |                     |
+    +---------------------+ Frame Relay |  Network Access     |
+    | Physical Layer      |  Ethernet   |       Layer         |
+    +---------------------+             +---------------------+
+  ```
+
+- Protocol Data Unit (PDU)
+  - Protocol Data Units (PDUs) are named according to the protocols of the TCP/IP suite: data, segment, packet, frame and bits.
+    - Application Layer - Data
+    - Transport Layer - Segment
+    - Network Layer - Packet
+    - Data Link Layer - Frame
+    - Physical Layer - Bit
