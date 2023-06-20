@@ -395,7 +395,7 @@ Example : 10.10.23.56 | Example : 70-20-84-00-FD-FC
 
   ```[]
         Device A             intermediate node    intermediate node         Device B
-          [ ]                    (x)                  (x)                     [ ]
+          [_]                    (x)                  (x)                     [_]
           ===                     |                    |                      ===
            +----------------------+--------------------+------------------------+
     +-----------------+      Peer to peer protocol (7th layer)          +-----------------+
@@ -520,3 +520,31 @@ Example : 10.10.23.56 | Example : 70-20-84-00-FD-FC
     - Network Layer - Packet
     - Data Link Layer - Frame
     - Physical Layer - Bit
+
+### Basic Networking Commands
+
+- ipconfig
+- ipconfig/all
+- nsloookup
+- ping
+- tracert
+
+### Basics of Cisco Packet Tracer
+
+- Cisco - The leader in networking
+- An innovative and powerful networking simulation tool used for practice, discovery and troubleshooting.
+- Helps understand networks practically.
+- Hub a.k.a Network hub
+  - Hub works at the physical layer of the OSI model.
+  - Used to set uo LAN
+  - Has multiple ports
+  - Star topology
+  - When a packet arrives at one port, it's copied to the other ports so that all segments of the LAN can see all packets.
+  - Pros
+    - Cheaper than switches.
+    - Works good for smaller network.
+  - Cons
+    - Issues with broadcast
+    - No memory
+    - Narmally runs in half duplex mode.
+  
