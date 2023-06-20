@@ -585,3 +585,29 @@ LAN                      | LAN,MAN & WAN
   - It operated at the physical layer.
   - They do not amplify the signal.
   - It is a 2 port device.
+
+### Basics of Bridge
+
+- Bridge = Repeater + Functionality of reading MAC address.
+- It is a layer 2 device.
+- It's also used for interconnecting two LANs on the *same protocol*.
+- It is also a two port device.
+- Types of Bridges
+  - Transparent Bridges
+    - These are the bridges in which the statoins are completely unaware of the bridge's existence.
+    - Reconfiguration of the stations is unnecessary even if bridge is added or removed from network.
+  - Source Routing Bridges
+    - In these bridges, routing operation is performed by source station and the frame specifies which route to follow.
+
+ Bridge                              | Router
+-------------------------------------|-----------------------------------------------
+Bridge works in data link layer.     | Router works in network layer.
+Through bridge, data or information is not store and sent in the form of packet. | Through router, data or information is store and sent in the form of packet.
+There are only two ports in bridge.  | There are more than two ports in router.
+Bridge connects two different LANs.  | Router is used by LAN as well as MAN for connection.
+In bridge, routing table is not used.| In routers, routing table is used.
+Bridge works on single broadcast domain.| Router works on more than single broadcast domain.
+Bridges are easy to configure.       | Routers are difficult to setup and configure.
+Bridge focuses on MAC address .      | Router focuses on protocol address.
+Bridge is comparatively inexpensive. | Router is relatively expensive device.
+Bridges are good for segment network and extends the existing network.| Routers are good for joining remote networks.
