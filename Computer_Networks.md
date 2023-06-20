@@ -532,8 +532,9 @@ Example : 10.10.23.56 | Example : 70-20-84-00-FD-FC
 ### Basics of Cisco Packet Tracer
 
 - Cisco - The leader in networking
-- An innovative and powerful networking simulation tool used for practice, discovery and troubleshooting.
-- Helps understand networks practically.
+  - An innovative and powerful networking simulation tool used for practice, discovery and troubleshooting.
+  - Helps understand networks practically.
+
 - Hub a.k.a Network hub
   - Hub works at the physical layer of the OSI model.
   - Used to set uo LAN
@@ -547,4 +548,40 @@ Example : 10.10.23.56 | Example : 70-20-84-00-FD-FC
     - Issues with broadcast
     - No memory
     - Narmally runs in half duplex mode.
-  
+
+- Switch = A switch is a networking hardware that connects devices on a computer network to establish a local area network.
+  - Unlike hub, switch has memory.
+  - Stores MAC address table.
+  - Layer 2 device for setting up LAN.
+
+ Hub                    | Switch
+------------------------|--------------------------------
+Layer 1 device          | Layer 2 device
+Works at physical layer | Works at Data Link layer
+Has no memory           | Has memory and stores MAC address table
+Not an intelligent device | Intelligent device
+Floods the network due to broadcasting | Can do unicasting and broadcasting.
+Security risks are high. | Security risks are low.
+Less efficient           | More efficient
+Half Duplex              | Full Duplex.
+
+- Router = A router is a networking device that forwards data packets between computer networks.
+  - A router is a connected to at least two networks, commonly two LANs or WANs or a LAN and its ISP network.
+  - It is a layer 3 (Network layer) device.
+  - Stores routing table.
+
+ Switch                    | Router
+---------------------------|----------------------------
+A network switch is a computer networking device that is used to connect many devices together on a computer network | A router is a networking device that connects a local network to other local networks.
+Operates at layer 2 (Data Link Layer) | Operates at layer 3 (Network Layer)
+Has memory and stores MAC address table | Has memory and stores Routing table.
+Decisions are taken based on MAC address | Decisions are taken based on IP address.
+Half / Full Duplex       | Full Duplex
+LAN                      | LAN,MAN & WAN
+
+- Repeater
+  - The data signals generally becomes too weak or corrupted if they tend travel a long distance
+  - Reapeater regenerates the signal over the same network.
+  - It operated at the physical layer.
+  - They do not amplify the signal.
+  - It is a 2 port device.
