@@ -699,3 +699,27 @@
     - In this connecion, two or more devices share a single link.
     - Since more thatwo devices share the link, the capacity of the channel is shared now.
     - It can be spatial or temporal.
+
+## Data link layer
+
+- It is responsible for moving data(frames) from one node to another node.
+
+### Link Layer Services
+
+- Framing
+  - The data link layer needs to pack bits into frames, so that each frame is ditinguishable from another.
+  - Our postal system practices a type of framing.
+  - The simple act of inserting a letter into an envelope separates one piece of information from another; the envelope serves as the delimiter.
+- Physical Addressing
+  - A frame is the encapsulation of header and trailer information with the packet.
+  - In the header, the source and the destination MAC address are dealt.
+- Flow Control
+  - Flow Control is one of the duties of data link control sublayer.
+  - The flow control in data link layer is end to end flow control.
+  - Speed matching machanism.
+  - Flow control coordinates the amount of data that can be sent before receiving an acknowledgement.
+- Access Control
+  - Media access control
+- Error Control
+  - Error Detection
+  - Error Correction
