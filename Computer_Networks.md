@@ -270,13 +270,13 @@
   - Example: 70-20-84-00-ED-FC (48 bits)
   - Seperator: hyphen(-), period(.) and colon(:)
 
-IP address | MAC Address |
+ IP address | MAC Address |
 -----------|-------------
-Needed for communication. | Needed for communication.
-32 bits | 48 bits
-Represented in decimal. | Represented in hexadecimal.
-Router needs IP Address to forward data | Switch needs MAC address to forward data.
-Example : 10.10.23.56 | Example : 70-20-84-00-FD-FC
+ Needed for communication. | Needed for communication.
+ 32 bits | 48 bits
+ Represented in decimal. | Represented in hexadecimal.
+ Router needs IP Address to forward data | Switch needs MAC address to forward data.
+ Example : 10.10.23.56 | Example : 70-20-84-00-FD-FC
 
 ### Basics of Port addressing
 
@@ -554,16 +554,16 @@ Example : 10.10.23.56 | Example : 70-20-84-00-FD-FC
   - Stores MAC address table.
   - Layer 2 device for setting up LAN.
 
- Hub                    | Switch
-------------------------|--------------------------------
-Layer 1 device          | Layer 2 device
-Works at physical layer | Works at Data Link layer
-Has no memory           | Has memory and stores MAC address table
-Not an intelligent device | Intelligent device
-Floods the network due to broadcasting | Can do unicasting and broadcasting.
-Security risks are high. | Security risks are low.
-Less efficient           | More efficient
-Half Duplex              | Full Duplex.
+ Hub                       | Switch
+---------------------------|--------------------------------
+ Layer 1 device            | Layer 2 device
+ Works at physical layer   | Works at Data Link layer
+ Has no memory             | Has memory and stores MAC address table
+ Not an intelligent device | Intelligent device
+ Floods the network due to broadcasting | Can do unicasting and broadcasting.
+ Security risks are high.  | Security risks are low.
+ Less efficient            | More efficient
+ Half Duplex               | Full Duplex.
 
 - Router = A router is a networking device that forwards data packets between computer networks.
   - A router is a connected to at least two networks, commonly two LANs or WANs or a LAN and its ISP network.
@@ -572,12 +572,12 @@ Half Duplex              | Full Duplex.
 
  Switch                    | Router
 ---------------------------|----------------------------
-A network switch is a computer networking device that is used to connect many devices together on a computer network | A router is a networking device that connects a local network to other local networks.
-Operates at layer 2 (Data Link Layer) | Operates at layer 3 (Network Layer)
-Has memory and stores MAC address table | Has memory and stores Routing table.
-Decisions are taken based on MAC address | Decisions are taken based on IP address.
-Half / Full Duplex       | Full Duplex
-LAN                      | LAN,MAN & WAN
+ A network switch is a computer networking device that is used to connect many devices together on a computer network | A router is a networking device that connects a local network to other local networks.
+ Operates at layer 2 (Data Link Layer) | Operates at layer 3 (Network Layer)
+ Has memory and stores MAC address table | Has memory and stores Routing table.
+ Decisions are taken based on MAC address | Decisions are taken based on IP address.
+ Half / Full Duplex      | Full Duplex
+ LAN                     | LAN,MAN & WAN
 
 - Repeater
   - The data signals generally becomes too weak or corrupted if they tend travel a long distance
@@ -599,15 +599,87 @@ LAN                      | LAN,MAN & WAN
   - Source Routing Bridges
     - In these bridges, routing operation is performed by source station and the frame specifies which route to follow.
 
- Bridge                              | Router
--------------------------------------|-----------------------------------------------
-Bridge works in data link layer.     | Router works in network layer.
-Through bridge, data or information is not store and sent in the form of packet. | Through router, data or information is store and sent in the form of packet.
-There are only two ports in bridge.  | There are more than two ports in router.
-Bridge connects two different LANs.  | Router is used by LAN as well as MAN for connection.
-In bridge, routing table is not used.| In routers, routing table is used.
-Bridge works on single broadcast domain.| Router works on more than single broadcast domain.
-Bridges are easy to configure.       | Routers are difficult to setup and configure.
-Bridge focuses on MAC address .      | Router focuses on protocol address.
-Bridge is comparatively inexpensive. | Router is relatively expensive device.
-Bridges are good for segment network and extends the existing network.| Routers are good for joining remote networks.
+ Bridge                               | Router
+--------------------------------------|-----------------------------------------------
+ Bridge works in data link layer.     | Router works in network layer.
+ Through bridge, data or information is not store and sent in the form of packet. | Through router, data or information is store and sent in the form of packet.
+ There are only two ports in bridge.  | There are more than two ports in router.
+ Bridge connects two different LANs.  | Router is used by LAN as well as MAN for connection.
+ In bridge, routing table is not used.| In routers, routing table is used.
+ Bridge works on single broadcast domain.| Router works on more than single broadcast domain.
+ Bridges are easy to configure.       | Routers are difficult to setup and configure.
+ Bridge focuses on MAC address .      | Router focuses on protocol address.
+ Bridge is comparatively inexpensive. | Router is relatively expensive device.
+ Bridges are good for segment network and extends the existing network.| Routers are good for joining remote networks.
+
+### Network Devices
+
+- List of various networking devices
+  - Repeater <- Layer 1 device
+  - Hub <- Layer 1 device
+  - Switch <- Layer 2 device
+  - Bridge <- Layer 2 device
+  - Router <- Layer 3 device
+  - Multi-layer switch (Layer 3 switch) <- Layer 3 device
+  - Brouter (Bridge + router) <- Layer 2/3 device
+  - Modem
+  - Firewall (Security device)
+
+### Physical Layer and Media
+
+- Fundamental principles of Physical Layer
+  - One of the major functions of the physical layer is to move data in the form of electromagnetic signals across a tranmission medium.
+  - The data usable to a person or an application are not in a form that can be transmitted over a network.
+  - For example, an image must first be changed to a form that transmission media can accept.
+  - To be transmitted, data must be transformed to electromagnetic signals.
+
+- Signal
+  - It is a function that represents the variation of a physical quantity with respect to time.
+  - Example: VAriation in temperature of a city in one day i.e. 24 hours.
+  - Analog Signal
+    - It is the signal that can take any value in the defined range.
+    - All real-life signals are analog in nature
+  - Digital Signal
+    - It is the signal that can take on of the finite values at any given time.
+    - In case of digital signals, we discretize both time and magnitude.
+  - Comparison of various physical media
+
+     Media        | Physical Component    | Signal
+    --------------|-----------------------|----------
+     Copper cable </br>(wired) | UTP/STP </br> Coaxial </br> Connectors </br> NICs </br> Ports/interfaces              | Electromagnetic Signal
+     Fiber Optic </br> Cable </br> (Wired) | Single-mode Fiber </br> Multimode Fiber </br> Connectors   </br> Lasers and LEDs  | A light pulse equal 1 </br> No light pulse is 0.
+     Wireless Media | Access Points </br> NICs </br> Radio </br> Antennae | Radio waves
+
+- Wired Media
+  - Copper cable (Ethernet cable)
+    - Unshielded Twisted Pair (UTP)
+      - CrossTalk
+        - UTP cable does not use shielding to counter the effects of EMI and RFI.
+        - The negative effect of crosstalk can be limited by varying the number of twists per wire pair.
+    - Shielded Twisted Pair (STP)
+  - Copper coaxial cable
+  - Fiber optic cable
+    - The cable transmit signal in the form of light waves
+    - High Speed transmission.
+  - Copper vs Fiber Optic Media
+  
+     Implementation Points     | Copper            | Fiber Optic
+    ---------------------------|-------------------|-------------------
+     Bandwidth Supported       | 10 Mbps - 10 Gbps | 10 Mbps - 100 Gbps
+     Range | Relatively short (upto 100 meters) | Relatively high (upto 100,000 meters)
+     Immunity to EMI and RFI   | Low            | High (Completely immune)
+     Immunity to Electrical Hazards  | Low      | High (Completely immune)
+     Media and Connector Costs | Lowest         | Highest
+     Installation Skills Required | Lowest      | Highest
+     Safety                    | Lowets         | Highest
+  
+- Wireless Media
+  - Wireless media has the following areas of concern
+    - Coverage area
+    - Interference
+    - Security
+  - Wireless technologies
+    - Wi fi
+    - Bluetooth
+    - Wi max
+  
