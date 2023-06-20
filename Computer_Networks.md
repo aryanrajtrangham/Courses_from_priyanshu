@@ -682,4 +682,20 @@
     - Wi fi
     - Bluetooth
     - Wi max
-  
+
+### Line Configuration
+
+- In a network, two or more nodes are connected by a communication link.
+- The communication link can be wired or wireless.
+- For visualization purpose, links are imagined as a line drawn between two points.
+- For communication to happen, two nodes must be connected to the same link at the same time.
+- This is called as line configuration or *connection*.
+- Types of Line Configuration
+  - Point-to-point Connection
+    - A point-to-point connection provides a dedicated link between two devices.
+    - The entire capacity of the link is reserved for transmission betweeen those two devices.
+  - Multipoint Connection
+    - It is also called Multidrop configuration or Broadcast connection.
+    - In this connecion, two or more devices share a single link.
+    - Since more thatwo devices share the link, the capacity of the channel is shared now.
+    - It can be spatial or temporal.
