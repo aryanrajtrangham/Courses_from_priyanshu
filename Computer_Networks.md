@@ -792,3 +792,23 @@
   - Clock Based Framing
     - The third approach to framing
     - Example = Synchronous Optical Network Protocol (SONET)
+
+### High-level Data Link Control (HDLC)
+
+- The Synchronous Data Link Control (SDLC) protocol developed by IBM is an example of a bit-oriented protocol.
+- SDLC was later standardized by the ISO as the High-Level Data Link Control (HDLC) protocol.
+- Bit-Oriented protocol
+- HDLC - Frame Format
+    8         | 16         | variable length | 16  | 8
+  ------------|--------------|---------------|-----|------------
+    Begining </br> Sequence | Header | Body  | CRC | Ending</br> Sequence
+  - Beginning and Ending Sequences: 01111110
+    - This sequence is also transmitted during any times that the link is idle so that the sender and receiver can keep their clocks synchronized.
+  - Header : Address and Control Field.
+  - Body : Payload (Variable size)
+  - CRC : Cyclic Redundancy Check - Error Detection
+- Types of HDLC Frames
+  - The type of frame is determine by the control field.
+    - I-Frame : Information Frame (1st bit is 0)
+    - S-Frame : Supervisory Frame (1st two bits are 10)
+    - U-Frame : Un-numbered Frame (1st two bits are 11)
