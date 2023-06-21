@@ -868,3 +868,61 @@
    SYN  | SYN  | Class | Count | Header | Body            | CRC
   - Danger with the count field
     - One danger with this approch is that if transmission error could corrupt the count field then the end of the frame would not be correctly detected by the receiver.
+
+### Error Detection
+
+- Error
+  - Data are transmitted in the network.
+  - The data can be corrupted during transmission.
+  - Transmission error.
+  - For reliable communication, errors must be detected and corrected.
+  - Error detection and correction are implemented either at the data link layer or the transport layer of the OSI model.
+  - Types of error
+    - Bit Error (single bit error)
+      - In a single bit error, only 1 bit in the data unit has been changed.
+    - Burst Error
+      - In burst error, 2 or more bits in the data unit have changed.
+  - Error detection
+    - Error detection means to decide whether the received data is correct or not without having a copy of the original message.
+    - To detect or correct errors, we need to send some extra bits with the data.
+    - The extra bits are called as redundant bits.
+  - Redundancy
+
+    ```[]
+    +---------------------+            +------------------------+
+    |        Data         |            |                        |
+    |  101000000000010101 |            |                        |
+    |          |          |            |       +-----> Accept   |
+    |      generating     |            |  Checking              |
+    |       function      |            |  function              |
+    |          |          |            |       +-----> Reject   |
+    |       1011101       |            |                        |
+    |  Redundancy check   |            |             (Receiver) |
+    +----------|----------+            +------------|-----------+
+    sender     |      Data & redundancy check       |
+               +-->[1011101] [101000000000010101]---+
+    ```
+
+  - Error Correction
+    - It can be handled in two ways
+      - Receiver can have the sender retransmit the entire data unit.
+      - The receiver can use an eror-correcting code, which automatically corrects certain errors.
+
+    ```[]
+      Sender
+    +----------------------+                          +------------------------+
+    |             Encoder  |                          |               Decoder  |
+    |      Message         |                          |     Message            |
+    |         |            |                          |        |    Correct or |
+    |      Generator       |                          |     Checker    discard |
+    |         |            | Unreliable transmission  |        |               |
+    | Message & redundancy-|--------------------------|-> Received information |
+    +----------------------+                          +------------------------+
+    ```
+
+  - Error Detection techniques
+    - Four types of redundancy checks are used in data communications.
+      - Vertical Redundancy Check (VRC)
+      - Logitudinal Redundancy Check (LRC)
+      - Checksum (Internet Checksum / Arithmetic Checksum)
+      - Cyclic Redundancy Check (CRC)
