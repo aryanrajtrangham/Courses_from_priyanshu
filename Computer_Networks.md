@@ -926,3 +926,25 @@
       - Logitudinal Redundancy Check (LRC)
       - Checksum (Internet Checksum / Arithmetic Checksum)
       - Cyclic Redundancy Check (CRC)
+
+### Vertical Redundancy Check (VRC)
+
+- It's also called as parity check.
+
+```[]
+  Data     1100001 
+              |     \
+              |        \
+          Even Parity     \                     Receiver
+           Generator    [1][1100001] ---------------->
+              |       /  Data Transmitted       11100001
+              |    /
+    VRC     [ 1 ]
+```
+
+- Performance of VRC
+  - It can detect single bit error.
+  - It can detect burst error only if the number of errors is odd.
+  - Example:
+    - Sender (11100001) --> Transmission Error (1 **0** 100001) --> Receiver rejects this data
+    - Sender (11100001) --> Transmission Error (1 **0** 100 **1** 01) --> Receiver accepts this data
