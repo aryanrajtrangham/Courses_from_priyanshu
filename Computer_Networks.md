@@ -812,3 +812,59 @@
     - I-Frame : Information Frame (1st bit is 0)
     - S-Frame : Supervisory Frame (1st two bits are 10)
     - U-Frame : Un-numbered Frame (1st two bits are 11)
+
+- Bit Stuffing : Bit stuffing refers to the insertion of one or more bits into a data transmission as a way to provide signaling information to a receiver. The receiver knows how to detect, remove or disregard the stuffed bits.
+
+### Binary Synchronous Communication Protocol (BSC/ BiSYNC)
+
+- It is a sentinel approach.
+- Developed by IBM
+- Also referred as BSC.
+- It is a byte-oriented protocol.
+- BiSync - Frame Format
+   8    | 8    | 8    |          | 8    | variable length | 8    | 16
+  ------|------|------|----------|------|-----------------|------|------
+   SYN  | SYN  | SOH  | Header   | STX  | Body            | ETX  | CRC
+  - Frames transmitted begining with leftmost field.
+  - Beginning of a frame is denoted by sending a special SYN (synchronize) character.
+  - Data portion of the frame is contained between special sentinel character STX (start of text) and ETX (end of text).
+  - SOH : Start of Header.
+  - DLE : Data Link Escape.
+  - CRC : Cyclic Redundancy Check.
+
+- Character Stuffing : Byte Stuffing or Character Stuffing is the process of adding one extra byte whenever there is a flag or escape character in the text.
+  - This is done by data link escape(DLE) in BISYNC protocol.
+
+### Point-to-Point Protocol (PPP)
+
+- It is a byte-oriented protocol.
+- PPP is a datalink layer protocol.
+- PPP is a WAN protocol and which is commonly run over Internet links.
+- It is widely used in broadband communications having heavy loads and high speeds.
+- It is used to transmit multiprotocol data between two directly connected (point-to-point) computers.
+- PPP - Frame Format
+   8     | 8     | 8     | 8/16   |           | 16       | 8
+  -------|-------|-------|--------|-----------|----------|------
+   Flag  |Address|Control|Protocol| Payload   | Checksum | Flag
+  - Flag : 1 byte that marks the beginning and the end of the frame. The bit pattern of the flag is 01111110.
+  - Address : 1 byte which is set to 1111,1111 in case of broadcast.
+  - Control : 1 byte set to a constant value of 11000000.
+  - Protocol : 1 or 2 bytes that define the type of data contained in the payload field.
+  - Payload : This carries the data from the network layer. The maximum length of the payload is 1500 bytes. However, this may be negotiated between the endpoints of communication.
+  - Checksum : Error detection
+
+- Character Stuffing : Byte stuffing or Character stuffing is the process of adding one extra byte whenever there ia a flag sequence appear in the payload.
+
+### Digital Data Communication Message Protocol (DDCMP)
+
+- It is a byte-oriented protocol.
+- Devised by Digital Equipment Corporation.
+- It is a byte-counting appraoch
+- Count field in the frame format
+  - Count : How many bytes are contained in the frame body?
+- DDCMP - Frame Format
+   8    | 8    | 8     | 14    | 42     | variable length | 16
+  ------|------|-------|-------|--------|-----------------|-------
+   SYN  | SYN  | Class | Count | Header | Body            | CRC
+  - Danger with the count field
+    - One danger with this approch is that if transmission error could corrupt the count field then the end of the frame would not be correctly detected by the receiver.
