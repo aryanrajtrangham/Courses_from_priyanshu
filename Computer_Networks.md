@@ -723,3 +723,39 @@
 - Error Control
   - Error Detection
   - Error Correction
+
+### Sublayers of the Data Link Layer
+
+```[]
+  +-------------------------------------------------------+
+  |                   Network                             |
+  +-------------------------------------------------------+
+  |                | LLC Sublayer          | IEEE 802.15  |
+  | Data link      |                       | Bluetooth    |
+  |                +-----------------------+--------------+
+  |                | MAC sublayer          | IEEE 802.11  |
+  |                |                       |   Wi-Fi      |
+  +----------------+-----------------------+--------------+
+  |       Physical                         | IEEE 802.3   |
+  |                                        | Ethernet     |
+  +----------------------------------------+--------------+
+```
+
+- LLC sublayer
+  - Logical Link Control (LLC) or Data Link Control (DLC) sublayer
+  - Handles communication between upper and lower layers.
+  - Takes the network protocol data and adds control information to help deliver the packet to the destinstion. (Flow control)
+
+- MAC sublayer
+  - Constitutes the lower sublayer of the date link layer
+  - Implemented by hardware, typically in the computer NIC.
+  - Two primary responsibilities
+    - Data encapsulation
+      - Frame assembly before transmission and frame disassembly upon reception of a frame.
+      - MAC layer adds a header and trailer to the network layer PDU.
+      - Provides three primary functions
+        - Framing
+        - Physical Addressing or MAC Addressing.
+        - Error control.
+    - Media access control
+      - Responsible for the placement of frames on the media and the removal of frames from the media.
