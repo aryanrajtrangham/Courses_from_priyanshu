@@ -518,8 +518,8 @@
     - Application Layer - Data
     - Transport Layer - Segment
     - Network Layer - Packet
-    - Data Link Layer - Frame
-    - Physical Layer - Bit
+    - Data Link Layer - Frame (hosts)
+    - Physical Layer - Bit (adaptors)
 
 ### Basic Networking Commands
 
@@ -729,7 +729,7 @@
 ```[]
   +-------------------------------------------------------+
   |                   Network                             |
-  +-------------------------------------------------------+
+  +----------------+-----------------------+--------------+
   |                | LLC Sublayer          | IEEE 802.15  |
   | Data link      |                       | Bluetooth    |
   |                +-----------------------+--------------+
@@ -759,3 +759,36 @@
         - Error control.
     - Media access control
       - Responsible for the placement of frames on the media and the removal of frames from the media.
+
+### Framing
+
+- Framing in the data link layer separates a frame distinguisable from another frame
+- Frame = Header + Network Layer PDU + Trailer
+- In packet switched network, the block of data called frames are exchanged between nodes, not bits streams.
+- When node A wishes to transmit a frame to node B, it tells its adaptor to transmit a frame from the node's memory.
+- This results in a sequence of bits being sent over the link.
+- The adaptor on node B then collects together the sequence of bits arrivingg on the link and deposits the corresponding frame in B's memory.
+- Types of Framing
+  - Fixed-size framing
+    - Here the size of the frame is fixed and so the frame length acts as delemiter of the frame.
+    - Consequently, it does not require additional boundary bits to identify the start and end of the frame.
+  - Variable-size framing
+    - Here, the size of each frame to be transmitted may be different.
+    - So additional mechanisms are kept to mark the end of one frame and the beginning of the next frame.
+- Various framing Approaches
+  - Bit Oriented
+    - It simply views the frame as a collection of bits.
+    - In bit-oriented framing, data is transmitted as a sequence of bits that can be interpreted in the upper layers both as text as well as multinedia data.
+    - Bit Oriented Protocol
+      - High-level Data Link Control (HDLC)
+  - Byte Oriented
+    - a.k.a Character Oriented Approach
+    - One of the oldest approaches to framing.
+    - Here each frame is viewed as a collection of bytes (characters) rather than bits.
+    - Byte Oriented Protocols
+      - Binary Synchronous Communication Protocol (BISYNC)
+      - Digital Data Communication Message Protocol (DDCMP)
+      - Point-to-point Protocol (PPP)
+  - Clock Based Framing
+    - The third approach to framing
+    - Example = Synchronous Optical Network Protocol (SONET)
