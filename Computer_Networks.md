@@ -1082,3 +1082,35 @@
                         --------
                               0 <-- No errors found
   ```
+
+### Network Performance
+
+- Network performance is measure in following fundamentalal ways
+  - Bandwidth
+  - Throughput
+  - Latency (Delay)
+
+- Bandwidth
+  - Informal: Maximum amount of data that can be transmitted per second.
+  - Formal : The bandwidth of a network is given by the number of bits that can be transmittted over the network in a certain period of time.
+  - Bandwidth in bps (wired medium)
+    - Bandwidth = Capability
+    - Example: Gigabit Ethernet can provide a bandwidth of 1 Gbps.
+  - Bandwidth in hertz
+    - A range of frequencies used to transmit signals which is measured in hertz.
+
+- Throughout
+  - Informal: Actual amount of data that passes through the medium.
+  - Formal: The throughput is measure of how fast we can actually send data through a network.
+
+- Although bandwidth in bits per second and throughput seem the same, they are different.
+- A link may have a bandwidth of **'B'** bps, but we can only send **'T'** bps through this link with T < B always.
+
+- Latency (Delay)
+  - The latency or delay defines how long it takes for an entire message to completely arrive at the destination from the time the first bit is sent out from the source.
+  - Latency is made of four components:
+    - Transmission delay
+    - Propagation delay
+    - Queueing delay
+    - Processing delay
+  - Latency = Transmission delay + Propagation delay + Queueing delay + Processing delay
