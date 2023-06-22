@@ -1114,3 +1114,21 @@
     - Queueing delay
     - Processing delay
   - Latency = Transmission delay + Propagation delay + Queueing delay + Processing delay
+
+### Latency (Delay)
+
+- Transmission Delay
+  - Time it takes to place the complete data packet on the transmission medium.
+  - Transmission time = Message size / Bandwidth
+
+- Propagation Delay
+  - Time it takes for a bit to go from device A to device B.
+  - Propagation time = Distance / Propagation speed.
+
+- Queuing Delay
+  - Time needed for each intermediate or end device to hold the message before it can be processed.
+  - The queuing time is not a fixed factor, it changes with the load imposed on the network.
+  - When there is heavy traffic on the network, the queuing time increases.
+
+- Processing Delay
+  - Time a node takes to process the message.
