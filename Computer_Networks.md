@@ -930,21 +930,96 @@
 ### Vertical Redundancy Check (VRC)
 
 - It's also called as parity check.
+- Example
 
-```[]
-  Data     1100001 
-              |     \
-              |        \
-          Even Parity     \                     Receiver
-           Generator    [1][1100001] ---------------->
-              |       /  Data Transmitted       11100001
-              |    /
-    VRC     [ 1 ]
-```
+  ```[]
+  Data   1100001 
+            |     \
+            |        \
+        Even Parity     \                     Receiver
+        Generator    [1][1100001] ---------------->
+            |       /  Data Transmitted       11100001
+            |    /
+  VRC     [ 1 ]
+  ```
 
 - Performance of VRC
   - It can detect single bit error.
   - It can detect burst error only if the number of errors is odd.
   - Example:
-    - Sender (11100001) --> Transmission Error (1 **0** 100001) --> Receiver rejects this data
-    - Sender (11100001) --> Transmission Error (1 **0** 100 **1** 01) --> Receiver accepts this data
+    - Sender (11100001) --> Transmission Error (1 ${\color{lightblue}0}$ 100001) --> Receiver rejects this data
+    - Sender (11100001) --> Transmission Error (1 ${\color{lightblue}0}$ 100 ${\color{lightblue}1}$ 01) --> Receiver accepts this data
+
+### Longitudinal Redundancy Check (LRC)
+
+- In LRC, a block of bit is organized in rows and columns.
+- a.k.a Two Dimensional parity
+- The parity bit is calculated for each column and sent along with the data.
+- The block of parity acts as the redundant bits.
+- Example
+
+  ```[]
+  Data -> 11100111 11011101 00111001 10101001
+      1 1 1 0 0 1 1 1
+      1 1 0 1 1 1 0 1
+      0 0 1 1 1 0 0 1
+      1 0 1 0 1 0 0 1
+      ---------------
+      1 0 1 0 1 0 1 0 <-- LRC
+  ```
+
+- Perforamnce of LRC
+  - LRC increases the likelihood of detecting burst errors.
+  - If two bits in one data units are damaged and two bits in exactly the same positions in another data unit are also damaged, the LRC checker will not detect an error.
+
+### Checksum
+
+- Check = Check + sum
+- Sender side - Checksum Creation, Receiver side - Checksum validation
+- Checksum - Operation at sender side
+  - Break the original message into 'k' number of blocks with 'n' bits in each block.
+  - Sum all the 'k' data blocks.
+  - Add the carry to the sum, if any
+  - Do's 1's complement to the sum = Checksum.
+- Example
+  - Sender
+
+  ```[]
+    Data -> 10011001111000100010010010000100
+                1 0 0 1 1 0 0 1
+                1 1 1 0 0 0 1 0
+                0 0 1 0 0 1 0 0
+                1 0 0 0 0 1 0 0
+                ---------------
+   Carrry (1 0) 0 0 1 0 0 0 1 1
+                            1 0
+                ---------------
+                0 0 1 0 0 1 0 1
+      1's       ---------------
+    complement  1 1 0 1 1 0 1 0 <- Checksum
+    Data sent -> 10011001111000100010010010000100 11011010
+  ```
+
+  - Receiver
+    - Collect all the data blocks including the checksum.
+    - Sum all the data blocks and checksum
+    - If the result is all 1's ACCEPT else REJECT.
+
+  ```[]
+    Data received -> 10011001111000100010010010000100 11011010
+                1 0 0 1 1 0 0 1
+                1 1 1 0 0 0 1 0
+                0 0 1 0 0 1 0 0
+                1 0 0 0 0 1 0 0
+                1 1 0 1 1 0 1 0
+                ---------------
+   Carrry (1 0) 1 1 1 1 1 1 0 1
+                            1 0
+                ---------------
+    Result      1 1 1 1 1 1 1 1
+  ```
+
+- Performance of Checksum
+  - The checksum detects all errors involving an odd number of bits.
+  - It detects most errors involving an even number of bits.
+  - if one or more bits of a segment are damaged and the corresponding bit or bits of opposite value in a second segment are also damaged, the sums of these columns will not change and the receiver will not detect the error(s).
