@@ -1023,3 +1023,62 @@
   - The checksum detects all errors involving an odd number of bits.
   - It detects most errors involving an even number of bits.
   - if one or more bits of a segment are damaged and the corresponding bit or bits of opposite value in a second segment are also damaged, the sums of these columns will not change and the receiver will not detect the error(s).
+
+### Cyclic Redundancy Check (CRC)
+
+- CRC Genaration at sender side
+  - Find the length of the divisor 'L'.
+  - Append 'L-1' bits to the original message.
+  - Perform binary division operation.
+  - Remainder of the division = CRC.
+  - CRC must be of L-1 bits.
+- Example
+  - Sender
+
+  ```[]
+    divisor ______data___________
+    1 1 0 1 | 1 0 0 1 0 0:0 0 0 | 1 1 1 1 0 1
+              1 1 0 1
+              ---------
+                1 0 0 0
+                1 1 0 1
+                ---------
+                  1 0 1 0
+                  1 1 0 1
+                  ---------
+                    1 1 1 0
+                    1 1 0 1
+                    ---------
+                        1 1 0
+                        0 0 0
+                        -------
+                        1 1 0 0
+                        1 1 0 1
+                        ---------
+                          0 0 1 <-- CRC code
+    Data sent -> 1 0 0 1 0 0 (0 0 1)
+  ```
+
+  - Receiver
+
+  ```[]
+  Data received -> 1 0 0 1 0 0 0 0 1
+
+    divisor ______data___________
+    1 1 0 1 | 1 0 0 1 0 0 0 0 1 | 1 1 1 0 1
+              1 1 0 1
+              ---------
+                1 0 0 0
+                1 1 0 1
+                ---------
+                  1 0 1 0
+                  1 1 0 1
+                  ----------
+                    1 1 1 0
+                    1 1 0 1
+                    ---------
+                        1 1 0 1
+                        1 1 0 1
+                        --------
+                              0 <-- No errors found
+  ```
