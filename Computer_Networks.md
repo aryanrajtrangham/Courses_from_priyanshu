@@ -1160,5 +1160,48 @@
     - Stop-and-wait
   - Noisy Channels
     - Stop-and-wait Automatic repeat request (ARQ)
-    - Go-Back-N Automatic repeat request (ARQ)
-    - Selective Repeat Automatic repeat request (ARQ)
+    - Sliding window Protocol
+      - Go-Back-N Automatic repeat request (ARQ)
+      - Selective Repeat Automatic repeat request (ARQ)
+
+### Stop-and-Wait Protocol
+
+- Stop-and-Wait protocol is data link layer protocol for transmission of frames over noiseless channels.
+- It provides undirectional data transmission with flow control facilities but without error control facilities.
+- After transmitting one frame, the sender waits for an acknowledgement before transmitting the next frame.
+- Primitives of Stop-and-wait Protocol
+  - Sender side
+    - Rule 1: Send one data packet at a time
+    - Rule 2: Send the next packet only after receiving ACK for the previous
+  - Receiver side
+    - Rule 1: Receive and consume data packet.
+    - Rule 2: After consuming packet, ACK need to be sent (Flow Control)
+- Problems of Stop-and-wait protocol
+  - Problem due to lost data
+    - Sender waits for ack for an infinite amount of time.
+    - Receiver waits for data an infinite amount of time.
+  - Problems due to lost ACK.
+    - Sender waits for an infinite amount of time for ACK.
+  - Problem due to delayed ACK/data.
+    - After timeout on sender side, a delayed ACK might be wrongly considered as ACK of some other data packet.
+
+### Stop-and-Wait Automatic repeat request Protocol
+
+- After transmitting one frame, the sender waits for an acknowledgement before transmitting the next frame
+- If the ACK does not arrive after a certain period of time, the sender times out and retransmits the original frame.
+- Stop-and-wait ARQ = Stop-and-Wait + Timeout Timer + Sequence number
+- Scenarios
+  - The ACK is received before the timer expires
+  - The original frame is lost
+  - The ACK is lost
+  - The timeout fires too soon
+- Drawbacks
+  - One frame at a time.
+  - Poor utilization of bandwidth
+  - Poor Performance
+
+### Sliding Window Protocol
+
+- Send multiple frames at a time.
+- Number of frames to be sent is based on *Window size*.
+- Each frame is numbered -> Sequence Number.
