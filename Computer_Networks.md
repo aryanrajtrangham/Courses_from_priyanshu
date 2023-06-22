@@ -1132,3 +1132,33 @@
 
 - Processing Delay
   - Time a node takes to process the message.
+
+### Bandwidth-delay Product
+
+- The Bandwidth-delay product defines the number of bits that can fill the link.
+- It is the capacity of the link.
+- Volume in bits = Bandwidth in bps x Delay in s
+
+### Round Trip Time ($R_{TT}$)
+
+- a.k.a Round Trip Delay Time (RTD).
+- It is the length of the time it takes for a signal to be sent plus the length of time it takes for an acknowledgement of that signal to be received.
+- This time therefore consists of the propagation times between the two point of signal.
+- If $T_{p}$ is the propagation time, then
+   $R_{TT}$ = 2 x $T_{p}$
+
+### Flow Control
+
+- Speed matching mechanism.
+- Flow control coordinates the amount of data that can be sent before receiving an acknowledgement.
+- Flow control is a set of procedured that tells the sender how much data it can transmit before it must wait for an acknowledgement from the receiver.
+- Receiver has a limited speed at which it can process incoming data and a limited amount of memory in which to store incoming data.
+- Receiver must inform the sender before the limits are reached and request that the transmitter to send fewer frames or stop temporarily.
+- Flow control protocol
+  - Noiseless Channels
+    - Simplest
+    - Stop-and-wait
+  - Noisy Channels
+    - Stop-and-wait Automatic repeat request (ARQ)
+    - Go-Back-N Automatic repeat request (ARQ)
+    - Selective Repeat Automatic repeat request (ARQ)
