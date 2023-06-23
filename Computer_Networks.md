@@ -1137,7 +1137,7 @@
 
 - The Bandwidth-delay product defines the number of bits that can fill the link.
 - It is the capacity of the link.
-- Volume in bits = Bandwidth in bps x Delay in s
+- Volume in bits = Bandwidth in bps * Delay in s
 
 ### Round Trip Time ($R_{TT}$)
 
@@ -1145,7 +1145,7 @@
 - It is the length of the time it takes for a signal to be sent plus the length of time it takes for an acknowledgement of that signal to be received.
 - This time therefore consists of the propagation times between the two point of signal.
 - If $T_{p}$ is the propagation time, then
-   $R_{TT}$ = 2 x $T_{p}$
+   $R_{TT}$ = $2*T_{p}$
 
 ### Flow Control
 
@@ -1241,3 +1241,60 @@
     - FDMA
     - TDMA
     - CDMA
+
+- To avoid acess conflict, each station follows a protocol (procedure).
+  - When can the station access the meium ?
+  - What can the station do if the medium is busy ?
+  - How can the station determine the success or failure of the transmission ?
+  - What can the station do if there is an access conflict ?
+
+- Random Access Protocols
+  - In this, all stations have superiority that is no station has more priority than another station. Any station can send data depending on medium's state (idle or busy).
+  - In a Random access method, each station has the right to the medium without being controlled by any other station.
+  - If more than one station tries to send, there is an access conflict (COLLISION) and frames will be either destroyed or modified.
+
+- Controlled Access Protocols
+  - In controlled access, the stations consult one another to find which station has the right to send.
+  - A station cannot send unless it has been authorized by other stations.
+
+- Channelization Protocols
+  - Channelization is a multiple-access method in which the available bandwidth of a link is shared in time, frequency, or through code, between different stations.
+
+## Aloha
+
+- Aloha is a random access protocol.
+- It was actually designed for WLAN but it's also applicable for shared medium..
+- In this, multiple stations can transmit data at the same time and can hence lead to collision and data being garbled.
+- Types
+  - Pure Aloha
+  - Slotted Aloha
+
+- Pure Aloha
+  - Pure ALOHA alows stations to transmit whenever they have data to be sent.
+  - When a station sends data it waits for an ACK.
+  - If the ACK doesn't come within the allotted time then the station waits for a random amount of time called *back-off time (Tb)* and re-sends the data.
+  - Since different stations wait for different amount of time, the probability of further collision decreases.
+  - The throughput of pure aloha is maximized when frames are of uniform length.
+  - Whenever two frames try to occupy the channel at the same time, there will be a collision and both will be garbled.
+  - If the first bit of a new frame overlaps with just the last bit of a frame almost finished, both frames will be totally destroyed and both will have to be retransmitted later.
+  - Vulnerable Time = ${2*T_{fr}}$ , where (${T_{fr}}$) is the frame transmition time.
+  - Throughput = ${G*e^{-2G}}$, where G is the number of stations wish to transmit in the same time.
+  - Maximum throughput = 0.184 for G = 0.5 i.e. (1/2).
+
+- Slotted Aloha
+  - It was developed just to improve the efficiency of pure aloha as the chances for collision in pure aloha are high.
+  - The time of the shared channel is divided into discreate time intervals called slots.
+  - Sending od data is allowed *only at the beginning* of these slots.
+  - If a station misses out the allowed time, i must wait for the next slot. This reduces the probablity of collision.
+  - Vulnerable Time = ${T_{fr}}$ , where (${T_{fr}}$) is the frame transmition time.
+  - Throughput = ${G*e^{-G}}$, where G is the number of stations wish to transmit in the same time.
+  - Maximum throughput = 0.368 for G = 1
+
+ Pure Aloha  | Slotted Aloha
+-------------|----------------
+ Any staion can transmit the data at any time. | Any station can transfer the data at the beginning of any time slot.
+ The time is continuous and not globally synchronised. | The time is discreet and globally synchronised.
+ Vulnerable time in which collision may occur = ${2*T_{fr}}$. | Vulnerable time in which collision may occur = ${T_{fr}}$.
+ Probability of successful transmission of data packet = ${G*e^{-2G}}$. | Probability of successful transmission of data packet = ${G*e^{-G}}$.
+ Maximum efficiency = 18.4% (Occurs at G = 1/2). | Maximum efficiency = 36.8% (Occurs at G = 1).
+ Main advantage: Simplicity in implementation. | Main advantage: It reduces the number of collision to half and double the deficiency of pure aloha.
