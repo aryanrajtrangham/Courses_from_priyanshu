@@ -1205,3 +1205,39 @@
 - Send multiple frames at a time.
 - Number of frames to be sent is based on *Window size*.
 - Each frame is numbered -> Sequence Number.
+
+### Go-Back-N ARQ
+
+- 'N' is the sender window size
+- Go-Back-N ARQ uses the concept of protocol pipeline i.e. the sender can send multiple frame before receiving the acknowledgement for the first frsme.
+- There are finite number of frames and the frames are numbered in a sequential manner.
+- The number of frames that can be sent depends on the window size of the sender.
+- If the ACK of a frame is not received within an agreed upon time period, *all frames in the current window are transmitted*.
+- The size of the sending windows determines the sequence number of the outbound frames.
+- Example : if the sending windows size is 4 (${2^{2}}$), then the sequence numbers will be 0,1,2,3,0,1,2,3,0,1 and so on.
+- The number of bits in the sequence number is 2 to generate the binary sequence 00, 01, 10, 11.
+
+### Selective Repeat ARQ
+
+- In Selective Repeat ARQ, only the erroneous or lost frames are retransmitted, while correct frames are received and buffered.
+- The receiver while keeping track of sequence number, buffers the frames in memory and sends NACK for only frame which is missing or damaged.
+- The sender will send/ ratransmit packet for which NARC is received.
+
+### Multiple Access Protocols
+
+- If there is a dedicated link between the sender and the receiver then data link control layer is sufficient, however if there is no dedicated link present then multiple stations access the channel simultaneously.
+- Hence multiple access protocols are required to decrease collision and avoid crosstalk.
+- Multiple-access protocols
+  - Random access protocols
+    - ALOHA
+    - CSMA
+    - CSMA/CD
+    - CSMA/CA
+  - Controlled-access protocols
+    - Reservation
+    - Polling
+    - Token passing
+  - Channelization protocols
+    - FDMA
+    - TDMA
+    - CDMA
