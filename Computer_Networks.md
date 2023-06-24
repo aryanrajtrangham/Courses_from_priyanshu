@@ -1298,3 +1298,75 @@
  Probability of successful transmission of data packet = ${G*e^{-2G}}$. | Probability of successful transmission of data packet = ${G*e^{-G}}$.
  Maximum efficiency = 18.4% (Occurs at G = 1/2). | Maximum efficiency = 36.8% (Occurs at G = 1).
  Main advantage: Simplicity in implementation. | Main advantage: It reduces the number of collision to half and double the deficiency of pure aloha.
+
+### Carrier Sense Multiple Access (CSMA)
+
+- CSMA Protocol
+  - Carrier Sense Protocol
+  - To minimize the chance of collision and therefore, increase the performance, the CSMA method was developed.
+  - Principle of CSMA: "sense before transmit" or "listen before talk"
+  - Carrier busy = Transmission is taking place.
+  - Carrier idle = No transmission currently taking place.
+  - The probability of collision still exists because of propagation delay, a station may sense the medium and find it idle, only because the first bit sent by another station has not yet been received.
+  - Types of CSMA
+    - 1-Persistent CSMA
+    - P-Persistent CSMA
+    - Non-Persistent CSMA
+    - O-Persistent CSMA
+  - Modified
+    - CSMA/CD (CSMA with Collision Detection)
+    - CSMA/CA (CSMA with Collision Avoidance)
+
+- 1-persistent CSMA
+  - Before sending the data, the station first listens to the channel to see if anyone else is transmitting the data at that moment.
+  - If the channel is idle, the station transmits a frame.
+  - If busy, then it senses the transmission medium continously until it becomes idle.
+  - Since the station transmit the frame with the probability of 1 when the carrier or chennel is idle, this scheme of CSMA is called as 1-Persistent CSMA.
+  - The propagation delay has an important effect on the performance of the protocol.
+  - The longer the propagation delay, the more important this effect becomes, and the worse the performance of the protocol.
+
+- Non-Persistent CSMA
+  - Before sending, a station senses the channel. If no one else is sending the station bgins doing so itself.
+  - However, if the chennel is already in use, the station does not continually sense it for the purpose of seizing it immediately upon detecting the end of the previous transmission.
+  - Instead, it wait a random period of time and then repeats the algorithm. Consequently, the algorithm leads to better channel utilization but longer than 1-persistent CSMA.
+
+- P-persistent CSMA
+  - It applies to slotted channels.
+  - When a station becomes ready to send, it senses the channel.
+  - If it is idle, it transmits with a probablity P.
+  - With a probablity Q=1-P, it defers until the next slot.
+  - If that slot is also idle, it either transmits or defers again, with probabilities P and Q.
+  - This process is repeated until either the frame has been transmitted or another station has begun transmitting.
+  - In the latter case, the unlucky station acts as if there had been a collision (i.e, it waits a random time and starts again).
+  - If the station initially senses the channel busy, it waits until the next slot and applies the above algorithm.
+
+- O-persistent CSMA
+  - Each node is assigned a transmission order by a supervisory node.
+
+- CSMA/CD (CSMA with Collision Detection)
+  - If two stations sense the channel to be idle and begin transmitting simultaneously, they will both detect the collision almost immediately.
+  - Rather than finish transmitting theor frames, which are irretrievably garbled anyway, they should abruptly stop transmitting as soon as the collision is detected.
+  - Quickly terminating damaged frames saves time and bandwidth.
+  - This protocol, known as CSMA/CD is widely used on LANs in the MAC sublayer.
+  - Access method used by Ethernet: CSMA/CD.
+  - Let's have point ${t_{0}}$, a station has finished transmitting its frame.
+  - Any other station having a frame to send may now attempt to do so. If two or more station decide to transmit simultaneously, there will be a collision.
+  - Collisions can be detected by looking at the power or pulse width of the received signal and comparing it to the transmitted signal.
+  - After a station detects a collision, it aborts its transmission, waits a random period of time, and then tries again, assuming that no other station has started transmitting in the meantime.
+  - Therefore, model for CSMA/CD will consist of alternating contention and transmission periods, with idle periods occurring when all stations are quiet
+  - For gate
+    - Efficiency = ${\frac{1}{1+ 6.44a}}$
+    - a = ${\frac{T_{p}}{T_{t}}}$
+    - If distance increases, efficiency of CSMA decreases.
+    - CSMA is not suitable for long distance networks like WAN; but works optimally for LAN.
+    - If length of packet is bigger, the efficiency of CSMA also increases, but maximum limit for length is 1500 Bytes.
+    - Transmission Time >= Round Trip Time of 1 bit
+    - Transmission Time >= 2*Propagation Time
+
+- CSMA/CA (CSMA with Collision Avoidance)
+  - Carrier-sense multiple access with collision avoidance (CSMA/CA) is a network multiple access method in which carrier sensing is used, but nodes attempt to avoid collisions by beginning transmission only after the channel is sensed to be "idle".
+  - It is particulary important for wireless netwrorks, where the collision detection of the alternative CSMA/CD is not possible due to wireless transmitters desensing their receivers during packet transmission
+  - CSMA/CA is unreliable due to the hidden node (terminal) and exposed node (terminal) problem.
+  - Solutions are RTS/CTS exchange.
+  - CSMA/CA is a protocol that operates in the DAta Link Layer (Layer 2) of the OSI model.
+  - The access method used by IEEE 802.11 Wi-Fi is CSMA/CA.
