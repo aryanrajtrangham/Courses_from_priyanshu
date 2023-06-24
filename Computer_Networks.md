@@ -1452,4 +1452,45 @@
   - If we multiply each code by another, we get 0.
   - If we multiply each code by itself, we get the number of stations (4).
   - Example:
-    - Data = (${d_{1}c_{1}}$ + ${d_{2}c_{2}}$ + ${d_{3}c_{3}}$ + ${d_{4}c_{4}}$)*${c_{1}}$ = 4*${d_{1}}$
+    - Data = (${d_{1}c_{1}}$ + ${d_{2}c_{2}}$ + ${d_{3}c_{3}}$ + ${d_{4}c_{4}}$)*${c_{1}}$ = 4 ${d_{1}}$
+
+### Ethernet
+
+- One of the most widely used Wired LAN technologies.
+- Operates in the data link layer and the physical layer.
+- Family of networkingtechnologies that are defined in the IEEE 802.2 and 802.3 standards.
+- Support data bandwidth of 10, 100, 1000, 10000, 40000 and 100000Mbps (100Gbps).
+- Ethernet Standards
+  - Define Layer 2 protocols and Layer 1 technologies.
+  - Two seperate sublayers of the data link layer to operate - Logical Link control (LLC) and the MAC sublayers.
+- Ethernet evolution
+  - Standard Ethernet 10 Mbps
+  - Fast Ethernet 100 Mbps
+  - Gigabit Ethernet 1 Gbps
+  - Ten-Gigabit Ethernet 10 Gbps
+- Ethernet Frame Format
+  - Preamble: 56 bits of alternating 1s and 0s.
+  - SFD: Start frame delimiter, flag (10101011)
+  - Physical layer header : first 8 bytes
+
+   Preamble | SFD | Destination address | Source address | Length or type | Data & padding | CRC
+  ----------|-----|---------------------|----------------|----------------|----------------|-----
+   7 bytes  | 1 byte | 6 bytes          | 6 bytes        | 2 bytes        |                | 4 bytes
+
+- Ethernet Frame - Min and Max Length
+  - Minimum payload length : 46 bytes
+  - Maximum payload length : 1500 bytes
+
+   Destination address | Source address | Length PDU     | Data & padding | CRC
+  ---------------------|----------------|----------------|----------------|---------
+   6 bytes             | 6 bytes        | 2 bytes        |                | 4 bytes
+  
+  - Minimum frame length: 512 bits or 64 bytes
+  - Maximum frame length: 12144 bits or 1518 bytes
+
+- Ethernet Address
+  - Example - 06:01:02:01:2C:4B <=> 6 bytes <=> 12 hex digits <=> 48 bits
+  - The least significant bit of the first bytes defines the type of address.
+  - If the bit is 0, the address is unicast, otherwise, it's multicast.
+    - Example:  10101010 <- unicast, 10101011 <- multicast address.
+  - If all bits are 1, then it is broadcast address.
