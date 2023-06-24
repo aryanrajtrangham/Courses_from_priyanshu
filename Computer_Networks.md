@@ -1425,3 +1425,31 @@
     - N = number of stations
     - ${T_{p}}$ = Propagation  delay
     - ${T_{t}}$ = Transmission  delay
+
+#### Multiplexing
+
+- Multiplexing in computer networking means multiple signals are combined together thus travel simultaneously in a shared medium.
+- Multiplexing = Sharing the bandwidth.
+
+### Frequency Division Multiple Access (FDMA)
+
+- In FDMA, the available bandwidth of the common channel is divided into bands that are separated by guard bands.
+- The available bandwidth is shared by all stations.
+- The FDMA is a data link layer protocol that uses FDM at the physical layer.
+
+### Time Division Multiple Access (TDMA)
+
+- In TDMA, the bandwidth is just one channel that is time shared between different stations.
+- The entire bandwidth is just one channel
+- Stations share the capacity of the channel in time.
+
+### Code Division Multiple Access (CDMA)
+
+- In CDMA, one channel carries all transmissions simultaneously.
+- CDMA differs from FDMA because only one channels occupies the entire bandwidth of the link.
+- It differ from TDMA because all station can send data simultaneously, there is no time sharing.
+- The assigned codes have two properties:
+  - If we multiply each code by another, we get 0.
+  - If we multiply each code by itself, we get the number of stations (4).
+  - Example:
+    - Data = (${d_{1}c_{1}}$ + ${d_{2}c_{2}}$ + ${d_{3}c_{3}}$ + ${d_{4}c_{4}}$)*${c_{1}}$ = 4*${d_{1}}$
