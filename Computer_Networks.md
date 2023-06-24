@@ -1260,7 +1260,7 @@
 - Channelization Protocols
   - Channelization is a multiple-access method in which the available bandwidth of a link is shared in time, frequency, or through code, between different stations.
 
-## Aloha
+### Aloha
 
 - Aloha is a random access protocol.
 - It was actually designed for WLAN but it's also applicable for shared medium..
@@ -1370,3 +1370,58 @@
   - Solutions are RTS/CTS exchange.
   - CSMA/CA is a protocol that operates in the DAta Link Layer (Layer 2) of the OSI model.
   - The access method used by IEEE 802.11 Wi-Fi is CSMA/CA.
+
+### Reservation
+
+- A station need to make a reservation before sending data.
+- In each interval, a reseervation frame precedes the data frames in that interval.
+- If there are N stations in the system, there are exactly N reservation minislots in the reservation frame.
+- Each minislot belongs to a station.
+- When a station needs to send a data frame, it makes a reservation in its own minislot.
+- The stations that have made reservations can send their data frames after the reservation frame.
+
+### Polling
+
+- The polling protocol requires one of the nodes to be designated as a Master node (Primary station).
+- The master node polls each of the nodes in a round-robin fashion.
+- In particular, the master node first sends a message to node 1, saying that (node 1) it can transmit up to some maximum number of frames.
+- After node 1 transmit some frames, the master node tells node 2 (node 2) it can transmit up to the maximum number of frames.
+- The master node can determine when a node has finished sending its frames by observing the lack of a signal on the channel.
+- The procedure continues in this manner, with the master node polling each of the nodes in a cyclic manner.
+- Advantages
+  - The polling protocol eliminates the collision.
+  - This allows polling to achieve a much higher efficiency.
+- Disadvantages
+  - The first drawback is that the protocol introduces a polling delay the amount of time required to notify a node that it can transmit.
+  - The second drawback, which is potentially more serious, is that if the master node fails, the entire channel becomes inoperative.
+- Polling - Function
+  - Poll function : If the primary wants to receive data, it asks the secondaries if they have anything to send.
+  - Select function : If the primary wants to send data, it tells the secondary to get ready to receive.
+- Efficiency of Polling
+  - Let ${T_{poll}}$ be the time for polling and ${T_{t}}$ be the time required for transmission of data. Then, Efficiency = ${\frac{T_{t}}{T_{t} + T_{poll}}}$
+
+### Token Passing
+
+- A station is authorized to send data when it receives a special frame called a token.
+- Here there is no master node.
+- A small, special-purpose frame known as a token is exchanged among the nodes in some fixed order.
+- When a node receives a token, it holds onto the token only if it has some frames to transmit; otherwise, it immediately forwards the token to the next node.
+- If a node does have frames to transmit when it receives the token, it sends up to a maximum number of frame and then forwards the token to the next node.
+- Token passing is decentralized and highly efficient, but it has problems as well.
+- Example
+  - The failure of one node can crash the entire channel.
+  - If a node accidentally neglects to release the token, then some recovery procedure must be invoked to get the token back in circulation.
+- Types of networks
+  - Physical ring
+  - Dual ring
+  - Bus ring
+  - Star ring
+- Performance of token passing
+  - ${S = \frac{1}{1 + a/N}    : for a<1}$
+  - ${S = \frac{1}{a(1 + 1/N)} : for a>1}$
+  - ${a = \frac{T_{p}}{T_{t}}}$
+  </br>where
+    - S = Throughput
+    - N = number of stations
+    - ${T_{p}}$ = Propagation  delay
+    - ${T_{t}}$ = Transmission  delay
