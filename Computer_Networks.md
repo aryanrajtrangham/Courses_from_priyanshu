@@ -1473,9 +1473,9 @@
   - SFD: Start frame delimiter, flag (10101011)
   - Physical layer header : first 8 bytes
 
-   Preamble | SFD | Destination address | Source address | Length or type | Data & padding | CRC
-  ----------|-----|---------------------|----------------|----------------|----------------|-----
-   7 bytes  | 1 byte | 6 bytes          | 6 bytes        | 2 bytes        |                | 4 bytes
+   Preamble | SFD    | Destination address | Source address | Length or type | Data & padding | CRC
+  ----------|--------|---------------------|----------------|----------------|----------------|---------
+   7 bytes  | 1 byte | 6 bytes             | 6 bytes        | 2 bytes        |                | 4 bytes
 
 - Ethernet Frame - Min and Max Length
   - Minimum payload length : 46 bytes
@@ -1489,8 +1489,30 @@
   - Maximum frame length: 12144 bits or 1518 bytes
 
 - Ethernet Address
-  - Example - 06:01:02:01:2C:4B <=> 6 bytes <=> 12 hex digits <=> 48 bits
+  - Example - 06:01:02:03:2C:4B <=> 6 bytes <=> 12 hex digits <=> 48 bits
   - The least significant bit of the first bytes defines the type of address.
   - If the bit is 0, the address is unicast, otherwise, it's multicast.
     - Example:  10101010 <- unicast, 10101011 <- multicast address.
   - If all bits are 1, then it is broadcast address.
+
+- Access Protocol For Ethernet
+  - The algorithm is commonly called Ethernet's Media Access Control (MAC) which is implemented in Hardware on the network adaptor.
+  - Access Method of Ethernet: CSMA/CD
+  - Encoding method: Manchester Encoding Technique for converting data bit into signals.
+
+- Ethernet Transmitter Algorithm
+  - When the adaptor has a frame to send and the line is idle, it transmits the frame immediately.
+  - The upper bound of 1500 bytes in the message means that the adaptor can occupy the line for a fixed length of time.
+  - When the adaptor has a frame to send and the line is busy, it wait for the line to go and then transmits immediately.
+  - The ethernet is said to be CSMA 1-persistent protocol beacuse an adaptor with a frame to send transmits with probability 1 whenever a line goes idle.
+  - Since there is no centralized control it is possible for two (or more) adaptors to begin transmitting at the same time, either because both found the line to be idle or both had been waiting for a busy line to become idle.
+  - When this happen, the two (or more) frames are said to be collide on the network.
+  - Since ethernet support collision detection, each sender is able to determine that a collision is in progress.
+  - At the moment an adaptor detects that its frame is colliding with another, it first makes sure to transmit a 32-bit jamming sequence and then stops transmission.
+  - Thus, a transmitter will minimally send 96 bits in the case of collision 64-bit preamble + 32-bit jamming sequence.
+  
+- Runt Frames
+  - Runt Frames is an Ethernet frame that is less than the IEEE 803.3's minimum length of 64 bytes.
+  - Runt frames are most commonly caused by collisions.
+  - Other possible causes are a malfunctioning network card, buffer underrun, duplex mismatch or software issues.
+
