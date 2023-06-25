@@ -1516,3 +1516,7 @@
   - Runt frames are most commonly caused by collisions.
   - Other possible causes are a malfunctioning network card, buffer underrun, duplex mismatch or software issues.
 
+- Exponential Backoff
+  - Once an adapter has detected a collision and stopped its transmission, it waits a certain amount of time and tries again.
+  - Each time the adaptor tries to transmit but fails, it doubles the amount of time it wait before trying again.
+  - This strategy of doubling the delay interval between each retransmission attempt is known as Exponential Backoff.
