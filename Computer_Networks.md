@@ -1520,3 +1520,30 @@
   - Once an adapter has detected a collision and stopped its transmission, it waits a certain amount of time and tries again.
   - Each time the adaptor tries to transmit but fails, it doubles the amount of time it wait before trying again.
   - This strategy of doubling the delay interval between each retransmission attempt is known as Exponential Backoff.
+
+- Ethernet - Pros
+  - Ethernet is the most widely used wired LAN technology.
+  - Ethernet is relatively inexpensive.
+  - In ethernet, all the node have the same priviledges. It does not folllow client-server architecture.
+  - Maintenance and administration are simple.
+  - The cable used to connect systems in ethernet is robust to noise.
+  - As it is robust to the noise, the quality of the data transfer does not degrade. The data transfer quality is good.
+  - With latest versions such as gigabit ethernet, the transfer speeds in Gbps have become possible.
+
+- Ethernet - Cons
+  - Under heavy loads, too much of the network's capacity is wasted by collisions.
+  - It does not hold good for real-time application and interactive applications.
+  - As the network cannot set priority for the packets, it is not suitable for a client-server architecture.
+  - For interactive application, dummy data have to be fed to make the farme size 46B which in mandatory.
+  - After receiving a packet, the receiver doesn't send any acknowledgement.
+
+- Ethernet CATS
+   Category | Shielding              | Max transmission speed (at 100 meters)
+  ----------|------------------------|----------------------------------------
+   CAt 3    | Unshielded             | 10 Mbps
+   CAt 5    | Unshielded             | 10/100 Mbps
+   CAt 5e   | Unshielded             | 1000 Mbps / 1 Gbps
+   CAt 6    | Shielded or Unshielded | 1000 Mbps / 1 Gbps
+   CAt 6a   | Shielded               | 1000 Mbps / 10 Gbps
+   CAt 7    | Shielded               | 1000 Mbps / 10 Gbps
+   CAt 8    | Shielded               | up to 40 Gbps
