@@ -1547,3 +1547,109 @@
    CAt 6a   | Shielded               | 1000 Mbps / 10 Gbps
    CAt 7    | Shielded               | 1000 Mbps / 10 Gbps
    CAt 8    | Shielded               | up to 40 Gbps
+
+### IEEE 802.11
+
+- Wireless Fidelity (Wi-Fi)
+  - Like its Ethernet and token ring siblings, 802.11 is designed for use in a limited geographical area (homes, office buildings, campuses).
+  - Primary challenge is to mediate access to a shared communication medium - in this case, signals propagating through space.
+  - 802.11 supports additional features
+    - power management and
+    - security mechanisms
+  - 802.11 uses 5 GHz Radio Band (High frrequency) which has 23 overlapping channels rather than the 2.4 GHz frequency band which has only three non-overlapping channels.
+  - Access Methos of IEEE 802.11 Wi-Fi: CSMA/CA
+  - Modes of Wi-Fi
+    - Infrastructure mode
+    - Ad hoc and Wi-Fi Direct
+  - Different Wi-Fi protocols
+    Protocol       | Frequency       | Channel Width      | Maximum data rate </br>(theoretical)
+    ---------------|-----------------|--------------------|--------------------
+    802.11ax       | 2.4GHz or 5GHz  | 20,40,80,160 MHz   | 2.4 Gbps
+    802.11ac wave2 | 5GHz            | 20,40,80,160 MHz   | 1.73 Gbps
+    802.11ac wave1 | 5GHz            | 20,40,80 MHz       | 866.7 Mbps
+    802.11n        | 2.4GHz or 5GHz  | 20,40 MHz          | 450 Mbps
+    802.11g        | 2.4GHz          | 20 MHz             | 54 Mbps
+    802.11a        | 5GHz            | 20 MHz             | 54 Mbps
+    802.11b        | 2.4GHz          | 20 MHz             | 11 Mbps
+    Legacy 802.11  | 2.4GHz          | 20 MHz             | 2 Mbps
+
+- Distribution System
+  - 802.11 is suitable for an ad-hoc configuration of nodes that may or may not be able to communicate with all other nodes.
+  - Nodes are free to move around
+  - The set of directly reachable nodes may change over time.
+  - To deal with this mobility and partial connectivity,
+    - 802.11 defines additional structure on a set of nodes.
+    - Instead of all nodes being created equal,
+      - some nodes are allowed to roam and some are connected to a wired network insfrastructure, they are called Access Points (AP) and they are connected to each other by a so-called *distribution system*.
+  - Access points connected to a distributed network.
+
+    ```[]
+       +------------------------+
+       | Distribution system    |
+       +------------------------+
+       | AP-1 / \  AP-2 | AP-3  |
+       | A   | B |   H  | G   F |
+       |   C  \ /  D   / \  E   |
+       +-------+------+   +-----+
+    ```
+
+    - Assume a distribution system that connects three access points, each of which services the nodes in the same region.
+    - Each of these regions is analogous to a cell in a cellular phone system with the APIs playing the same role as a base station.
+    - Although two nodes can communicate directly with each other if they are within reach of each other, the idea behind this configuration is
+      - Each nodes associates itself with one access point.
+      - For node A to communicate with node E, A first sends a frame to its AP-1 which forwards the frame across the distribution system to AP-3, which finally transmits the frame to E.
+    - How does the nodes select their AP ?
+      - The technique for selecting an AP is called *scanning*.
+        - The node sends a Probe frame.
+        - All APs within reach reply with a Probe Response frame.
+        - The node selects one of the one of the access points and sends that AP an Association Request frame.
+        - The AP replies with an Association Response frame.
+      - A node engages this protocol whenever it joins the network as well as
+      - When it becomes unhappy with its Access Point (AP)?
+        - This might happen, for example, because the signal from its current AP has weakened due to the node moving away from it.
+        - Whenever a node acquires a new AP, the new AP notifies the old AP of the change via the distribution system.
+    - Consider the situation when node C moves from the cell serviced by AP-1 to the cell serviced by AP-2.
+      - As it moves, it sends Probe frames, which eventually result in Probe Responses from AP-2.
+      - At some point, C prefers AP-2 over AP-1, and so it associates itself with that access point. This is called *active scanning* since the node is actively searching for an access point.
+      - APs also periiodically sends a Beacon frame that advertises the capabilities of the access point, these include the transmission rate supported by the AP.This is called *passive scanning*.
+      - A node can change to this AP based on the Beacon frame simply by sending it an Association Request frame back to the access point.
+
+- Wifi Frame Format
+   2  bytes  | 2 bytes | 6 bytes | 6 bytes | 6 bytes | 2 bytes | 6 bytes | 0-23122 bytes | 4 bytes
+  -------------------|----------|----------|----------|----------|-----|--------|--------|---------
+   Frame</br>control | Duration | Address 1| Address 2| Address 3| Seq.| Address 4| Data | Checksum
+
+  - Frame control
+    - It is a 2bytes starting field composed of 11 subfields. It contains control information of the frame.
+    - It has 11 subfields.
+  
+    2 bits  | 2 bits | 4 bits | 1 bit  | 1 bit  | 1 bit  | 1 bit  | 1 bit  | 1 bit  | 1 bit  | 1 bit
+    --------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------
+    Version | Type  | Subtype | To DS | From DS | MF     | Retry  | Pwd    | More   | W      | 0
+  
+    - Protocol Version : The first sub-field is a two-bit field set to 00. It has been included to allow future versions of IEEE 802.11 to operate simultaneously.
+    - Type : It is a two-bit subfield that specifies whether the frame is a data frame, control frame or management frame.
+    - Subtype : It is a four-bit subfield states whether the field is a Request to Send (RTS) or a Clear to Send (CTS) control frame. For a regular data frame, the value is set to 0000.
+    - To DS : A single bit subfield indicating whether the frame is going to the access point (AC), which coordinates the communications in centralised wireless systems.
+    - From DS : A single bit subfield indicating whether the frame is coming from the Access point.
+    - More Fragments : A single bit subfield which when set to 1 indicates that more fragments would follow.
+    - Retry : A single bit subfield which when set to 1 specifies a retransmission of a previous frame.
+    - Power Management : A single bit subfield indicating that the sender is adopting power-save mode.
+    - More Data: A single bit subfield showing that sender has further data frames for the receiver.
+    - WEP : A single bit subfield indicating that this is an encrypted frame.
+    - Order : The last subfield of one-bit, informs the receiver that to the higher layers the frames should be in an ordered sequence.
+  - Duration :
+    - It is a 2-byte field that specifies the time period for which the frame and its ACK occupy the chennel.
+
+  </br>
+
+  To</br>DS | From</br> DS | Address</br>1 | Address</br>2 | Address</br>3 | Address</br>4
+  ----------|--------------|---------------|---------------|---------------|---------------
+   0        | 0            | Destination   | Source        | BSS ID        | N/A
+   0        | 1            | Destination   | SendingAP     | Source        | N/A
+   1        | 0            | ReceivingAP   | Source        | Destination   | N/A
+   1        | 1            | ReceivingAP   | SendingAP     | Destination   | Source
+
+  - Sequence : It is 2 bytes field that stores the frame numbers. It detects duplicate frames and determines the order of fraemes for higher layers. Among the 16 bits, the first 4 bits provides identification to the fragment and the rest 12 bits contain the sequence number that increments with each transmission.
+  - Data : This is a variable sized field that carries the payload from the upper layers. The maximum size of data field is 2312 bytes.
+  - Checksum: It's a 4-byte field for error detection purpose.
