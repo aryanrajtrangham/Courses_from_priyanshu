@@ -1643,13 +1643,77 @@
 
   </br>
 
-  To</br>DS | From</br> DS | Address</br>1 | Address</br>2 | Address</br>3 | Address</br>4
-  ----------|--------------|---------------|---------------|---------------|---------------
-   0        | 0            | Destination   | Source        | BSS ID        | N/A
-   0        | 1            | Destination   | SendingAP     | Source        | N/A
-   1        | 0            | ReceivingAP   | Source        | Destination   | N/A
-   1        | 1            | ReceivingAP   | SendingAP     | Destination   | Source
+  To</br>DS | From</br>DS | Address</br>1 | Address</br>2 | Address</br>3 | Address</br>4
+  ----------|-------------|---------------|---------------|---------------|---------------
+   0        | 0           | Destination   | Source        | BSS ID        | N/A
+   0        | 1           | Destination   | SendingAP     | Source        | N/A
+   1        | 0           | ReceivingAP   | Source        | Destination   | N/A
+   1        | 1           | ReceivingAP   | SendingAP     | Destination   | Source
 
   - Sequence : It is 2 bytes field that stores the frame numbers. It detects duplicate frames and determines the order of fraemes for higher layers. Among the 16 bits, the first 4 bits provides identification to the fragment and the rest 12 bits contain the sequence number that increments with each transmission.
   - Data : This is a variable sized field that carries the payload from the upper layers. The maximum size of data field is 2312 bytes.
   - Checksum: It's a 4-byte field for error detection purpose.
+
+### Terminal Problem
+
+- Hidden Terminal Problem
+
+  ```[]
+          .   .     .   .
+      .          .         .
+    .          .   .         .
+   .      [A] . [B] .  [C]    .
+    ,          ,   ,         ,
+      .          .         .
+        '  . . '   ' . . '
+  ```
+
+  - Suppose both A and C want to communicate with B and so they each send it a frame.
+    - A and C are unaware of each other since their signals do not carry that far.
+    - These two frames collide with each other at B (but unlike an ethernet, neither A nor C is aware of this collision).
+    - A and C are said to hidden nodes with respect to each other.
+  - Solution to hidden terminal problem.
+    - Multiple Access Collision Avoidance (MACA) Algorithm - RTS and CTS frames
+
+- Exposed Terminal Problem
+
+  ```[]
+          .  .   .   .
+      .      . " .      .
+    .      .       .      .
+   .   A   . B    C .  D   .
+    ,       ,      ,      ,
+      .       .  .       .
+        '  . . '' . . '
+  ```
+
+  - Suppose B is sending to A. Node C is aware of this communication because it hears B's transmission.
+    - It would be a mistake for C to conclude that it cannot transmit to anyone just because it can hear B's transmission.
+    - Suppose C want to transmit to node D.
+    - This is not a problem since C's transmission to D will not interfere with A's ability to receive from B.
+  - Solution to exposed terminal problem.
+    - Multiple Access Collision Avoidance (MACA) Algorithm - RTS and CTS frames
+
+- Multiple Access with Collision Avoidance (MACA)
+  - 802.11 addredsses these two problems with an algorithm called Multiple Access with Collision Avoidance (MACA).
+  - Key idea : Sender and receiver exchange control frames with each other before the sender actually transmit any data.
+  - This exchange informs all nearby nodes that a transmission is about to begin.
+  - Sender transmit a *Request to Send (RTS)* frame to the receiver
+    - The RTS frame includes a field that indicates how long the sender wants to hold the medium. Length of the data frame to be transmitted.
+  - Receiver replies with a *Clear to Send (CTS)* frame
+    - This frame echoes this length field back to the sender
+  - Any node that sees the CTS frame knows that
+    - it is close to the receiver, therefore
+    - cannot transmit for the period of time it takes to send a frame of the specified length
+  - Any node that sees the RTS frame but not the CTS frame
+    - is not close enough to the receiver to interface with it, and
+    - so is free to transmit
+
+  - The idea of using ACK in MACA is Proposed in MACAW : MACA for wireless LANs.
+  - Receiver sends an ACK to the sender after successfully receiving a frame.
+  - All nodes must wait for this ACK before trying to transmit
+  - If two or more nodes detect an idle link and try to transmit an RTS frame at the same time.
+    - Their RTS frame will collide with each other.
+  - *802.11 does not support collision detection*.
+    - So the sender realize the collision has happened when they do not receive the CTS frame after a period of time.
+    - The amount of time a given node delay is defined by the same *exponential backoff algorithm* used on the Ethernet.
