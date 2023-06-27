@@ -1749,3 +1749,30 @@
   - Bluesnafing is the unauthorized access of information from a wireless device thorugh a Bluetooth connection, ofter between phones, desktops, laptops and PDAs.
   - This allows access to calenders, contact lists, email and text messages, and on some phones, users can copy pictures and private videos.
   - Bluesnarfing is the theft of information from the target device.
+
+- Bluetooth Protocol Stack
+
+  ```[]
+    +------------------------------------------------------------+
+    |                 Application/ Profiles                      | Application layer
+    +------------------------------------------------------------+
+    |       |  Other  | RFcomm | Telephony | Service   |         | Middleware layer
+    | Audio |  [LLC]  |        |           | discovery | Control |
+    |       +---------+--------+-----------+-----------+         |
+    |       | Logical link control adaptation protocol |         | Data link layer
+    |       |          [ Link manager ]                |         |
+    +-------+------------------------------------------+---------+
+    |                  Baseband                                  | Physical layer
+    +------------------------------------------------------------+
+    |                  Physical radio                            |
+    +------------------------------------------------------------+
+  ```
+
+  - Physical Radio (RF) layer : It performs modulation/demodulation of the data into RF signals. It defines the physical characteristics of bluetooth transceiver. It defines two types of physical link : connection-less and connection-oriented.
+  - Baseband Link Layer : It performs the connection establishment within a piconet.
+  - Link Manager protocol layer : It performs the management of the already established links. It also includes authetication and encryption processes.
+  - Logical Link Control and Adaption protocol layer : It is also known as the heart of the bluetooth protocol stack. It allows the communication between upper and lower layer of the bluetooth protocol stack. It packages the data packets received from uper layers into the form expected by lower layers. It also performs the segmentation and multiplexing.
+  - RF comm layer : It is short fo Radio Frontend Component. It provides serial interface with wireless application protocol (WAP) and object exchange (OBEX).
+  - TCS : It is short for Telephony Control Protocol. It provides telephony service.
+  - SDP layer : It is short for Service Discovery Potocol. It allows to discover the services available on another bluetooth enables device.
+  - Application layer : It enables the user to interact with the application.
