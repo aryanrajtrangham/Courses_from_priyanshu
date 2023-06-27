@@ -1548,7 +1548,7 @@
    CAt 7    | Shielded               | 1000 Mbps / 10 Gbps
    CAt 8    | Shielded               | up to 40 Gbps
 
-### IEEE 802.11
+### IEEE 802.11 Wi-Fi
 
 - Wireless Fidelity (Wi-Fi)
   - Like its Ethernet and token ring siblings, 802.11 is designed for use in a limited geographical area (homes, office buildings, campuses).
@@ -1718,7 +1718,7 @@
     - So the sender realize the collision has happened when they do not receive the CTS frame after a period of time.
     - The amount of time a given node delay is defined by the same *exponential backoff algorithm* used on the Ethernet.
 
-### IEEE 802.15.1
+### IEEE 802.15.1 Bluetooth
 
 - Bluetooth
   - Bluetooth is a wireless technology standard used for exchanging data betweeen fixed and mobile devices over short distances using short-wavelength ultra high frequency (UHF) radio waves in the industrial scientific medical (ISM) radio bands from 2.400 to 2.485 GHz and building area networks (PANs).
@@ -1755,7 +1755,7 @@
   ```[]
     +------------------------------------------------------------+
     |                 Application/ Profiles                      | Application layer
-    +------------------------------------------------------------+
+    +-------+---------+--------+-----------+-----------+---------+
     |       |  Other  | RFcomm | Telephony | Service   |         | Middleware layer
     | Audio |  [LLC]  |        |           | discovery | Control |
     |       +---------+--------+-----------+-----------+         |
@@ -1777,7 +1777,7 @@
   - SDP layer : It is short for Service Discovery Potocol. It allows to discover the services available on another bluetooth enables device.
   - Application layer : It enables the user to interact with the application.
 
-### VLAN
+### Virtual Local Area Network (VLAN)
 
 - A VLAN is a logical partitioning of a layer 2 network.
 - Multiple partitions can be created, allowing for multiple VLANs to co-exixt.
@@ -1830,3 +1830,43 @@
   - The protocol defines the structure of the tagging header added to the frame.
   - Switches add VLAN tags to the frames before placing then into trunk links and remove the tag before forwarding frames through no-trunk ports.
   - When properly tagged, the frames can transverse any number of switches via trunk links and still be forwarded within the correct VLAN at the destination.
+
+### IEEE 802.1D Spanning Tree Protocol (STP)
+
+- Redundancy
+  - Enables users to access network resources, despite path disruption.
+    - improves reliability
+    - improves availability
+  - In technology, 2 is 1 and 1 is none, single connection mean single point of failure.
+    - Creating redundant links is very simple and is advisable.
+
+- Key Facts - STP
+  - Original STP (802.1D) was created to prevent loops.
+  - Switches send probes into the network to discover loops.
+  - These probes are called as Bridge Protocol Data Unit (BPDU).
+  - BPDU will have specific information about the switch.
+  - Switch multicasts BPDU probes (every 2 second) and if it receives its own BPDU back, it means there is a loop in the network.
+  - Also the BPDU probes helps to elect the root bridge.
+  - All switches will find the best way to reach the root bridge and the redundant links will be blocked (Port cost).
+
+    ```[]
+      +---------------------------------------------+
+      |            BPDU (Bridge ID)                 |
+      +-----------------+---------------------------+
+      | Bridge Priority | MAC address of the switch |
+      +-----------------+---------------------------+
+    ```
+
+  - Root Bridge
+    - The Root Bridge will have the lowest bridge id.
+    - If Tie, the bridge with the lowest MAC address will be the Root bridge.
+  - Port Roles
+    - Root Port (Used to reach the root bridge)
+    - Designated Port (Forwarding port: One per link)
+    - Blocking/Non Designated Port (Loops)
+
+- Spanning Tree Protocol
+  - STP ensures that there is only one logical path between all destinations on the network by intentionally blocking redundant paths that could cause a loop.
+  - A port is considered blocked when user data is prevented from entering or leaving that port. This does not include bridge protocol data unit (BPDU) frames that are used by STP to prevent loops.
+  - The physical parts still exist to provide redundancy, but these paths are disabled to prevent the loop from occurring.
+  - If the path is even needed to compensate for a network cable or switch failure, STP recalculate the paths and unblocks, the necessary ports to allow the redundant path to become active.
