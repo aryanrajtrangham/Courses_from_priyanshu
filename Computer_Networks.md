@@ -1870,3 +1870,13 @@
   - A port is considered blocked when user data is prevented from entering or leaving that port. This does not include bridge protocol data unit (BPDU) frames that are used by STP to prevent loops.
   - The physical parts still exist to provide redundancy, but these paths are disabled to prevent the loop from occurring.
   - If the path is even needed to compensate for a network cable or switch failure, STP recalculate the paths and unblocks, the necessary ports to allow the redundant path to become active.
+
+## Logical Addressing & Subnetting
+
+### IPv4 Addresses
+
+- An IPv4 address is a 32-bit address that uniquely and universally defines the connection of a device (for example, a computer or a router) to the Internet.
+- An IPv4 address is 32 bits long.
+- Two devices on the Internet can never have the same address at the same time.
+- The address space of IPv4 is ${2^{32}}$ or 4,294,967,296 (more than 4 billion).
+- Notation : binary notation = 01110101 10010101 00011101 00000010, decimal notation = 117.149.29.2
