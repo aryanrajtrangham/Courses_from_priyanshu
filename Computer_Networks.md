@@ -1556,7 +1556,7 @@
   - 802.11 supports additional features
     - power management and
     - security mechanisms
-  - 802.11 uses 5 GHz Radio Band (High frrequency) which has 23 overlapping channels rather than the 2.4 GHz frequency band which has only three non-overlapping channels.
+  - 802.11 uses 5 GHz Radio Band (High frrequency) which has 23 non-overlapping channels rather than the 2.4 GHz frequency band which has only three non-overlapping channels.
   - Access Methos of IEEE 802.11 Wi-Fi: CSMA/CA
   - Modes of Wi-Fi
     - Infrastructure mode
@@ -1662,7 +1662,7 @@
           .   .     .   .
       .          .         .
     .          .   .         .
-   .      [A] . [B] .  [C]    .
+   .      [A] .  B  .  [C]    .
     ,          ,   ,         ,
       .          .         .
         '  . . '   ' . . '
@@ -1681,7 +1681,7 @@
           .  .   .   .
       .      . " .      .
     .      .       .      .
-   .   A   . B    C .  D   .
+   .   A   .[B]  [C].  D   .
     ,       ,      ,      ,
       .       .  .       .
         '  . . '' . . '
@@ -1717,3 +1717,35 @@
   - *802.11 does not support collision detection*.
     - So the sender realize the collision has happened when they do not receive the CTS frame after a period of time.
     - The amount of time a given node delay is defined by the same *exponential backoff algorithm* used on the Ethernet.
+
+### IEEE 802.15.1
+
+- Bluetooth
+  - Bluetooth is a wireless technology standard used for exchanging data betweeen fixed and mobile devices over short distances using short-wavelength ultra high frequency (UHF) radio waves in the industrial scientific medical (ISM) radio bands from 2.400 to 2.485 GHz and building area networks (PANs).
+  - It was originally conceived as a wireless alternative to RS-232 data cables.
+  - Bluetooth is a wireless technology named after Harald Bluetooth based on an analogy that Bluetooth technology would unite devices the way Harald Bluetooth united the tribes of Denmark into a single kingdom.
+  - Bluetooth is specified by an industry consortium called the Bluetooth Special Interest Group (SIG).
+  - It specifies an entire suite of protocols, going beyond the link layer to define application protocols, which it calls profiles, for a range of applications.
+    - There is a profile for synchronizing a personal digital assistance (PDA) with personal computer.
+    - Another profile gives mobile computer access to a wired LAN.
+  - The basic Bluetooth network configuration is called piconet.
+    - Consists of a master device and up to seven slave devices.
+    - Any comminication is between the master and a slave.
+    - The slaves do not communicate directly with each other.
+    - A slave can be parked: set to an inactive, low-power state.
+    - The complex configuration of the piconet results in scatternet.
+  - Pros
+    - Low cost
+    - Easy to use
+    - It can also penetrate through walls.
+    - It creates an ad-hoc connection immediately without any wires.
+    - It is used for voice and data transfer.
+  - Cons
+    - It can be hacked and hence, less secure.
+    - It has slow data transfer rate.
+    - It has small range : 10 meters.
+
+- Bluesnafing
+  - Bluesnafing is the unauthorized access of information from a wireless device thorugh a Bluetooth connection, ofter between phones, desktops, laptops and PDAs.
+  - This allows access to calenders, contact lists, email and text messages, and on some phones, users can copy pictures and private videos.
+  - Bluesnarfing is the theft of information from the target device.
