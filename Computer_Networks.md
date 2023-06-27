@@ -1776,3 +1776,57 @@
   - TCS : It is short for Telephony Control Protocol. It provides telephony service.
   - SDP layer : It is short for Service Discovery Potocol. It allows to discover the services available on another bluetooth enables device.
   - Application layer : It enables the user to interact with the application.
+
+### VLAN
+
+- A VLAN is a logical partitioning of a layer 2 network.
+- Multiple partitions can be created, allowing for multiple VLANs to co-exixt.
+- Each VLAN is a broadcast domain, usually with its own IP network.
+- VLANs are mutually isolated and packets can only pass between then via a router.
+- The partitioning of layer 2 network takes place inside a layer 2 device, usually via a switch.
+- The hosts grouped with a VLAN are unaware of the VLAN's existence.
+- Types of VLAN
+  - Data VLAN
+  - Default VLAN
+  - Native VLAN
+  - Management VLAN
+  - Voice VLAN
+- Pros
+  - Security
+  - Cost reduction
+  - Better performance
+  - Shrinks broadcast domains.
+  - Improved IT staff efficiency.
+  - Simpler project and application management.
+
+- VLAN Frame Tagging
+
+  ```[]
+    Ethernet Frame
+  +---------+--------+-------------+------+-----+
+  | Dst MAC | SrcMAC | Type/Length | Data | FCS |
+  +---------+--------+-------------+------+-----+
+
+    IEEE 802.1Q Frame
+  +---------+--------+-----+-------------+------+-----+
+  | Dst MAC | SrcMAC | Tag | Type/Length | Data | FCS |
+  +---------+--------+-----+-------------+------+-----+
+                   /         \
+               /                 \
+            /                        \
+         /                               \
+      /                                     \
+   /                                            \
+  +---------------+------+-----+-----------------+
+  | Ethernet      | Prio |  C  | VLAN identifier |
+  | Type (0x8100) | rity |     |                 |
+  +---------------+------+-----+-----------------+
+    2 bytes        3 bits  1bit   12 bits
+  ```
+
+  - Frame tagging is the process of adding a VLAN identification header to the frame
+  - It is used to properly transmit multiple VLAN frames through a trunk link.
+  - Switches tag frames to identify the VLAN to that they belong. Different tagging protocol exist; IEE802.1Q is very popular example.
+  - The protocol defines the structure of the tagging header added to the frame.
+  - Switches add VLAN tags to the frames before placing then into trunk links and remove the tag before forwarding frames through no-trunk ports.
+  - When properly tagged, the frames can transverse any number of switches via trunk links and still be forwarded within the correct VLAN at the destination.
