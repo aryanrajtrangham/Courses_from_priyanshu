@@ -9,6 +9,17 @@
 5. Application layer
 6. Network Security
 
+## Content
+
+1. Fundamentals
+2. Data Link Layer
+3. Logical Addressing & Subnetting
+4. Network Layer Protocols
+5. Routing Protocols
+6. NAT & IPv6
+7. Transport Layer
+8. Appication Layer & Security
+
 ## Fundamentals
 
 ### Definition - Computer Network
@@ -1880,3 +1891,69 @@
 - Two devices on the Internet can never have the same address at the same time.
 - The address space of IPv4 is ${2^{32}}$ or 4,294,967,296 (more than 4 billion).
 - Notation : binary notation = 01110101 10010101 00011101 00000010, decimal notation = 117.149.29.2
+
+### Classful Addressing
+
+- Classes of IPv4 address
+
+  Address</br> Class | 1st Octet</br>range in</br>decimal | 1st Octet bits | Network(N) and</br>Host(H) Portion | Default mask </br>(Decimal) | Number of possible</br>network and host per</br>network
+  ----|----------|--------------------------|--------------|-----------|-------------------------------------------------------
+   A  | 0-127    | 00000000 -</br> 01111111 | N.H.H.H      | 255.0.0.0 | 128 Nets (${2^{7}}$) </br> 16,777,214 hosts (${2^{24}-2}$)
+   B  | 128-191  | 10000000 -</br> 10111111 | N.N.H.H      | 255.255.0.0 | 16384 Nets (${2^{14}}$) </br> 65534 hosts (${2^{16}-2}$)
+   C  | 192-223  | 11000000 -</br> 11011111 | N.N.N.H      | 255.255.255.0 | 209150 Nets (${2^{21}}$) </br> 254 hosts (${2^{8}-2}$)
+   D  | 224-239  | 11100000 -</br> 11101111 | (Multicast)  | -         | -
+   E  | 240-255  | 11110000 -</br> 11111111 |(Experimental)| -         | -
+
+- Subnet mask
+
+  Class | Subnet Mask</br>(in Decimal) | Subnet Mask (in Binary) | Slash Notation
+  ------|-----------------|--------------------------------------|----------------
+   A    | 255.0.0.0       | 11111111.00000000.00000000.00000000  | /8
+   B    | 255.255.0.0     | 11111111.11111111.00000000.00000000  | /16
+   C    | 255.255.255.0   | 11111111.11111111.11111111.00000000  | /24
+
+  - To define the network and host portions of an address, devices use a separate 32-bit pattern called a subnet mask.
+  - The subnet mask does not actually contain the network or host portion of an IPv4 address, it just says where to look for these portions in a given IPv4 address.
+
+### IPv4 transsmission
+
+- In an IPv4 network, the hosts can communicate one of three different ways
+  - Unicast
+    - Unicast Transmission : The process of sending a packet from one host to an individual host.
+  - Broadcast
+    - Broad Transmission : The process of sending a packet from one host to all hosts in the network.
+    - Limited Broadcast : Destination 255.255.255.255
+      - Router do not forward a limited broadcast.
+    - Directed broadaast : Destination 172.16.4.255
+      - Host within the 172.16.4.0/24 network
+  - Multicast
+    - Multicast Transmission : The process of sending a packet from one host to a selected group of hosts, possibly in different networks.
+      - Multicast transmission reduces traffic
+      - The Multicast Address range : 224.0.0.0 to 239.255.255.255
+      - Link local - 224.0.0.0 to 224.0.0.255 (Example : routing information exchanged by routing protocols)
+      - Globally scoped addresses - 224.0.1.0 to 238.255.255.255 (Example 224.0.1.1 has been reserved for Network Time Protocol)
+
+### Private and Public IP Addresses
+
+- Private IP Addresses
+  - Early network design, when global end-to-end connectivity was envisioned for communicatons with all Internet hosts, intended that IP addresses be globally unique. However, it was found that this was not always necesary as private networks developed and public address space needed to be conserved.
+  - Computers not connected to the Internet, such as factory machines that communicate only with each other TCP/IP, need not have
+  globally unique IP addresses. Today, such private networks are widely used and typically connect to the Internet with network address translation (NAT), when needed.
+  - Hosts that do not require access to the Interenet can use private addresses
+    - 10.0.0.0 to 10.255.255.255 (10.0.0.0/8)
+    - 172.16.0.0 to 173.31.255.255 (172.16.0.0/12)
+    - 192.168.0.0 to 192.168.255.255 (192.168.0.0/16)
+  - The aforementioned are the three non-overlapping ranges of IPv4 addresses for private networks are reserved.
+
+- Special use IPv4 Addresses
+  - Network and Broadcast addresses - within each network the first and last addresses cannot be assigned to hosts.
+  - Loopback address - 127.0.0.1 a special address that hosts use to direct traffic to themselves (addresses 127.0.0.0 to 127.255.255.255 are reserved).
+  - Link-Local address - 169.254.0.0 to 169.254.255.255 (169.254.0.0/16) addresses can be automatically assigned to the local host.
+  - Test-net addresses - 192.0.2.0 to 192.0.2.255 (192.0.2.0/24) set aside for teaching and learning purposes, used in documentation and network examples.
+  - Experimental addresses - 240.0.0.0 to 255.255.255.254 are listed as reserved.
+
+- In a nutshell..
+  - Private IP address is used to communicate within the same network.
+  - Using private IP data or information can be sent or received within the same network.
+
+  - Public Ip address is used to communicate outside the network. Public IP address is basically assigned by the Internet Service Provider(ISP).
