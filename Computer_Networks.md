@@ -1991,3 +1991,15 @@
    /6 | 252.0.0.0 | /14 | 255.252.0.0 | /22 | 255.255.252.0 | /30 | 255.255.255.252
    /7 | 254.0.0.0 | /15 | 255.254.0.0 | /23 | 255.255.254.0 | /31 | 255.255.255.254
    /8 |*255.0.0.0*| /16 |*255.255.0.0*| /24 |*255.255.255.0*| /32 |*255.255.255.255*
+
+### Subnetting
+
+- A subnetwork or subnet is a logical subdivision of an IP network.
+- The practice of dividing a network into two or more network is called subnetting.
+- Computers that belong to a subnet are addressed with an identical most-significant bit-group in their IP addresses.
+- Steps for subnetting
+  1. Identify the class of the IP address and note the Default Subnet Mask.
+  2. Convert the Default Subnet Mask into Binary.
+  3. Note the number of hosts required per subnet and find the Subnet Generator (SG) and octet position.
+  4. Generate the new subnet mask.
+  5. Use the SG and generate the network ranges (subnets) in the appropriate octet position.
