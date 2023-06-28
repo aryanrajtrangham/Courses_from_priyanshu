@@ -1957,3 +1957,37 @@
   - Using private IP data or information can be sent or received within the same network.
 
   - Public Ip address is used to communicate outside the network. Public IP address is basically assigned by the Internet Service Provider(ISP).
+
+### Classless Addressing
+
+- Drawbacks of Classful Addressing
+  - **Lack of Internal Address Flexibility** : Big organizatinos are assigned large "monolithic" blocks of addresses that don't match well the structure of their underlying internal networks.
+  - **Inefficient use of Address Space** : The existence of only three block sizes (classes A,B and C) leads to waste of limited IP address space.
+  - **Proliferation of Router Table Entries** : As the Internet grows, more and more entries are required for routers to handle the routing of IP datagrams, which causes performance problems for routers. Attempting to reduce inefficient address space allocation leads to even more router table entries.
+
+- Formal name of Classless Addressing is Classless Inter-Domain Routing (CIDR).
+- Created a new set of standards that allowed service providers to allocate IPv4 addresses on any address bit boundary (prefix length) instead of only by a class A,B, or C address.
+- Classless addressing is possible with the help of subnetting.
+- Valid Subnet Masks
+   Subnet</br>Value | 128 | 64 | 32 | 16 |  8 |  4 |  2 |  1
+  ------------------|-----|----|----|----|----|----|----|----
+    255             |  1  |  1 |  1 |  1 |  1 |  1 |  1 |  1
+    254             |  1  |  1 |  1 |  1 |  1 |  1 |  1 |  0
+    252             |  1  |  1 |  1 |  1 |  1 |  1 |  0 |  0
+    248             |  1  |  1 |  1 |  1 |  1 |  0 |  0 |  0
+    240             |  1  |  1 |  1 |  1 |  0 |  0 |  0 |  0
+    224             |  1  |  1 |  1 |  0 |  0 |  0 |  0 |  0
+    192             |  1  |  1 |  0 |  0 |  0 |  0 |  0 |  0
+    128             |  1  |  0 |  0 |  0 |  0 |  0 |  0 |  0
+    0               |  0  |  0 |  0 |  0 |  0 |  0 |  0 |  0
+
+   /n | Mask      | /n  | Mask        | /n  | Mask          | /n  | Mask
+  ----|-----------|-----|-------------|-----|---------------|-----|----------------
+   /1 | 128.0.0.0 | /9  | 255.128.0.0 | /17 | 255.255.128.0 | /25 | 255.255.255.128
+   /2 | 192.0.0.0 | /10 | 255.192.0.0 | /18 | 255.255.192.0 | /26 | 255.255.255.192
+   /3 | 224.0.0.0 | /11 | 255.224.0.0 | /19 | 255.255.224.0 | /27 | 255.255.255.224
+   /4 | 240.0.0.0 | /12 | 255.240.0.0 | /20 | 255.255.240.0 | /28 | 255.255.255.240
+   /5 | 248.0.0.0 | /13 | 255.248.0.0 | /21 | 255.255.248.0 | /29 | 255.255.255.248
+   /6 | 252.0.0.0 | /14 | 255.252.0.0 | /22 | 255.255.252.0 | /30 | 255.255.255.252
+   /7 | 254.0.0.0 | /15 | 255.254.0.0 | /23 | 255.255.254.0 | /31 | 255.255.255.254
+   /8 |*255.0.0.0*| /16 |*255.255.0.0*| /24 |*255.255.255.0*| /32 |*255.255.255.255*
