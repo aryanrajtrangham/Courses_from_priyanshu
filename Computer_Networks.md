@@ -2003,3 +2003,43 @@
   3. Note the number of hosts required per subnet and find the Subnet Generator (SG) and octet position.
   4. Generate the new subnet mask.
   5. Use the SG and generate the network ranges (subnets) in the appropriate octet position.
+
+- FLSM = Fixed Length Subnet Masking
+- VLSM = Variable Length Subnet Masking
+
+## Network Layer Protocol
+
+### Address Resolution Protocol (ARP)
+
+- Different Address for Communication
+  - Transport Layer
+    - Protocols - TCP/UDP
+    - Port Numbers is of 16 bits (0 - 65535).
+      - Well known Ports (0 - 1023).
+      - Registered Ports (1024 - 49151).
+      - Dynamic or Private Ports (49152 - 65535).
+      - Example: HTTP - 80.
+
+  - Network Layer
+    - Protocols DNS.
+    - IP Address (IPv4 or IPv6)
+      - IPv4 - 32 bits (Decimal)
+      - IPv6 - 128 bits (Hexadecimal)
+    - Either user provides the IP address or DNS resolves the names into IP address.
+
+  - Data Link Layer
+    - Mac Address
+    - 48 bits (hexadecimal) - assigned by manufacturer.
+    - ARP protocol
+      - The ARP protocol provides two basic functions:
+        1. Resolving IPv4 addresses to MAC addresses.
+        2. Maintaining a table of mappings.
+      - ARP request -> broadcast message.
+      - ARP reply -> unicast message.
+
+- ARP: Map IP address into physical addresses.
+- Table of IP to physical address bindings.
+- Broadcast request if IP address not in table.
+- The broadcast address: MAC address.
+- Target machine responds (unicast) with its physical address.
+- Table entries are discarded if not refreshed.
