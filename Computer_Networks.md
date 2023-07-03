@@ -2131,7 +2131,7 @@
   - Options for DHCP
 
     Tag   | Length    | Value         | Description
-    -------|-----------|---------------|----------------------
+    ------|-----------|---------------|----------------------
     0     |           |               | Padding
     1     | 4         | Subnet mask   | Subnet mask
     2     | 4         |Time of the day| Time offset
@@ -2147,17 +2147,43 @@
     12    | Variable  | IP addresses  | Host name
     13    | 2         | DNS name      | Boot file size
     53    | 1         |               | Used for dynamic configuration
-    128-254| Variable  |Specific info. | Vendor specific
+    128-254| Variable |Specific info. | Vendor specific
     255   |           |               | End of list
 
-  ```[]
-      Tag    Length   Value
-    +------+--------+--------+   |--> 1 DHCP DISCOVER
-    |  53  |   1    |    *---|---|--> 2 DHCP OFFER
+    ```[]
+                                 |--> 1 DHCP DISCOVER
+      Tag    Length   Value      |--> 2 DHCP OFFER
     +------+--------+--------+   |--> 3 DHCP REQUEST
-                                 |--> 4 DHCP DECLINE
-                                 |--> 5 DHCP ACK
+    |  53  |   1    |    *---|---|--> 4 DHCP DECLINE
+    +------+--------+--------+   |--> 5 DHCP ACK
                                  |--> 6 DHCP NACK
                                  |--> 7 DHCP RELEASE
                                  |--> 8 DHCP INFORM
+    ```
+
+- DHCP Operation
+
+  ```[]
+                                         ________
+   +----+      -- DHCP DISCOVER -->     /______/ |
+   |    |     <-- DHCP OFFER --         | [==] | |
+   +----+      -- DHCP REQUEST -->      |------| |
+  __|__|__     <-- DHCP ACK  --         |______|/
+  DHCP Client                           DHCP Server
   ```
+
+  - DHCP DISCOVER:
+    - The DHCP client broadcasts a DHCPDISCOVER message on the network subnet using the destinstion address 255.255.255.255 (limited broadcast) or the specific subnet broadcast address (direct broadcast) DHCP Client
+    - A DHCP client may also request its last known IP address.
+  - DHCP OFFER:
+    - When a DHCP server receives a DHCPDISCOVER message from a client, which is an IP address lease request, THE DHCP server reserves an IP address for the client and makes a lease offer by sending a DHCPOFFER message to the client.
+    - This message contains the client's client id (traditionally a MAC address), the IP address that the server is offering, the subnet mask, the lease duration, and the IP address of the DHCP server making the offer.
+  - DHCP REQUEST:
+    - In response to the DHCP offers, the client replies with DHCP REQUEST message, broadcast to the server, requesting the offered address.
+    - A client can receive DHCP offers from multiple servers, but it will accept only one DHCP offer.
+    - Based on the required server identification option in the request and broadcast messaging, servers are informed whose offer the client has accepted.
+  - DHCP ACK:
+    - When the DHCP server receives the DHCP REQUEST message from the client, the configuration process enters its final phase.
+    - The acknowledgement phase involves sending a DHCPACK packet to the client.
+    - This packet includes the lease duration and any other configuration information that the client might have requested.
+    - At this point, the IP configuration process is completed.
