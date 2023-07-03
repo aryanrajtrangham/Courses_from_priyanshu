@@ -2043,3 +2043,38 @@
 - The broadcast address: MAC address.
 - Target machine responds (unicast) with its physical address.
 - Table entries are discarded if not refreshed.
+
+- ARP header format
+
+  ```[]
+  0                8                  16                                 31
+  +-----------------------------------+-----------------------------------+
+  |       Hardware type = 1           |     ProtocolType = 0x0800         |
+  +----------------+------------------+-----------------------------------+
+  |   HLen = 48    |    PLen = 32     |            Operation              |
+  +----------------+------------------+-----------------------------------+
+  |                Source Hardware Address (bytes 0 - 3)                  |
+  +-----------------------------------+-----------------------------------+
+  | SourceHardwareAddress (bytes 4-5) | SourceProtocolAddress (bytes 0-1) |
+  +-----------------------------------+-----------------------------------+
+  | SourceProtocolAddress (bytes 2-3) | TargetHardwareAddress (bytes 0-1) |
+  +-----------------------------------+-----------------------------------+
+  |                Target Hardware Address (bytes 2-5)                    |
+  +-----------------------------------------------------------------------+
+  |                Target Protocol Address (bytes 0-3)                    |
+  +-----------------------------------------------------------------------+
+  ```
+
+  - Hardware Type: Type of physical network (e.g, Ethernet)
+  - Protocol Type: Type of upper layer protocol (e.g, IP)
+  - HLen and PLen: Length of physical address and protocol address.
+  - Operatino : Request or reply.
+
+- Reverse Address Resolution Protocol (RARP)
+  - ARP: Maps IP address to Physical Address.
+  - Reverse ARP (RARP) is an obsolete computer networking protocol used by a client computer to request its Internet Protocol (IPv4) address from a computer network, when all it has available is its link layer or harware address, such as a MAC address.
+  - This protocol can use the known MAC address to retrieve its IP address. Functionality wise, RARP is complete opposite of the ARP.
+  - It os possible for a device to not know its own IP address. This may happen if, for example, the device could not save the IP address because there was insufficient memory available. In such cases, the Reverse ARP is used.
+  - It has been rendered obsolete by the Bootstrap Protocol (BOOTP) and the modern Dynamic Host Configuration Protocol (DHCP), which both support a much greater feature set than RARP.
+  - The RARP cannot handle subnetting because no subnet masks are sent. If multiple subnets are deployed, an RARP server must be available in each subnet.
+
