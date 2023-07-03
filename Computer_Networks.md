@@ -2078,3 +2078,86 @@
   - It has been rendered obsolete by the Bootstrap Protocol (BOOTP) and the modern Dynamic Host Configuration Protocol (DHCP), which both support a much greater feature set than RARP.
   - The RARP cannot handle subnetting because no subnet masks are sent. If multiple subnets are deployed, an RARP server must be available in each subnet.
 
+### Dynamic Host Configuration Protocol (DHCP)
+
+- The MAC addresses are configured into network by manufacturer and they are expected to be unique.
+- IP addresses must be unique on any internetwork.
+- Most Operating Systems provide a way to manually configure the IP information for the host.
+- Drawbacks of manual configuration:
+  - A lot of work to configure all the hosts in a large network.
+  - Configuration process is error-prune.
+- Hence automated IP configuration process is required.
+- DHCP server is responsible for provinding configuration inforamation to hosts.
+- There is at least once DHCP server for an administration domain.
+- DHCP server maintains a pool of available IP addresses.
+- So when requested by a host, DHCP allows the host to obtain an IP address dynamically.
+- DHCP "leases" the IP information to the host for a set period.
+
+- Methods of IP address allocation
+  - Depending on implementation, the DHCP server may have three methods of allocating IP addresses.
+    - Dynamic allocation
+    - Automatic allocation
+    - Static allocation
+
+- DHCP Packet Format
+
+  ```[]
+    0                8               16                24              31
+    +----------------+---------------+-----------------+----------------+
+    | Operation code | Hardware type | Hardware length | Hop count      |
+    +----------------+---------------+-----------------+----------------+
+    |                       Transaction ID                              |
+    +--------------------------------+----------------------------------+
+    |       Number of seconds        |            Flags                 |
+    +--------------------------------+----------------------------------+
+    |                       Client IP address                           |
+    +-------------------------------------------------------------------+
+    |                         Your IP address                           |
+    +-------------------------------------------------------------------+
+    |                       Server IP address                           |
+    +-------------------------------------------------------------------+
+    |                       Gateway IP address                          |
+    +-------------------------------------------------------------------+
+    |                Client hardware address (16 bytes)                 |
+    +-------------------------------------------------------------------+
+    |                      Server name (64 bytes)                       |
+    +-------------------------------------------------------------------+
+    |                     Boot file name (128 bytes)                    |
+    +-------------------------------------------------------------------+
+    |                     Options (variable length)                     |
+    +-------------------------------------------------------------------+
+  ```
+
+  - Options for DHCP
+
+    Tag   | Length    | Value         | Description
+    -------|-----------|---------------|----------------------
+    0     |           |               | Padding
+    1     | 4         | Subnet mask   | Subnet mask
+    2     | 4         |Time of the day| Time offset
+    3     | Variable  | IP addresses  | Default router
+    4     | Variable  | IP addresses  | Time saver
+    5     | Variable  | IP addresses  |IEN 16 server
+    6     | Variable  | IP addresses  | DNS server
+    7     | Variable  | IP addresses  | Log server
+    8     | Variable  | IP addresses  | Quote server
+    9     | Variable  | IP addresses  | Print Server
+    10    | Variable  | IP addresses  | Impress
+    11    | Variable  | IP addresses  | RLP server
+    12    | Variable  | IP addresses  | Host name
+    13    | 2         | DNS name      | Boot file size
+    53    | 1         |               | Used for dynamic configuration
+    128-254| Variable  |Specific info. | Vendor specific
+    255   |           |               | End of list
+
+  ```[]
+      Tag    Length   Value
+    +------+--------+--------+   |--> 1 DHCP DISCOVER
+    |  53  |   1    |    *---|---|--> 2 DHCP OFFER
+    +------+--------+--------+   |--> 3 DHCP REQUEST
+                                 |--> 4 DHCP DECLINE
+                                 |--> 5 DHCP ACK
+                                 |--> 6 DHCP NACK
+                                 |--> 7 DHCP RELEASE
+                                 |--> 8 DHCP INFORM
+  ```
