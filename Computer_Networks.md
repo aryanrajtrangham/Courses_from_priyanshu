@@ -2187,3 +2187,31 @@
     - The acknowledgement phase involves sending a DHCPACK packet to the client.
     - This packet includes the lease duration and any other configuration information that the client might have requested.
     - At this point, the IP configuration process is completed.
+
+### Internet Control Message Protocol (ICMPv4)
+
+- ICMP is a supporting protocol in the Internet protocol suite.
+- It is a supporting protocol in the Internet protocol suite.
+- It is used by network devices, including routers, to send error messages and operational information indicating success or failure when communicating with another IP address.
+- Examples:
+  - Destination host unreachable due to link/node failure.
+  - Reassembly process failed
+  - TTL had reached 0 (so datagrams don't cycle forever)
+  - IP header checksum failed.
+- ICMP messages are typically used for diagnostic or control purposes or generated in response to errors in IP operations.
+- ICMP errors are directed to the source IP address of the originating packet.
+- This protocol defines a collection of error messages that are sent back to the source host whenever a router or host is unable to process an IP packet successfully.
+- ICMP-Redirect
+  - From router to a source host.
+  - With a better route information.
+- ICMPv4 Packet Format
+
+  ```[]
+  |<--8 bits-->|<--8 bits-->|<--8 bits-->|<--8 bits-->|
+  |   Type     |   Code     |         Checksum        |
+  +------------+------------+-------------------------+
+  |                Rest of the Header                 |
+  +---------------------------------------------------+
+  |               Data Section                        |
+  +---------------------------------------------------+
+  ```
