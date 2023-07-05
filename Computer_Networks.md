@@ -2234,6 +2234,8 @@
     - Duplicate copies of a packet are delivered.
     - Packet can be delayed for a long time.
   
+- IPv4 Datagram Format
+
   ```[]
                         |<----------20-65536 bytes--------->|
                         |<--20-60bytes-->|                  |
@@ -2265,3 +2267,43 @@
   +---------------------------------------------------------------+
   |<--------------------------32 bits---------------------------->|
   ```
+
+  - Version - 4 bits
+    - Ver = 0100 (Decimal: 4) means it is IPv4.
+  - HLEN - 4 bits (header length)
+    - HLEN = Number of 32 bit words in the header.
+    - If HLEN = 6 (0110), it means the IP header is 192 bits (32 x 6) long.
+  - Service - 8 bits (Service bits)
+    - Type of Service (TOS)
+    - Not widely used
+      TOS Bits | Description
+      ---------|---------------
+       0000    | Normal (default)
+       0001    | Minimize cost
+       0010    | Maximized reliability
+       0100    | Maximize throughput
+       1000    | Minimize delay
+  - Total length - 16 bits
+    - Number of bytes in this datagram.
+    - This field defines the total length of the datagram including the header.
+  - Identification - 16 bits
+    - used by fragmentation.
+  - Flags (3 bits) / Fragmentation offset (13 bits)
+    - Used by fragmentation
+    - D - Do not fragmentation & M - More fragmentation
+  - Time to Live - 8 bits (TTL)
+    - Number of hoops this datagram has traveled.
+    - Prevents looping of IP packets in the network.
+  - Protocol - 8 bits
+    - Demux Key (TCP =6, UDP=17)
+    - The value of the protocol field defines to which protocol that data belong.
+      Value  | Protocol
+      -------|----------
+       1     | ICMP
+       2     | IGMP
+       6     | TCP
+       17    | UDP
+       89    | OSPF
+  - Header Checksum - 16 bits
+    - Used for Error Detection
+  - Options, data and padding are used to make a complete packet.
