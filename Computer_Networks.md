@@ -2210,8 +2210,58 @@
   |<--8 bits-->|<--8 bits-->|<--8 bits-->|<--8 bits-->|
   |   Type     |   Code     |         Checksum        |
   +------------+------------+-------------------------+
-  |                Rest of the Header                 |
+  |               Rest of the Header                  |
   +---------------------------------------------------+
-  |               Data Section                        |
+  |                  Data Section                     |
   +---------------------------------------------------+
+  ```
+
+### Internet Protocol (IPv4)
+
+- Need for Network layer
+  - It is responsible for delivery of data from the original source to the destination network.
+  - Service provided by the network layer.
+    - Logical addressing
+    - Routing
+
+- Internet Protocol (IP)
+  - Switching at the network layer in the internet uses the datagram approach to packet switching.
+  - Communication at the network layer in the internet is connectionless.
+  - The Internet Protocol version 4 (IPv4) is the delivery mechanism used by the TCP/IP protocols.
+  - Best-effort delivery (unreliable service).
+    - Packets are lost.
+    - Packets are delivery out of order
+    - Duplicate copies of a packet are delivered.
+    - Packet can be delayed for a long time.
+  
+  ```[]
+                        |<----------20-65536 bytes--------->|
+                        |<--20-60bytes-->|                  |
+                        +----------------+------------------+
+                  <-----|     Header     |      Data        |
+                        +----------------+------------------+
+                      /                    \
+                  /                            \
+              /                                    \
+          /                                            \
+      /                                                    \
+  +--------+--------+-------------+-------------------------------+
+  |  VER   | HLEN   |   Service   |       Total length            |
+  | 4 bits | 4 bits |   8 bits    |          16 bits              |
+  +--------+--------+-------------+--------+----------------------+
+  |       Identification          | Flags  | Fragmentation offset |
+  |        16 bits                | 3 bits |      13 bits         |
+  +-----------------+-------------+--------+----------------------+
+  |  Time to live   |   Protocol  |         Header checksum       |
+  |     8 bits      |   8 bits    |         16 bits               |
+  +-----------------+-------------+-------------------------------+
+  |                      Source IP address                        |
+  +---------------------------------------------------------------+
+  |                    Destination IP address                     |
+  +---------------------------------------------------------------+
+  |                          Option                               |
+  +---------------------------------------------------------------+
+  |                       DATA (variable)                         |
+  +---------------------------------------------------------------+
+  |<--------------------------32 bits---------------------------->|
   ```
