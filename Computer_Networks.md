@@ -2307,3 +2307,22 @@
   - Header Checksum - 16 bits
     - Used for Error Detection
   - Options, data and padding are used to make a complete packet.
+
+- Time to Live (TTL)
+  - Number of hops this datagram has traveled.
+  - Prevent looping of IP packet in the network.
+  - In the IPv4 header. TTL is the 9th octet of 20.
+  - In the IPv6 header, it is the 8th octet of 40.
+  - The maximum TTL value is 255, the maximum value of a single octet.
+  - A recommended initial TTL value is 64.
+  - The time-to-live value can be thought of as an upper bound on the time that an IP datagram can exist in an internet system.
+  - The TTL field is set by the sender of the datagram, and reduced by every router on the route to its destination.
+  - If the TTL field reaches zero before the datagram arrives at its destination, then the datagram is discarded and an ICMP error datagram (11-Time Exceeded) is sent back to the sender.
+  - The purpose of the TTL field is to avoid looping of IP packets in the internet.
+  - In theory, under IPv4, time to live is measured in seconds, although every host that passes the datagram must reduce the TTL by at least one unit.
+  - In practice, the TTL field is reduced by one on every hop.
+  - To reflect this practice, the field is renamed hop limit in IPv6.
+
+### Fragmentation in IPv4
+
+-
