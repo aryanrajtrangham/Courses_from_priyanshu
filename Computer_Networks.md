@@ -2360,3 +2360,29 @@
   - Total length.
 - The rest of the field must be copied.
 - Of course, the value of the checksum must be recalculated regardless of fragmentation.
+- The field that are related to fragmentation and reassembly of an IPv4 datagram are the
+  - Identification
+    - This 16-bit identifies a datagram originating from the source host.
+    - The combination of the identification and source IPv4 must uniquely define a datagram as it leaves the source host.
+    - To guarantee uniqueness, the IPv4 protocol uses a counter to label the datagrams.
+    - The counter is initialized to a positive number.
+    - When the IPv4 protocol sends a datagram, it copies the current value of the counter to the identification and increments the counter by 1.
+    - As long as the counter is kept in the main memory, uniqueness is guaranteed.
+    - When a datagram is fragmentation, the value in the identification field is copied to all fragments
+    - In other words, all fragments have the same identification number, the same as the original datagram.
+    - The identification number helps the destination is reassembling the datagram.
+    - It knows that all fragments having the same identification value must be assembled into one datagram.
+  - flags
+    - This is a 3-bit field. The first bit is reserved.
+    - The second bit is called the do not fragment bit.
+    - If its value is 1, the machine must not fragment the datagram.
+    - If it cannot pass the datagram through any available physical network, it discards the datagram and sends an ICMP error messages to the source host.
+    - If its value is 0, the datagram can be fragmented if necessary
+    - The third bit is called the fragment bit.
+    - If its value is 1, it means the datagram is not the last fragment, there are more fragment after this one.
+    - If its value is 0, it means this is the last or only fragment
+  - fragmentation offset
+    - This 13-bit field shows the relative position of this fragment with respect to the whole datagram.
+    - It is the offset of the data in the datagram measured in units of 8 bytes.
+    - This is done because the length of the offset field is only 13 bits and cannot represent a sequence by bytes greater than 8191.
+    - This forces hosts or router that fragment datagrams to choose a fragment size so that the first byte number is divisible by 8.
