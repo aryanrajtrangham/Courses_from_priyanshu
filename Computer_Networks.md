@@ -2325,4 +2325,38 @@
 
 ### Fragmentation in IPv4
 
--
+- A datagram can travel through different networks.
+- Each router decapsulates the IPv4 datagram from the frame it receive, processes it, and then encapsulates it in another frame.
+- The format and size of the received frame depend on the protocol used by the physical network through which the frame has just traveled.
+- The format and size of the sent frame depends on the protocol used by the physical network through which the frame is going to travel.
+- For example, if a router connects a LAN to a WAN, it receives a frame in the LAN format and sends a frame in the WAN format.
+- Each data link layer protocol has its own format in most protocols.
+- One of the field defined in the format is the maximum size of the data field.
+- In other words, when a datagram is encapsulated in a frame, the total size of the datagram must be less than this maximum size, which is defined by the restrictions imposed by the hardware and software used in the network.
+- To make the IPv4 protocol independent of the physical network, the designers decided to make the maximum length of the the IPv4 datagram equal to 65535 bytes.
+- This makes transmission more efficient if we use a protocol with an MTU (maximum transmission unit) of this size.
+- However, for other physical networks, we must divide the datagram to make it possible to pass through these networks. This is called fragmentation.
+- The source usually does not fragment the IPv4 packet. The transport layer will instead segment the data into a size that can be accommodated by IPv4 and the data link layer in use.
+
+- The value of the MTU depends on the physical network protocol.
+   Protocol             | MTU
+  ----------------------|-------
+   Hyperchannel         | 65535
+   Token Ring (16 Mbps) | 17914
+   Token Ring (4 Mbps)  | 4464
+   FDDI                 | 4352
+   Ethernet             | 1500
+   X.25                 | 576
+   PPP                  | 296
+
+- When a datagram is fragmented, each fragment has its own header with most of the fields repeated, but with some changed.
+- A fragmented data may itself be fragmented if it encounters a network with an even smaller MTU.
+- In other words, a datagram can be fragmented several times before it reaches the final destination.
+- In IPv4, fragmentation can be done by source host or any router. The reassembly is done only at the destination.
+- It is logical to do the reassembly at the final destination.
+- When a datagram is fragmented, required ports of the header must be copied by all fragments
+  - Flags,
+  - Fragmentation offset and
+  - Total length.
+- The rest of the field must be copied.
+- Of course, the value of the checksum must be recalculated regardless of fragmentation.
