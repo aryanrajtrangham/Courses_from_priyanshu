@@ -2386,3 +2386,35 @@
     - It is the offset of the data in the datagram measured in units of 8 bytes.
     - This is done because the length of the offset field is only 13 bits and cannot represent a sequence by bytes greater than 8191.
     - This forces hosts or router that fragment datagrams to choose a fragment size so that the first byte number is divisible by 8.
+
+### Internet Group Management Protocol (IGMP)
+
+- It is a network layer protocol.
+- The Internet Group Management Protocol (IGMP) is a communication protocol used by hosts and adjacent routers on IPv4 networks to establish group memberships.
+- IGMP is an integral part of IP multicast.
+- It can be used for one-to-many networking applications such as online streaming video and gaming, and allows more efficient use of resources when supporting these types of applications.
+
+```[]
+  +----+                                                         +-----+
+  | __ |----------(x)------------(x)-------------[====]----------|     |
+  | == |        Router 1     Local Multicast    L2 switch        +-----+
+  +----+           |            Router           with IGMP        =====
+    |              |              |              Snooping         Video 
+  Video            |              |                |              Client
+  server           |              |                |                |
+    |              |<----PIM----->|<-----IGMP----->|<-----IGMP----->|
+    |              |              |                |                |
+    |______________|___UDP/RTP____|________________|________________|
+                Multicast Traffic |<------------LAN---------------->|
+```
+
+- IGMP operates between a host and a local multicast router.
+- Switching feature IGMP snooping derive useful information by observing these IGMP transactions.
+- Protocol Independent Multicast (PIM) is then used between the local and remote multicast routers, to direct multicast traffic from hosts sending multicasts to hosts that have registered through to receive them.
+- Messages
+  - General membership queries: Sent by multicast routers to determine which multicast addresses are of interest to systems attached to the network(s) they serve to refresh the group membership state for all systems on its network.
+  - Group-specific membership queries: Used for determining the reception state for a particular multicast address.
+  - Group-and-source-specific queries: Allow the router to determine if any systems desire reception of messages sent to multicast group from a source address specified in a list of unicast addresses.
+  - Membership reports: Sent by multicast receivers in response to a membership query or asynchronously when first registering for a group.
+  - Leave group messages: Sent by multicast receivers when specified multicast transmissions are no longer needed at the receiver.
+  
