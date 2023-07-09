@@ -2456,3 +2456,55 @@
   - Example of routing protocols: RIP (Routing Information Protocol), OSPF (Open Shortest Path First) and EIGRP (Enhanced Interior Gateway Routing Protocol).
   - Routers do share dynamic routing information with each other, which increases CPU, RAM and bandwidth usage.
   - However, routing protocols are capable of dynamically choosing a different (or better) path when there is a change to the routing infrastructure.
+
+### Dynamic Routing Protocols
+
+- A static approach has several shortcomings:
+  - It does not deal with node or link failures.
+  - It does not consider the addition of new nodes or links.
+  - It implies that edge costs cannot change.
+- Solution
+  - Need a distributed and dynamic protocol
+  - Two main classes of protocols
+    - Distance Vector
+    - Link State
+
+- Dynamic Routing Protocol
+  - A routing table can be either static or dynamic.
+  - A static table is one with manual entries.
+  - A routing table is one that is updated automatically when there is a change somewhere in the Internet.
+  - A routing protocol is a combination of rules and procedures that lets routers in the Internet inform each other of changes.
+
+- Popular Routing Protocols
+  - Intradomain
+    - Distance Vector Ex: Routing Information Protocol (RIP)
+    - Link State Ex: Open shortest Path First Protocol (OSPF)
+  - Interdomain
+    - Path Vector Ex: Border Gateway Protocol (BGP)
+
+### Distance Vector Routing
+
+- Each node constructs a one dimensional array (a vector) containing the "distances" (costs) to all other nodes and distributes that vector to its immediate neighbors.
+- Starting assumption is that each node knows the cost of the link to each of its directly connected neighbors.
+- The distance vector routing algorithm is sometimes called as Bellman-Ford algorithm.
+- Every T seconds each router sends its table to its neighbor and each router then updates its table based on the new information.
+- Problems include fast response to good news and slow response to bad news.
+- Also too many messages to update.
+- Routing Table Entries: (Destination, Distance/cost, next hop)
+  - Node A: (B,1,B),(C,1,C),(F,1,F),(E,1,E),(D,2,C) etc.
+
+- Problems in DVR
+  - Count-to-infinity problem in DVR.
+    - The count-to-infinity problem occurred due to routing loops from the Distance Vector Routing Protocol because it uses the Bellman-Ford algorithm and cannot prevent routing loops. Routing loops in the network can occur due to failure of the interface or link between two routers in the network.
+
+- Solution
+  - Split Horizon
+    - In computer networking split-horizon route advertisement is a method of preventing  routing loops in distance-vector routing protocols by prohibiting a router from advertising a route back onto the interface from which it was learned.
+    - In other words it is a method of preventing a routing loop in a network.
+    - *The basic principle is simple:* Information about the routing for a particular packet is never sent back in the direction from which it was received.
+    - With the split-horizon rule in place, this particular loop scenario cannot happen, improving convergence time in complex, highly-redundant environments.
+  - Split Horizon with Poison Reverse
+    - Poison Reverse is an implementation algorithm that iis often used within distance-vector routing.
+    - The use of poison reverse is to solve the count-to-infinity problem.
+    - Practically, poison reverse can be thought of as the reverse of split horizon.
+    - With poison reverse, route advertisements that would be suppressed by split horizon are instead advertised with a distance of infinity.
