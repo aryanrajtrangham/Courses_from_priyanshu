@@ -2417,4 +2417,42 @@
   - Group-and-source-specific queries: Allow the router to determine if any systems desire reception of messages sent to multicast group from a source address specified in a list of unicast addresses.
   - Membership reports: Sent by multicast receivers in response to a membership query or asynchronously when first registering for a group.
   - Leave group messages: Sent by multicast receivers when specified multicast transmissions are no longer needed at the receiver.
-  
+
+## Routing Protocols
+
+### Basics of Routing
+
+- The router is responsible for routing of traffic between networks.
+- Routers are specialized computers containing the following required components to operate: Central processing unit (CPU), Operating system (OS), Memory and storage (RAM, ROM, NVRAM, Flash, hard drive) etc.
+- Routers can connect multiple networks.
+- Routers have multiple interfaces, each on a different IP network.
+- Routers choose the best path.
+- Routers use routing tables to determine the best path to send packets.
+- Routers encapsulate the packet and forward it to the interface indicated in routing table.
+- Forwarding table
+  - Used when a packet is being forwarded and so must contain enough information to accomplish the forwarding function.
+  - A row in the forwarding table contains the mapping from a network number to an outgoing  interface and some MAC information, such as Ethernet Address of the next hop.
+- Routing table
+  - Built by the routing algorithm as a precursor to build the forwarding table.
+  - Generally contains mapping from network numbers to next hops.
+- Best path
+  - Best path is selected by a routing protocol based on the value or metric uses to determine the distance to reach a network
+  - A metric is the value used to measure the distance to a given network.
+  - Best path to a network is the path with the lowest metric.
+
+### Static Routing Vs dynamic Routing
+
+- Static Routing
+  - A static routing table is created, maintained, and updated by a network administration, manually.
+  - A static route to every network must be configured on every for full connectivity.
+  - This provides a granular level of control over routing, but quickly becomes impractical on large networks.
+  - Routers will not share static routes with each other, thus reducing CPU/RAM overhead and saving bandwidth.
+  - However, static routing is not fault-tolerant, as any change to the routing infrastructure (such as a link going down, or a new network added) requires manual intervention.
+  - Router operating in a purely static environment cannot seamlessly choose a better route if a link becomes unavailable.
+
+- Dynamic Routing
+  - A dynamic routing table is created, maintained and updated by a routing protocol running on the router.
+  - The choice of the "best route" is the hands of the routing protocol and not the network administrator.
+  - Example of routing protocols: RIP (Routing Information Protocol), OSPF (Open Shortest Path First) and EIGRP (Enhanced Interior Gateway Routing Protocol).
+  - Routers do share dynamic routing information with each other, which increases CPU, RAM and bandwidth usage.
+  - However, routing protocols are capable of dynamically choosing a different (or better) path when there is a change to the routing infrastructure.
