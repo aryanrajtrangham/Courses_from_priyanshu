@@ -2603,3 +2603,80 @@
   - Address-family identifier (AFI): Specifies the address family used. RIP is designed to carry routing information for several different protocols. Each entry has an address family identifier to indicate the type of address being specified. The AFI for IP is 2.
   - Address: Specifies the IP address for the entry.
   - Metric (distance to net): Indicates how many internetwork hops (routers) have been traversed in the trip to the destination. This value is between 1 and 15 for a valid route, or 16 for an unreachable route.
+
+### Link State Routing
+
+- LSR has a different philosophy from that of DVR. (Link + State)
+- In LSR, each node has the entire topology.
+- A link State packet can carry a large amount of information.</br> Link State Packet (LSP) contains...
+  - ID of the node that created the LSP.
+  - Cost of link to each directly connected neighbor.
+  - Sequence number (SEQNO)
+  - Time-to-live (TTL) for this packet
+
+- LSPs are generated on two occasions:
+  1. Triggered
+  2. Periodic
+
+- *Strategy*:Send to all nodes (not just neighbors) information about directly connected links (not entire routing table).
+- *Idea*: LSR in Two Phases
+  - Phase 1: Reliable flooding
+    - Initial State: Each node knows the cost to its neighbors.
+      - Each node store most recent LSP from each node.
+      - Each node forward LSP to all nodes but not the one that sent it.
+      - Each node generate new LSP periodically and increment SEQNO.
+      - Start SEQNO at 0 when reboot.
+      - Decrement TTL of each stored LSP, discard when TTL=0.
+    - Final State: Each node knows the entire network topology.
+  - Phase 2: Route Calculation
+    - Each node uses Dijkstra's Algorithm on the graph to calculate optimal routes to all nodes.
+
+- Shortest Path Routing
+  - In practice, each router computes its routing table directly from the LSP's it has collected using a realization of Dijkstra's algorithm.
+  - Specifically each router maintain two lists
+    1. Tentative List
+    2. Confirmed List
+  - Each of these lists contains a set of entries of the form (Destination, Cost, NextHop).
+    - Ex (A,5,C)
+
+- Dijkstra's Algorithm
+
+```[]
+                  Start
+                    |
+            Set root to local node and
+            move it to tentative list
+                    |             yes
+  +--->  Tentative List is empty ---> stop
+  |            no   |
+  |  Among nodes in tentative list, move the one
+  |  with the shortest path to confirmed list
+  |                 |
+  Add each unprocessed neighbor node to
+  tentative list if not already there.
+  If neighbor in the tentative list with larger
+  cumulative cost, replace it with new one.
+```
+
+- Features and Solution
+   Feature  | Responsible field of the LSP
+  ----------|-------------------------------
+   Minimize the number of messages and Detect Duplicates | ID field in the LSP
+   Newer information should precede older info | Sequence Number field in the LSP
+   Exhaust of sequence number | 32 bits Sequence Number field in the LSP
+   Looping of LSPs | TTL field in the LSP
+
+### LSR VS DSR
+
+ Features            | Link State Routing        | Distance Vector Routing
+---------------------|---------------------------|-------------------------------
+ Topology            | Complete Topology         | Local Topology
+ Communication Type  | Flooding                  | Exchange
+ Convergence         | Fast                      | Slow
+ Routing Loops       | Less prone                | Highly prone
+ Algorithm           | Dijkstra's Algorithm      | Bellman Ford Algorithm
+ Metric              | Cost                      | Hop count
+ Updates             | Triggered, Partial        | Frequent, Periodic
+ Scalability         | Highly scalable           | Limited
+ Protocols           | OSPF, IS-IS | RIP, IGRP ( Interior Gateway Routing Protocol)
+ System              | Global                    | Decentralized
