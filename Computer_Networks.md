@@ -2508,3 +2508,62 @@
     - The use of poison reverse is to solve the count-to-infinity problem.
     - Practically, poison reverse can be thought of as the reverse of split horizon.
     - With poison reverse, route advertisements that would be suppressed by split horizon are instead advertised with a distance of infinity.
+
+### Routing Information Protocol (RIP)
+
+- Its not used nowadays.
+- It is one of the oldest distance-vector routing which employs the hop count as a routing metric.
+- RIP prevents routing loops by implementing a limit on the number of hops allowed in a path from source to destination.
+- The largest number of hops allowed for RIP is 15, which limits the size of networks that RIP can support.
+
+- RIP Versions
+  - RIPv1
+    - When starting up, every 30 seconds thereafter, a routing with RIPv1 implementation broadcasts to 255.255.255.255 a request message through every RIPv1 enable interface.
+    - RIPv1 enabled router not only request the routing table of other routers every 30 seconds, they also listen to incoming request from neighboring routers and send their own routing table in turn.
+    - RIPv1 uses classful routing.
+    - The periodic routing updates do not carry subnet information, lacking support for variable length subnet masks (VLSM).
+    - This limitation makes it impossible to have different-sized subnets inside of the same network class. There is also no support for router authentication, making RIP vulnerable to various attacks.
+  - RIPv2
+    - It included the ability to carry subnet information thus supporting Classless Inter-Domain Routing (CIDR).
+    - To maintain backward compatibility, so the hop count limit remained 15.
+    - In an effort to avoid unnecessary load on hosts that do not participate in routing, RIPv2 multicasts the entire routing table to all adjacent routers at the 224.0.0.9, as opposed to RIPv1 which uses broadcast.
+    - Unicast addressing is still allowed for special applications.
+    - In RIPv2, MD5 authentication was introduced.
+    - Route tags were also added in RIPv2. This functionality allows a distinction between routes learned from the RIP protocol and routes learned other protocols.
+  - RIPng
+    - ng = Next Generation.
+    - It is an extension of RIPv2 for support of IPv6 the next generation Internet Protocol.
+    - The main differences between RIPv2 and RIPng are:
+      - Support of IPv6 networking.
+      - While RIPv2 supports authentication ,RIPng does not. IPv6 routers were, at the time, supposed to use IPsec for authentication.
+      - RIPv2 encoding the next-hop into each route entry, RIPng requires specific encoding of the next hop for route entries.
+      - RIPng sends updates on UDP port 521 using the multicast group FF02::9.
+
+   RIPv1  | RIPv2 | RIPng
+  --------|-------|--------
+  Updates are broadcast | Updates are multicast | Updates are multicast
+  Broadcast Address:</br>255.255.255.255.255 | Multicast Address:</br>224.0.0.9 | Multicast at FF02::9 (RIPng can only run on IPv6 networks)
+  Supports IPV4 | Supports IPv4 | Supports IPv6
+  No Authentication | Supports Authentication | Routers with IPSec Authentication
+  Classful Addressing | VLSM | Classless updates are sent
+
+- Timers used
+  - Update Timer
+  - Invalid Timer (Expiration Timer)
+  - Flush Timer
+  - Hold-down Timer
+
+- The RIP HOP count
+  - The routing metric used by RIP counts the number of routers that need to be passed to reach a destination IP network.
+  - The hop count 0 denotes a network that is directly connected to the router.
+  - 16 hops denote a network that is unreachable, according to the RIP hop limit.
+
+- Limitations of RIP
+  - The hop count cannot exceed 15, or routes will be dropped.
+  - Variable Length Subnet Masks are not supported by RIP version 1 (which is obsolete).
+  - RIP has slow convergence and count to infinity problems.
+
+- RIP Messages
+  - RIP defined two types of messages:
+    - *Request Message*: Asking a neighboring RIPv1 enabled router to send its routing table.
+    - *Response Message*: Carries the routing table of a router.
