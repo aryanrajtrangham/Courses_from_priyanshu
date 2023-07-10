@@ -2567,3 +2567,39 @@
   - RIP defined two types of messages:
     - *Request Message*: Asking a neighboring RIPv1 enabled router to send its routing table.
     - *Response Message*: Carries the routing table of a router.
+
+- RIP Packet Format
+
+  ```[]
+  0          8         16                    31
+  +----------+----------+---------------------+
+  | Commands | Version  |    Must be zero     |
+  +----------+----------+---------------------+
+  |Family of Net 1(AFI) |    Must be zero     |
+  +---------------------+---------------------+
+  |          IP Address of Network 1          |
+  +-------------------------------------------+
+  |                Must be Zero               |
+  +-------------------------------------------+
+  |                Must be Zero               |
+  +-------------------------------------------+
+  |             Distance to Net 1             |
+  +---------------------+---------------------+
+  |Family of Net 2(AFI) |    Must be zero     |
+  +---------------------+---------------------+
+  |          IP Address of Network 2          |
+  +-------------------------------------------+
+  |                Must be Zero               |
+  +-------------------------------------------+
+  |                Must be Zero               |
+  +-------------------------------------------+
+  |             Distance to Net 2             |
+  +-------------------------------------------+
+  ```
+
+  - Command: Indicate whether the packet is a request or a response.
+  - Version: Specifies the RIP version which can signal different potentially incompatible version
+  - Zero: This field is not actually used by RFC 1058 RIP, it was added solely to provide backward compatibility with prestandard varieties of RIP.Its name comes from its defaulted value: zero
+  - Address-family identifier (AFI): Specifies the address family used. RIP is designed to carry routing information for several different protocols. Each entry has an address family identifier to indicate the type of address being specified. The AFI for IP is 2.
+  - Address: Specifies the IP address for the entry.
+  - Metric (distance to net): Indicates how many internetwork hops (routers) have been traversed in the trip to the destination. This value is between 1 and 15 for a valid route, or 16 for an unreachable route.
