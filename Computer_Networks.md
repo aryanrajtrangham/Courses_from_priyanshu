@@ -2757,3 +2757,155 @@
   - Rules for electing DR and BDR:
     1. Router with the highest OSPF priority will become a DR. By default, all routers have a priority of 1.
     2. If there is a tie, a router with the highest router ID wins the election. The router with the second highest OSPF priority or router ID will become a BDR.
+
+- OSPF Common Header
+
+  ```[]
+    0           7           15                     31
+    +-----------+-----------+-----------------------+
+    |  Version  |    Type   |    Message Length     |
+    +-----------+-----------+-----------------------+
+    |          Source router IP address             |
+    +-----------------------------------------------+
+    |             Area Identification               |
+    +-----------------------+-----------------------+
+    |      Checksum         |  Authentication type  |
+    +-----------------------+-----------------------+
+    |           Authentication (32 bits)            |
+    +-----------------------------------------------+
+  ```
+
+  - Hello Packet
+
+    ```[]
+    0                       15                     31
+    +-----------------------------------------------+
+    |     OSPF common header  24 bytes  Type: 1     |
+    +-----------------------------------------------+
+    |                 Network mask                  |
+    +-----------------------+--------+-+-+----------+
+    |    Hello interval     | All 0s |E|T| Priority |
+    +-----------------------+--------+-+-+----------+
+    |                Dead interval                  |
+    +-----------------------------------------------+
+    |          Designated router IP address         |
+    +-----------------------------------------------+
+    |      Backup designated router IP address      |
+    +-----------------------------------------------+   <----+
+    |             Neighbor IP address               |        | Repeated
+    +-----------------------------------------------+   <----+
+    ```
+
+    - OSPF uses the hello message to create neighborhood relationship and to test the reachability of neighbors.
+    - This is the first step in link state routing. Before a router can flood all of the other routers with information about information about its neighbors, it must first greet it neighbors.
+
+  - Database description
+
+    ```[]
+    0                       15                     31
+    +-----------------------------------------------+
+    |     OSPF common header  24 bytes  Type: 2     |
+    +-----------------------+------+-+-+------+-+-+-+
+    |        All 0s         |  All |E|B| All  |I|M|M|
+    |                       |  0s  | | | 0s   | | |s|
+    +-----------------------+------+-+-+------+-+-+-+
+    |         Message sequence number               |
+    +-----------------------+-----------------------+
+    |   Link state age      |Reserved|E|T|Link state|
+    |                       |        | | |  type    |
+    +-----------------------+--------+-+-+----------+
+    |                Link state ID                  |
+    +-----------------------+-----------------------+
+    |              Advertising router               |
+    +-----------------------------------------------+
+    |           Link state sequence number          |
+    +-----------------------+-----------------------+
+    |  Link state checksum  |        Length         |
+    +-----------------------+-----------------------+
+    ```
+
+    - Send a router is connected to the system for the first time or after a failure, it needs the complete link state database immediately.
+    - Therefore, it sends hello packets to greet its neighbours.
+    - If this is the first time that the neighbors here from the router, they send a database description message.
+    - The database description packet does not contain complete database information; it only gives an outline, the title of each line in the database.
+
+  - Link state request
+
+    ```[]
+    0                       15                     31
+    +-----------------------------------------------+
+    |     OSPF common header  24 bytes  Type: 3     |
+    +-----------------------------------------------+   <------+
+    |             Link state type                   |          |
+    +-----------------------------------------------+          |
+    |              Link sate ID                     |          | Repeated
+    +-----------------------------------------------+          |
+    |           Advertising router                  |          |
+    +-----------------------------------------------+   <------+
+    ```
+
+  - Link state update
+
+    ```[]
+    0                       15                     31
+    +-----------------------------------------------+
+    |     OSPF common header  24 bytes  Type: 4     |
+    +-----------------------------------------------+
+    |     Number of link state advertisements       |
+    +-----------------------+-----------------------+
+    |    Link state age     |Reserved|E|T|Link state|
+    |                       |        | | |  type    |
+    +-----------------------+--------+-+-+----------+
+    |                Link state ID                  |
+    +-----------------------+-----------------------+
+    |              Advertising router               |
+    +-----------------------------------------------+
+    |           Link state sequence number          |
+    +-----------------------+-----------------------+
+    |  Link state checksum  |        Length         |
+    +-----------------------+-----------------------+
+    ```
+
+    - Router link
+    - Network link
+    - Summary link to network
+    - Summary link to AS boundary router
+    - External link
+  - Link state acknowledgement
+
+    ```[]
+    0                       15                     31
+    +-----------------------------------------------+
+    |     OSPF common header  24 bytes  Type: 5     |
+    +-----------------------+-----------------------+
+    |    Link state age     |Reserved|E|T|Link state|
+    |                       |        | | |  type    |
+    +-----------------------+--------+-+-+----------+
+    |                Link state ID                  |
+    +-----------------------+-----------------------+
+    |              Advertising router               |
+    +-----------------------------------------------+
+    |           Link state sequence number          |
+    +-----------------------+-----------------------+
+    |  Link state checksum  |        Length         |
+    +-----------------------+-----------------------+
+    ```
+
+### Border Gateway Protocol
+
+- Border Gateway Protocol (BGP) is a standardized exterior gateway protocol designed to exchange routing and reachability information among autonomous systems (AS) on the internet.
+- BGP is classified as a path-vector routing protocol and it makes routing decisions based on paths, network policies, or rule-sets configured by a network administrator.
+- BGP used for routing within an autonomous system is called Interior Border Gateway Protocol or Interior BGP (iBGP).
+- In contrast, the Internet application of the protocol is called Exterior Border Gateway Protocol or External BGP (eBGP).
+- The current version of BGP is version 4.
+- The major enhancement was the support for Classless Inter-Domain Routing (CIDR) and use of route aggregation to decrease the size of routing tables.
+
+- Operation of BGP
+  - BGP neighbors called peers are established by manual configuration among routers to create a TCP session on port 179.
+  - A BGP speaker sends 19-byte keep-alive messages every 60 seconds to maintain the connection.
+  - Among routing protocols, BGP is unique in using TCP as its transport protocol and is the slowest routing protocol in the world.
+  - When BGP runs between two peers in the same autonomous system (AS) it is referred to as Interior Border Gateway Protocol (iBGP).
+  - When it runs between different autonomous system, it is called External Border Gateway Protocol (eBGP).
+  - Routers on the boundary of one AS exchanging information with another AS are called border or edge routers or simply eBGP and are typically connected directly, while iBGP peers can be interconnected through other intermediate routers.
+  - Other deployment topologies are also possible, such as running eBGP peering inside a VPN tunnel, allowing two remote sites to exchange routing information in a secured and isolated manner.
+  - The main difference between iBGP and eBGP peering is in the way routes that were received from one peer are propagated to other peers.
