@@ -2680,3 +2680,38 @@
  Scalability         | Highly scalable           | Limited
  Protocols           | OSPF, IS-IS | RIP, IGRP ( Interior Gateway Routing Protocol)
  System              | Global                    | Decentralized
+
+### Open Shortest Path First (OSPF)
+
+- OSPF is a routing protocol for IP networks.
+- It uses a link state routing (LSR) algorithm and falls into the group of interior gateway protocols (IGPs), operating within a single Autonomous System (AS).
+- RIP uses hop count as metric whereas OSPF uses cost as the metric.
+- OSPF was developed so that the shortest path through a network was calculated based on the cost of the route.
+- The link cost is calculated by taking bandwidth, delay and load into account.
+- Therefore OSPF undertakes route cost calculation on the basis of link-cost parameters, which can be weighted by the administrator.
+- OSPF ts reliable even for large and complex networks.
+- As a link-state routing protocol, OSPF maintains link-state databases.
+- The state of a given route in the network is the cost, and OSPF algorithm allows every router to calculate the cost of the routes to any given reachable destination.
+- Hello procedure
+  - A router interface with OSPF will then advertise its link cost to neighboring router through multicast, known as the hello procedure.
+  - A router with OSPF implementation keep sending hello packets, and thus changes in the cost of their links become known to neighboring routers.
+
+- The information about the cost of a link, that is the speed of a point to point connection between two routers, is then cascaded through the network because OSPF routers advertise the information they receive from one neighboring router to all other neighboring routers.
+- This process of flooding link state information through the network is known as synchronization.
+- Based on this information, all router with OSPF implementation continuously update their link state databases with information about the network topology and adjust their routing tables.
+- An OSPF network can be structured, or subdivided, into routing areas to simplify administration and optimize traffic and resource utilization.
+- Areas are identified by 32-bit numbers, expresses either simply in decimal, or often in the same dot-decimal notation used in IPv4 addresses.
+- By convention, area 0 (zero) or 0.0.0.0 represents the core or backbone area of an OSPF network.
+- While the identifications of other areas may be chosen at will, administrators often select the IP address of a main router in the area as the area identifier.
+- Each additional area must have a connection to the OSPF backbone area. Such connections are maintained by an interconnecting router, known as an area border route (ABR).
+- An ABR maintains separate link-state databases for each area it serves and maintains summarized routes for all areas in the network.
+- OSPF detects changes in the topology, such as link failure and converges on a new loop-free routing structure within seconds
+- OSPF supports complex network with multiple routers, including backup router, to balance traffic load on multiple links to other subnets.
+- As a link-state routing protocol, OSPF establishes and maintains neighbor relationships for exchanging routing updates with other routers.
+- The neighbor relationship table is called an adjacency database.
+- Two OSPF router are neighbors if they are members of the same subnet and share the same area ID, subnet mask, timers and authentication.
+- In essence, OSPF neighborship is a relationship between two routers that allow them to see and understand each other but nothing more.
+
+- OSPF neighbors do not exchange any routing information - the only packet they exchange are Hello packets.
+- OSPF adjacencies are formed between selected neighbors and allow them to exchange routing information.
+- Two routers must be neighbors and only then, can they become adjacencies.
