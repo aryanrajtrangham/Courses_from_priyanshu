@@ -2687,11 +2687,12 @@
 - It uses a link state routing (LSR) algorithm and falls into the group of interior gateway protocols (IGPs), operating within a single Autonomous System (AS).
 - RIP uses hop count as metric whereas OSPF uses cost as the metric.
 - OSPF was developed so that the shortest path through a network was calculated based on the cost of the route.
-- The link cost is calculated by taking bandwidth, delay and load into account.
-- Therefore OSPF undertakes route cost calculation on the basis of link-cost parameters, which can be weighted by the administrator.
-- OSPF ts reliable even for large and complex networks.
+  - The link cost is calculated by taking bandwidth, delay and load into account.
+  - Therefore OSPF undertakes route cost calculation on the basis of link-cost parameters, which can be weighted by the administrator.
+  - OSPF ts reliable even for large and complex networks.
+
 - As a link-state routing protocol, OSPF maintains link-state databases.
-- The state of a given route in the network is the cost, and OSPF algorithm allows every router to calculate the cost of the routes to any given reachable destination.
+  - The state of a given route in the network is the cost, and OSPF algorithm allows every router to calculate the cost of the routes to any given reachable destination.
 - Hello procedure
   - A router interface with OSPF will then advertise its link cost to neighboring router through multicast, known as the hello procedure.
   - A router with OSPF implementation keep sending hello packets, and thus changes in the cost of their links become known to neighboring routers.
@@ -2700,18 +2701,59 @@
 - This process of flooding link state information through the network is known as synchronization.
 - Based on this information, all router with OSPF implementation continuously update their link state databases with information about the network topology and adjust their routing tables.
 - An OSPF network can be structured, or subdivided, into routing areas to simplify administration and optimize traffic and resource utilization.
-- Areas are identified by 32-bit numbers, expresses either simply in decimal, or often in the same dot-decimal notation used in IPv4 addresses.
-- By convention, area 0 (zero) or 0.0.0.0 represents the core or backbone area of an OSPF network.
-- While the identifications of other areas may be chosen at will, administrators often select the IP address of a main router in the area as the area identifier.
-- Each additional area must have a connection to the OSPF backbone area. Such connections are maintained by an interconnecting router, known as an area border route (ABR).
-- An ABR maintains separate link-state databases for each area it serves and maintains summarized routes for all areas in the network.
+  - Areas are identified by 32-bit numbers, expresses either simply in decimal, or often in the same dot-decimal notation used in IPv4 addresses.
+  - By convention, area 0 (zero) or 0.0.0.0 represents the core or backbone area of an OSPF network.
+  - While the identifications of other areas may be chosen at will, administrators often select the IP address of a main router in the area as the area identifier.
+  - Each additional area must have a connection to the OSPF backbone area. Such connections are maintained by an interconnecting router, known as an area border route (ABR).
+  - An ABR maintains separate link-state databases for each area it serves and maintains summarized routes for all areas in the network.
+
 - OSPF detects changes in the topology, such as link failure and converges on a new loop-free routing structure within seconds
 - OSPF supports complex network with multiple routers, including backup router, to balance traffic load on multiple links to other subnets.
 - As a link-state routing protocol, OSPF establishes and maintains neighbor relationships for exchanging routing updates with other routers.
-- The neighbor relationship table is called an adjacency database.
-- Two OSPF router are neighbors if they are members of the same subnet and share the same area ID, subnet mask, timers and authentication.
-- In essence, OSPF neighborship is a relationship between two routers that allow them to see and understand each other but nothing more.
+  - The neighbor relationship table is called an adjacency database.
+  - Two OSPF router are neighbors if they are members of the same subnet and share the same area ID, subnet mask, timers and authentication.
+  - In essence, OSPF neighborship is a relationship between two routers that allow them to see and understand each other but nothing more.
 
 - OSPF neighbors do not exchange any routing information - the only packet they exchange are Hello packets.
 - OSPF adjacencies are formed between selected neighbors and allow them to exchange routing information.
 - Two routers must be neighbors and only then, can they become adjacencies.
+
+- Each OSPF router within a network communicates with each other neighboring routers on each connecting interface to establish the states of all adjacencies.
+  - Every such communication sequence is a separate conversation identified by the pair of router IDs of the communicating neighbors.
+  - During its course, each router conversation transition through a maximum of eight conditions defined by a state machine.
+  - OSPF states
+    1. Down : The state down represents represents the initial state of a conversation when no information has been exchanged and retained between routers with the Hello Protocol.
+    2. Attempt : The attempt state is similar to Down state, except that a router is in the process of efforts to establish a conversation with another router.
+    3. Init : The init state indicates that a HELLO packet has been received from a neighbor, but the router has not established a two-way conversation.
+    4. 2-way : The 2-way state indicates the establishment of a bidirectional conversation between two routers. This state immediately precedes the establishment of adjacency.
+    5. ExStart : The ExStart state is the first step of adjacency of two routers.
+    6. Exchange : In the Exchange state, a router is sending its link-state database information to the adjacent neighbor. At this state a router is able to exchange all OSPF routing protocol packets.
+    7. Loading : Int he loading state, a router requests the most recent link-state advertisements (LSAs) from its neighbor discovered in the previous state.
+    8. Full : The full state concludes the conversation when the routers are fully adjacent and the state appears in all router and network LSAs. The link state databases of the neighbors are fully synchronized.
+
+- OSPF Messages
+</br>OSPF defines five different message types, for various types of communication:</br>
+    Type 1 | Hello | Neighbors
+    -------|-------|------------
+    Type 2 | Database Description (DBD) | Adjacencies
+    Type 3 | Link State Request (LSR) | Adjacencies
+    Type 4 | Link State Update (LSU) | Reliable Update
+    Type 5 | Link State Acknowledgement | Reliable Update
+
+- OSPF Router Types </br>OSPF defines the following overlapping categories of routers:
+  - Internal Router (IR) : An internal router has all its interfaces belonging to the same area.
+  - Area Border Router (ABR) : An area border router is a router that connects one or more areas to the main backbone network. It is considered a member of all areas it is connected to.
+  - Backbone Router (BR) : A backbone router has an interface top the backbone area. Backbone routers may also be area routers.
+  - Autonomous System Boundary Router (ASBR) : An ASBR connects one AS with another or the internet.
+  - Designated Router (DR) vs Backup Designated Router (BDR) :
+    - Based on the network type, OSPF router can elect one router to be a Designated Router (DR) and one router to be a Backup Designated router (BDR).
+    - For example, on multi access broadcast networks (such as LANs)
+    router defaults to elect a DR and BDR. They serve as the central point for exchanging OSPF routing information.
+    - Each non-DR or non-BDR router will exchange routing information only with the DR and BDR, instead of exchanging updates with every router on the network segment.
+    - DR will then distribute topology information to every other router inside the same area, which greatly reduces OSPF traffic.
+    - If DR fails, BDR takes over its role of redistributing routing information.
+
+- On LANs, DR and BDR have to be elected.
+  - Rules for electing DR and BDR:
+    1. Router with the highest OSPF priority will become a DR. By default, all routers have a priority of 1.
+    2. If there is a tie, a router with the highest router ID wins the election. The router with the second highest OSPF priority or router ID will become a BDR.
