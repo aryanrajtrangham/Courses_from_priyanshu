@@ -2963,7 +2963,7 @@
   - Enhanced routing functionality, including support for mobile hosts
 
 - IPv6 Address Notation
-  - Notation x:x:x:x:x:x:x:x (x = 16-binary-bit, 4 hexadecimal number)
+  - Notation x: x: x: x: x: x: x: x (x = 16-binary-bit, 4 hexadecimal number)
   - 128 bits in length and written as a string of hexadecimal values
   - In IPv6, 4 bit represents a single hexadecimal digit, 32 hexadecimal value = IPv6 address.
   - Ex: 2001:ODB8:0000:1111:0000:0000:0000:0200, FE80:0000:0000:0000:0123:4567:89A:CDEF
