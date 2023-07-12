@@ -2945,3 +2945,73 @@
   - End-to-end IP traceability is lost.
   - Tunnelling is more complicated.
   - Initiating TCP connections can we disrupted.
+
+### Internet Protocol version 6 (IPv6)
+
+- Limitations of IPV4
+  - IP Address depletion: 4 billion IPv4 addresses - 4,294,967,296.
+  - Internet routing table expansion.
+  - Lack of end-to-end connectivity.
+
+- Features of IPv6
+  - Increased address space (128 bit address) - 340 undecillion IPv6 addresses.
+  - Improved packet handling
+  - Eliminates the need for NAT
+  - Integrated security
+  - Auto configuration
+  - End-to-End fragmentation
+  - Enhanced routing functionality, including support for mobile hosts
+
+- IPv6 Address Notation
+  - Notation x:x:x:x:x:x:x:x (x = 16-binary-bit, 4 hexadecimal number)
+  - 128 bits in length and written as a string of hexadecimal values
+  - In IPv6, 4 bit represents a single hexadecimal digit, 32 hexadecimal value = IPv6 address.
+  - Ex: 2001:ODB8:0000:1111:0000:0000:0000:0200, FE80:0000:0000:0000:0123:4567:89A:CDEF
+  - Hextet used to refer to a segment of 16 bits or four hexadecimals
+  - Can be written in either lowercase or uppercase
+
+- The rules for representing IPv6 addresses.
+  - Rule 1. Omitting Leading 0s
+    - The first rule to help reduce the notation of IPv6 addresses is any leading 0s (zeros) in any 16-bit section or hextet can be omitted.
+    - Ex: 01AB -> 1AB, 09F0 -> 9F0, 0A00 -> A00, 00AB -> AB.
+    - Preferred: 2001:008B:000A:1000:0000:0000:0000:0100
+    - Compressed: 2001:8B:A:1000:0:0:0:100
+  - Rule 2. Omitting all 0 Segments
+    - A double colon (::) can replace any single, contiguous string of one or more 16-bit segments (hextets) consisting of all 0's.
+    - Double colon (::) can only be used once within an address otherwise the address will be ambiguous.
+    - Known as the compressed format.
+    - Ex: preferred = 2001:0DB8:0000:0000:ABCD:0000:0000:0100
+    </br> -> no leading 0s = 2001:DB8:0:0:ABCD:0:0:100
+    </br> -> compressed = 2001:DB8::ABCD:0:0:100
+    - Ex: preferred = FE80:0000:0000:0000:0123:4567:98AB:CDEF
+    </br> -> compressed =  FE8::123:4567:98AB:CDEF
+
+- IPv6 unicast addresses
+  - Global Unicast
+    - Similar to a public IPv4 address
+    - Global unique
+    - Internet routable addresses
+    - Can be configured statically or assigned dynamically
+  - Link-local
+    - Used to communicate with each other devices on the same local link
+    - Confined to a single link; not routable beyond the link
+  - Loopback ::1/128
+    - 128 -> prefix length
+    - Used by a host to send a packet to itself and cannot be assigned to a physical interface.
+    - Ping an IPv6 loopback address to test the configuration of TCP/IP on the local host.
+    - All-0s except for the last bit represented as ::1/128 or just ::1.
+  - Unspecified address ::/128
+    - All-0s address represented as ::/128 or just ::
+    - Cannot be assigned to an interface and in only used as a source address.
+    - An unspecified address is used as a source address when the device does not yet have a permanent IPv6 address or when the source of the packet is irrelevant to the destination.
+  - Unique-Local (FC::/7 - FDFF::/7)
+    - Similar to private addresses for IPv4.
+    - Used for local addressing within a site or between a limited number of sites.
+    - In the range of FC00::/7 to FDFF::/7
+  - Embedded IPv4
+    - Used to help transition from IPv4 to IPv6.
+
+- There are three types of IPv6 addresses:
+  - Unicast
+  - Multicast
+  - Anycast
