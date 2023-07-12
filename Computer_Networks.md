@@ -2927,3 +2927,21 @@
   - NAT allows the networks to use private addresses internally, only translating to public addresses when needed.
   - Devices within the organization can be assigned private addresses and operate with locally unique addresses.
   - When traffic must be sent or received to or from other organizations or the Internet, the border router translates the addresses to a public and globally unique address.
+
+- Types of NAT
+  - Static NAT
+  - Dynamic NAT
+  - Port Address translation (PAT)
+
+- Advantages of NAT
+  - Conserves the legal registered addressing scheme
+  - Increases the flexibility of connections to the public network.
+  - Provide consistency for internal network addressing schemes.
+  - Provides network security.
+
+- Disadvantages of NAT
+  - Performance is degraded.
+  - End-to-end functionality is degraded.
+  - End-to-end IP traceability is lost.
+  - Tunnelling is more complicated.
+  - Initiating TCP connections can we disrupted.
