@@ -2909,3 +2909,21 @@
   - Routers on the boundary of one AS exchanging information with another AS are called border or edge routers or simply eBGP and are typically connected directly, while iBGP peers can be interconnected through other intermediate routers.
   - Other deployment topologies are also possible, such as running eBGP peering inside a VPN tunnel, allowing two remote sites to exchange routing information in a secured and isolated manner.
   - The main difference between iBGP and eBGP peering is in the way routes that were received from one peer are propagated to other peers.
+
+## NAT & IPv6
+
+### Network Address Translation (NAT)
+
+- IPv4 address space is not big enough to uniquely address all the devices that must be connected to the internet.
+- Network private addresses are described in RFC 1918 and are to designed to be used within an organization or site only.
+- Private addresses are not routed by internet routers while public address is a routed by the internet routers.
+- Private addresses can alleviate IPv4 scarcity, but because they aren't routed by Internet devices, they first need to be translated.
+- NAT is process used to perform such translation.
+
+- NAT - the saviour of the Internet
+  - NAT is a process used to translate network addresses.
+  - NAT's primary use is to conserve public IPv4 addresses.
+  - NAT is usually implemented at border network devices, such as firewalls or routers.
+  - NAT allows the networks to use private addresses internally, only translating to public addresses when needed.
+  - Devices within the organization can be assigned private addresses and operate with locally unique addresses.
+  - When traffic must be sent or received to or from other organizations or the Internet, the border router translates the addresses to a public and globally unique address.
