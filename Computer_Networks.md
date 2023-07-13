@@ -2641,22 +2641,22 @@
 
 - Dijkstra's Algorithm
 
-```[]
-                  Start
-                    |
-            Set root to local node and
-            move it to tentative list
-                    |             yes
-  +--->  Tentative List is empty ---> stop
-  |            no   |
-  |  Among nodes in tentative list, move the one
-  |  with the shortest path to confirmed list
-  |                 |
-  Add each unprocessed neighbor node to
-  tentative list if not already there.
-  If neighbor in the tentative list with larger
-  cumulative cost, replace it with new one.
-```
+  ```[]
+                    Start
+                      |
+              Set root to local node and
+              move it to tentative list
+                      |             yes
+    +--->  Tentative List is empty ---> stop
+    |            no   |
+    |  Among nodes in tentative list, move the one
+    |  with the shortest path to confirmed list
+    |                 |
+    Add each unprocessed neighbor node to
+    tentative list if not already there.
+    If neighbor in the tentative list with larger
+    cumulative cost, replace it with new one.
+  ```
 
 - Features and Solution
    Feature  | Responsible field of the LSP
@@ -3015,3 +3015,65 @@
   - Unicast
   - Multicast
   - Anycast
+  - Note : IPv6 does not have broadcast addresses.
+
+- IPv6 Header Format
+
+  ```[]
+  0                       15                     31
+  +---------+---------+---------------------------+
+  | Version | Traffic |        Flow Label         |
+  | 4 bits  | 8 bits  |         20 bits           |
+  +---------+---------+---+-----------+-----------+
+  |    Payload Length     |Next header| Hop limit |
+  |       16 bits         |  8 bits   |  8 bits   |
+  +-----------------------+-----------+-----------+
+  |         Source address (128 bits)             |
+  +-----------------------------------------------+
+  |       Destination address (128 bits)          |
+  +-----------------------------------------------+
+  ```
+
+  Fixed Base Header: 40 bytes (320 bits)</br>
+   BH | EH1 | EH2 | ........ | Data
+  ----|-----|-----|----------|------
+
+  - Version : Indicates version of Internet Protocol which contains bit sequence 0110.
+  - Traffic Class
+    - The bits of this field hold two values. The six most-significant bits hold the differentiated services field (DS field), which is used to classify packets.
+    - Currently, all standard DS field end with a '0' bit. Any DS field that ends with two '1' bits is intended for local or experimental use.
+    - The remaining two bits are used for Explicit Congestion Notification (ECN).
+  - Flow Label
+    - A high-entropy identifier of a flow of packets between a source and destination.
+    - A flow is group of packets, e.g, a TCP session or a media stream.
+    - The special flow label 0 means the packet does not belong to any flow (using this scheme).
+    - It has further been suggested that the flow label be used to help detect spoofed packets.
+  - Payload Length
+    - The size of the payload in octets, including any extension headers.
+    - The length is set to zero when a Hop-by-Hop extension header carries a Jumbo Payload option.
+  - Next Header
+    - Specifies the type of the next header
+    - This field usually specifies the transport layer protocol used by a packet's payload.
+    - When extension header are present in the packet this field indicates which extension header follows.
+  - Hop Limit
+    - Replaces the time to live field in IPv4.
+    - This value is decremented by one at each forwarding node and the packet is discarded if it becomes 0.
+    - However, the destination node should process the packet normally even if received with a hop limit of 0.
+  - Source Address
+    - The unicast IPv6 address of the sending node.
+  - Destination Address
+    - The IPv6 unicast or multicast address of the destination node(s).
+  
+  Note : In order to increase performance and since current link layer technology and transport or application layer protocol are assumed to provide sufficient error detection, the header has no checksum to protect it.
+
+  - Extension Headers
+    - Routing Header
+    - Hop by Hop Option
+    - Fragment Header
+    - Authentication Header
+    - Destination Options
+    - Encapsulation Security Payload
+
+  **Field retained from IPv4 to IPv6**: Version, Source and Destination IP Address.</br>
+  **Field not retained in IPv6**: HLEN, Identification, Flag Fragmentation Offset, Header, Checksum, Option and Padding.</br>
+  **Name and position changed in IPv6** : Types of service, total length, Time-to-live and Protocol.
