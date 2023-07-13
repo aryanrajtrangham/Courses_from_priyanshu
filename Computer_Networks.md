@@ -3077,3 +3077,38 @@
   **Field retained from IPv4 to IPv6**: Version, Source and Destination IP Address.</br>
   **Field not retained in IPv6**: HLEN, Identification, Flag Fragmentation Offset, Header, Checksum, Option and Padding.</br>
   **Name and position changed in IPv6** : Types of service, total length, Time-to-live and Protocol.
+
+- IPv6 Address Configuration
+  - Types of addressing
+    - Static addressing
+    - Static addressing with DHCPv6 (stateless)
+    - Dynamic addressing via DHCPv6 (stateful)
+    - SLAAC alone or SLAAC with DHCPv6
+  - IPv6 static addressing = IPv4 static addressing
+  - Stateless DHCP is then matched up with another mechanism (such as Static addressing or SLAAC) for IPv6 address assignment.
+
+- Structure of an IPv6 Global Unicast Address
+
+  ```[]
+  +-----------------------+-----------+--------------+
+  |        48 bits        |  16 bits  |   64 bits    |
+  +-----------------------+-----------+--------------+
+  | Global Routing Prefix | Subnet ID | Interface ID |
+  +-----------------------+-----------+--------------+
+  |    A/48 prefix + 16 bit subnet    |              |
+  |         ID=/64 prefix             |              |
+  +-----------------------------------+--------------+
+
+  ```
+
+  - *Global Routing Prefix is the prefix or network portion of the address assigned by the provider, such as an ISP, to a customer or site, currently, Regional Internet Registry (RIR)'s assign a /48 global routing prefix to customers.*
+  - *2001:0DB8:ACAD::/48 has a prefix that indicates that the first 48 bits (2001:0DB8:ACAD) is the prefix or network portion.*
+
+- SLAAC
+  - SLAAC = Stateless Address Auto-Configuration.
+  - SLAAC provides the ability to address a host based on a network prefix that is advertised from a local network router via Router Advertisements (RA).
+  - These messages are sent out periodically by the router and include information about:
+    - One or more IPv6 prefixes (Link-local scope)
+    - Prefix lifetime information
+    - Flag information
+    - Default device information (Default router to use and its lifetime)
