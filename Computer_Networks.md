@@ -3098,7 +3098,6 @@
   |    A/48 prefix + 16 bit subnet    |              |
   |         ID=/64 prefix             |              |
   +-----------------------------------+--------------+
-
   ```
 
   - *Global Routing Prefix is the prefix or network portion of the address assigned by the provider, such as an ISP, to a customer or site, currently, Regional Internet Registry (RIR)'s assign a /48 global routing prefix to customers.*
@@ -3112,3 +3111,14 @@
     - Prefix lifetime information
     - Flag information
     - Default device information (Default router to use and its lifetime)
+
+- EUI-64 Process
+  - EUI - Extended Unique Identifier.
+  - It is a method we can use to automatically configure IPv6 host addresses
+  - An IPv6 device will use the MAC address of its interface to generate a unique 64-bit interface ID.
+  - However, a MAC address is 48 bit and the interface ID is 64 bit.
+  - EUI-64 steps
+    - **Step 1:** Split the MAC address.
+    - **Step 2:** Insert FF FE.
+    - **Step 3:** Flip the seventh bit and generate the IPv6 address.
+  - Ex : Advertized IPv6 Prefix = CAFE:23AB:6AFE::/64 , MAC address = OEAE:0954:7823 ;so generated IPv6 address = CAFE:23AB:6AFE::OBAE:09FF:FE54:7823
