@@ -3122,3 +3122,64 @@
     - **Step 2:** Insert FF FE.
     - **Step 3:** Flip the seventh bit and generate the IPv6 address.
   - Ex : Advertized IPv6 Prefix = CAFE:23AB:6AFE::/64 , MAC address = OEAE:0954:7823 ;so generated IPv6 address = CAFE:23AB:6AFE::OBAE:09FF:FE54:7823
+
+## Transport Layer
+
+### Overview
+
+- It is responsible for process to process delivery of the entire message.
+- Services provided by Transport Layer
+  - Port addressing
+  - Segmentation and reassembly.
+  - Connection control.
+  - Flow Control
+  - Error Control
+
+- Difference between of Multiplexer and Demultiplexer :
+  Multiplexer | Demultiplexer
+  ------------|---------------
+  Multiplexer processes the digital information from various sources into a single source. | Demultiplexer receives digital information from a single source and converts it into several sources
+  It is known as Data Selector | It is known as Data Distributor
+  Multiplexer is a digital switch | Demultiplexer is a digital circuit
+  It follows combinational logic type | It also follows combinational logic type
+  It has 2n input data lines | It has single input line
+  It has a single output data line | It has 2n output data lines
+  It works on many to one operational principle | It works on one to many operational principle
+  In time division Multiplexing, multiplexer is used at the transmitter end | In time division Multiplexing, demultiplexer is used at the receiver end
+
+### Port Numbers
+
+- In computer networking, a port is a communication endpoint.
+- At the software level, within an operating system, a port is a logical construct that identifies a specific process or a type of network service.
+- A portis identified for each transport protocol and address combination by a 16-bit unsigned number, known as the port number.
+- The most common transport protocol that use port numbers are the Transmission Control Protocol (TCP) and the User Datagram Protocol (UDP).
+- The port numbers are divided into three ranges :
+  - Well known port numbers : Range (0-1023)</br>
+    Port Number | Assignment
+    ------------|------------
+      20  | File Transfer Protocol (FTP) Data Transfer
+      21  | File Transfer Protocol (FTP) Command Control
+      22  | Secure shell Host (SSH) login
+      23  | Telnet remote login service, unencrypted text messages
+      25  | Simple Mail Transfer Protocol (SMTP) E-mail routing
+      53  | Domain Name System (DNS) service
+    67,68 | Dynamic Host Configuration Protocol (DHCP)
+      80  | Hypertext Transfer Protocol (HTTP) used in the World Wide Web
+     110  | Post Office Protocol (POP3)
+     123  | Network Time Protocol (NTP)
+     143  | Internet Message Access Protocol (IMAP) Management of digital mail
+     161  | Simple Network Management Protocol (SNMP)
+     443  | HTTP over SSL/TLS (or) HTTP secure
+
+  - Registered port numbers : Range (1024-49151)
+    - IANA maintains the official list of well-known and registered ranges.
+    - IANA is responsible for the global coordination of the DNS root, IP addressing, and other Internet Protocol Resources.
+    - This includes the registration of commonly used port umbers for well-known Internet services.
+
+  - Dynamic or private port numbers : Range (49151-65535)
+    - Assigned by the Operating System dynamically.
+
+- Port numbers in URls
+  - Port numbers are sometimes seen in web or other uniform resource locators (URLs).
+  - By default, HTTP uses port 80 and HTTPS uses port 443.
+  - URL - *http://www.example.com:8080/path/* specifies the web browser to connect to port 8080 of the HTTP server.
