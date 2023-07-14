@@ -3182,4 +3182,4 @@
 - Port numbers in URls
   - Port numbers are sometimes seen in web or other uniform resource locators (URLs).
   - By default, HTTP uses port 80 and HTTPS uses port 443.
-  - URL - *http://www.example.com:8080/path/* specifies the web browser to connect to port 8080 of the HTTP server.
+  - URL - <http://www.example.com:8080/path/> specifies the web browser to connect to port 8080 of the HTTP server.
