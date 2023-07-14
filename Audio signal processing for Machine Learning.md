@@ -4,7 +4,7 @@
 
 - Audio classification
 - Speech recognition / speaker verification
-- Audio denoising / audio upsampling
+- Audio denoising / audio up sampling
 - Music Information Retrieval
   - Music Instrument Classification
   - Mood Classification
@@ -28,7 +28,7 @@
 - Familiarise with frequency/time-domain audio features
 - Extract features from raw audio
 - Recognise what audio features to use for ML applications
-- Preprocess audio data for ML
+- Pre-process audio data for ML
 - Understand (some!) math behind audio transformations
 - Use librosa for your audio projects
 
@@ -50,10 +50,10 @@
 - **Periodic and aperiodic sound**
   - All Waveforms
     - Periodic
-      - Simple (Single Sinewavess)
-      - Complex (Multiple Sinewaves)
+      - Simple (Single Sine waves)
+      - Complex (Multiple Sine waves)
     - Aperiodic
-      - Continous (Noise)
+      - Continuous (Noise)
       - Transient (Pulse)
 - **Hearing Range**
   Hearing range | Range
@@ -68,9 +68,9 @@
   - Logarithmic perception
   - 2 frequencies are perceived similarly if they differ by a power of 2
 - **Mapping pitch to frequency**
-  - F(p) = 2<sup>(p-69)/12</sup> x 400
-  - F(60) = 2<sup>(60-69)/12</sup> x 440 = 261.6
-  - F(p+1)/F(p) = 2<sup>(1/12)</sup> = 1.059
+  - F(p) = $2^{(p-69)/12}* 400$
+  - F(60) = $2^{(60-69)/12}* 440$ = 261.6
+  - F(p+1)/F(p) = $2^{(1/12)}$ = 1.059
 - **Cents**
   - Octave divided in 1200 cents
   - 100 cents in a semitone
@@ -79,36 +79,36 @@
 ## Features of Sound
 
 - **Sound Power**
-  - Rate at which energy is trasferred
-  - Energy per unit of time emmited by a sound source
+  - Rate at which energy is transferred
+  - Energy per unit of time emitted by a sound source
   - Measured in watt
 - **Sound Intensity**
   - Sound power per unit area
-  - Measured in W/m<sup>2</sup>
+  - Measured in $W/m^{2}$
 
 - **Thresholds**
   - Human can perceive sound with very small intensities.
-  - Threshold of Hearing (TOH) = 10<sup>-12</sup>W/m<sup>2</sup>
-  - Threshold of pain (TOP) = 10•W/m<sup>2</sup>
+  - Threshold of Hearing (TOH) = $10^{-12}*W/m^{2}$
+  - Threshold of pain (TOP) = $10*W/m^{2}$
 
 - **Intensity level**
   - Logarithmic scale
   - Measured in decibels (dB)
   - Ratio between two intensity values
   - Use an intensity of reference (IOR)
-  - *dB(I)* = 10•*log<sub>10</sub>(I/I<sub>TOH</sub>)*
-  - *dB(I<sub>TOH</sub>)* = 10•*log<sub>10</sub>(I<sub>TOH</sub>/I<sub>TOH</sub>)* = 0
+  - $dB(I) = 10*log_{10}(I/I_{TOH})$
+  - $dB(I_{TOH}) = 10*log_{10}(I_{TOH}/I_{TOH}) = 0$
   - Every ~3dBs, intensity doubles.
   - Source                    | Intensity           | Intensity level | xTOH
       --------------------------|---------------------|-----------------|-------
-      Threshold of hearing(TOH) | 10<sup>-12</sup>    | 0dB    |  1
-      Whisper                   | 10<sup>-10</sup>    | 20dB   | 10<sup>2</sup>
-      Pianissimo                | 10<sup>-8</sup>     | 40dB   | 10<sup>4</sup>
-      Normal conversation       | 10<sup>-6</sup>     | 60dB   | 10<sup>6</sup>
-      Fortissimo                | 10<sup>-2</sup>     | 100dB  | 10<sup>10</sup>
-      Threshold of pain         | 10<sup></sup>       | 130bB  | 10<sup>13</sup>
-      Jet take-off              | 10<sup>2</sup>      | 140dB  | 10<sup>14</sup>
-      Instant perforation of eardrum | 10<sup>4</sup> | 160dB  | 10<sup>16</sup>
+      Threshold of hearing(TOH) | $10^{-12}$          | 0dB    |  1
+      Whisper                   | $10^{-10}$          | 20dB   | $10^{2}$
+      Pianissimo                | $10^{-8}$           | 40dB   | $10^{4}$
+      Normal conversation       | $10^{-6}$           | 60dB   | $10^{6}$
+      Fortissimo                | $10^{-2}$           | 100dB  | $10^{10}$
+      Threshold of pain         |  $10$               | 130bB  | $10^{13}$
+      Jet take-off              |  $10^{2}$           | 140dB  | $10^{14}$
+      Instant perforation of eardrum |  $10^{4}$      | 160dB  | $10^{16}$
 
 - ### Loudness
 
@@ -119,7 +119,7 @@
 
 - ### Equal loudness contours
 
-    <img width="500px" height="400px"  src="https://i.pinimg.com/564x/a5/24/46/a524464ddccc0c1333c1d85d6745c979.jpg"/>
+    ![Sound Pressure vs Equal-loudness](https://i.pinimg.com/564x/a5/24/46/a524464ddccc0c1333c1d85d6745c979.jpg)
 
 - ### Timbre
 
@@ -154,9 +154,9 @@
   - A partial is a sinusoid used to describe a sound
   - The lowest partial is called the fundamental frequency
   - A harmonic partial is a frequency that's a multiple of the fundamental frequency
-        <br> *f<sub>1</sub>* = 440,
-        *f<sub>2</sub>* = 2•440 = 8880,
-        *f<sub>3</sub>* = 3•440 = 1320,...
+        </br> $f_{1}$ = 440,
+        $f_{2}$ = 2*440 = 8880,
+        $f_{3}$ = 3*440 = 1320,...
   - In harmonicity indicates a deviation from a harmonic partial
 
 - ### Frequency modulation
@@ -185,7 +185,7 @@
 
 - ### Analog Signal
 
-  - Continous values for time
+  - Continuous values for time
   - Continuous values for amplitude
 
 - ### Digital Signal
@@ -197,18 +197,18 @@
 
   - Sampling
     - Locating samples
-      - *t<sub>n</sub>* = *n*•T
+      - $t_{n} = n*T$
     - Sampling Rate
-      - *s<sub>r</sub>* = 1/T
+      - $s_{r} = 1/T$
       - sampling rate for CD = 44100hz
     - Nyquist frequency
-      - *f<sub>N</sub>* = *s<sub>r</sub>*/2
+      - $f_{N} = s_{r}/2$
       - Nyquist frequency for CD = 22050hz
   - Quantisation
     - Resolution = num. of bits
     - Bit depth
     - CD resolution = 16bits
-    - 2<sup>16</sup> = 65536
+    - $2^{16} = 65536$
   - Memory for 1 minute of sound
     - Sampling rate = 44100 Hz
     - Bit depth = 16 bits
@@ -219,8 +219,8 @@
   - Signal-to-quantisation-noise ratio
     - Relationship between max signal strength and quantization error
     - Correlates with dynamic range
-    - *SQNR ≈ 6.02•Q*
-    - *SQNR(16) ≈ 96dB*
+    - $SQNR ≈ 6.02*Q$
+    - $SQNR(16) ≈ 96dB$
   - Record Sound
     - Mechanical Wave (sound) -> ADC -> Digital signals
   - Produce Sound
@@ -234,13 +234,13 @@
   - Different features capture different aspects of sound
   - Build intelligent audio systems
 
-- ### Audio features categorisation
+- ### Audio features categorization
 
   - Level of abstraction
     - High-level
       - Examples: instrumentation, key, chords, melody, rhythm, tempo, lyrics, genre, mood
     - Mid-level
-      - Examples: pitch and beat related desciptors, such as note onsets, fluctuation patterns, MFCCs
+      - Examples: pitch and beat related descriptors, such as note onsets, fluctuation patterns, MFCCs
     - Low-level
       - Examples: amplitude envelope, energy, spectral centroid, spectral flux, zero-crossing rate
   - Temporal scope
@@ -259,12 +259,12 @@
       - Zero crossing rate
     - Frequency domain
       - Band energy ratio
-      - Spectral centoid
+      - Spectral centroid
       - Spectral flux
     - Time-frequency representation
       - Spectrogram
       - Mel-spectrogram
-      - Constant-Q tranform
+      - Constant-Q transform
   - ML approach
     - Traditional machine learning
       - *Amplitude envelope*
@@ -277,13 +277,13 @@
       - Spectral roll-off
 
       - ```[]
-        Amplidtude envelope       +------------------------+
+        Amplitude envelope       +------------------------+
         Zero Crossing rate  ====> | Tradition ML algorithm | ===> "car engine"
         Spectral flux             +------------------------+
         ```
 
     - Deep learning
-      - Spectrogram => deep nural network => "car engine"
+      - Spectrogram => deep neural network => "car engine"
 
 - ### Types of intelligent audio systems
 
@@ -307,7 +307,7 @@
                                   .     .          001                                           (mean, median, GMM)
                       wave          . .            000                                                  ⇓
                                                                                            feature value / vector / matrix
-        GMM ----> Gausian mixture models
+        GMM ----> Gaussian mixture models
     ```
 
 - ### Frames
@@ -317,15 +317,15 @@
     - duration of 1 sample << Ear's time resolution (10ms)
   - Power of 2 num. samples
   - Typical values: 256 - 8192
-    - *d<sub>f</sub>* = 1/*s<sub>r</sub>* •K
+    - $d_{f} = 1/s_{r}* K$
     - where
-      - *d<sub>f</sub>* --> digital frequency
-      - *s<sub>r</sub>* --> sampling rate
+      - $d_{f}$ --> digital frequency
+      - $s_{r}$ --> sampling rate
       - K --> frame size
-        if *s<sub>r</sub>* = 44100Hz and K = 512
-        then *d<sub>f</sub>* = 11.6ms
+        if $s_{r} = 44100Hz$ and $K = 512$
+        then $d_{f} = 11.6ms$
 
-- ### Frequency-donmain feature pipeline
+- ### Frequency-domain feature pipeline
 
   - ```[]
                          . .                       111
@@ -339,7 +339,7 @@
                                                                     (mean, median, GMM)
                                                                            ⇓
                                                                 feature value / vector / matrix
-        GMM ----> Gausian mixture models
+        GMM ----> Gaussian mixture models
     ```
 
 - ### Spectral leakage
@@ -348,12 +348,12 @@
   - Endpoints are discontinuous
   - Discontinuities appear as high-frequency components not present in the original signal.
 
-- ### Wndowing
+- ### Windowing
 
   - Apply windowing function to each frame
   - Eliminates samples at both ends of a frame
   - Generates a periodic signal
-  - Hann window: *w(k)* = 0.5•(1 - *cos(2πk/(K-1)))* , *k* ∈ Integer
+  - Han window: *w(k)* = 0.5•(1 - *cos(2πk/(K-1)))* , *k* ∈ Integer
 
     - ```[]
                1.0 _______________________________
@@ -371,30 +371,30 @@
                             Sample
         ```
 
-    - *s<sub>w</sub>(k)* = *s(k)•w(k)*, *k* ∈ Integer
+    - $s_{w}(k) = s(k)*w(k), k ∈ Integer$
 
 ## Time-domain audio features
 
 - Amplitude envelop (AE)
   - Max amplitude value of all samples in a frame
-  - *AE<sub>t</sub> = max {k=t•k,(t+1)•K-1} s(k)*
+  - $AE_{t} = max{k=t*k,(t+1)*K-1} s(k)$
   - Gives rough idea of loudness
   - Sensitive to outliers
   - Onset detection, music genre classification
 - Root-mean-square energy (RMS)
   - RMS of all samples in a frame
-  - *RMS<sub>t</sub>* = sqrt( (1/K)• summation {k=t•k, (t+1)•K-1} •s(k)<sup>2</sup>* )
+  - $RMS_{t} = sqrt( (1/K)* summation {k=t•k, (t+1)*K-1} *s(k)^{2})$
   - Indicator of loudness
   - Less sensitive to outliers than AE
   - Audio segmentation, music genre classification
 - Zero-crossing rate (ZCR)
   - Number of times a signal crosses the horizontal axis
-  - Used in speech recognition, music info retrival
-  - *ZCR<sub>t</sub>* = 0.5 • summation {k=t•k, (t+1)•K-1} | *sgn(s(k)) - sgn(s(k+1))*|
+  - Used in speech recognition, music info retrieval
+  - $ZCR_{t} = 0.5 * summation {k=t*k, (t+1)*K-1} | sgn(s(k)) - sgn(s(k+1))|$
     - sign function :
       - s(k) > 0 --> +1
       - s(k) < 0 --> -1
-      - s(k) = 0 --> 0
+      - s(k) = 0 -->  0
   - Applications
     - Recognition of percussive vs pitched sounds
     - Monophonic pitch estimation algorithm
