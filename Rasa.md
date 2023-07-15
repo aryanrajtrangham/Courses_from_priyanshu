@@ -2,8 +2,8 @@
 
 ## RASA NLU (Natural Language Understanding) and NLP (Natural language Processing)
 
-- Understand user's input which is usually unsructered text.
-- **Output :** Structure Data for furtther processing
+- Understand user's input which is usually unstructured text.
+- **Output :** Structure Data for further processing
   - Intent
   - Entities
 
@@ -12,7 +12,7 @@
   - An intent is the intention of the user, or the users, interacting with the chatbot
   - We use a supervised learning approach of training an sentence classifier.
   - Intent classification is nothing but Training a Classifier.
-  - Intent is the pridicted class of the user's input.
+  - Intent is the predicted class of the user's input.
     Example                       | Class
     ------------------------------|------------
     What's the price of Iphone X? | ask_price
@@ -24,7 +24,7 @@
 
   - Entities are objects /topic useful in further knowing the purpose of User's inputs.
   - What's the price of **Iphone X**?
-    - We figures user wants to know the price through intent classfication. But Price of what?</br>
+    - We figures user wants to know the price through intent classification. But Price of what?</br>
         Iphone X <- Entity (Smartphone)
 
 ## Installation options
@@ -39,14 +39,14 @@
 
 ## Rasa NLU Pipeline
 
-- A sequece of processing steps used to extract specific text features & train certain components which allow the model to learn the underlying patterns from the provided examples.
+- A sequence of processing steps used to extract specific text features & train certain components which allow the model to learn the underlying patterns from the provided examples.
 - So in RASA, we can define the steps for classifying an intent and extracting entities.
 - Rasa has inbuilt models for doing this.
 - This is done in a config.yml file.
 
 ## Process Pipeline Notes
 
-- Define the processing stages the incoming user messages will have to go through untill the model output is produces.
+- Define the processing stages the incoming user messages will have to go through until the model output is produces.
 - Sequence Matters!
 - Rasa NLU, by default, comes with a bunch of prebuilt components (& even pipelines) for us to use.
 - Once the pipeline is defined: Each component is called once after another & produced the output which is either directly added to Rasa NLU model output, or used an input or other components.
@@ -84,14 +84,14 @@
 
 ## Transfer Learning
 
-- Tranfer learning is a machine learning method where a model developed for a task is reused as the starting point for a model on a second task.
+- Transfer learning is a machine learning method where a model developed for a task is reused as the starting point for a model on a second task.
 - We first train a base network on a base dataset and task, and then we repurpose the learning features, or transfer them, (i.e, use the pretrained models as the starting point) to a second target network to be trained on a target dataset and task.
 
 - ### **Pre-trained Word Embeddings**
 
   - It is common to perform transfer learning with natural language processing problems.
   - In NLP transfer learning is generally done through pretrained word embeddings.
-  - Word embeddings are a type of word representation that look **context of words** which allow words with similar meaning to have similar vector represnetation.
+  - Word embeddings are a type of word representation that look **context of words** which allow words with similar meaning to have similar vector representation.
   - Words like smart phone and mobile are considered similar if there's enough evidence in the data they appear in similar context.Thus, giving us options to augment our current model with new information which otherwise wouldn't be present in the existing model, which in turn increase the model classification accuracy as well as the coverage of the vocabulary.
 
 - ### **Q. When to use Pre-trained model as a starting point ?**
@@ -104,13 +104,13 @@
   - Better model performance with less training data required.
   - Faster training with less iteration times.
   - Lower training data required for the task at hand.
-  - When the pre-trainined model is from the same domain, it will pick up domain specific vocabulary.
+  - When the pretrained model is from the same domain, it will pick up domain specific vocabulary.
 
 ## Rasa Core
 
 - Rasa core predict what bot should say for a given user input.
 - We cannot write rules for every path.
-- Instead of using rules & enforcing them on the user, Rasa uses machine learning to learn the conversational patterns from the **example conversational data** we provide & predict how an assistant should respond in a specific situaton based on the context history of the converaton and other details like the **Policies** defined by us.
+- Instead of using rules & enforcing them on the user, Rasa uses machine learning to learn the conversational patterns from the **example conversational data** we provide & predict how an assistant should respond in a specific situation based on the context history of the conversation and other details like the **Policies** defined by us.
 - Generally this process of handling conversation flow and responding in a chatbot is called **Dialogue Management**.
 
 - ### **Responses**
@@ -131,19 +131,19 @@
     - Actions: Allow to use Python code
       - Call the DB
       - Calling an API
-      - Writting to the DB
+      - Writing to the DB
       - Do some calculations
 
 - ### **Stories**
 
-  - Example coonversations between the user & assistant
+  - Example conversations between the user & assistant
   - We can have multiple stores
   - Each story is a sample conversation the bot can have with the user.
   - Provides training data for the Dialogue Management System of Rasa.
   - You do not have to deal with the specific contents of the messages that the users send.
     - Use just the combination messages the users can send to mean the same thing.
     - Policies learn to predict the next action based on a **combination** of both the intent and entities.
-    - Can change this behaviour using the **use_entities** attribute.
+    - Can change this behavior using the **use_entities** attribute.
 
 - ### **Domain**
 
@@ -170,15 +170,15 @@
     - So if we keep it 1, it will just go one step back to decide what to do. Won't use the previous dialogues as context.
     - This number we set depends on the length of our training stories& the patterns we would like to remember.
     - Don't keep it too long. If we want our assistant to take far back in history we should set those details as slots.
-  - **Data Augmentatio**
+  - **Data Augmentation**
     - An amount of new stories to create from the existing stories
     - Rasa creates longer longer stories by putting together some shorter stories.
-    - Improves theperformance of our models.
+    - Improves the performance of our models.
     - Allow dialogue management to ignore history of the conversation.
     - Can increase training time.
   - **Memoization Policy**
     - Mimics the stories it was trained on.
-    - Depending on what max. history parameter was set, it tries to match the fragement of the current story with the stories provided in the training data.
+    - Depending on what max. history parameter was set, it tries to match the fragment of the current story with the stories provided in the training data.
       - If it finds one, it predicts the next action from the map story with confidence one else it predicts confidence zero.
     - This is usually combines with other policies.
     - Optimized for its precision & not for recall.
@@ -197,14 +197,14 @@
       - what the last action was.
       - What intents & entities were predicted for the current user input.
       - What slots are set
-      - Takes Previous states of dialogue based on max_hostory.
+      - Takes Previous states of dialogue based on max_history.
     - Default Architecture
       - LSTM
       - Can again change this architecture
     - Learns from training stories we provide.
-    - Hyperparameters:
+    - Hyperparameter:
       - max_history
-      - Eposhs
+      - Epochs
       - Validation_split
       - random_seed
       - batch_size
@@ -213,7 +213,7 @@
     - Default model
       - Logistic Regression
   - **Embedding (TEDP) Policy**
-    - Uses transformers instead of RNN's
+    - Uses transformers instead of RNNs
     - Outperforms other policies
     - Simple architecture & Faster
     - Handles chitchat
@@ -221,7 +221,7 @@
     - Sometimes users may say something the bot isn't designed to do.
     - Users may provide inputs which makes NLU models confused. Maybe because of not having enough information.
     - Important for assistant to acknowledge this situation
-    - Using the Fallback policy we can fallback to a message whenever the bot isn't confident sbout what the user saying.
+    - Using the Fallback policy we can fallback to a message whenever the bot isn't confident about what the user saying.
     - For that we need to define thresholds
     - Fallback Policy
       - nlu_threshold: 0.3
@@ -239,7 +239,7 @@
       - **Rank 3**: Memoization Policy and Augmented Memoization Policy
       - **Rank 4**: Mapping Policy
       - **Rank 5**: Embedding Policy, Keras Policy & Sklearn Policy
-    - Can be changed but recommended to use Dafault
+    - Can be changed but recommended to use Default
 
 ## Slots
 
@@ -247,7 +247,7 @@
 - Using them we can keep important things the bot has to remember for a later part of the conversation
 - Defining slots
   - Through Entities:
-    - Can remember important values providedby users through Entities
+    - Can remember important values provided by users through Entities
   - Custom Actions
     - Info from the outside for examples results extracted from the external database
 
@@ -276,13 +276,13 @@
         - Min_value : 0.0
         - Max_value : 1000,000
   - **List**
-    - If you want to store multiplt values in a given slot, (coz by default one slot can store one value at a time..) we can use lists.
+    - If you want to store multiple values in a given slot, (coz by default one slot can store one value at a time..) we can use lists.
     - A list/array for multiple values.
     - Length doesn't matter but if the value is set or not matters.
     - To only store some info. For your assistant to use in specific actions or in later stages.
     - Presence & value of the slot will have no influence on how a dialog management model makes the predictions.
 
-- ### **Slot Types & their influnce on Dialogue Predictions**
+- ### **Slot Types & their influence on Dialogue Predictions**
 
   - Slot Type     | Value Presence    | Actual Value
       ------------|-------------------|---------------
@@ -301,10 +301,10 @@
   - return [SlotSet('phone_name','iphone X')]
 - Slots which are set using custom actions have to be reflected in training stories.
   - action_set_phone
-  - slot["phone_naem":"iphone X"]
+  - slot["phone_name":"iphone X"]
 - In this case we do have to include the - slot{} part in the stories. Rasa Core will learn to use this information to decide on the correct action to take.
 - All slot have to be listed in the domain.
-- Slot values are kept in memory untill they are reset.
+- Slot values are kept in memory until they are reset.
 
 ## Rasa - Forms
 
@@ -316,7 +316,7 @@
 - Define slot mapping for each slot which your form should fill.
 - Can specify one or more slot mapping for each to be filled.
 - For validation and custom slot mappings we can define a Form Action Class in actions.
-- Rasa tries to decouple smple forms and advanced functionality or the need to use Python.
+- Rasa tries to decouple sample forms and advanced functionality or the need to use Python.
 
 - ### **Form Action in Stories**
 
@@ -328,11 +328,11 @@
     - form{"name": "product_search_form"}
     - form{"name": "null"}
 
-- ### **Featurized vs Unfeaturised Slots & Stories**
+- ### **Featurized vs Unfeaturized Slots & Stories**
 
-  - Note that for story to work, your slots should be <u>unfeaturized</u>.
+  - Note that for story to work, your slots should be $\underline{unfeaturized} $.
   - If any of these slot are featurized, your story needs to include slot{} events to show these slot being set.
-  - In that case, the easiest way to create valid stories is to use <u>Interactive Learning</u>.
+  - In that case, the easiest way to create valid stories is to use $\underline{Interactive Learning}$.
 
 - ### **Form Policy**
 
@@ -350,12 +350,12 @@
 
   - By default slots will be only filled by entities with the same name as the slot that are picked from the user input.
   - The **slot_mappings** method defines how to extract slot values from user responses.
-  - The predifined functions work as follows:
+  - The predefined functions work as follows:
     - **from_entity :**
       - self.from_entity(entity=entity_name, intent=None) // Rasa 2.0
       - \- type: from_entity //Rasa 3.0
-        - will look for an entity called entity_name to fill a slot slot_name regarless of user intent.
-      - slef.from_entity(entity=rntity_name, intent=intent_name) //Rasa 2.0
+        - will look for an entity called entity_name to fill a slot slot_name regardless of user intent.
+      - self.from_entity(entity=entity_name, intent=intent_name) //Rasa 2.0
       - \- type: from_entity</br>
           entity: entity_name //Rasa 3.0
         - will look for an entity called entity_name to fill a slot slot_name only if the users intent is intent_name.
@@ -370,7 +370,7 @@
       - \- type: from_text</br>
           intent: None // Rasa 3.0
         - will use the next user utterance to fill the text slot slot_name regardless of user intent.
-      - slef.from_text(intent=intent_name) // Rasa 2.0
+      - self.from_text(intent=intent_name) // Rasa 2.0
       - \- type: from_text</br>
           intent: intent_name // Rasa 3.0
         - will use the next utterance to fill the text slot slot_name only if user intent is intent_name.
@@ -379,18 +379,18 @@
 - ### **Handling conditional slots logic**
 
   - Many forms required more logic just requesting a list of fields.
-  - For example, if someone requests laptop as their category, we may want to ask questions on slighly different features than phones, we may be asking for Camera specification.
+  - For example, if someone requests laptop as their category, we may want to ask questions on slightly different features than phones, we may be asking for Camera specification.
   - We can achieve this by writing some logic into the required_slots() method. // in the action.py file
 
 - ### **Validation**
   
   - By default, validation only checks if the requested slot was successfully extracted from the slot mappings
-  - If we want to add custom validation, for examlpe to check against a database, we can do this by writing a helper validaiton function with name validate_{slot_name}.
+  - If we want to add custom validation, for example to check against a database, we can do this by writing a helper validation function with name validate_{slot_name}.
 
 ## Small Talk
 
 - Small talk includes the back-and-forth that makes conversations natural but doesn't directly relate to the user's goal.
-- This includes greetings, acknowledgements, reactions and off-topic chithcat.
+- This includes greetings, acknowledgements, reactions and off-topic chitchat.
 
 - ### **Chitchat**
 
@@ -414,11 +414,11 @@
 
 ## Channel Specific Responses
 
-- Every platform has some specific format/templlate set for specific messages.
+- Every platform has some specific format/template set for specific messages.
 - For example:
   - Facebook has quick replies for buttons similarly, Slack has different formats for buttons.</br>
     Or
-  - For displaying products Facebook Messanger user Geric templates.</br>
+  - For displaying products Facebook Messenger user Generic templates.</br>
     Or
   - A custom product display option on your website chatbot widget.
 - We can create Channel specific responses using creating custom output payloads that will only work in certain channels.
@@ -443,4 +443,4 @@
 Or
 - Send an alert to our employees whenever they forgot to log their attendance.
 - Using the trigger_intent_endpoint API.
-- We need to create a program external to Rasa & make it send messages to the **trigger_intent_endpoint** of our convertation whatever we want to send the alert.
+- We need to create a program external to Rasa & make it send messages to the **trigger_intent_endpoint** of our conversation whatever we want to send the alert.
