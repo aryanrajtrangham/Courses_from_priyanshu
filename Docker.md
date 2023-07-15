@@ -20,7 +20,7 @@
 
 ## Images and Containers
 
-- **Docker Image** is a file which contains all the necessary dependency and configurations which are required to run an applicaion.
+- **Docker Image** is a file which contains all the necessary dependency and configurations which are required to run an application.
 
 - **Docker Containers** is basically a running instance of an image
 
@@ -65,12 +65,12 @@
 
 ## Docker commands
 
-- Whenever we run a continer, a default command executes which typically runs as PID 1 .This command is present in the docker file. This command can be defined while we are defining the container image.
+- Whenever we run a container, a default command executes which typically runs as PID 1 .This command is present in the docker file. This command can be defined while we are defining the container image.
 
 ### Some commands
 
 - docker pull nginx
-  </br>Pull an image from docker seerver
+  </br>Pull an image from docker server
 
 - docker run --name {name} -p 8080:80 -dt {base-image}
   </br>Running an image by the name myname on port 80 of container diverted to 8080 of running machine (computer/server).
@@ -120,7 +120,7 @@
   </br>Run command is a combination of create and start as it creates a new container and starts it immediately. In fact, the docker run command can even pull an image from Docker Hub if it doesn’t find the mentioned image on your system.
 
 - docker container run -d {container-name} {command}
-  </br>Used to *Overide* default container command
+  </br>Used to *Override* default container command
 
 - docker system events
   </br>To get event from the docker container.
@@ -165,7 +165,7 @@
   </br>To view the layers of nginx
 
 - docker image inspect nginx --format='{{.Id}}'
-  </br>To inspect the image and takeinformation from the json outcome.To get outcome as json we use the following command
+  </br>To inspect the image and take information from the json outcome.To get outcome as json we use the following command
   </br>docker image inspect {name} --format='{{json .Id}}'
 
 - docker image prune
@@ -176,7 +176,7 @@
 
 - docker export myubuntu > myubuntu.tar
   </br>Export the image to tar file
-  cat myubuntu.tar | docker import - myububtu:latest
+  cat myubuntu.tar | docker import - myubuntu:latest
   </br>Import image from tar file
   </br>Exporting and importing the image file flattens the file and sometimes reduces space.
 
@@ -188,7 +188,7 @@
   </br>This is how docker registry is used.
 
 - docker tag busybox singhpriansh/dock_hub:v1
-  </br>Tag busybox image so as it remains uneffected on operations on the image
+  </br>Tag busybox image so as it remains unaffected on operations on the image
   </br>docker push singhpriansh/dock_hub:v1
   </br>Push image to dockers repository
   </br>docker pull singhpriansh/dock_hub:v1
@@ -245,13 +245,13 @@
   </br>Tasks will be scaled to N
 
 - docker service create --name webserver --replicas 1 nginx
-  </br>To create a service of websrever with one replica
+  </br>To create a service of webserver with one replica
 
 - docker service create --name antivirus --mode global -dt ubuntu
-  </br>A service of anitvirus is created and run on every node
+  </br>A service of antivirus is created and run on every node
 
-- docker service inspect {servie name}/{id}
- </br>Procides detail about the service
+- docker service inspect {service name}/{id}
+ </br>Provides detail about the service
  </br>docker service inspect {service name}/{id} --pretty
  </br>Provides readable output for the services
 
@@ -275,7 +275,7 @@
 - docker compose up -d
   </br>We can start all the services with single command in detached mode
   </br>docker-compose down
-  </br>We can stop all the services with single cammand
+  </br>We can stop all the services with single command
 
 - docker compose config
   </br>Shows if the format of the docker-compose yml file is correct
@@ -298,7 +298,7 @@
   </br>This command varies from system to system
 
 - docker swarm init
-  </br>To initialise swarm with the node acting as manager.
+  </br>To initialize swarm with the node acting as manager.
 
 - docker swarm init --advertise-addr {ip}
  </br>To add other nodes to the client given.
@@ -312,7 +312,7 @@
 - docker swarm unlock-key --rotate
   </br>Used to rotate the key
 
-- docker service create --name myservice  --mount type=colume,source=myvolume,target=/mypath nginx
+- docker service create --name myservice  --mount type=column,source=myvolume,target=/mypath nginx
   </br>Creates volumes in one of the swarm server
 
 - docker service create --name myconstraint --constraint node.labels.region==blr replicas 3 nginx
@@ -322,7 +322,7 @@
   </br>To add label to a specific node
 
 - docker service create --name myoverlay --network --replicas 3 nginx
-  </br>When we define network with service it gets propageted to other nodes as well.
+  </br>When we define network with service it gets propagated to other nodes as well.
 
 - docker service create-name demoservice --hostname="{{.Node.Hostname}}-{{.Service.Name}}" nginx
   </br>We use placeholder template by two curly braces.
@@ -342,18 +342,18 @@ Abbreviation | Complete string  |
 
 ### Docker cli
 
-- Docker cli can be used to manage vaious aspects related to Docker Images which includes building, removing, saving, tagging and others.
+- Docker cli can be used to manage various aspects related to Docker Images which includes building, removing, saving, tagging and others.
 
 ## Docker restart policies
 
-- By default, Docker container will not start when they exit or when docker daemon is restarted. Docker provides restart policies whether your container start automatically when they exit, or when Docker reastarts.
+- By default, Docker container will not start when they exit or when docker daemon is restarted. Docker provides restart policies whether your container start automatically when they exit, or when Docker restarts.
 - We can specify the restart policy by using the --restart flag with docker run command.
 
-Flag           |     Desciption        |
+Flag           |     Description       |
 ---------------|-----------------------|
-no             | Do not automatically restart the container (the defalut) |
+no             | Do not automatically restart the container (the default) |
 on-failure     | Restart the container if it exits due to an error, which manifests as a non-zero exit code |
-unless-stopped | Restart the container unless explicitly stopped or Docker itslef is stopped or restarted |
+unless-stopped | Restart the container unless explicitly stopped or Docker itself is stopped or restarted |
 always         | Always restart the container if it stops |
 
 ## Dockerfiles
@@ -382,7 +382,7 @@ always         | Always restart the container if it stops |
     Using ADD to fetch package from remote URLs is strongly discouraged, instead use **curl** or **wget**.
   - EXPOSE : informs Docker that the container listens on the specified network ports at runtime without actually publishing the port.
   
-    It *functions as a type of documentation* between the person who build the image and the person who runs the continer, about which ports are intended to be published.
+    It *functions as a type of documentation* between the person who build the image and the person who runs the container, about which ports are intended to be published.
   - HEALTHCHECK : allows us to tell the platform on how to test that our application is healthy.
   </br>That's basic check and does not tell the detail about the application.
     - --interval = DURATION(default:30s)
@@ -390,7 +390,7 @@ always         | Always restart the container if it stops |
     - --start-period = DURATION(default:0s)
     - --retries = N(default:3)
   </br>Exit Status
-    - 0: Success = the containeris healthy and ready for use
+    - 0: Success = the containerize healthy and ready for use
     - 1: Failure = the container is not working correctly
     - 2: Reserved = do not use this exit code
   - ENTRYPOINT : best used to set the image's main command and doesn't allow to override the command.
@@ -401,19 +401,19 @@ always         | Always restart the container if it stops |
     </br>Example :ENV app value, $app => value
 
 - When changes are made inside the container, it can be useful to commit a container's file changes into a new image.
-  - By default the container being commited and its processes will be paused while the image is commited.
+  - By default the container being committed and its processes will be paused while the image is committed.
 
 ## Docker Layers
 
 - A docker image is built up from a series of layers.
-- Each layer reperesent an instruction in the image's Dockerfile.
+- Each layer represent an instruction in the image's Dockerfile.
 - The major difference between a container and an image is the top writable layer.
 - All writes to the container that add new or modify existing data are stored in this writable layer.
 - docker container history {name} is used to get layers of the image.
 
 ## Docker Images
 
-- A docker image contains lots of imformation, some of these include:
+- A docker image contains lots of information, some of these include:
   - Creation date
   - Command
   - Environment variables
@@ -423,7 +423,7 @@ always         | Always restart the container if it stops |
 - **docker image inspect** command allows us to see all the information associated with a docker image.
 - **docker image prune** command allows us to clean up unused images. By default, command will only clean up dangling images.
 - *Dangling Images* = Images without Tags and not referenced by any container.
-- Modify Image to Single Layer : In a generic scenerio, the more the layers an images has, the more the size of the image.*Flattening* an image to single layer can help reduce the overall size of the image.
+- Modify Image to Single Layer : In a generic scenario, the more the layers an images has, the more the size of the image.*Flattening* an image to single layer can help reduce the overall size of the image.
 - Docker Registry : A Registry is stateless, highly scalable server side application that stores and lets us distribute Docker images.
 </br>There are various types of registry available, which includes
   - Docker Registry
@@ -437,7 +437,7 @@ always         | Always restart the container if it stops |
 
 ## Docker Networking
 
-- Docker networking subsystem is pluggable, using drivers.
+- Docker networking subsystem is plug able, using drivers.
 - There are several drivers available by default, and provides core networking functionality.
   - bridge
   - host
@@ -487,7 +487,7 @@ always         | Always restart the container if it stops |
 - User-defined bridge provide automatic DNS resolution between containers.
 - Containers can be attached and detached from user-defined networks on the fly.
 - Each user-defined network creates a configurable bridge.
-- Linked containeron the default bridge network share environment variables.
+- Linked container on the default bridge network share environment variables.
 
 ### Host Network
 
@@ -497,15 +497,15 @@ always         | Always restart the container if it stops |
 ### None Network
 
 - If we want to completely disable the network stack on a container. we can use the none network.
-- This mode will not configure any IP for the container and doesnot have any access to the external network as well as for other containers.
+- This mode will not configure any IP for the container and does not have any access to the external network as well as for other containers.
 
 ### Overlay Network
 
 - The overlay network driver creates a distributed network among multiple Docker daemon hosts.
-- Allows container connected toit to communicate securely.
-- For overlay networks, the container can be spreaded across multiple servers
-- If the container are communicating with each other, it is recommanded to secure communication.
-- To enable encryption, when we create an overlay netkork, we pass the --opt encrypted flag
+- Allows container connected to it to communicate securely.
+- For overlay networks, the container can be spread across multiple servers
+- If the container are communicating with each other, it is recommended to secure communication.
+- To enable encryption, when we create an overlay network, we pass the --opt encrypted flag
 
 ## Container Orchestration
 
@@ -528,7 +528,7 @@ always         | Always restart the container if it stops |
   - Load balancing of service discovery between container
   - Health monitoring of containers and hosts
 
-- There are many container orchestration solutions available, some of the popular once iclude :
+- There are many container orchestration solutions available, some of the popular once include :
   - Docker Swarm
   - Kubernetes
   - Apache Mesos
@@ -579,8 +579,8 @@ always         | Always restart the container if it stops |
 
 - Once we have deployed a service to a swarm, we are ready to use the Docker CLI to scale the number of container in the service.
 - Container running in a service are called "tasks"
-- There are two ways in which we can scale serivce in swarm:
-  - docker serivce scale webserver=5
+- There are two ways in which we can scale service in swarm:
+  - docker service scale webserver=5
   - docker service update --replicas 5 webserver
 
 - There are two types of services deployments, replicated and global
@@ -603,9 +603,9 @@ always         | Always restart the container if it stops |
 
 - Compose is a tool for defining and running multi-container Docker applications.
 - With compose, we can use a YAML file to configure application services.
-- We can start all the sevices with single command.
+- We can start all the services with single command.
   - docker-compose up
-- We can stop all the services with single cammand.
+- We can stop all the services with single command.
   - docker-compose down
 - Sample content of Docker compose directory
   - Directory
@@ -626,7 +626,7 @@ always         | Always restart the container if it stops |
 
 - A specific web-application might have multiple containers that are require as part of the build process.
 - Whenever we make use of docker service, it is typically for a single container image.
-- The docker stack can be used to manage a muilti-service application.
+- The docker stack can be used to manage a multi-service application.
 - **Docker Stack**
   - A stack is a group of interrelated services that share dependencies, and can be orchestrated and scaled together.
   - A stack can compose **YAML** file like one we define in Docker Compose.
@@ -651,7 +651,7 @@ always         | Always restart the container if it stops |
 - There are multiple reason why a service might go into pending state.
 - Examples :
   - If all nodes are drained, and we create a service, it's pending until a node becomes available.
-  - We can reserve a certain amount of memory for a service. If no node in the swarm has the required amount of memmory, the service remains in a panding state until a node is available which can run its tasks.
+  - We can reserve a certain amount of memory for a service. If no node in the swarm has the required amount of memory, the service remains in a pending state until a node is available which can run its tasks.
   - We have imposed a certain kind of placement constraints.
 
 #### Control service Placement
@@ -660,14 +660,14 @@ always         | Always restart the container if it stops |
   - Replicated and Global Service
   - Resource Constraints [requirement of CPU and Memory]
   - Placement Constraints [only run on nodes with label pci_compliance=true]
-  - Placment Preferences
+  - Placement Preferences
 
 #### Custom overlay network for swarm
 
 - We secure the networks using --opt encrypted flag in the create command used to create service.
 - When we enable overlay encryption, Docker creates IPSEC tunnels between all the nodes where tasks are scheduled for services attached to the overlay network.
 - These tunnels also use the AES algorithm in GCM mode and manager nodes automatically rotate the keys every 12 hours.
-Overlay network encrytion is not supported on Windows. If a windows node attempts to connect to an encrypted overlay network, no error is detected but the node will not be able to communicate.
+Overlay network encryption is not supported on Windows. If a windows node attempts to connect to an encrypted overlay network, no error is detected but the node will not be able to communicate.
 
 #### Creating Services using Template
 
@@ -715,5 +715,5 @@ Overlay network encrytion is not supported on Windows. If a windows node attempt
 
 - Using a Raft implementation, the managers maintain a consistent internal state of the entire swarm and all the services running on it.
 - Swarm comes with it's own fault tolerance features.
-- Docker recommends implement an odd number of nodes according to organisation's high-availability requirements.
+- Docker recommends implement an odd number of nodes according to organization's high-availability requirements.
 - An N manager cluster tolerates the loss of at most (N-1)/2 managers.
