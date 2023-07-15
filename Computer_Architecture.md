@@ -4,7 +4,7 @@
 
 Pipeline is an implementation technique that exploits parallelism among the instructions in a sequential instruction stream. Pipeline allows overlapping the execution of multiple instructions. A Pipeline is like an assembly line each step or pipeline stage completes a part of an instruction Each stage of the pipeline will be operating a separate instruction. Instructions enter at one end, progress through the stage and exit at the other end. If the stages are perfectly balanced (assuming ideal conditions), then the time per instruction on pipeline processor is given by the ratio:
 
-### Time per instruction on unpipelined machine : Number of Pipeline stages
+### Time per instruction on un pipelined machine : Number of Pipeline stages
 
 Under these conditions, the speedup from pipelining is equal to the number of stage pipelines. In practice, the pipeline stages are not perfectly balanced and pipeline does involve some overhead. Therefore, the speedup will be always then practically less than the number of stages of the pipeline. Pipeline yields a reduction in the average execution time per instruction. If the processor is assumed to take one (long) clock cycle per instruction, then pipelining decreases the clock cycle time. If the processor is assumed to take multiple CPI, then pipelining will aid to reduce the CPI.
 
@@ -87,7 +87,7 @@ Speedup = Pipeline depth  : ( 1 + Pipeline stall cycles per instruction )
       1. Freeze or Flush the pipeline, holding or deleting any instructions after the branch until the branch destination is known. It is a simple scheme and branch penalty is fixed and cannot be reduced by software
       2. Treat every branch as not taken, simply allowing the hardware to continue as if the branch were not to executed. Care must be taken not to change the processor state until the branch outcome is known.
 
-## Arithmatic Pipeline
+## Arithmetic Pipeline
 
 - An arithmetic pipeline divides an arithmetic problem into various sub problems for execution in various pipeline segments. It is used for floating point operations, multiplication and various other computations. The process or flowchart arithmetic pipeline for floating point addition is shown in the diagram.
 
@@ -109,7 +109,7 @@ Speedup = Pipeline depth  : ( 1 + Pipeline stall cycles per instruction )
             +-----------+             |           |
                   |                   |           |
     Segment +-------------------+     |   +----------------+
-        2:  | Chooose exponent  |     +-->| Align Mantissa |
+        2:  |  Choose exponent  |     +-->| Align Mantissa |
             +-------------------+         +----------------+
                   |                               |
                   |                         +-----------+
@@ -126,7 +126,7 @@ Speedup = Pipeline depth  : ( 1 + Pipeline stall cycles per instruction )
             +-----------+                   +-----------+
                   |                               |
     Segment +-------------------+        +------------------+
-        4:  |  Adjust exponent  |        | Normalise result |
+        4:  |  Adjust exponent  |        | Normalize result |
             +-------------------+        +------------------+
                   |                               |
             +-----------+                   +-----------+
@@ -140,9 +140,9 @@ Speedup = Pipeline depth  : ( 1 + Pipeline stall cycles per instruction )
     1. Compare the exponents.
     2. Align the mantissas.
     3. Add or subtract the mantissas.
-    4. Normalise the result
+    4. Normalize the result
 
-    First of all the two exponents are compared and the larger of two exponents is chosen as the result exponent. The difference in the exponents then decides how many times we must shift the smaller exponent to the right. Then after shifting of exponent, both the mantissas get aligned. Finally the addition of both numbers take place followed by normalisation of the result in the last segment.</br>
+    First of all the two exponents are compared and the larger of two exponents is chosen as the result exponent. The difference in the exponents then decides how many times we must shift the smaller exponent to the right. Then after shifting of exponent, both the mantissas get aligned. Finally the addition of both numbers take place followed by normalization of the result in the last segment.</br>
 
     **Example:**</br>
     Let us consider two numbers,
@@ -199,7 +199,7 @@ The term exception is used to cover the terms interrupt, fault and exception. I/
 - A PRAM model contains:
   - A set of similar type of processors.
   - All the processors share a common memory unit. Processors can communicate among themselves through the shared memory only.
-  - A memory access unit (MAU) connects the processors with the single shared memory.<br>
+  - A memory access unit (MAU) connects the processors with the single shared memory.</br>
 - Here, **n** number of processors can perform independent operations on **n** number of data in a particular unit of time. This may result in  simultaneous  access  of  same memory location by different processors.
     To solve this problem, the following constraints have been enforced on PRAM model :
   - **Exclusive  Read  Exclusive  Write  (EREW)** :  Here  no  two  processors  are allowed to read from or write to the same memory location at the same time.
@@ -284,7 +284,7 @@ The term exception is used to cover the terms interrupt, fault and exception. I/
 - Demerits of Message Passing
   - As compared to parallel shared-memory code, message-passing code generally needs more software overhead
 
-## Explain Data Parallel Programing model
+## Explain Data Parallel Programming model
 
 - The major focus of data parallel programming model is on performing operations on a data set simultaneously. The data set is organized into some structure like an array, hypercube, etc. Processors perform operations collectively on the same data structure. Each task is performed on a different partition of the same data structure.
 - It is restrictive, as not all the algorithms can be specified in terms of data parallelism. This is the reason why data parallelism is not universal.
@@ -330,22 +330,22 @@ The term exception is used to cover the terms interrupt, fault and exception. I/
 
 ## Explain six basic cache optimization techniques
 
-- We know avarage memory access time = hit time + (Miss rate x Miss penalty).
-- To optimize cache we need to reduce avarage memory access time, so we need to :
+- We know average memory access time = hit time + (Miss rate x Miss penalty).
+- To optimize cache we need to reduce average memory access time, so we need to :
   - reduce miss rate
   - reduce hit time
   - reduce miss penalty
 - The six techniques are
   - Larger block size to reduce miss rate
     - Advantage:
-      - Utlize spatial locality
-      - Reduces compulsary miss
+      - Utilize spatial locality
+      - Reduces compulsory miss
     - Disadvantages:
       - Increases miss penalty
       - More time to fetch a block to the cache [bus width issue]
       - Increases conflict misses
       - More number of block will be mapped to the same location
-      - May bring data and evict usesul data [pollution]
+      - May bring data and evict useful data [pollution]
   - Larger cache to reduce miss rate
     - Advantage:
       - Reduces capacity misses
@@ -353,7 +353,7 @@ The term exception is used to cover the terms interrupt, fault and exception. I/
     - Disadvantages:
       - Longer hit time
       - Higher cost, area and power
-  - Higher associaticity to reduce miss rate
+  - Higher associativity to reduce miss rate
     - Fully associative are the best, but high hit time
     - So increase the associativity to an optimal possible level
     - Advantage:
@@ -362,16 +362,16 @@ The term exception is used to cover the terms interrupt, fault and exception. I/
     - Disadvantage:
       - Increase in the hit time
       - Complex design than direct mapped
-      - More time to earch in the set (tag comparison time)
-    - Multilevel caches to reduce miss penalty 
+      - More time to search in the set (tag comparison time)
+    - Multilevel caches to reduce miss penalty
       - Performance gap between processor and memory
-      - First level of chache (L1) can be small enough to match the clock cycle of the fast processor [Low hit time]
-      - Second level cache (L2) can be large enough to capture many accessses that would go to main memory, thereby lessening the effective miss penalty [Low miss rate]
+      - First level of cache (L1) can be small enough to match the clock cycle of the fast processor [Low hit time]
+      - Second level cache (L2) can be large enough to capture many accesses that would go to main memory, thereby lessening the effective miss penalty [Low miss rate]
     - Prioritize read misses to reduce miss penalty
       - If a read miss has to evict a dirty memory block, the normal sequence is to write dirty block to memory and read the missed block.
       - In write through cache, write buffer may hold the updated value of a block that encountered a read miss.
       - Either wait till write buffer is empty or search before going to memory
-    - Avoid address translation in cache indexing to raduce hit time.
+    - Avoid address translation in cache indexing to reduce hit time.
       - Software uses virtual address (VA), but memory accessed using physical address (PA)
       - VA to PA has to be done before cache look up [MMU, TLB]
       - If indexing & tag comparison in virtual address, better hit time
@@ -419,7 +419,7 @@ Memory reference with cache miss    | 8   | 10%
 
 ## a. Calculate the average CPI when the program is executed on a processor with the above trace results
 
-## b. Calculate the corresponding MIPS rate based on CPI obtained in part (a).
+## b. Calculate the corresponding MIPS rate based on CPI obtained in part (a)
 
 ## c. Calculate the execution time of the program
 
@@ -431,7 +431,7 @@ Memory reference with cache miss    | 8   | 10%
 - MIPS = (clock frequency)/ (CPI x 10^6) = (400 x 10^6)/ (2.24 x 10^6) = 178.57
 - T = 2 x 10^6 x 2.24 x (1/400 x 10^6) = 0.0112 s
 
-## Discuss shared memory MIMD architecturein brief
+## Discuss shared memory MIMD architecture in brief
 
 - Shared Memory MIMD Architectures is known as Multiprocessor. It can consider a set of processors and a set of memory modules. Any processor can directly access any memory module through an interconnection network as displayed in the figure. The set of memory modules represent a global address space that is shared by all processors. This type of parallel machine is called Shared Memory MIMD Architectures.
 
