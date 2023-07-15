@@ -17,25 +17,25 @@ Customers can spend less time shopping for what they want. They can easily brows
 
 - ### Store and product listing creation
   
-A product listing is what the customer sees when they search for an item. This is one advantage in ecommerce meant for the seller. This online business plus point is that you can personalise your product listing after creating them.
+A product listing is what the customer sees when they search for an item. This is one advantage in e-commerce meant for the seller. This online business plus point is that you can personalize your product listing after creating them.
 
-Customising listings makes them attractive and appealing. Here the seller has full control over customisation, he can mention offers available, discounts etc. Other advantages of e-business product listing are that it is free to upload and fast.
+Customizing listings makes them attractive and appealing. Here the seller has full control over customization, he can mention offers available, discounts etc. Other advantages of e-business product listing are that it is free to upload and fast.
 
 - ### Cost reduction
 
-One of the biggest advantages of ecommerce to business that keep sellers interested in online selling is cost reduction. Many sellers have to pay lots to maintain their physical store. They may need to pay extra up front costs like rent, repairs, store design, inventory etc. In many cases, even after investing in services, stock, maintenance and workforce, sellers don’t receive desired profits.
+One of the biggest advantages of e-commerce to business that keep sellers interested in online selling is cost reduction. Many sellers have to pay lots to maintain their physical store. They may need to pay extra up front costs like rent, repairs, store design, inventory etc. In many cases, even after investing in services, stock, maintenance and workforce, sellers don’t receive desired profits.
 
 - ### Affordable advertising and marketing
 
-Sellers don’t have to spend a lot of money to promote their items. The world of ecommerce has several affordable, quick ways to market online. Ecommerce marketplaces are visual channels – and sellers can really show off their product. For example, Amazon sellers can use Advertising tools to add videos, infographics, good quality resolution images.
+Sellers don’t have to spend a lot of money to promote their items. The world of e-commerce has several affordable, quick ways to market online. e-commerce marketplaces are visual channels – and sellers can really show off their product. For example, Amazon sellers can use Advertising tools to add videos, info graphics, good quality resolution images.
 
 - ### Flexibility for customers
 
-An important advantage of ecommerce to business is that sellers can provide flexibility to customers. One highlight is that the product and services are ready 24x7. The result is that seller can offer his item any place, any time.
+An important advantage of e-commerce to business is that sellers can provide flexibility to customers. One highlight is that the product and services are ready 24x7. The result is that seller can offer his item any place, any time.
 
 - ### Product and price comparison
 
-In ecommerce, sellers can compare the products using tools or on their own. This gives them a good idea of product alternatives available, the standard rates, if a product need is unfulfilled.
+In e-commerce, sellers can compare the products using tools or on their own. This gives them a good idea of product alternatives available, the standard rates, if a product need is unfulfilled.
 Comparison is faster online and covers many products - It helps to save time when making this comparison, as all details are available on the shopping site. In a physical store, sellers may not be able get access to so many details –they only have better knowledge about their own inventory.
 
 - ### No reach limitations
@@ -45,12 +45,12 @@ Reaching out to more customers - Sellers that need to expand their reach to find
 
 - ### Faster response to buyer/market demands
 
-Every interaction is faster when begin selling online. Ecommerce marketplaces offer a streamlined logistics or delivery system. What this means is that the buyers order gets delivered efficiently. Product returns management is can be handled quickly – you either refund the payments or give a replacement.
-Speedily actions can even be applied when responding to market demands. As in case of this ecommerce example - when a buyer sees that an item is out of stock, he can click on the ‘Notify Me’ option. This informs him when that item is available for sale again. It also informs sellers that they need to restock that item so they can get more buyers.
+Every interaction is faster when begin selling online. e-commerce marketplaces offer a streamlined logistics or delivery system. What this means is that the buyers order gets delivered efficiently. Product returns management is can be handled quickly – you either refund the payments or give a replacement.
+Speedily actions can even be applied when responding to market demands. As in case of this e-commerce example - when a buyer sees that an item is out of stock, he can click on the ‘Notify Me’ option. This informs him when that item is available for sale again. It also informs sellers that they need to restock that item so they can get more buyers.
 
 - ### Several payment modes
 
-Buyers like personalisation – the same goes for paying for their orders. Ecommerce marketplaces permit multiple payment modes that include UPI, cash on delivery, card on delivery, net banking, EMIs on credit or debit card and pay-later credit facility.
+Buyers like personalization – the same goes for paying for their orders. e-commerce marketplaces permit multiple payment modes that include UPI, cash on delivery, card on delivery, net banking, EMIs on credit or debit card and pay-later credit facility.
 
 ## What is E-Business?
 
@@ -67,7 +67,7 @@ Buyers like personalisation – the same goes for paying for their orders. Ecomm
 
 - While E-Commerce may refer to conducting online transactions, E-Business encompasses all the business activities and services conducted using the web
 
-- E- Commerce                     |   E-Bussiness
+- E- Commerce                     |   E-Business
   --------------------------------|--------------------------------
   Carrying out commercial transactions online | Conducts all kinds of business activities and services over the internet
   Buying/ selling, monetary transactions online | Online presence of the business
@@ -143,7 +143,7 @@ Buyers like personalisation – the same goes for paying for their orders. Ecomm
 ## E-Money
 
 - E-Money transactions refer to situation where payment is done over the network and the amount gets transferred from one financial body to another financial body without any involvement of a middleman. E-money transactions are faster, convenient, and saves a lot of time.
-- Online payments done via credit cards, debit cards, or smart cards are examples of emoney transactions. Another popular example is e-cash. In case of e-cash, both customer and merchant have to sign up with the bank or company issuing e-cash.
+- Online payments done via credit cards, debit cards, or smart cards are examples of e-money transactions. Another popular example is e-cash. In case of e-cash, both customer and merchant have to sign up with the bank or company issuing e-cash.
 
 ## Digital Signature
 
@@ -172,7 +172,7 @@ Acknowledgement or the signature. This is how digital signatures are authenticat
 
 - Digital currencies have utility similar to that of physical currencies. They can be used to purchase goods and pay for services. They can also find restricted use among certain online communities, such as gaming sites, gambling portals, or social networks.
 
-- Digital currencies also enable instant transactions that can be seamlessly executed across borders. For instance, it is possible for a person located in the United States to make payments in digital currency to a counterparty residing in Singapore, provided they are both connected to the same network.
+- Digital currencies also enable instant transactions that can be seamlessly executed across borders. For instance, it is possible for a person located in the United States to make payments in digital currency to a counter party residing in Singapore, provided they are both connected to the same network.
 
 ## Characteristics of Digital Currencies
 
@@ -285,7 +285,7 @@ While they do not require physical wallets, digital currencies have their own se
 
 ## Give the uses of smart cards
 
-- Some of the uses of smart cards include data storage, individual authentication and processing application such mobile phone based simcards.
+- Some of the uses of smart cards include data storage, individual authentication and processing application such mobile phone based sim cards.
 
 ## SSL Security Definition
 
@@ -365,7 +365,7 @@ There are various legal issues associated with E-Commerce businesses. If these i
 
 - **Trademark Security Problem**
     Not getting trademark protected is one of the main legal issues in the field of E-Commerce. Since trademark is the company’s logo and symbol, the representation of  business all over the web, it must be protected. If it is not secure , it won’t take long before you realize your trademark is being infringed upon. This is very common legal issue and can become a deadly threat to  e-business.
-    With the hackers on loose and cybercrime so common, trademark infringement of the business or by your business can be a serious legal matter and may hinder the business’s progress
+    With the hackers on loose and cyber crime so common, trademark infringement of the business or by your business can be a serious legal matter and may hinder the business’s progress
 
 - **Copyright Protection Issue**
     While publishing content for  E-Commerce website, using content of any other company can be a severe legal problem. This might mark an end to your e-business. There are many sites online which are royalty free and allow you to access their content and images. You may use those sites for creating web content for your business site. Even if you unintentionally used copyrighted content, the other party can easily sue your business.
@@ -388,7 +388,7 @@ The E-commerce Architecture:
 
 - **Two - Tier Architecture**
   - Two sides of the architecture ( client and database ) that corresponding to client domain and business database domain. Their exist in constant interaction.
-  Example Retreiving and storing account billing details in db.
+  Example Retrieving and storing account billing details in db.
 
   ```[]
         User        +--------+       +--------+       +--------+
@@ -415,11 +415,11 @@ The E-commerce Architecture:
     - Not suitable for heterogenous environment
     - Allows for limited no of users & isn't scalable
     - Low control & re-distribution level
-    - Complicated to change DB structure due to mutual depandenct component and monolithic code.
+    - Complicated to change DB structure due to mutual dependence component and monolithic code.
 - **Three - Tier Architecture**
   - An additional middle layer is added which can be considered server side
   - 3 layers
-    - Presentaion layer (client)
+    - Presentation layer (client)
     - Application layer (business logic)
     - Database layer (database)
 
@@ -433,7 +433,7 @@ The E-commerce Architecture:
                         |        /        |       /       |
                     /```````````/    /```````````/  /```````````/
         Process    /___________/    /___________/  /___________/
-        Mnagement  |___________|    |___________|  |___________|
+       Management  |___________|    |___________|  |___________|
                     Web server       Web server     Web server
                         |           /     |          /    |
                         |          /      |         /     |
@@ -446,18 +446,17 @@ The E-commerce Architecture:
                         DB1             DB2             DB3
       ```
 
-  - Each layer function independently, runs on different services & is treated as a separate module when it comes to its development, modification or maintaince
+  - Each layer function independently, runs on different services & is treated as a separate module when it comes to its development, modification or maintenance
   - **Pros**
     - Improved Security due to better sync between the modules
     - Security level is enhanced
     - Possible partial update without affecting whole system
-    - Availablitity even if server is down due to cache data
+    - Availability even if server is down due to cache data
   - **Cons**
     - Complex communication between layers (difficult implementation)
     - Requires manual management
 - **E-Commerce Microserver Architecture**
-  - It means the creation of the application/website by arranging multiple services that have less comploy
-  depending between each other
+  - It means the creation of the application/website by arranging multiple services that have less comply depending between each other
   
   - ```[]
                                 +----------------+
@@ -483,17 +482,17 @@ The E-commerce Architecture:
             DB1              DB2              DB3             DB4
     ```
 
-  - This architecture seems to be a perfect choice for enterterprises, not best option due to maintainance complexity.
+  - This architecture seems to be a perfect choice for enterprises, not best option due to maintenance complexity.
   - **Pros**
     - Fault isolation
     - Flexible to adapt new technology
-    - Fast deployment due to smaller scope & codebases
+    - Fast deployment due to smaller scope & codebase
     - Easy scalability
     - Option to deploy locally
   - **Cons**
-    - Complex server comunication
+    - Complex server communication
     - More resource needed
-    - Recduced automated testing
+    - Reduced automated testing
     - More loss for debugging
 
 ## Explain the concept of mercantile process model from consumer and merchant's perspective
@@ -504,9 +503,9 @@ The E-commerce Architecture:
 - The online consumer expects quality, convenience, value, low price and control. To understand The behavior of online shoppers, there is a need for business model. This business model for consumers perspective consists of seven activities that can be grouped into three phases
   - Pre purchase phase
     - Product service and discovery in information space
-    - Camparision shoping and product selection based on various attributes
+    - Comparison shopping and product selection based on various attributes
     - Negotiation of terms e.g, Price, Delivery times
-  - Purchase consumation face
+  - Purchase consumption face
     - Placement of order
     - Authorization of Payment
     - Receipt of payment
@@ -527,7 +526,7 @@ The E-commerce Architecture:
     - The organization information search process
     - Consumer search experience
     - Information brokers and brokerage
-- **Purchase consumation** Include mercantile protocol that specifies flow of information and documents associated with purchasing and negotiating with merchants for suitable terms.
+- **Purchase consumption** Include mercantile protocol that specifies flow of information and documents associated with purchasing and negotiating with merchants for suitable terms.
   - Mode of payments
     - Mercantile Process using digital cash
     - Mercantile Process using credit card
@@ -536,10 +535,10 @@ The E-commerce Architecture:
 ## Mercantile process model from merchants perspective
 
 - To order to deliver cycle from merchant perspective has been managed with the eye towards standardization and cost.
-- This is based on assumtion that the organization must create a set of operating standards for service and production.They perform to those standards while minimizing the cost.
+- This is based on assumption that the organization must create a set of operating standards for service and production.They perform to those standards while minimizing the cost.
 - To fully realize and maintain a competitive advantage in the online environment, it is necessary to examine the order management cycle(OMC) that also includes the traditional order to delivery cycle.
 - Steps of OMC
-  - Presale Interaction
+  - Pre-sale Interaction
     - Order planning and order generation
     - Cost estimation and pricing
   - Service production and delivery
