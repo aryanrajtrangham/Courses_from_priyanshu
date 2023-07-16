@@ -3183,3 +3183,72 @@
   - Port numbers are sometimes seen in web or other uniform resource locators (URLs).
   - By default, HTTP uses port 80 and HTTPS uses port 443.
   - URL - <http://www.example.com:8080/path/> specifies the web browser to connect to port 8080 of the HTTP server.
+
+### User Datagram Protocol (UDP)
+
+- Simple protocol that provide transfer layer function.
+- Used by applications that can tolerate small loss of data.
+- Used by application that cannot tolerate delay.
+- Used by
+  - Domain Name System (DNS)
+  - Network Time Protocol (NTP)
+  - Simple Network Management Protocol (SNMP)
+  - Dynamic Host Configuration protocol (DHCP)
+  - Trivial File Transfer Protocol (TFTP)
+  - IP telephony or VoIP
+  - Online games
+- Connectionless and unreliable.
+- Prior communication are not required in order to set up communication channels or data paths.
+- UDP-based server applications are assigned well-known or registered port numbers only.
+- UDP client process randomly selects port number from range of dynamic port numbers as the source port.
+- UDP is suitable for purpose where error checking and correction are either not necessary or are performed in the application, UDP avoids the overhead of such processing in the protocol stack.
+- Time-sensitive application often use UDP because dropping packets due to retransmission, which may not be an option in a real-time system.
+- No error control
+- No flow control
+- Encapsulation and decapsulation.
+- Queuing
+
+- Use of UDP
+  - It is transaction-oriented, suitable for simple request-response protocols such as the DNS or the NTP.
+  - It provides datagrams, suitable for modeling other protocols such as IP tunneling or remote procedure call (RPC) and Network File System (NFS).
+  - It is simple, suitable for bootstrapping or other purpose without a full protocol stack, such as the DHCP and TFTP.
+  - It is stateless, suitable for very large numbers of clients, such as in streaming media applications such as IPTV.
+  - UDP is a suitable transport protocol for multicasting. Multicasting capability is embedded in the UDP software but not in the TCP software.
+  - UDP is used for some route updating protocols such as Routing Information protocol (RIP).
+
+- UDP Header Format
+
+  ```[]
+            +------------------+------------------+
+            |    UDP Header    |     UDP Data     |
+            +------------------+------------------+
+          /                      \
+       /                            \
+    /                                  \
+  +------------------+------------------+
+  |   Source Port    | Destination Port |
+  |   ( 16 bits )    |   ( 16 bits )    |
+  +------------------+------------------+
+  |     Length       |     Checksum     |
+  +------------------+------------------+
+  |         Variable length data        |
+  +-------------------------------------+
+    ->  UDP data = Variable length data = application data.
+  ```
+
+  - Source Port
+    - This is the port used by the process running on the source host.
+    - It is 16 bits long, which means that the port number can be 0 to 65535.
+    - If the source host is the client (a client sending a request), the port number, in most cases, is a ephemeral port number (port with value greater than 1024 and randomly assigned) requested by the process and chosen by the UDP software running on the source host.
+    - If the source host in the server (a server sending a response), the port number, in most cases, is a well-known port number.
+  - Destination Port
+    - This is the port number used by the process running on the destination host.
+    - It is also 16 bits long. If the destination host is the server (a client sending a request), the port number, in most cases, is a well-known port number.
+    - If the destination host is the client (a server sending a response), the port number, in most cases, is an ephemeral port number.
+    - In this case, the server copies the ephemeral port number it has received in the request packet.
+  - Length
+    - This is a 16-bit field that defines the total length of the user datagram, header plus data. The 16 bits can define a total length of the 0 to 65535 bytes.
+    - However, the total length needs to be much less because user datagram is stored in an IP datagram with a total length of 65535 bytes.
+    - UDP length = IP length - IP header's length.
+  - Checksum
+    - The field is used to detect errors over the entire user datagram (header plus data).
