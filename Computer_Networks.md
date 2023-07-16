@@ -3252,3 +3252,63 @@
     - UDP length = IP length - IP header's length.
   - Checksum
     - The field is used to detect errors over the entire user datagram (header plus data).
+
+- Checksum Calculation in UDP
+  - Pseudo-header in UDP
+    - The UDP checksum calculation is different from the one for IP and ICMP.
+    - In UDP, the checksum includes three sections:
+      - A pseudo-header
+      - The UDP header
+      - The data (coming from the application layer)
+    - The pseudo-Header is the part of the header of the IP packet in which the user datagram is to be encapsulated with some field filled with 0s.
+    - If the checksum does not include the pseudo-header, a user datagram may arrive at destination without errors.
+    - However, if the IP header is corrupted, it may be delivered to the wrong destination.
+    - The protocol field is added to ensure that the packet belongs to UDP and not to other transport-layer protocols.
+    - The value of the protocol field for UDP is 17.
+    - If this value is changed during transmission, the checksum calculation at the receiver will detect it and UDP drops the packet.
+    - Thus, the packet is not delivered to the wrong protocol.
+
+    ```[]
+    +-------------------------------------------------+
+    |             32-bit source IP address            |
+    +-------------------------------------------------+
+    |          32-bit destination IP address          | Pseudo-header
+    +-----------+------------+------------------------+
+    |   All 0s  |   8-bit    |    16-bit UDP total    |
+    |           |  protocol  |    length              |
+    +-----------+------------+------------------------+
+
+    +------------------------+------------------------+
+    |  Source Port address   |Destination port address|
+    |       16 bits          |       16 bits          |
+    +------------------------+------------------------+ UDP Header
+    |    UDP total length    |      Checksum          |
+    |       16 bits          |       16 bits          |
+    +------------------------+------------------------+
+    /                      Data                       /
+    /   ( Padding must be added to make the data      /
+    /            a multiple of 16 bits )              /
+    +-------------------------------------------------+
+    ```
+
+    - Example:
+
+    ```[]
+    +-------------------------------------------------+   10011001 00010010  --> 153.18
+    |                  153.18.8.105                   |   00001000 01101001  --> 8.105
+    +-------------------------------------------------+   10101011 00000010  --> 171.2
+    |                  171.2.14.10                    |   00001110 00001010  --> 14.10
+    +-----------+------------+------------------------+   00000000 00010001  --> 0 & 17
+    |   All 0s  |     17     |           15           |   00000000 00001111  --> 15
+    +-----------+------------+------------------------+   00000100 00111111  --> 1087
+                                                          00000000 00001101  --> 13
+    +------------------------+------------------------+   00000000 00001111  --> 15
+    |         1087           |         13             |   00000000 00000000  --> 0 (checksum)
+    +------------------------+------------------------+   01010100 01000101  --> T & E
+    |           15           |        All 0s          |   01010011 01010100  --> S & T
+    +-----------+------------+-----------+------------+   01001001 01001110  --> I & N
+    |     T     |     E      |     S     |     T      |   01000111 00000000  --> G & 0 (padding)
+    +-----------+------------+-----------+------------+  --------------------------------
+    |     I     |     N      |     G     |   All 0s   |   10010110 11101011  --> Sum
+    +------------------------+------------------------+   01101001 00010100  --> Checksum (1's sum)
+    ```
