@@ -3312,3 +3312,50 @@
     |     I     |     N      |     G     |   All 0s   |   10010110 11101011  --> Sum
     +------------------------+------------------------+   01101001 00010100  --> Checksum (1's sum)
     ```
+
+### Transfer Control Protocol (TCP)
+
+- Widely used transport layer protocol.
+- It creates a virtual connection between two TCPs to send data.
+- In addition, TCP uses flow and error control mechanisms at the transport level.
+- Used by applications that can tolerate delay but cannot tolerate loss.
+- Used by:
+  - World Wide Web
+  - HTTP
+  - FTP
+  - Telnet
+  - SMTP
+
+- Features of TCP
+  - Connection oriented
+  - Reliable delivery
+  - Acknowledgement Oriented
+  - Retransmission
+  - Flow Control
+  - Error Control
+  - Congestion Control
+  - Segmentation and Reassembly
+  - Full Duplex Support
+
+- TCP Stream Delivery
+
+  ```[]
+    Sending Process                          Receiving Process
+          +--------+                          +--------+
+          |        |                          |        |
+          +----|---+                          +--|-----+
+               |                                 |
+      TCP      |                                 |       TCP
+  +------------|---+                          +--|----------------+
+  | next byte  |   |                          |  |   next byte    |
+  | to write   |   |                          |  |    to read     |
+  | (___Buffer___) |                          | (_____Buffer____) |
+  | not  |         |                          |  not  | next byte |
+  | sent | sent    |    ----------------->    | read  | to receive|
+  +------|---------+       flow of data       +-------|-----------+
+         |        ____________________________        |
+         +-----> ()_____Stream_of_bytes______()-------|
+  ```
+
+- The transport layer PDU is called TCP segment.
+  - A TCP segment consists of data bytes to be sent and a header that is added to the data by TCP.
