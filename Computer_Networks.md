@@ -3359,3 +3359,83 @@
 
 - The transport layer PDU is called TCP segment.
   - A TCP segment consists of data bytes to be sent and a header that is added to the data by TCP.
+
+- TCP Header Format
+
+  ```[]
+    +------------------------+------------------------+
+    |  Source Port Address   |Destination Port Address|
+    |         16 bits        |          16 bits       |
+    +------------------------+------------------------+
+    |                Sequence Number                  |
+    |                     32 bits                     |
+    +-------------------------------------------------+
+    |             Acknowledgement Number              |
+    |                     32 bits                     |
+    +------+-----+-+-+-+-+-+-+------------------------+
+    | HLEN | RES |U|A|P|R|S|F|      Window Size       |
+    |  4   |  6  |R|C|S|S|Y|I|        16 bits         |
+    | bits |bits |G|K|H|T|N|N|                        |
+    +------------+-+-+-+-+-+-+------------------------+
+    |       Checksum         |     Urgent Pointer     |
+    |       16 bits          |         16 bits        |
+    +------------------------+------------------------+
+    |                Option and Padding               |
+    +-------------------------------------------------+
+  ```
+
+  - The segment consists of a 20 to 60 bytes header, followed by data from the application program.
+  - The header is 20 bytes if there are no options and upto 60 bytes if it contains options.
+  - Source Port Address :
+    - It defines the port number of the application program in the host that is sending the segment.
+    - It is 16 bits long, which means that the port number can be 0 to 65535.
+    - If the source host is the client (a client sending a request), the port number, in most cases, is a ephemeral port number (port with value greater than 1024 and randomly assigned) requested by the process and chosen by the UDP software running on the source host.
+    - If the source host in the server (a server sending a response), the port number, in most cases, is a well-known port number.
+  - Destination Port :
+    - It defines the port number of the application program in tha host that is receiving the segment.
+    - It is also 16 bits long. If the destination host is the server (a client sending a request), the port number, in most cases, is a well-known port number.
+    - If the destination host is the client (a server sending a response), the port number, in most cases, is an ephemeral port number.
+    - In this case, the server copies the ephemeral port number it has received in the request packet.
+  - Sequence Number :
+    - This is a 32-bit field that defines the number assigned to the first byte of data contained in this segment.
+    - Dual role :
+      - If the SYN flag is set to 1, then this is the initial sequence number. The sequence number of the actual first data and the acknowledgement number in the corresponding ACK are then this sequence number + 1.
+      - If the SYN flag is 0, then this is the accumulated sequence number of the first data byte of this segment for the current session.
+  - Acknowledgement Number
+    - It defines the byte number that the receiver of the segment is expecting to receive from the other party.
+    If the receiver of the segment has received byte number x from the other party, it defines x + l as the acknowledgement number. Acknowledgement and data can be piggybacked together.
+  - Header Length :
+    - It indicates the number of 4-byte words in the TCP header.
+    - Since heder can be between 20 to 60 bytes, the value of this field can be between ${5 (5*4=20)}$ and ${15 (15* 4=60)}$.
+  - Reserved :
+    - This is a 6-bit field reserved for future use.
+    - This field is set to 0.
+  - Flag :
+    - This field defines 6 different control bits or flags
+    - One or more of these bits can be set at a time.
+    - URG (1 bit): Indicates that the Urgent pointer field is significant
+    - Ack (1 bit): Indicates that the Acknowledgement field is significant.
+    - PSH (1 bit): Push function, ask to push the buffered data to the receiving application.
+    - RST (1 bit): Reset the connection.
+    - SYN (1 bit): Synchronize sequence numbers.
+    - FIN (1 bit): Last packet from sender.
+  - Window Size :
+    - This field defines the size of the window, in bytes, that the other party must maintain.
+    - The length of this field is 16 bits, which means that the maximum size of the window is 65,535 bytes.
+    - This value is normally referred to as the receiving window (rwnd) and is determined by the receiver.
+    - The sender must obey the direction of the receiver in this case.
+  - Checksum :
+    - The calculation of the checksum for TCP follows the same procedure as that of UDP.
+    - However, the inclusion of the checksum in the UDP datagram is optional, whereas the inclusion of the checksum for TCP is mandatory.
+    - The same pseudo-header, serving the same purpose, is added to the segment. For the TCP pseudo-header, the value for the protocol field is 6.
+  - Urgent Pointer :
+    - This 16-bit field, which is valid only if the urgent flag is set, is used when the segment contains urgent data.
+    - It defines the number that must be added to the sequence number to obtain the number of the last urgent byte in the data section of the segment.
+  - Option :
+    - There can be upto 40 bytes of optional information in the TCP header.
+    - The length of this field is determined by the data offset field. Options have up to three fields:
+      - Option-Kind (1 byte)
+      - Option-Length (1 bytes)
+      - Option-Data (variable)
+  - Padding :
+    - The padding is composed of zeros. The TCP header padding is used to ensure that the TCP header ends, and data begins, on a 32-bit boundary.
