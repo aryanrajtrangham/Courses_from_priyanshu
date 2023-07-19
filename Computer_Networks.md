@@ -3467,6 +3467,7 @@
           |   SEQ Y       /------|
           |      SYN + ACK       |
           |<----/    ACK X+1     |
+          |                      |
           |-------\              |
           |         ACK          |
           |   ACK X     \------->|
@@ -3529,3 +3530,59 @@
           |                      |
          \/ Time                \/ Time
       ```
+
+### TCP Sliding Window
+
+- Flow Control
+  - TCP uses a sliding window to handle flow control
+  - Between G0-Back-N and Selective Repeat.
+  - Does not use NAK
+  - The receiver holds out-of-order segments.
+  - TCP Sliding window is byte-oriented.
+  - TCP's sliding window is of variable size.
+  - Imaginary Window
+
+    ```[]
+                +-------------------------------------------+
+                |    Window size = minimum (rwnd, cwnd)     |
+                +-------------------------------------------+
+
+                |                      Shrinking <----------|
+                |-------------------------------------------|
+    +-----+-----|---+-----+-----------------------+-----+---+-----+-----+
+    | ... | N-1 | N | N+1 |    ... ... ... ...    | M-1 | M | M+1 | ... |
+    +-----+-----|---+-----+-----------------------+-----+---+-----+-----+
+                |-------------------------------------------|
+                |             Sliding Window                |
+                |-------->                                  |-------->
+                |Closing                                    |Opening
+
+    rwnd = receiver window size
+    cwnd = congestion window size
+    ```
+
+  - Example :
+
+    ```[]
+                +-----------------------------------------------+
+                |      Window size = minimum (20, 8) = 8        |
+                +-----------------------------------------------+
+
+                |<---Sent, not -->|<--Can be sent immediately-->|
+                |   acknowledged  |                             |
+                |-----------------|-----------------------------|
+    +-----+-----|-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+
+    | ... | 199 | 200 | 201 | 202 | 203 | 204 | 205 | 206 | 207 | 208 | ... |
+    +-----+-----|-----+-----+-----+--|--+-----+-----+-----+-----+-----+-----+
+                |--------------------|--------------------------|
+                |             Next byte to be sent              |
+      --------->                                                 <--------------
+      Sent and                                                   Can't be sent
+      Acknowledged                                              until window opens
+    ```
+
+    - Window size = minimum (rwnd,cwnd)
+    - The source does not have to sent a full window's worth of data.
+    - The window can be opened or closed by the receiver, but should not be shrunk.
+    - The destination can send an ACK at any time.
+    - The sender can send 1-byte segment even after the window is shut down in the receiver side.
