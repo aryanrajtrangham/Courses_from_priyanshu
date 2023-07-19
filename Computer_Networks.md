@@ -3439,3 +3439,93 @@
       - Option-Data (variable)
   - Padding :
     - The padding is composed of zeros. The TCP header padding is used to ensure that the TCP header ends, and data begins, on a 32-bit boundary.
+
+### TCP Connection
+
+- Connection-oriented protocol
+- Virtual path
+- Acknowledgment process
+- Retransmission of lost or damaged frames
+- TCP connection - Virtual not physical
+- IP Connectionless
+- Full-duplex mode
+- Approval from other party
+
+- Three Phases of TCP connection
+  - Connection Establishment
+    - 3-way handshaking
+
+      ```[]
+      +------+ Client          +----+ Server
+      | .... |                 | [] |
+      +------+                 | __ |
+      ___[]____                |____|
+          |-------\   SEQ X      |
+          |        SYN           |
+          |           \--------->|
+          |                      |
+          |   SEQ Y       /------|
+          |      SYN + ACK       |
+          |<----/    ACK X+1     |
+          |-------\              |
+          |         ACK          |
+          |   ACK X     \------->|
+          |                      |
+         \/ Time                \/ Time
+      ```
+
+  - Data Transfer
+    - Bidirectional data transfer
+    - Piggybacking
+      - The acknowledgement is piggybacked with data.
+    - Push and Urg flags.
+  - Connection Termination
+    - Usually initiated by the client
+    - Two options for connection termination
+      - Three-way handshaking
+
+      ```[]
+      +------+ Client          +----+ Server
+      | .... |                 | [] |
+      +------+                 | __ |
+      ___[]____                |____|
+          |-------\   SEQ X      |
+          |        FIN           |
+          |    ACK Y  \--------->|
+          |                      |
+          |   SEQ Y       /------|
+          |      FIN + ACK       |
+          |<----/     ACK X+1    |
+          |                      |
+          |--------\   SEQ X     |
+          |         ACK          |
+          |    ACK Y+1  \------->|
+          |                      |
+         \/ Time                \/ Time
+      ```
+
+      - Four-way handshaking with a half-close option.
+
+      ```[]
+      +------+ Client          +----+ Server
+      | .... |                 | [] |
+      +------+                 | __ |
+      ___[]____                |____|
+          |-------\   SEQ X      |
+          |        FIN           |
+          |  ACK Y    \--------->|
+          |                      |
+          |   SEQ Y-1  /---------|
+          |         ACK          |
+          |<------/    ACK X+1   |
+          |                      |
+          |    SEQ Z   /---------|
+          |         FIN          |
+          |<------/   ACK X+1    |
+          |                      |
+          |--------\   SEQ X     |
+          |         ACK          |
+          |   ACK Z+1   \------->|
+          |                      |
+         \/ Time                \/ Time
+      ```
