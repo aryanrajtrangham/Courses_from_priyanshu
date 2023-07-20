@@ -3586,3 +3586,116 @@
     - The window can be opened or closed by the receiver, but should not be shrunk.
     - The destination can send an ACK at any time.
     - The sender can send 1-byte segment even after the window is shut down in the receiver side.
+
+### Congestion
+
+- A state occurring in network layer when the message traffic is so heavy that it slows down network response time.
+- Effects of Congestion
+  - As delay increases, performance decreases
+  - If delay increases, retransmission occurs, making situation worse.
+- Categories of Congestion control
+  - Open-loop Congestion control (Preventive methods)
+    - Retransmission Policy
+      - Sometimes unavoidable
+      - Loss/Corrupted - Packets
+      - This will increase congestion
+      - Good retransmission policy
+      - The TCP's retransmission policy is designed to prevent or alleviate congestion.
+    - Window Policy
+      - Window at sender may also affect congestion.
+      - SR better than Go-back-N.
+      - In Go-back-N several packets may be resent.
+      - This duplication may worse congestion.
+      - SR retransmits only lost or corrupted packets.
+    - Acknowledgement Policy
+      - ACK policy imposed by receiver may also affect congestion.
+      - ACK N packets
+      - ACKs are also part of the load in a network.
+      - Fewer ACKs impose less load.
+    - Discarding Policy
+      - Good discarding policy.
+      - Integrity of the transmission.
+      - Example: Audio Transmission.
+      - Discarding less sensitive packets.
+    - Admission Policy
+      - QoS mechanism prevents congestion in Virtual Circuit network.
+      - Switches in a flow first check the resource requirement of a flow before admitting it to the network.
+      - Router can deny if there is a possibility of future congestion.
+  - Closed-loop Congestion control (Reactive methods)
+    - Back Pressure
+
+      ```[]
+                        back       back
+                      pressure   pressure
+        +----+          <---      <---                    +----+
+        | [] |----[node]----[node]----[node]----[node]----| [] |
+        +----+                      congestion            +----+
+        __==__    ----------------------------------->    __==__
+        Source              Data flow                   Destination
+      ```
+
+      - Cannot be applied for datagram networks.
+      - Applied to virtual circuit networks.
+    - Choke Packet
+
+      ```[]
+                  choke packet          []
+        +----+ <------------------------|                 +----+
+        | [] |----[node]----[node]----[node]----[node]----| [] |
+        +----+                      congestion            +----+
+        __==__    ----------------------------------->    __==__
+        Source              Data flow                   Destination
+      ```
+
+      - A choke packet is a packet sent by a node to the source to inform it of congestion.
+    - Implicit Signaling
+      - No communication between congested node(s) and the source.
+      - Symptoms - No ACK, delayed ACK.
+    - Explicit Signaling
+      - The signal is included in the data packets itself
+      - Discards less sensitive packets that carry data.
+      - Backward signaling
+      - Forward signaling.
+
+- Congestion control in TCP
+  - Congestion Policy
+    - Slow start
+      - Key Idea of Slow start
+        - The size of the congestion window (cwnd) start with one minimum segment size (MSS).
+        - The MSS is determined during TCP connection establishment.
+        - The window start slowly, but grows exponentially.
+        - In the slow-start algorithm, the size of the congestion window increase exponentially until it reaches a threshold.
+      - Assumptions:
+        - The value of rwnd > cwnd and hence Window size = cwnd
+        - Each segment is acknowledgement individually.
+      - Slow start cannot continue indefinitely.
+      - There must be a threshold to stop this exponential growth.
+      - The sender keeps track of a variable named ssthresh (slow-start threshold).
+      - When the size of window in bytes reaches this threshold, slow start stops and the next phase starts.
+      - In most implementations, the value of ssthresh is 65535 bytes.
+    - Additive Increase (Congestion Avoidance)
+      - Slow start-cwnd increase exponentially.
+      - This exponential growth must be slowed down, to avoid congestion before it happens.
+      - Congestion Avoidance: Additive Increase.
+      - When cwnd reaches the threshold, the slow-start phase stops and the additive phase begins.
+      - In this algorithm, each time the whole window of segments window is increased by 1.
+      - In the congestion avoidance algorithm, the size of the congestion window increases additively until congestion is detected.
+    - Multiplicative Decrease (Congestion Detection)
+      - Slow start - Exponential increase
+      - Additive increase - Linear increase
+      - The cwnd must be decreased, if there is a congestion
+      - Sender can guess that congestion.
+      - Retransmission of segment.
+      - Retransmission can occur in one of two cases:
+        - When a timer times out or
+        - When three ACKs are received
+      - Threshold is dropped to one-half, a multiplicative decrease.
+      - TCP implementation have two reactions:
+        - Reaction 1
+          - It sets the value of the threshold to one-half of the current window size.
+          - It sets cwnd to the size of one segment.
+          - It starts the slow-start phase again.
+        - Reaction 2
+          - It sets the value of the threshold to one-half of the current window size.
+          - It sets cwnd to the value of the threshold.
+          - It start the congestion avoidance phase.
