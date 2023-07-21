@@ -3699,3 +3699,28 @@
           - It sets the value of the threshold to one-half of the current window size.
           - It sets cwnd to the value of the threshold.
           - It start the congestion avoidance phase.
+
+### Quality of service (QOS)
+
+- Packet Switched Networks - Multimedia applications
+- However, there is more to transmitting audio and video over a network than just providing sufficient bandwidth.
+- Applications that are sensitive to the timeless of data:real-time applications
+  - Ex : VoIP, conversation, Video conferencing, Remote login etc.
+- Informally:QoS - A flow seeks to attain.
+- Flow characteristics
+  - Reliability
+    - Lack of reliability = Losing a packet or ACK
+    - The sensitivity of application programs to reliability is not the same.
+    - Reliability: Email, File transfer, surfing the internet > Telephony or Audio conferencing.
+  - Delay
+    - Source-to-destination delay.
+    - Applications can tolerate delay in different degrees.
+    - Delay : Email,  File transfer, surfing the internet > Telephony, Audio conferencing and Remote login.
+  - Jitter
+    - Variation in delay for packets belonging to the same flow.
+    - Example 1: 0,1,2,3 --> 20,21,22,23 (Same delay: 20)
+    - Example 2: 0,1,2,3 --> 21,23,21,28 (Different delays: 21,22,19 and 25)
+    - High jitter (high variation) and Low jitter (low variation)
+  - Bandwidth
+    - Different application - Different bandwidths.
+    - Bandwidth: Video Conferencing > Email
