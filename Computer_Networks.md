@@ -3724,3 +3724,125 @@
   - Bandwidth
     - Different application - Different bandwidths.
     - Bandwidth: Video Conferencing > Email
+
+- Techniques to improve QoS
+  - Scheduling
+    - Packets from different flows - Switch or Router
+    - Good scheduling technique
+    - Scheduling techniques
+      1. FIFO Queuing
+
+          ```[]
+            Arrival     /\        No                                 +-------------+ Departure            
+          ---------> < Full? > -------> [ ][ ][ ][ ][=][=][=]------> |  Processor  | ------->
+                        \/                   Queue                   +-------------+
+                         | Yes
+                Discard  |
+          ```
+
+      2. Priority Queuing
+
+          ```[]
+                                    /\       No
+                        /| --->  < Full? > -------> [ ][ ][ ][ ][=][=][=]------+
+                       / |          \/               Higher-Priority           |
+            Arrival   /  |      Yes  |                   Queue                 +==> +-------------+ Departure
+          ---------> <   |        Discard                                           |  Processor  | ------->
+                      \  |                                                     +--> +-------------+
+            classifier \ |          /\       No                                |
+                        \| --->  < Full? > -------> [ ][ ][ ][=][=][=][=]------+
+                                    \/               Lower-Priority
+                                Yes  |                   Queue
+                                Discard
+          ```
+
+          - It may leads to starvation.
+      3. Weighted Fair Queuing
+
+          ```[]
+                                      /\     No
+                           /|--->  < Full? > --> [ ][ ][ ][ ][=][=][=]------+
+                          / |         \/                Weight 1            |
+                         / C|      Yes |                  Queue             |
+                        /  l|        Discard                                |
+                       /   a|                                               |
+            Arrival   /    s|         /\     No                          +-----+    +-------------+ Departure
+          ---------> <     s|--->  < Full? > --> [ ][ ][=][=][=][=][=]--+|--o  |==> |  Processor  | ------->
+                      \    i|         \/                Weight 2         +-----+    +-------------+
+                       \   f|      Yes |                  Queue             |
+                        \  i|        Discard                                |
+                         \ e|                                               |
+                          \r|          /\     No                            |
+                           \| --->  < Full? > --> [ ][ ][ ][=][=][=][=]-----+
+                                       \/                Weight 3
+                                   Yes  |                  Queue
+                                    Discard
+          ```
+
+  - Traffic Shaping
+    - Controls the amount of traffic sent to the network.
+    - Controls the rate of traffic sent to the network.
+    - Traffic Shaping Technique
+      - Leaky Bucket
+
+          ```[]
+                                                        Leaky Bucket Algorithm
+                                                        +--------------------+
+                                                        | Removes packets    |
+                                                        | at a constant rate.|
+                                                        +--------------------+
+            Arrival     /\        No                            ||   +-------------+ Departure            
+          ---------> < Full? > -------> [ ][ ][ ][ ][=][=][=]------> |  Processor  | ------->
+                        \/                   Queue                   +-------------+
+                         | Yes
+                Discard  |
+          ```
+
+        - A leaky bucket algorithm shapes bursty traffic into fixed-rate traffic by averaging the data rate.
+        - Fixed and variable size packets
+        - Counter are required.
+      - Token Bucket
+
+          ```[]
+                              One token per tick +--------------+        Token Bucket Algorithm
+                                   ________|_____|____          |  +---------------------------------+
+                                    \ o    |ooo     /           |  | One token removed &             |
+                              Tokens \ ooooooooooo /            |  | discarded per cell transmission.|
+                                      \___________/             |  +---------------------------------+
+            Arrival     /\        No                           [=]   +-------------+ Departure            
+          ---------> < Full? > -------> [ ][ ][ ][ ][=][=][=]------> |  Processor  | ------->
+                        \/                   Queue                   +-------------+
+                         | Yes
+                Discard  |
+          ```
+
+        - The token bucket allows bursty traffic at a regulated maximum rate.
+        - Host accumulate credit for future in form of tokens
+        - For each tick of the clock, the system sends 'n' tokens to the bucket
+        - Example :
+          - n=100, host is idle for 100 ticks, the bucket collects 10,000 tokens
+          - Counter
+          - Token = 0
+          - Token++, Counter ++
+          - Each time a unit of data is sent, counter = counter - 1
+          - If counter = 0, host cannot send data.
+    - Combining leaky and Token Buckets
+      - Both can be combined to regulate the traffic.
+      - The leaky bucket is applied after the token bucket.
+      - The rate of the leaky bucket needs to be higher than the rate of tokens dropped in the bucket
+  - Admission Control
+    - Admission control used by router/switch
+    - To accept or reject a flow based on predefined parameters called flow specifications.
+    - It checks the flow specifications to see its capacity.
+    - Capacity in terms of bandwidth, buffer size, CPU speed, etc.
+  - Resource Reservation
+    - Flow of data needs resources
+    - Resources include buffer, bandwidth, CPU time, and so on.
+    - Qos can be improved, if these resources are reserved beforehand.
+    - Two models
+      - Integrated Services: A flow-based QoS model designed for IP.
+        - Scalability Problems
+        - Service type limited problems
+      - Differentiated Services: A class-based Qos model designed for IP.
+        - Greater Scalability
+        - Service type
