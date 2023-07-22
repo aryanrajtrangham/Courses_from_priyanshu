@@ -3869,3 +3869,71 @@
   - Domain Name System (DNS)
   - Hypertext Transfer Protocol (HTTP)
 
+### Domain Name System (DNS)
+
+- Hierarchical and decentralized service.
+- Used because names are human friendly.
+- IP addresses are Router friendly.
+- Names or IP addresses - unique
+- FQDN - Fully Qualified Domain Name
+  - myhost.example.com.
+  - myhost.singhpriansh.org.
+- Translate hostname into host addresses
+- Names server - Client Server Model
+- Example :
+
+  ```[]
+                                        User
+                     cse.website.org      | [1]
+                          [2]             |  sumit@cse.website.org
+    +-------------+ <-------------- +-----|--------+          +-----+          +----+
+    | Name Server |                 | Mail Program | -------> | TCP | -------> | IP |
+    +-------------+ --------------> +--------------+          +-----+          +----+
+                          [3]                          [4]              [5]
+                      192.168.69.5                 192.168.69.5     192.168.69.5
+  ```
+
+- Domain Hierarchy Partitioned into zones
+  | edu </br> &nbsp;- iit </br> &nbsp;- mit </br> &nbsp; ... | com </br> &nbsp;- google </br> &nbsp;- cisco </br> &nbsp;... | gov </br> &nbsp;- rbi </br> &nbsp;- sebi </br> &nbsp; ...| mil </br> &nbsp;- navy </br> &nbsp;- army </br> &nbsp; ... | org </br> &nbsp;- cbse </br> &nbsp;- icse </br> &nbsp; ... | net </br> &nbsp;... |
+  |----|----|----|----|----|----|
+  - FQDN = cse.iit.edu.
+
+- Hierarchy of Names server
+  - Root (name server)
+    - .org (name server)
+      - cbse (name server)
+    - .edu (name server)
+      - Root (name server)
+      - iit (name server)
+        - cs (name server)
+        - ee (name server)
+
+- Name Server
+  - Each name server implements the zone information as a collection of resource records
+  - A resource record is a *name-to-value binding*.
+  - A 5-tuple representation
+    - <Name, Value, Type, Class, TTL>
+  - Examples (TTL ignored)
+        - NS = Name server, IN = internet, A = address
+    1. <edu., a3.nstld.com, NS, IN>
+    2. <a3.nstld.com, 192.5.6.32, A, IN>
+    3. <penguins.cs.iit.edu, 128,112,155,166,A,IN>
+
+- Name Resolution
+  - Not all clients know about the root servers.
+  - DNS resolver
+  - Resolving a name actually involves a client querying the local server.
+  - DNS recursive query and DNS iterative query resolution.
+
+    ```[]
+                           +----------2-------> +-+ . Root (Name server)
+                           | |--------3-------- |_| 
+                  1      +-----+ -----4-------> +-+ org (Name server)
+      +-----+ ---------> | [ ] | <----5-------- |_| 
+      |     |    10      |-----| -----6-------> +-+ iit (Name server)
+      +-----+ <--------- |     | <----7-------- |_| 
+      ___=___    |       |_____| -----8-------> +-+ cse (Name server)
+                DNS      +-----+ <----9-------- |_| 
+          Recursive      Local           |
+             Query       Name Server     +--DNS Iterative Query
+    ```
