@@ -3846,3 +3846,26 @@
       - Differentiated Services: A class-based Qos model designed for IP.
         - Greater Scalability
         - Service type
+
+## Application Layer & Security
+
+### Application Layer Overview
+
+- The application layer enables the user, whether human or software, to access the network.
+- It provides user interface and support for services.
+- Application need their own protocols
+- Examples :
+  - Electronic mail
+  - File Access and Transfer
+  - Access to system resources
+  - Surfing the world wide web
+  - Network Management etc.,
+- Application Layer Protocols
+  - Telecommunications Network (Telnet)
+  - File Transfer Protocol (FTP)
+  - Trivial File Transfer Protocol (TFTP)
+  - Simple Mail Transfer Protocol (SMTP)
+  - Simple Network Management Protocol (SNMP)
+  - Domain Name System (DNS)
+  - Hypertext Transfer Protocol (HTTP)
+
