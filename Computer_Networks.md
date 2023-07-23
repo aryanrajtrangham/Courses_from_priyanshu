@@ -4098,3 +4098,24 @@ HTTPS
   - Retrieves email messages.
   - Unlike POP, when the user connects to an IMAP-capable server, copies of the messages are downloaded to the client applications.
   - Original messages are kept on the server until manually deleted.
+
+### Cryptography
+
+- The art or science encompassing the principles and methods of transforming an intelligible message into one that is unintelligible and then re transforming that message back to its original form.
+- Type of Cryptography
+  - Symmetric Cryptography (Private Key Cryptography)
+    - DES
+    - AES
+    - RC4
+  - Asymmetric Cryptography (Public Key Cryptography)
+    - RSA
+    - ECC
+    - Diffie-Hellman
+- Key Terms
+  - Cryptography
+  - Plain text
+  - Cipher text
+  - Cipher (Encryption Algorithm)
+  - Key
+  - Cryptanalysis (code breaking)
+  - Cryptology = Cryptography + Cryptanalysis
