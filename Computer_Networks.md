@@ -3937,3 +3937,89 @@
           Recursive      Local           |
              Query       Name Server     +--DNS Iterative Query
     ```
+
+  - Location of host file in windows : c:/Windows/System32/drivers/etc/hosts
+
+### Simple Network Management Protocol (SNMP)
+
+- Network monitoring
+- SNMP collects, and organizes information about managed devices on IP networks.
+- SNMP can modify that information to change device behavior.
+- An SNMP-managed network consists of three key components :
+  - Managed devices
+    - Manged devices - Unidirectional or bidirectional
+    - Manged devices that typically support SNMP include
+      - Cable modems
+      - Routers
+      - Switches
+      - Servers
+      - Workstations
+      - Printers
+  - Agent
+    - Agent - managed devices.
+    - An agent is a network-management software module that resides on a managed device.
+    - An agent has local knowledge of management information and translates that information to or from an SNMP-specific form.
+  - Network Management Station (NMS) - SNMP Manager
+    - A network management station executes applications that monitor and control managed devices.
+    - NMSs provide the bulk of the processing and memory resources required for network management.
+    - One or more NMSs may exist on any managed network.
+- SNMP Architecture
+
+  ```[]
+      SNMP Agent                                  SNMP Manager
+    +------------+                              +--------------+
+    |+----------+|                              |+------------+|
+    ||   MIB    ||                              ||    NMS     ||
+    ||Databases ||                              |+-----|------+|
+    |+----|-----+|                              |      |       |
+    |     |      |                              |      |       |
+    |     |      |         ~   ~   ~            |      |       |
+    |+----|-----+|       (  Internet/ )         |+-----|------+|
+    ||SNMP Agent||       (  Intranet  )         ||SNMP Manager||
+    || Software |<------------------------------>|  Software  ||
+    |+----------+|------>              <--------|+------------+|
+    +------------+ SNMP                   SNMP  +--------------+
+              Response/Traps            Commands
+  ```
+
+- Managed information base (MIB) :
+  - SNMP agents - Variables
+  - Active management tasks
+    - Configuration changes
+    - Remote modification of these variables
+  - The variables accessible via SNMP are organized in hierarchies.
+  - SNMP itself does not define which variables a managed system should offer.
+  - Rather, SNMP uses an extensible design which allows applications to define their own hierarchies.
+  - These hierarchies are described as a *Management Information Base (MIB)*.
+  - MIBs describe the structure of the management data of a device subsystem.
+  - They use a hierarchical namespace containing *Object IDentifiers (OID)*.
+  - Each OID identifies a variable that can be read or set via SNMP.
+  - MIBs use the notation define by Structure of Management Information Version 2.0
+- Exchange of Information in SNMP
+  - SNMP Polling / Responses :
+  - SNMP Traps :
+- Protocol Details
+  - All SNMP messages are transported via UDP.
+  - Seven SNMP PDUs :
+    - GetRequest : Used by Manager to Agent to retrieve the value of variable
+    - SetRequest : Used by Manager to Agent to change the value of variable
+    - GetNextRequest : Used by Manager to Agent to discover the values of variable
+    - GetBulkRequest : Used by Manager to Agent for multiple iterations of get next request
+    - Response : Used by Agent to Manager for response of various requests.
+    - Trap : Asynchronous communication from Agent to Manager is done using trap.
+    - InformRequest : Acknowledged asynchronous notification from User to Manager.
+- SNMP versions
+  1. SNMPv1
+  2. SNMPv2c
+  3. SNMPv3
+  - SNMPv1 and v2 are vulnerable to IP spoofing attacks
+  - Security was one of the biggest weakness of SNMP until v3.
+  - Authentication in SNMP versions 1 and 2 amounts to nothing more than a password (community string) sent in clear text between a manager and agent.
+  - The security approach in v3 targets :
+    - Confidentiality
+    - Integrity
+    - Authentication
+- SNMP Security Implications
+  - Using SNMP to attack a network
+  - SNMP authentication
+  - SNMP auto discovery
