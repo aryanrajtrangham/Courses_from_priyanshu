@@ -4052,3 +4052,49 @@ HTTPS
 - Secured
 - Cipher Text
 - Certificate Authority (CA)
+
+### Electronic Mail Protocol (E-mail protocol)
+
+- Typically use an application called a Mail User Agent (email client).
+- Allows messages to be sent.
+- Places received messages into the client's mailbox.
+- Email client provides the functionality of both protocols with one application.
+- E-mail protocols
+  - SMTP - Simple Mail Transfer Protocol : Send email from either a client or a server.
+  - POP - Post Office Protocol : Receive email messages from an email server.
+  - IMAP - Internet Message Access Protocol : Receive email messages from an email server.
+
+    ```[]
+        Mail Server                                  Mail Server
+        gkv.ac.in                                     gmail.com
+        +------+                                      +------+
+        | [  ] |                SMTP                  | [  ] |
+        |      | <----------------------------------> |      |
+        +------+                                      +------+
+          ^  |                                          ^  |
+    SMTP  |  | POP3                               SMTP  |  | POP3
+          |  | IMAP                                     |  | IMAP
+          |  V                                          |  V
+        +------+                                      +------+
+        |      |                                      |      |
+        +------+                                      +------+
+        ___==___                                      ___==___
+    Baljeet@gkv.ac.in                             pritanshu@gmail.com
+    ```
+
+- SMTP
+  - Transfer mail reliably and efficiently.
+  - Message must be formatted properly.
+  - SMTP processes must be running on both the client and server.
+  - Message header must have a properly formatted recipient email address and a server.
+  - SMTP ues port 25.
+- POP
+  - Enables a workstation to retrieve mail from a mail server.
+  - E-mail is downloaded from the server to the client and then deleted on the server.
+  - POP uses port 110
+  - POP does not store messages.
+  - POP3 is desireable for an ISP, because it alleviates their responsibility for managing large amounts of storage for their email servers.
+- IMAP
+  - Retrieves email messages.
+  - Unlike POP, when the user connects to an IMAP-capable server, copies of the messages are downloaded to the client applications.
+  - Original messages are kept on the server until manually deleted.
