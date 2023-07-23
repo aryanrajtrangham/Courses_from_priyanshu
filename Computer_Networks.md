@@ -4023,3 +4023,32 @@
   - Using SNMP to attack a network
   - SNMP authentication
   - SNMP auto discovery
+
+### HTTP and HTTPS
+
+HTTP
+
+- Example URL : <http://www.website.com/index.html>
+  - First the browser interprets the three parts of the URL :
+    1. http (the protocol or scheme)
+    2. **<www.website.com>** (the server name)
+    3. index.html (the specific file name requested)
+  - Browser checks with a name server to convert <www.website.com> into a numeric address
+  - Using the HTTP protocol requirements sends a GET request to the server and asks for the file index.html
+  - Server sends the HTML code for the web page
+  - Browser deciphers the HTML code and formats the page
+
+- Developed to publish and retrieve HTML pages
+- Used for data transfer
+- Specifies a request/response protocol
+- Common message types are GET, POST and PUT
+  - GET is a client request for data
+  - POST and PUT are used to send messages that upload data to the web server
+
+HTTPS
+
+- HTTP secure or HTTP over SSL or HTTP over TLS.
+- Encrypted
+- Secured
+- Cipher Text
+- Certificate Authority (CA)
