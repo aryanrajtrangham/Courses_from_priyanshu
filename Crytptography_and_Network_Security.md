@@ -14,4 +14,4 @@
 
 ![CIA_Triad](/images/cia_triad.svg)
 
-- ``Computer Security`` - The protection afforded to an automated information system in order to attain applicable objectives of preserving the integrity, availability and confidentiality of information system resources (include hardware software, firmware information/ data and telecommunications).
+- `Computer Security` - The protection afforded to an automated information system in order to attain applicable objectives of preserving the integrity, availability and confidentiality of information system resources (include hardware software, firmware information/ data and telecommunications).
