@@ -10,8 +10,78 @@
 6. Security Practices and System Security
 7. Email, IP and Web Security
 
-## CIA Tried
+## Introduction to Cryptography
+
+### CIA Tried
 
 ![CIA_Triad](/images/cia_triad.svg)
 
+- CIA Triad
+  - Confidentiality
+    - Example : Account information
+  - Integrity
+    - Example : Patient's information
+  - Availability
+    - Example : Authentication service
+  </br></br>Additional
+    - Authenticity
+    - Accountability
+
 - `Computer Security` - The protection afforded to an automated information system in order to attain applicable objectives of preserving the integrity, availability and confidentiality of information system resources (include hardware software, firmware information/ data and telecommunications).
+
+Threats and Attack (RFC 2828)
+
+- `Threat`: A potential for violation of security, which exists when there is a circumstance, capability, action or an event that could breach security and cause harm. That is a threat Is it possible danger that might exploit a vulnerability.
+- `Attack`: An assault on system security that drives from an intelligence read that is an intelligent act that is deliberately attempt (especially in the sense of a method or technique) to evade security services and violate the security policy of a system.
+
+### OSI security architecture
+
+- `Security Attack` : Action that compromises the security of an individual or an organization.
+  - `Passive Attacks` : Attempts to learn or make use of information from the system.
+    - Does not affect system resources.
+    - Eavesdropping or monitoring of transmissions.
+    - Goal: Obtain information that is being transmitted.
+    - Types:
+      - Release of message contents
+      - Traffic Analysis
+  - `Active attack` : Active attacks involve some modification of the data stream or the creation of a false stream.
+    - Subdivide into four categories.
+      1. Masquerade : Pretending to be someone else.
+      2. Replay : Capture from source and later replay to destination.
+      3. Modification of messages : Capture from source and modifies the messages.
+      4. Denial of Service (DoS) : Denies data from the server.
+  - Passive attack vs Active Attack
+    - Passive Attack
+      - Hard to Detect
+      - Neither sender nor receiver is aware of the attack
+      - Encryption prevents the success of the passive attacks
+      - More emphasis is on prevention than detection.
+    - Active Attack
+      - Hard to Prevent
+      - Difficult to prevent - Physical, software and network vulnerabilities.
+      - Detect and recover from any disruption or delays.
+      - If the detection has a deterrent effect, it may also contribute to prevention.
+- `Security Mechanism` : Detect, prevent, or recover from a security attack.
+  - `Specific security mechanisms`
+    - `Encipherment`
+    - `Digital Signature`
+    - `Access Control`
+    - `Data Integrity`
+    - `Authentication Exchange`
+    - `Traffic Padding`
+    - `Routing Control`
+    - `Notarization` : Deployment of trusted 3rd party authority.
+  - `Pervasive security mechanism`
+    - `Trusted Functionality`
+    - `Security Label`
+    - `Event Detection`
+    - `Security Audit Trail`
+    - `Security Recovery`
+- `Security Service` : The processing or communication service that is provided by a system to give a specific kind of protection to system resources, security services, implement security policies and are implemented by security mechanism.
+  - `Authentication` : The process of verifying a user or device before allowing access to a system or resources
+    - Peer entity authentication : The process of verifying that a peer entity in an association is as claimed.
+    - Data origin authentication : Also known as message authentication, data origin authentication is an assurance that the source of the information is indeed verified.
+  - `Access control` : Access control is a data security process that enables organizations to manage who is authorized to access corporate data and resources.
+  - `Data confidentiality` : The protection of data from unauthorized access and disclosure.
+  - `Data Integrity` : The overall accuracy, completeness, and consistency of data.
+  - `Non repudiation` : The assurance that someone cannot deny the validity of data.
