@@ -14,7 +14,7 @@
 
 ### CIA Tried
 
-![CIA_Triad](/images/cia_triad.svg)
+![cia_triad](/images/cia_triad.svg)
 
 - CIA Triad
   - Confidentiality
@@ -85,3 +85,14 @@ Threats and Attack (RFC 2828)
   - `Data confidentiality` : The protection of data from unauthorized access and disclosure.
   - `Data Integrity` : The overall accuracy, completeness, and consistency of data.
   - `Non repudiation` : The assurance that someone cannot deny the validity of data.
+
+### Model for Network Security
+
+![model_ns](/images/model_ns_1.png)
+
+- Design an algorithm
+- Generate the secret information
+- Develop methods for distribution and sharing of information
+- Specify a protocol
+
+![model_ns](/images/model_ns_2.png)
