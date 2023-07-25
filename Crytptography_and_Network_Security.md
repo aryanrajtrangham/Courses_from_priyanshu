@@ -115,3 +115,18 @@ Threats and Attack (RFC 2828)
   - `Key` : The most important data used to encrypt and decrypt the plain text.
   - `Cryptanalysis` (code breaking) : To know the text being transmitted using hit and trial of algorithm.
   - `Cryptology` : Cryptography + Cryptanalysis
+
+### Attacks
+
+- General approaches to attack conventional schemes
+  - `Cryptanalysis attacks` : Based on info know to the cryptanalyst
+
+     Types of cryptanalytic attacks | Known to cryptanalyst
+    --------------------------------|------------------------
+     Ciphertext Only   |- Encryption Algorithm </br>- Ciphertext
+     Known Plain text  |- Encryption Algorithm </br>- Ciphertext </br>- One or more PT-CT pairs formed with secret key
+     Chosen plaintext  |- Encryption Algorithm </br>- Ciphertext </br>- PT message chosen by cryptanalyst, together with its CT generated with the secret key
+     Chosen Ciphertext |- Encryption Algorithm </br>- Ciphertext </br>- CT chosen by cryptanalysis, together with its corresponding decrypted PT generated with secret key
+     Chosen text       |- Chosen Plaintext and Chosen Ciphertext
+    - Most difficult - Cipher text only (Not even encryption algorithm)
+  - `Brute-force attack`
