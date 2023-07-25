@@ -9,3 +9,7 @@
 5. Cryptographic Hash functions and Digital Signatures
 6. Security Practices and System Security
 7. Email, IP and Web Security
+
+## CIA Tried
+
+![CIA Triad](https://raw.githubusercontent.com/singhpriansh/Courses/main/images/cia_triad.svg)
