@@ -88,11 +88,30 @@ Threats and Attack (RFC 2828)
 
 ### Model for Network Security
 
-![model_ns](/images/model_ns_1.png)
+![model_ns_1](/images/model_ns_1.png)
 
 - Design an algorithm
 - Generate the secret information
 - Develop methods for distribution and sharing of information
 - Specify a protocol
 
-![model_ns](/images/model_ns_2.png)
+![model_ns_2](/images/model_ns_2.png)
+
+### Cryptography
+
+![model_crypt](/images/encryption.png)
+
+- The art or science encompassing the principles and methods of transforming an intelligible message into that is unintelligible and then re-transforming that message back to its original form.
+- Types of Cryptography
+  - Symmetric Cryptography (Private Key Cryptography) : Same key are used for both encryption and decryption.
+  - Asymmetric Cryptography (Public Key Cryptography) : Different key are used for both encryption and decryption.
+- Encryption schemes
+  - Unconditionally secure
+  - Computationally secure
+- Key Terms
+  - `Plaintext` : Any useful data used, which can be easily understood manually or through softwares.
+  - `Ciphertext` : Encrypted  plain text is called ciphertext.
+  - `Cipher` (Encryption Algorithm) : It convert plaintext to ciphertext.
+  - `Key` : The most important data used to encrypt and decrypt the plain text.
+  - `Cryptanalysis` (code breaking) : To know the text being transmitted using hit and trial of algorithm.
+  - `Cryptology` : Cryptography + Cryptanalysis

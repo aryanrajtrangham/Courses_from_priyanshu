@@ -1,2 +1,4 @@
 img[alt=cia_triad] { width: 300px; float: right;}
-img[alt=model_ns] { width: 600px; float: right;}
+img[alt=model_ns_1] { width: 600px; float: right;}
+img[alt=model_ns_2] { max-width: 800px;}
+img[alt=model_crypt] { width: 600px; float : right}
