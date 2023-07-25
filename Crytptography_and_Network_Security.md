@@ -12,4 +12,5 @@
 
 ## CIA Tried
 
-![CIA Triad](https://raw.githubusercontent.com/singhpriansh/Courses/main/images/cia_triad.svg)
+![CIA_Triad](/images/cia_triad.svg)
+
