@@ -135,9 +135,36 @@ Threats and Attack (RFC 2828)
     - Guessing
     - Exhaustive key search.
     - Software Tools that can perform brute-force attack.
+    - Examples :
       Aircrack-ng   | DaveGrahl  | John the ripper
       --------------|------------|-----------------
       Cain and Abel | Hashcat    | Rainbowcrack
       Crack         | Hydra      | Ophcrack
     - To prevent brute force attack on login/sign up pages `captcha` are used.
       -`Captcha` is a contrived acronym for "Completely Automated Public Turing test to tell Computers are Human Apart"
+
+### Classical Encryption Techniques
+
+1. Substitution Technique
+   - Letters are replaced by other letters or symbols
+   - Example :
+      a | b | c | d | e | f | g | h | i | j | k | l | m
+     ---|---|---|---|---|---|---|---|---|---|---|---|----
+      n | o | p | q | r | s | t | u | v | w | x | y | z
+
+      Lets assume, a -> M, b -> X, x-> Z, g -> A
+      </br>Plain text : bag
+      </br>Ciphertext : XMA
+2. Transposition Technique
+   - Applying some sort of permutation on the plaintext letters.
+   - Plaintext : Science
+   - Ciphertext : Siencce, Csience, etc.
+
+ Substitution                | Transposition
+-----------------------------|---------------------------
+ Caesar Cipher               | Rail Fence
+ Monoalphabetic Cipher       | Raw Column Transposition
+ Playfair Cipher             |
+ Hill Cipher                 |
+ Polyalphabetic Cipher       |
+ One-Time Pad                |
