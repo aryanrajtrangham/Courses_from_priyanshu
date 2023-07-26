@@ -152,7 +152,7 @@ Threats and Attack (RFC 2828)
      ---|---|---|---|---|---|---|---|---|---|---|---|----
       n | o | p | q | r | s | t | u | v | w | x | y | z
 
-      Lets assume, a -> M, b -> X, x-> Z, g -> A
+      Lets assume, a → M, b → X, x → Z, g → A
       </br>Plain text : bag
       </br>Ciphertext : XMA
 2. Transposition Technique
@@ -220,3 +220,46 @@ Threats and Attack (RFC 2828)
   ----------------------|----------------------------
   Better security than Caesar Cipher | Monoalphabetic ciphers are easy to break because they reflect the frequency data of the original alphabet.
   A countermeasure is to provide multiple substitutes known as homophones, for a single letter | Prone to guessing attack using the English letter frequency of occurrence of letters.
+
+### Playfair Cipher
+
+- Aka Playfair square or Wheatstone-Playfair cipher.
+- Manual symmetric encryption technique.
+- The first literal Digram substitution cipher.
+- Invented in 1854 by Charles Wheatstone.
+- Bore the name of Lord Playfair for promoting its use.
+- Multiple letter encryption cipher.
+- 5 x 5 matrix constructed using a keyword (Example: Monarchy)
+   M | O | N | A | R
+  ---|---|---|---|---
+   C | H | Y | B | D
+   E | F | G |I/J| K
+   L | P | Q | S | T
+   U | V | W | X | Z
+- Rules for encryption using Playfair Cipher
+  - Digrams
+  - Repeating Letters - Filled letter.
+  - Same Column | ↓ | Wrap around.
+  - Same Row | → | Wrap around.
+  - Rectangle | ⇋ | Swap
+- Example :
+  1. Plaintext : attack
+     - Digrams : at ta ck
+        at | ta | ck
+        ---|----|----
+        rs | sr | de
+     - Cipher text : rssrde
+
+  2. Plaintext : mosque
+     - Diagram : mo sq ue
+        mo | sq | ue
+        ---|----|----
+        on | ts | ml
+     - Cipher text : ontsml
+
+  3. Plaintext : balloon
+     - Digram : ba ll oo n → ba lx lo on (x is filler character)
+       ba | lx | lo | on
+       ---|----|----|----
+       ib | su | pm | na
+     - Cipher text : ibsupmna → ibspmna (ignoring filler character)
