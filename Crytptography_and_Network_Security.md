@@ -128,5 +128,16 @@ Threats and Attack (RFC 2828)
      Chosen plaintext  |- Encryption Algorithm </br>- Ciphertext </br>- PT message chosen by cryptanalyst, together with its CT generated with the secret key
      Chosen Ciphertext |- Encryption Algorithm </br>- Ciphertext </br>- CT chosen by cryptanalysis, together with its corresponding decrypted PT generated with secret key
      Chosen text       |- Chosen Plaintext and Chosen Ciphertext
-    - Most difficult - Cipher text only (Not even encryption algorithm)
-  - `Brute-force attack`
+    - Most difficult - Cipher text only (when not even encryption algorithm is known)
+  - `Brute-force attack` : A brute force attack is a hacking method that uses trial and error to crack passwords, login credentials, and encryption keys.
+    - Trying every possible key.
+    - Until an intelligible translation of the ciphertext into plaintext is obtained
+    - Guessing
+    - Exhaustive key search.
+    - Software Tools that can perform brute-force attack.
+      Aircrack-ng   | DaveGrahl  | John the ripper
+      --------------|------------|-----------------
+      Cain and Abel | Hashcat    | Rainbowcrack
+      Crack         | Hydra      | Ophcrack
+    - To prevent brute force attack on login/sign up pages `captcha` are used.
+      -`Captcha` is a contrived acronym for "Completely Automated Public Turing test to tell Computers are Human Apart"
