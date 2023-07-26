@@ -203,3 +203,20 @@ Threats and Attack (RFC 2828)
   Simple                | The encryption & decryption algorithm are known.
   Easy to implement     | There're only 25 keys to try (Vulnerable to brute-force attack)
   _                     | The language of plaintext is known & easily recognizable.
+
+### Monoalphabetic Cipher
+
+- **Permutation** : A permutation of a finite set of elements 'S' is an ordered sequence of all elements of 'S', with each element appearing exactly once.
+  - For example S = { a, b, c }
+  - There are six permutations of S: abc, acb, bac, bca, cab, cba.
+- The `cipher` line can be any **permutation** of the 26 alphabetic characters.
+- This would seem to eliminate brute-force techniques for cryptanalysis.
+- A single cipher alphabet (mapping from plain alphabet to cipher alphabet) is used per message.
+- English language - Nature of plain text is known.
+- Example:
+  - plain text - Work
+  - Cipher text - Eptl
+- Pros                  | Cons
+  ----------------------|----------------------------
+  Better security than Caesar Cipher | Monoalphabetic ciphers are easy to break because they reflect the frequency data of the original alphabet.
+  A countermeasure is to provide multiple substitutes known as homophones, for a single letter | Prone to guessing attack using the English letter frequency of occurrence of letters.
