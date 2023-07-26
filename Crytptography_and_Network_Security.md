@@ -168,3 +168,38 @@ Threats and Attack (RFC 2828)
  Hill Cipher                 |
  Polyalphabetic Cipher       |
  One-Time Pad                |
+
+### Shift Cipher
+
+- Letters are replaced by other letters or symbols.
+- The earlier known and simplest method used by Julius Caesar.
+- Replacing each letter of the alphabet with the letter standing three places further down the alphabet.
+- Example :
+  0 | 01| 02| 03| 04| 05| 06| 07| 08| 09| 10| 11| 12
+  --|---|---|---|---|---|---|---|---|---|---|---|----
+  a | b | c | d | e | f | g | h | i | j | k | l | m
+
+  13| 14| 15| 16| 17| 18| 19| 20| 21| 22| 23| 24| 25
+  --|---|---|---|---|---|---|---|---|---|---|---|----
+  n | o | p | q | r | s | t | u | v | w | x | y | z
+
+- Algorithm :
+  For each plaintext letter 'p', substitute the ciphertext letter 'C':
+  encryption C = E (p,k) mod 26 = (p + k) mod 26
+  decryption p = D (C,k) mod 26 = (C - k) mod 26
+- Example :
+  Fo k = 4
+  plaintext : linux
+  Ciphertext :  pmryb
+
+- Shift Cipher with key = 3 is called Caesar Cipher
+- Example :
+  For k = 3 (caesar cipher)
+  plaintext : academy
+  Ciphertext : dfdghpb
+
+- Pros                  | Cons
+  ----------------------|----------------------------
+  Simple                | The encryption & decryption algorithm are known.
+  Easy to implement     | There're only 25 keys to try (Vulnerable to brute-force attack)
+  _                     | The language of plaintext is known & easily recognizable.
