@@ -152,7 +152,7 @@ Threats and Attack (RFC 2828)
      ---|---|---|---|---|---|---|---|---|---|---|---|----
       n | o | p | q | r | s | t | u | v | w | x | y | z
 
-      Lets assume, a → M, b → X, x → Z, g → A
+      Lets assume, ${a → M, b → X, x → Z, g → A}$
       </br>Plain text : bag
       </br>Ciphertext : XMA
 2. Transposition Technique
@@ -185,8 +185,8 @@ Threats and Attack (RFC 2828)
 
 - Algorithm :
   For each plaintext letter 'p', substitute the ciphertext letter 'C':
-  encryption C = E (p,k) mod 26 = (p + k) mod 26
-  decryption p = D (C,k) mod 26 = (C - k) mod 26
+  - ${C = E (p,k) mod 26 = (p + k) mod 26}$
+  - ${p = D (C,k) mod 26 = (C - k) mod 26}$
 - Example :
   Fo k = 4
   plaintext : linux
@@ -239,9 +239,9 @@ Threats and Attack (RFC 2828)
 - Rules for encryption using Playfair Cipher
   - Digrams
   - Repeating Letters - Filled letter.
-  - Same Column | ↓ | Wrap around.
-  - Same Row | → | Wrap around.
-  - Rectangle | ⇋ | Swap
+  - Same Column | ${↓}$ | Wrap around.
+  - Same Row | ${→}$ | Wrap around.
+  - Rectangle | ${⇋}$ | Swap
 - Example :
   1. Plaintext : attack
      - Digrams : at ta ck
@@ -263,3 +263,22 @@ Threats and Attack (RFC 2828)
        ---|----|----|----
        ib | su | pm | na
      - Cipher text : ibsupmna → ibspmna (ignoring filler character)
+
+### Hill Cipher
+
+- Multi-letter cipher
+- Developed by Lester Hill 1929.
+- Encrypts a group of letters: digraph, trigraph or polygraph.
+- Hill Algorithm
+  - This can be expressed as :
+    - ${C = E(K,p) = P }$ x ${ K mod 26}$
+    - ${P = D(K,C) = C }$ x ${ K^{-1} mod 26 = P}$ x ${ K }$ x ${ K^{-1} mod 26}$
+  - ${(C_{1} C_{2} C_{3}) = (P_{1} P_{2} P_{3}) \left(\begin{array}{cc} K_{11} & K_{12} & K_{13}\\ K_{21} & K_{22} & K_{23} \\ K_{31} & K_{32} & K_{33}\end{array}\right) mod 26 ← Encryption}$
+  
+    - ${C_{1} = (P_{1}K_{11} + P_{2}K_{21} + P_{3}K_{31}) mod 26}$
+    - ${C_{2} = (P_{1}K_{12} + P_{2}K_{22} + P_{3}K_{32}) mod 26}$
+    - ${C_{3} = (P_{1}K_{13} + P_{2}K_{23} + P_{3}K_{33}) mod 26}$
+  - Example :
+    - Plaintext : pay more money
+    - The alphabets are transformed into corresponding numbers in alphabets, then the encryption takes place.
+    - Cipher text : rrlmwbkaspdh
